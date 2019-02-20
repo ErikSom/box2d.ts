@@ -160,7 +160,7 @@ export class b2Rope {
   }
 
   ///
-  private static s_d = new b2Vec2();
+  private static s_d: b2Vec2 = new b2Vec2();
   public SolveC2(): void {
     const count2: number = this.m_count - 1;
 
@@ -196,12 +196,12 @@ export class b2Rope {
     }
   }
 
-  private static s_d1 = new b2Vec2();
-  private static s_d2 = new b2Vec2();
-  private static s_Jd1 = new b2Vec2();
-  private static s_Jd2 = new b2Vec2();
-  private static s_J1 = new b2Vec2();
-  private static s_J2 = new b2Vec2();
+  private static s_d1: b2Vec2 = new b2Vec2();
+  private static s_d2: b2Vec2 = new b2Vec2();
+  private static s_Jd1: b2Vec2 = new b2Vec2();
+  private static s_Jd2: b2Vec2 = new b2Vec2();
+  private static s_J1: b2Vec2 = new b2Vec2();
+  private static s_J2: b2Vec2 = new b2Vec2();
   public SolveC3(): void {
     const count3: number = this.m_count - 2;
 

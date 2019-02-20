@@ -28,10 +28,10 @@ import { b2StackQueue } from "./b2StackQueue";
  */
 export class b2VoronoiDiagram {
   public m_generatorBuffer: b2VoronoiDiagram.Generator[];
-  public m_generatorCapacity = 0;
-  public m_generatorCount = 0;
-  public m_countX = 0;
-  public m_countY = 0;
+  public m_generatorCapacity: number = 0;
+  public m_generatorCount: number = 0;
+  public m_countX: number = 0;
+  public m_countY: number = 0;
   public m_diagram: b2VoronoiDiagram.Generator[] = [];
 
   constructor(generatorCapacity: number) {

@@ -1516,7 +1516,7 @@ export class b2ParticleSystem {
     }
     return 0.5 * this.GetParticleMass() * sum_v2;
   }
-  public static readonly ComputeCollisionEnergy_s_v = new b2Vec2();
+  public static readonly ComputeCollisionEnergy_s_v: b2Vec2 = new b2Vec2();
 
   /**
    * Set strict Particle/Body contact check.
@@ -1884,11 +1884,11 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly RayCast_s_aabb = new b2AABB();
-  public static readonly RayCast_s_p = new b2Vec2();
-  public static readonly RayCast_s_v = new b2Vec2();
-  public static readonly RayCast_s_n = new b2Vec2();
-  public static readonly RayCast_s_point = new b2Vec2();
+  public static readonly RayCast_s_aabb: b2AABB = new b2AABB();
+  public static readonly RayCast_s_p: b2Vec2 = new b2Vec2();
+  public static readonly RayCast_s_v: b2Vec2 = new b2Vec2();
+  public static readonly RayCast_s_n: b2Vec2 = new b2Vec2();
+  public static readonly RayCast_s_point: b2Vec2 = new b2Vec2();
 
   /**
    * Compute the axis-aligned bounding box for all particles
@@ -4014,7 +4014,7 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveSolid_s_f = new b2Vec2();
+  public static readonly SolveSolid_s_f: b2Vec2 = new b2Vec2();
 
   public SolveForce(step: b2TimeStep): void {
     if (!this.m_velocityBuffer.data) { throw new Error(); }
@@ -4632,9 +4632,9 @@ export class b2ParticleSystem {
     };
     this.m_bodyContactBuffer.count = std_remove_if(this.m_bodyContactBuffer.data, b2ParticleBodyContactRemovePredicate, this.m_bodyContactBuffer.count);
   }
-  private static RemoveSpuriousBodyContacts_s_n = new b2Vec2();
-  private static RemoveSpuriousBodyContacts_s_pos = new b2Vec2();
-  private static RemoveSpuriousBodyContacts_s_normal = new b2Vec2();
+  private static RemoveSpuriousBodyContacts_s_n: b2Vec2 = new b2Vec2();
+  private static RemoveSpuriousBodyContacts_s_pos: b2Vec2 = new b2Vec2();
+  private static RemoveSpuriousBodyContacts_s_normal: b2Vec2 = new b2Vec2();
 
   public DetectStuckParticle(particle: number): void {
     // Detect stuck particles
@@ -5180,8 +5180,8 @@ export class UpdateBodyContactsCallback extends b2FixtureParticleQueryCallback {
       this.m_system.DetectStuckParticle(a);
     }
   }
-  public static readonly ReportFixtureAndParticle_s_n = new b2Vec2();
-  public static readonly ReportFixtureAndParticle_s_rp = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_n: b2Vec2 = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_rp: b2Vec2 = new b2Vec2();
 }
 
 export class SolveCollisionCallback extends b2FixtureParticleQueryCallback {
@@ -5253,12 +5253,12 @@ export class SolveCollisionCallback extends b2FixtureParticleQueryCallback {
       this.m_system.ParticleApplyForce(a, f);
     }
   }
-  public static readonly ReportFixtureAndParticle_s_p1 = new b2Vec2();
-  public static readonly ReportFixtureAndParticle_s_output = new b2RayCastOutput();
-  public static readonly ReportFixtureAndParticle_s_input = new b2RayCastInput();
-  public static readonly ReportFixtureAndParticle_s_p = new b2Vec2();
-  public static readonly ReportFixtureAndParticle_s_v = new b2Vec2();
-  public static readonly ReportFixtureAndParticle_s_f = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_p1: b2Vec2 = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_output: b2RayCastOutput = new b2RayCastOutput();
+  public static readonly ReportFixtureAndParticle_s_input: b2RayCastInput = new b2RayCastInput();
+  public static readonly ReportFixtureAndParticle_s_p: b2Vec2 = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_v: b2Vec2 = new b2Vec2();
+  public static readonly ReportFixtureAndParticle_s_f: b2Vec2 = new b2Vec2();
 
   public ReportParticle(system: b2ParticleSystem, index: number): boolean {
     return false;
