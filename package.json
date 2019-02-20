@@ -19,7 +19,10 @@
     "build-testbed": "tsc -p Testbed",
     "watch-testbed": "tsc -p Testbed --watch",
     "dist-testbed": "(cd Testbed && rollup -c)",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   },
   "repository": {
     "type": "git",
@@ -32,7 +35,8 @@
   },
   "homepage": "https://github.com/flyover/box2d.ts#readme",
   "dependencies": {
-    "@types/systemjs": "^0.20.6"
+    "@types/systemjs": "^0.20.6",
+    "assemblyscript": "AssemblyScript/assemblyscript"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
