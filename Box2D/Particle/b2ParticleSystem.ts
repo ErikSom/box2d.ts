@@ -910,7 +910,7 @@ export class b2ParticleSystem {
     this.m_world.QueryAABB(callback, aabb);
     return callback.Destroyed();
   }
-  public static readonly DestroyParticlesInShape_s_aabb = new b2AABB();
+  public static readonly DestroyParticlesInShape_s_aabb: b2AABB = new b2AABB();
 
   /**
    * Create a particle group whose properties have been defined.
@@ -972,7 +972,7 @@ export class b2ParticleSystem {
 
     return group;
   }
-  public static readonly CreateParticleGroup_s_transform = new b2Transform();
+  public static readonly CreateParticleGroup_s_transform: b2Transform = new b2Transform();
 
   /**
    * Join two particle groups.
@@ -1807,7 +1807,7 @@ export class b2ParticleSystem {
     shape.ComputeAABB(aabb, xf, childIndex);
     this.QueryAABB(callback, aabb);
   }
-  public static readonly QueryShapeAABB_s_aabb = new b2AABB();
+  public static readonly QueryShapeAABB_s_aabb: b2AABB = new b2AABB();
 
   public QueryPointAABB(callback: b2QueryCallback, point: b2Vec2, slop: number = b2_linearSlop): void {
     const s_aabb = b2ParticleSystem.QueryPointAABB_s_aabb;
@@ -1816,7 +1816,7 @@ export class b2ParticleSystem {
     aabb.upperBound.Set(point.x + slop, point.y + slop);
     this.QueryAABB(callback, aabb);
   }
-  public static readonly QueryPointAABB_s_aabb = new b2AABB();
+  public static readonly QueryPointAABB_s_aabb: b2AABB = new b2AABB();
 
   /**
    * Ray-cast the particle system for all particles in the path of
@@ -2110,9 +2110,9 @@ export class b2ParticleSystem {
       positionOnEdge -= edgeLength;
     }
   }
-  public static readonly CreateParticlesStrokeShapeForGroup_s_edge = new b2EdgeShape();
-  public static readonly CreateParticlesStrokeShapeForGroup_s_d = new b2Vec2();
-  public static readonly CreateParticlesStrokeShapeForGroup_s_p = new b2Vec2();
+  public static readonly CreateParticlesStrokeShapeForGroup_s_edge: b2EdgeShape = new b2EdgeShape();
+  public static readonly CreateParticlesStrokeShapeForGroup_s_d: b2Vec2 = new b2Vec2();
+  public static readonly CreateParticlesStrokeShapeForGroup_s_p: b2Vec2 = new b2Vec2();
 
   public CreateParticlesFillShapeForGroup(shape: b2Shape, groupDef: b2IParticleGroupDef, xf: b2Transform): void {
     const s_aabb = b2ParticleSystem.CreateParticlesFillShapeForGroup_s_aabb;
@@ -2136,8 +2136,8 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly CreateParticlesFillShapeForGroup_s_aabb = new b2AABB();
-  public static readonly CreateParticlesFillShapeForGroup_s_p = new b2Vec2();
+  public static readonly CreateParticlesFillShapeForGroup_s_aabb: b2AABB = new b2AABB();
+  public static readonly CreateParticlesFillShapeForGroup_s_p: b2Vec2 = new b2Vec2();
 
   public CreateParticlesWithShapeForGroup(shape: b2Shape, groupDef: b2IParticleGroupDef, xf: b2Transform): void {
     switch (shape.GetType()) {
@@ -2383,9 +2383,9 @@ export class b2ParticleSystem {
       this.m_triadBuffer.Unique(b2ParticleSystem.MatchTriadIndices);
     }
   }
-  private static UpdatePairsAndTriads_s_dab = new b2Vec2();
-  private static UpdatePairsAndTriads_s_dbc = new b2Vec2();
-  private static UpdatePairsAndTriads_s_dca = new b2Vec2();
+  private static UpdatePairsAndTriads_s_dab: b2Vec2 = new b2Vec2();
+  private static UpdatePairsAndTriads_s_dbc: b2Vec2 = new b2Vec2();
+  private static UpdatePairsAndTriads_s_dca: b2Vec2 = new b2Vec2();
 
   public UpdatePairsAndTriadsWithReactiveParticles(): void {
     const filter = new b2ParticleSystem.ReactiveFilter(this.m_flagsBuffer);
@@ -2737,7 +2737,7 @@ export class b2ParticleSystem {
       b2Vec2.MulSV(invD, d, contact.normal);
     }
   }
-  public static readonly AddContact_s_d = new b2Vec2();
+  public static readonly AddContact_s_d: b2Vec2 = new b2Vec2();
 
   public FindContacts_Reference(contacts: b2GrowableBuffer<b2ParticleContact>): void {
     // DEBUG: b2Assert(contacts === this.m_contactBuffer);
@@ -2988,7 +2988,7 @@ export class b2ParticleSystem {
 
     this.NotifyBodyContactListenerPostContact(fixtureSet);
   }
-  public static readonly UpdateBodyContacts_s_aabb = new b2AABB();
+  public static readonly UpdateBodyContacts_s_aabb: b2AABB = new b2AABB();
 
   public Solve(step: b2TimeStep): void {
     const s_subStep = b2ParticleSystem.Solve_s_subStep;
@@ -3089,7 +3089,7 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly Solve_s_subStep = new b2TimeStep();
+  public static readonly Solve_s_subStep: b2TimeStep = new b2TimeStep();
 
   public SolveCollision(step: b2TimeStep): void {
     const s_aabb = b2ParticleSystem.SolveCollision_s_aabb;
@@ -3123,7 +3123,7 @@ export class b2ParticleSystem {
     const callback = new b2ParticleSystem.SolveCollisionCallback(this, step);
     this.m_world.QueryAABB(callback, aabb);
   }
-  public static readonly SolveCollision_s_aabb = new b2AABB();
+  public static readonly SolveCollision_s_aabb: b2AABB = new b2AABB();
 
   public LimitVelocity(step: b2TimeStep): void {
     if (!this.m_velocityBuffer.data) { throw new Error(); }
@@ -3149,7 +3149,7 @@ export class b2ParticleSystem {
       vel_data[i].SelfAdd(gravity);
     }
   }
-  public static readonly SolveGravity_s_gravity = new b2Vec2();
+  public static readonly SolveGravity_s_gravity: b2Vec2 = new b2Vec2();
 
   public SolveBarrier(step: b2TimeStep): void {
     const s_aabb = b2ParticleSystem.SolveBarrier_s_aabb;
@@ -3305,18 +3305,18 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveBarrier_s_aabb = new b2AABB();
-  public static readonly SolveBarrier_s_va = new b2Vec2();
-  public static readonly SolveBarrier_s_vb = new b2Vec2();
-  public static readonly SolveBarrier_s_pba = new b2Vec2();
-  public static readonly SolveBarrier_s_vba = new b2Vec2();
-  public static readonly SolveBarrier_s_vc = new b2Vec2();
-  public static readonly SolveBarrier_s_pca = new b2Vec2();
-  public static readonly SolveBarrier_s_vca = new b2Vec2();
-  public static readonly SolveBarrier_s_qba = new b2Vec2();
-  public static readonly SolveBarrier_s_qca = new b2Vec2();
-  public static readonly SolveBarrier_s_dv = new b2Vec2();
-  public static readonly SolveBarrier_s_f = new b2Vec2();
+  public static readonly SolveBarrier_s_aabb: b2AABB = new b2AABB();
+  public static readonly SolveBarrier_s_va: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_vb: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_pba: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_vba: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_vc: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_pca: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_vca: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_qba: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_qca: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_dv: b2Vec2 = new b2Vec2();
+  public static readonly SolveBarrier_s_f: b2Vec2 = new b2Vec2();
 
   public SolveStaticPressure(step: b2TimeStep): void {
     if (!this.m_flagsBuffer.data) { throw new Error(); }
@@ -3454,7 +3454,7 @@ export class b2ParticleSystem {
       vel_data[b].SelfAdd(f);
     }
   }
-  public static readonly SolvePressure_s_f = new b2Vec2();
+  public static readonly SolvePressure_s_f: b2Vec2 = new b2Vec2();
 
   public SolveDamping(step: b2TimeStep): void {
     const s_v = b2ParticleSystem.SolveDamping_s_v;
@@ -3509,8 +3509,8 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveDamping_s_v = new b2Vec2();
-  public static readonly SolveDamping_s_f = new b2Vec2();
+  public static readonly SolveDamping_s_v: b2Vec2 = new b2Vec2();
+  public static readonly SolveDamping_s_f: b2Vec2 = new b2Vec2();
 
   public SolveRigidDamping(): void {
     const s_t0 = b2ParticleSystem.SolveRigidDamping_s_t0;
@@ -3588,10 +3588,10 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveRigidDamping_s_t0 = new b2Vec2();
-  public static readonly SolveRigidDamping_s_t1 = new b2Vec2();
-  public static readonly SolveRigidDamping_s_p = new b2Vec2();
-  public static readonly SolveRigidDamping_s_v = new b2Vec2();
+  public static readonly SolveRigidDamping_s_t0: b2Vec2 = new b2Vec2();
+  public static readonly SolveRigidDamping_s_t1: b2Vec2 = new b2Vec2();
+  public static readonly SolveRigidDamping_s_p: b2Vec2 = new b2Vec2();
+  public static readonly SolveRigidDamping_s_v: b2Vec2 = new b2Vec2();
 
   public SolveExtraDamping(): void {
     const s_v = b2ParticleSystem.SolveExtraDamping_s_v;
@@ -3628,8 +3628,8 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveExtraDamping_s_v = new b2Vec2();
-  public static readonly SolveExtraDamping_s_f = new b2Vec2();
+  public static readonly SolveExtraDamping_s_v: b2Vec2 = new b2Vec2();
+  public static readonly SolveExtraDamping_s_f: b2Vec2 = new b2Vec2();
 
   public SolveWall(): void {
     if (!this.m_flagsBuffer.data) { throw new Error(); }
@@ -3681,10 +3681,10 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveRigid_s_position = new b2Vec2();
-  public static readonly SolveRigid_s_rotation = new b2Rot();
-  public static readonly SolveRigid_s_transform = new b2Transform();
-  public static readonly SolveRigid_s_velocityTransform = new b2Transform();
+  public static readonly SolveRigid_s_position: b2Vec2 = new b2Vec2();
+  public static readonly SolveRigid_s_rotation: b2Rot = new b2Rot();
+  public static readonly SolveRigid_s_transform: b2Transform = new b2Transform();
+  public static readonly SolveRigid_s_velocityTransform: b2Transform = new b2Transform();
 
   public SolveElastic(step: b2TimeStep): void {
     const s_pa = b2ParticleSystem.SolveElastic_s_pa;
@@ -3764,11 +3764,11 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveElastic_s_pa = new b2Vec2();
-  public static readonly SolveElastic_s_pb = new b2Vec2();
-  public static readonly SolveElastic_s_pc = new b2Vec2();
-  public static readonly SolveElastic_s_r = new b2Rot();
-  public static readonly SolveElastic_s_t0 = new b2Vec2();
+  public static readonly SolveElastic_s_pa: b2Vec2 = new b2Vec2();
+  public static readonly SolveElastic_s_pb: b2Vec2 = new b2Vec2();
+  public static readonly SolveElastic_s_pc: b2Vec2 = new b2Vec2();
+  public static readonly SolveElastic_s_r: b2Rot = new b2Rot();
+  public static readonly SolveElastic_s_t0: b2Vec2 = new b2Vec2();
 
   public SolveSpring(step: b2TimeStep): void {
     const s_pa = b2ParticleSystem.SolveSpring_s_pa;
@@ -3816,10 +3816,10 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveSpring_s_pa = new b2Vec2();
-  public static readonly SolveSpring_s_pb = new b2Vec2();
-  public static readonly SolveSpring_s_d = new b2Vec2();
-  public static readonly SolveSpring_s_f = new b2Vec2();
+  public static readonly SolveSpring_s_pa: b2Vec2 = new b2Vec2();
+  public static readonly SolveSpring_s_pb: b2Vec2 = new b2Vec2();
+  public static readonly SolveSpring_s_d: b2Vec2 = new b2Vec2();
+  public static readonly SolveSpring_s_f: b2Vec2 = new b2Vec2();
 
   public SolveTensile(step: b2TimeStep): void {
     const s_weightedNormal = b2ParticleSystem.SolveTensile_s_weightedNormal;
@@ -3873,9 +3873,9 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveTensile_s_weightedNormal = new b2Vec2();
-  public static readonly SolveTensile_s_s = new b2Vec2();
-  public static readonly SolveTensile_s_f = new b2Vec2();
+  public static readonly SolveTensile_s_weightedNormal: b2Vec2 = new b2Vec2();
+  public static readonly SolveTensile_s_s: b2Vec2 = new b2Vec2();
+  public static readonly SolveTensile_s_f: b2Vec2 = new b2Vec2();
 
   public SolveViscous(): void {
     const s_v = b2ParticleSystem.SolveViscous_s_v;
@@ -3922,8 +3922,8 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveViscous_s_v = new b2Vec2();
-  public static readonly SolveViscous_s_f = new b2Vec2();
+  public static readonly SolveViscous_s_v: b2Vec2 = new b2Vec2();
+  public static readonly SolveViscous_s_f: b2Vec2 = new b2Vec2();
 
   public SolveRepulsive(step: b2TimeStep): void {
     const s_f = b2ParticleSystem.SolveRepulsive_s_f;
@@ -3948,7 +3948,7 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolveRepulsive_s_f = new b2Vec2();
+  public static readonly SolveRepulsive_s_f: b2Vec2 = new b2Vec2();
 
   public SolvePowder(step: b2TimeStep): void {
     const s_f = b2ParticleSystem.SolvePowder_s_f;
@@ -3991,7 +3991,7 @@ export class b2ParticleSystem {
       }
     }
   }
-  public static readonly SolvePowder_s_f = new b2Vec2();
+  public static readonly SolvePowder_s_f: b2Vec2 = new b2Vec2();
 
   public SolveSolid(step: b2TimeStep): void {
     const s_f = b2ParticleSystem.SolveSolid_s_f;

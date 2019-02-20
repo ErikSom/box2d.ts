@@ -132,8 +132,8 @@ export class b2PulleyJoint extends b2Joint {
     this.m_impulse = 0;
   }
 
-  private static InitVelocityConstraints_s_PA = new b2Vec2();
-  private static InitVelocityConstraints_s_PB = new b2Vec2();
+  private static InitVelocityConstraints_s_PA: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_PB: b2Vec2 = new b2Vec2();
   public InitVelocityConstraints(data: b2SolverData): void {
     this.m_indexA = this.m_bodyA.m_islandIndex;
     this.m_indexB = this.m_bodyB.m_islandIndex;
@@ -224,10 +224,10 @@ export class b2PulleyJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_vpA = new b2Vec2();
-  private static SolveVelocityConstraints_s_vpB = new b2Vec2();
-  private static SolveVelocityConstraints_s_PA = new b2Vec2();
-  private static SolveVelocityConstraints_s_PB = new b2Vec2();
+  private static SolveVelocityConstraints_s_vpA: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_vpB: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_PA: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_PB: b2Vec2 = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const vA: b2Vec2 = data.velocities[this.m_indexA].v;
     let wA: number = data.velocities[this.m_indexA].w;
@@ -260,8 +260,8 @@ export class b2PulleyJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolvePositionConstraints_s_PA = new b2Vec2();
-  private static SolvePositionConstraints_s_PB = new b2Vec2();
+  private static SolvePositionConstraints_s_PA: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_PB: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     const cA: b2Vec2 = data.positions[this.m_indexA].c;
     let aA: number = data.positions[this.m_indexA].a;
@@ -377,7 +377,7 @@ export class b2PulleyJoint extends b2Joint {
     return this.m_ratio;
   }
 
-  private static GetCurrentLengthA_s_p = new b2Vec2();
+  private static GetCurrentLengthA_s_p: b2Vec2 = new b2Vec2();
   public GetCurrentLengthA() {
     // b2Vec2 p = m_bodyA->GetWorldPoint(m_localAnchorA);
     // b2Vec2 s = m_groundAnchorA;
@@ -388,7 +388,7 @@ export class b2PulleyJoint extends b2Joint {
     return b2Vec2.DistanceVV(p, s);
   }
 
-  private static GetCurrentLengthB_s_p = new b2Vec2();
+  private static GetCurrentLengthB_s_p: b2Vec2 = new b2Vec2();
   public GetCurrentLengthB() {
     // b2Vec2 p = m_bodyB->GetWorldPoint(m_localAnchorB);
     // b2Vec2 s = m_groundAnchorB;

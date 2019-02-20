@@ -185,7 +185,7 @@ export class b2ParticleGroup {
     ///  return m_linearVelocity + b2Cross(m_angularVelocity, worldPoint - m_center);
     return b2Vec2.AddVCrossSV(this.m_linearVelocity, this.m_angularVelocity, b2Vec2.SubVV(worldPoint, this.m_center, s_t0), out);
   }
-  public static readonly GetLinearVelocityFromWorldPoint_s_t0 = new b2Vec2();
+  public static readonly GetLinearVelocityFromWorldPoint_s_t0: b2Vec2 = new b2Vec2();
 
   public GetUserData(): void {
     return this.m_userData;

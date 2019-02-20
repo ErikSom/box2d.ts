@@ -54,7 +54,7 @@ export class b2WheelJointDef extends b2JointDef implements b2IWheelJointDef {
 
   public readonly localAxisA: b2Vec2 = new b2Vec2(1, 0);
 
-  public enableMotor = false;
+  public enableMotor: boolean = false;
 
   public maxMotorTorque: number = 0;
 
@@ -93,7 +93,7 @@ export class b2WheelJoint extends b2Joint {
 
   public m_maxMotorTorque: number = 0;
   public m_motorSpeed: number = 0;
-  public m_enableMotor = false;
+  public m_enableMotor: boolean = false;
 
   // Solver temp
   public m_indexA: number = 0;
@@ -169,8 +169,8 @@ export class b2WheelJoint extends b2Joint {
     return this.m_dampingRatio;
   }
 
-  private static InitVelocityConstraints_s_d = new b2Vec2();
-  private static InitVelocityConstraints_s_P = new b2Vec2();
+  private static InitVelocityConstraints_s_d: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   public InitVelocityConstraints(data: b2SolverData): void {
     this.m_indexA = this.m_bodyA.m_islandIndex;
     this.m_indexB = this.m_bodyB.m_islandIndex;
@@ -317,7 +317,7 @@ export class b2WheelJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_P = new b2Vec2();
+  private static SolveVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const mA: number = this.m_invMassA, mB: number = this.m_invMassB;
     const iA: number = this.m_invIA, iB: number = this.m_invIB;
@@ -387,8 +387,8 @@ export class b2WheelJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolvePositionConstraints_s_d = new b2Vec2();
-  private static SolvePositionConstraints_s_P = new b2Vec2();
+  private static SolvePositionConstraints_s_d: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     const cA: b2Vec2 = data.positions[this.m_indexA].c;
     let aA: number = data.positions[this.m_indexA].a;

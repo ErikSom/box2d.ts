@@ -141,7 +141,7 @@ export class b2RevoluteJoint extends b2Joint {
     this.m_limitState = b2LimitState.e_inactiveLimit;
   }
 
-  private static InitVelocityConstraints_s_P = new b2Vec2();
+  private static InitVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   public InitVelocityConstraints(data: b2SolverData): void {
     this.m_indexA = this.m_bodyA.m_islandIndex;
     this.m_indexB = this.m_bodyB.m_islandIndex;
@@ -368,8 +368,8 @@ export class b2RevoluteJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolvePositionConstraints_s_C_v2 = new b2Vec2();
-  private static SolvePositionConstraints_s_impulse = new b2Vec2();
+  private static SolvePositionConstraints_s_C_v2: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_impulse: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     const cA: b2Vec2 = data.positions[this.m_indexA].c;
     let aA: number = data.positions[this.m_indexA].a;
