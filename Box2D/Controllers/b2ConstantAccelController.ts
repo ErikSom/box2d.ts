@@ -30,9 +30,9 @@ export class b2ConstantAccelController extends b2Controller {
   /**
    * The acceleration to apply
    */
-  public readonly A = new b2Vec2(0, 0);
+  public readonly A : b2Vec2= new b2Vec2(0, 0);
 
-  public Step(step: b2TimeStep) {
+  public Step(step: b2TimeStep) :void {
     const dtA = b2Vec2.MulSV(step.dt, this.A, b2ConstantAccelController.Step_s_dtA);
     for (let i = this.m_bodyList; i; i = i.nextBody) {
       const body = i.body;
@@ -42,9 +42,9 @@ export class b2ConstantAccelController extends b2Controller {
       body.SetLinearVelocity(b2Vec2.AddVV(body.GetLinearVelocity(), dtA, b2Vec2.s_t0));
     }
   }
-  private static Step_s_dtA = new b2Vec2();
+  private static Step_s_dtA : b2Vec2 = new b2Vec2();
 
-  public Draw(draw: b2Draw) {}
+  public Draw(draw: b2Draw) : void {}
 }
 
 // #endif

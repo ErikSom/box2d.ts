@@ -32,42 +32,42 @@ export class b2BuoyancyController extends b2Controller {
   /**
    * The outer surface normal
    */
-  public readonly normal = new b2Vec2(0, 1);
+  public readonly normal : b2Vec2 = new b2Vec2(0, 1);
   /**
    * The height of the fluid surface along the normal
    */
-  public offset = 0;
+  public offset : number = 0;
   /**
    * The fluid density
    */
-  public density = 0;
+  public density : number = 0;
   /**
    * Fluid velocity, for drag calculations
    */
-  public readonly velocity = new b2Vec2(0, 0);
+  public readonly velocity : b2Vec2 = new b2Vec2(0, 0);
   /**
    * Linear drag co-efficient
    */
-  public linearDrag = 0;
+  public linearDrag : number = 0;
   /**
    * Angular drag co-efficient
    */
-  public angularDrag = 0;
+  public angularDrag : number = 0;
   /**
    * If false, bodies are assumed to be uniformly dense, otherwise
    * use the shapes densities
    */
-  public useDensity = false; //False by default to prevent a gotcha
+  public useDensity : boolean = false; //False by default to prevent a gotcha
   /**
    * If true, gravity is taken from the world instead of the
    */
-  public useWorldGravity = true;
+  public useWorldGravity : boolean = true;
   /**
    * Gravity vector, if the world's gravity is not used
    */
-  public readonly gravity = new b2Vec2(0, 0);
+  public readonly gravity : b2Vec2 = new b2Vec2(0, 0);
 
-  public Step(step: b2TimeStep) {
+  public Step(step: b2TimeStep) : void{
     if (!this.m_bodyList) {
       return;
     }
@@ -125,7 +125,7 @@ export class b2BuoyancyController extends b2Controller {
     }
   }
 
-  public Draw(debugDraw: b2Draw) {
+  public Draw(debugDraw: b2Draw) : void{
     const r = 100;
     const p1 = new b2Vec2();
     const p2 = new b2Vec2();

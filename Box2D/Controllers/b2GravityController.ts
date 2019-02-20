@@ -31,16 +31,16 @@ export class b2GravityController extends b2Controller {
   /**
    * Specifies the strength of the gravitiation force
    */
-  public G = 1;
+  public G : number = 1;
   /**
    * If true, gravity is proportional to r^-2, otherwise r^-1
    */
-  public invSqr = true;
+  public invSqr : boolean = true;
 
   /**
    * @see b2Controller::Step
    */
-  public Step(step: b2TimeStep) {
+  public Step(step: b2TimeStep) : void{
     if (this.invSqr) {
       for (let i = this.m_bodyList; i; i = i.nextBody) {
         const body1 = i.body;
@@ -93,9 +93,9 @@ export class b2GravityController extends b2Controller {
       }
     }
   }
-  private static Step_s_f = new b2Vec2();
+  private static Step_s_f : b2Vec2 = new b2Vec2();
 
-  public Draw(draw: b2Draw) { }
+  public Draw(draw: b2Draw) : void { }
 }
 
 // #endif

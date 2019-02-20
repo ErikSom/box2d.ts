@@ -30,9 +30,9 @@ export class b2ConstantForceController extends b2Controller {
   /**
    * The force to apply
    */
-  public readonly F = new b2Vec2(0, 0);
+  public readonly F : b2Vec2 = new b2Vec2(0, 0);
 
-  public Step(step: b2TimeStep) {
+  public Step(step: b2TimeStep) : void{
     for (let i = this.m_bodyList; i; i = i.nextBody) {
       const body = i.body;
       if (!body.IsAwake()) {
@@ -42,7 +42,7 @@ export class b2ConstantForceController extends b2Controller {
     }
   }
 
-  public Draw(draw: b2Draw) {}
+  public Draw(draw: b2Draw) : void {}
 }
 
 // #endif
