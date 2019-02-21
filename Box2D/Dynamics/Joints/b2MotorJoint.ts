@@ -40,15 +40,15 @@ import { b2SolverData } from "../b2TimeStep";
 // K = invI1 + invI2
 
 export interface b2IMotorJointDef extends b2IJointDef {
-  linearOffset?: XY;
+  linearOffset: XY;
 
-  angularOffset?: number;
+  angularOffset: number;
 
-  maxForce?: number;
+  maxForce: number;
 
-  maxTorque?: number;
+  maxTorque: number;
 
-  correctionFactor?: number;
+  correctionFactor: number;
 }
 
 export class b2MotorJointDef extends b2JointDef implements b2IMotorJointDef {

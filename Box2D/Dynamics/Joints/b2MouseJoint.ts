@@ -24,13 +24,13 @@ import { b2Joint, b2JointDef, b2JointType, b2IJointDef } from "./b2Joint";
 import { b2SolverData } from "../b2TimeStep";
 
 export interface b2IMouseJointDef extends b2IJointDef {
-  target?: XY;
+  target: XY;
 
-  maxForce?: number;
+  maxForce: number;
 
-  frequencyHz?: number;
+  frequencyHz: number;
 
-  dampingRatio?: number;
+  dampingRatio: number;
 }
 
 /// Mouse joint definition. This requires a world target point,

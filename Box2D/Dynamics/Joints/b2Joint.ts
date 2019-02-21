@@ -87,7 +87,7 @@ export interface b2IJointDef {
   type: b2JointType;
 
   /// Use this to attach application specific data to your joints.
-  userData?: any;
+  userData: any;
 
   /// The first attached body.
   bodyA: b2Body;
@@ -96,7 +96,7 @@ export interface b2IJointDef {
   bodyB: b2Body;
 
   /// Set this flag to true if the attached bodies should collide.
-  collideConnected?: boolean;
+  collideConnected: boolean;
 }
 
 /// Joint definitions are used to construct joints.

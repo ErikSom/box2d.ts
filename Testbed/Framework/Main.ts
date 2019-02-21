@@ -11,7 +11,7 @@ export class Main {
   public m_fps_div: HTMLDivElement;
   public m_debug_div: HTMLDivElement;
   public readonly m_settings: Settings = new Settings();
-  public m_test?: Test;
+  public m_test: Test;
   public m_test_index: number = 0;
   public m_test_select: HTMLSelectElement;
   public m_shift: boolean = false;

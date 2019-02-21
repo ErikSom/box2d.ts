@@ -24,21 +24,21 @@ import { b2SolverData } from "../b2TimeStep";
 import { b2Body } from "../b2Body";
 
 export interface b2IWheelJointDef extends b2IJointDef {
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  localAxisA?: XY;
+  localAxisA: XY;
 
-  enableMotor?: boolean;
+  enableMotor: boolean;
 
-  maxMotorTorque?: number;
+  maxMotorTorque: number;
 
-  motorSpeed?: number;
+  motorSpeed: number;
 
-  frequencyHz?: number;
+  frequencyHz: number;
 
-  dampingRatio?: number;
+  dampingRatio: number;
 }
 
 /// Wheel joint definition. This requires defining a line of

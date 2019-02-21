@@ -37,7 +37,7 @@ export interface b2IFilter {
   /// Collision groups allow a certain group of objects to never collide (negative)
   /// or always collide (positive). Zero means no collision group. Non-zero group
   /// filtering always wins against the mask bits.
-  groupIndex?: number;
+  groupIndex: number;
 }
 
 /// This holds contact filtering data.
@@ -77,23 +77,23 @@ export interface b2IFixtureDef {
   shape: b2Shape;
 
   /// Use this to store application specific fixture data.
-  userData?: any;
+  userData: any;
 
   /// The friction coefficient, usually in the range [0,1].
-  friction?: number;
+  friction: number;
 
   /// The restitution (elasticity) usually in the range [0,1].
-  restitution?: number;
+  restitution: number;
 
   /// The density, usually in kg/m^2.
-  density?: number;
+  density: number;
 
   /// A sensor shape collects contact information but never generates a collision
   /// response.
-  isSensor?: boolean;
+  isSensor: boolean;
 
   /// Contact filtering data.
-  filter?: b2IFilter;
+  filter: b2IFilter;
 }
 
 /// A fixture definition is used to create a fixture. This class defines an

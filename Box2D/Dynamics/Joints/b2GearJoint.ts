@@ -31,7 +31,7 @@ export interface b2IGearJointDef extends b2IJointDef {
 
   joint2: b2RevoluteJoint | b2PrismaticJoint;
 
-  ratio?: number;
+  ratio: number;
 }
 
 /// Gear joint definition. This definition requires two existing

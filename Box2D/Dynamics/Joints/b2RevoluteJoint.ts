@@ -23,23 +23,23 @@ import { b2Joint, b2JointDef, b2JointType, b2LimitState, b2IJointDef } from "./b
 import { b2SolverData } from "../b2TimeStep";
 
 export interface b2IRevoluteJointDef extends b2IJointDef {
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  referenceAngle?: number;
+  referenceAngle: number;
 
-  enableLimit?: boolean;
+  enableLimit: boolean;
 
-  lowerAngle?: number;
+  lowerAngle: number;
 
-  upperAngle?: number;
+  upperAngle: number;
 
-  enableMotor?: boolean;
+  enableMotor: boolean;
 
-  motorSpeed?: number;
+  motorSpeed: number;
 
-  maxMotorTorque?: number;
+  maxMotorTorque: number;
 }
 
 /// Revolute joint definition. This requires defining an

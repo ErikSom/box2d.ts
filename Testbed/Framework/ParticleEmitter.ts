@@ -248,7 +248,7 @@ export class RadialEmitter {
    * particleIndices array. This function returns the number of
    * particles created during this simulation step.
    */
-  public Step(dt: number, particleIndices?: number[], particleIndicesCount: number = particleIndices ? particleIndices.length : 0): number {
+  public Step(dt: number, particleIndices: number[], particleIndicesCount: number = particleIndices ? particleIndices.length : 0): number {
     if (this.m_particleSystem === null) { throw new Error(); }
     let numberOfParticlesCreated = 0;
     // How many (fractional) particles should we have emitted this frame?

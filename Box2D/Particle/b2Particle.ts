@@ -75,13 +75,13 @@ export enum b2ParticleFlag {
 }
 
 export interface b2IParticleDef {
-  flags?: b2ParticleFlag;
-  position?: XY;
-  velocity?: XY;
-  color?: RGBA;
-  lifetime?: number;
-  userData?: any;
-  group?: b2ParticleGroup | null;
+  flags: b2ParticleFlag;
+  position: XY;
+  velocity: XY;
+  color: RGBA;
+  lifetime: number;
+  userData: any;
+  group: b2ParticleGroup | null;
 }
 
 export class b2ParticleDef implements b2IParticleDef {

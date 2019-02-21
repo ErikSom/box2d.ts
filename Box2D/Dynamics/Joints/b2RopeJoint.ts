@@ -22,11 +22,11 @@ import { b2Joint, b2JointDef, b2JointType, b2LimitState, b2IJointDef } from "./b
 import { b2SolverData } from "../b2TimeStep";
 
 export interface b2IRopeJointDef extends b2IJointDef {
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  maxLength?: number;
+  maxLength: number;
 }
 
 /// Rope joint definition. This requires two body anchor points and

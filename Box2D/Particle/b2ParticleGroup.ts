@@ -41,23 +41,23 @@ export enum b2ParticleGroupFlag {
 }
 
 export interface b2IParticleGroupDef {
-  flags?: b2ParticleFlag;
-  groupFlags?: b2ParticleGroupFlag;
-  position?: XY;
-  angle?: number;
-  linearVelocity?: XY;
-  angularVelocity?: number;
-  color?: RGBA;
-  strength?: number;
-  shape?: b2Shape;
-  shapes?: b2Shape[];
-  shapeCount?: number;
-  stride?: number;
-  particleCount?: number;
-  positionData?: XY[];
-  lifetime?: number;
-  userData?: any;
-  group?: b2ParticleGroup | null;
+  flags: b2ParticleFlag;
+  groupFlags: b2ParticleGroupFlag;
+  position: XY;
+  angle: number;
+  linearVelocity: XY;
+  angularVelocity: number;
+  color: RGBA;
+  strength: number;
+  shape: b2Shape;
+  shapes: b2Shape[];
+  shapeCount: number;
+  stride: number;
+  particleCount: number;
+  positionData: XY[];
+  lifetime: number;
+  userData: any;
+  group: b2ParticleGroup | null;
 }
 
 export class b2ParticleGroupDef implements b2IParticleGroupDef {
@@ -69,12 +69,12 @@ export class b2ParticleGroupDef implements b2IParticleGroupDef {
   public angularVelocity: number = 0.0;
   public readonly color: b2Color = new b2Color();
   public strength: number = 1.0;
-  public shape?: b2Shape;
-  public shapes?: b2Shape[];
+  public shape: b2Shape;
+  public shapes: b2Shape[];
   public shapeCount: number = 0;
   public stride: number = 0;
   public particleCount: number = 0;
-  public positionData?: b2Vec2[];
+  public positionData: b2Vec2[];
   public lifetime: number = 0;
   public userData: any = null;
   public group: b2ParticleGroup | null = null;

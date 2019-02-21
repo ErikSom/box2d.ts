@@ -185,7 +185,7 @@ export class b2PolygonShape extends b2Shape {
   /// @param hy the half-height.
   /// @param center the center of the box in local coordinates.
   /// @param angle the rotation of the box in local coordinates.
-  public SetAsBox(hx: number, hy: number, center?: XY, angle: number = 0): b2PolygonShape {
+  public SetAsBox(hx: number, hy: number, center: XY, angle: number = 0): b2PolygonShape {
     this.m_count = 4;
     this.m_vertices = b2Vec2.MakeArray(this.m_count);
     this.m_normals = b2Vec2.MakeArray(this.m_count);

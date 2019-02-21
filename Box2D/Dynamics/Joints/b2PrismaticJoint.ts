@@ -23,25 +23,25 @@ import { b2Joint, b2JointDef, b2JointType, b2LimitState, b2IJointDef } from "./b
 import { b2SolverData } from "../b2TimeStep";
 
 export interface b2IPrismaticJointDef extends b2IJointDef {
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  localAxisA?: XY;
+  localAxisA: XY;
 
-  referenceAngle?: number;
+  referenceAngle: number;
 
-  enableLimit?: boolean;
+  enableLimit: boolean;
 
-  lowerTranslation?: number;
+  lowerTranslation: number;
 
-  upperTranslation?: number;
+  upperTranslation: number;
 
-  enableMotor?: boolean;
+  enableMotor: boolean;
 
-  maxMotorForce?: number;
+  maxMotorForce: number;
 
-  motorSpeed?: number;
+  motorSpeed: number;
 }
 
 /// Prismatic joint definition. This requires defining a line of

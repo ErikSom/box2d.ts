@@ -27,9 +27,9 @@ export interface b2IFrictionJointDef extends b2IJointDef {
 
   localAnchorB: XY;
 
-  maxForce?: number;
+  maxForce: number;
 
-  maxTorque?: number;
+  maxTorque: number;
 }
 
 /// Friction joint definition.

@@ -26,19 +26,19 @@ import { b2SolverData } from "../b2TimeStep";
 export const b2_minPulleyLength: number = 2;
 
 export interface b2IPulleyJointDef extends b2IJointDef {
-  groundAnchorA?: XY;
+  groundAnchorA: XY;
 
-  groundAnchorB?: XY;
+  groundAnchorB: XY;
 
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  lengthA?: number;
+  lengthA: number;
 
-  lengthB?: number;
+  lengthB: number;
 
-  ratio?: number;
+  ratio: number;
 }
 
 /// Pulley joint definition. This requires two ground anchors,
@@ -357,28 +357,28 @@ export class b2PulleyJoint extends b2Joint {
     return 0;
   }
 
-  public GetGroundAnchorA() {
+  public GetGroundAnchorA() :b2Vec2 {
     return this.m_groundAnchorA;
   }
 
-  public GetGroundAnchorB() {
+  public GetGroundAnchorB() :b2Vec2 {
     return this.m_groundAnchorB;
   }
 
-  public GetLengthA() {
+  public GetLengthA() : number {
     return this.m_lengthA;
   }
 
-  public GetLengthB() {
+  public GetLengthB() :number {
     return this.m_lengthB;
   }
 
-  public GetRatio() {
+  public GetRatio() :number {
     return this.m_ratio;
   }
 
   private static GetCurrentLengthA_s_p: b2Vec2 = new b2Vec2();
-  public GetCurrentLengthA() {
+  public GetCurrentLengthA() :number {
     // b2Vec2 p = m_bodyA->GetWorldPoint(m_localAnchorA);
     // b2Vec2 s = m_groundAnchorA;
     // b2Vec2 d = p - s;
@@ -389,7 +389,7 @@ export class b2PulleyJoint extends b2Joint {
   }
 
   private static GetCurrentLengthB_s_p: b2Vec2 = new b2Vec2();
-  public GetCurrentLengthB() {
+  public GetCurrentLengthB() :number {
     // b2Vec2 p = m_bodyB->GetWorldPoint(m_localAnchorB);
     // b2Vec2 s = m_groundAnchorB;
     // b2Vec2 d = p - s;
@@ -399,7 +399,7 @@ export class b2PulleyJoint extends b2Joint {
     return b2Vec2.DistanceVV(p, s);
   }
 
-  public Dump(log: (format: string, ...args: any[]) => void) {
+  public Dump(log: (format: string, ...args: any[]) => void) :void {
     const indexA = this.m_bodyA.m_islandIndex;
     const indexB = this.m_bodyB.m_islandIndex;
 
@@ -417,7 +417,7 @@ export class b2PulleyJoint extends b2Joint {
     log("  joints[%d] = this.m_world.CreateJoint(jd);\n", this.m_index);
   }
 
-  public ShiftOrigin(newOrigin: b2Vec2) {
+  public ShiftOrigin(newOrigin: b2Vec2) :void {
     this.m_groundAnchorA.SelfSub(newOrigin);
     this.m_groundAnchorB.SelfSub(newOrigin);
   }

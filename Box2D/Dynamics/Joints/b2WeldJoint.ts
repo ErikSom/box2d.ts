@@ -23,15 +23,15 @@ import { b2Joint, b2JointDef, b2JointType, b2IJointDef } from "./b2Joint";
 import { b2SolverData } from "../b2TimeStep";
 
 export interface b2IWeldJointDef extends b2IJointDef {
-  localAnchorA?: XY;
+  localAnchorA: XY;
 
-  localAnchorB?: XY;
+  localAnchorB: XY;
 
-  referenceAngle?: number;
+  referenceAngle: number;
 
-  frequencyHz?: number;
+  frequencyHz: number;
 
-  dampingRatio?: number;
+  dampingRatio: number;
 }
 
 /// Weld joint definition. You need to specify local anchor points

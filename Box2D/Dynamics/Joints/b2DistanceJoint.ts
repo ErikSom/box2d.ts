@@ -26,8 +26,8 @@ export interface b2IDistanceJointDef extends b2IJointDef {
   localAnchorA: XY;
   localAnchorB: XY;
   length: number;
-  frequencyHz?: number;
-  dampingRatio?: number;
+  frequencyHz: number;
+  dampingRatio: number;
 }
 
 /// Distance joint definition. This requires defining an

@@ -11,9 +11,9 @@ export interface b2IAreaJointDef extends b2IJointDef {
 
   bodies: b2Body[];
 
-  frequencyHz?: number;
+  frequencyHz: number;
 
-  dampingRatio?: number;
+  dampingRatio: number;
 }
 
 export class b2AreaJointDef extends b2JointDef implements b2IAreaJointDef {
