@@ -101,7 +101,7 @@ export class b2MouseJoint extends b2Joint {
     this.m_targetA.Copy(target);
   }
 
-  public GetTarget() {
+  public GetTarget() : b2Vec2 {
     return this.m_targetA;
   }
 
@@ -109,7 +109,7 @@ export class b2MouseJoint extends b2Joint {
     this.m_maxForce = maxForce;
   }
 
-  public GetMaxForce() {
+  public GetMaxForce() : number {
     return this.m_maxForce;
   }
 
@@ -117,15 +117,15 @@ export class b2MouseJoint extends b2Joint {
     this.m_frequencyHz = hz;
   }
 
-  public GetFrequency() {
+  public GetFrequency() :number {
     return this.m_frequencyHz;
   }
 
-  public SetDampingRatio(ratio: number) {
+  public SetDampingRatio(ratio: number) : void {
     this.m_dampingRatio = ratio;
   }
 
-  public GetDampingRatio() {
+  public GetDampingRatio() : number {
     return this.m_dampingRatio;
   }
 
@@ -202,9 +202,9 @@ export class b2MouseJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_Cdot = new b2Vec2();
-  private static SolveVelocityConstraints_s_impulse = new b2Vec2();
-  private static SolveVelocityConstraints_s_oldImpulse = new b2Vec2();
+  private static SolveVelocityConstraints_s_Cdot : b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_impulse : b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_oldImpulse : b2Vec2 = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const vB: b2Vec2 = data.velocities[this.m_indexB].v;
     let wB: number = data.velocities[this.m_indexB].w;
@@ -268,7 +268,7 @@ export class b2MouseJoint extends b2Joint {
     log("Mouse joint dumping is not supported.\n");
   }
 
-  public ShiftOrigin(newOrigin: b2Vec2) {
+  public ShiftOrigin(newOrigin: b2Vec2) : void {
     this.m_targetA.SelfSub(newOrigin);
   }
 }
