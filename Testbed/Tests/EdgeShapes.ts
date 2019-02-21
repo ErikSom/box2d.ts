@@ -34,11 +34,11 @@ export class EdgeShapesCallback extends box2d.b2RayCastCallback {
 export class EdgeShapes extends testbed.Test {
   public static readonly e_maxBodies = 256;
 
-  public m_bodyIndex = 0;
+  public m_bodyIndex : number = 0;
   public m_bodies: Array<box2d.b2Body | null>;
   public m_polygons: box2d.b2PolygonShape[];
   public m_circle: box2d.b2CircleShape;
-  public m_angle = 0.0;
+  public m_angle : number = 0.0;
 
   constructor() {
     super();

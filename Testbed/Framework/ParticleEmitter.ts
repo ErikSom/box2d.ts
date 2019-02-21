@@ -50,7 +50,7 @@ export class RadialEmitter {
   /**
    * Speed particles are emitted
    */
-  public m_speed = 0.0;
+  public m_speed : number = 0.0;
   /**
    * Half width / height of particle emitter
    */
@@ -66,7 +66,7 @@ export class RadialEmitter {
   /**
    * Number particles to emit on the next frame
    */
-  public m_emitRemainder = 0.0;
+  public m_emitRemainder : number = 0.0;
   /**
    * Flags for created particles, see b2ParticleFlag.
    */

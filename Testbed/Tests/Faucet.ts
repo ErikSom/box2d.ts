@@ -22,8 +22,8 @@ import * as box2d from "Box2D";
 import * as testbed from "Testbed";
 
 export class ParticleLifetimeRandomizer extends testbed.EmittedParticleCallback {
-  public m_minLifetime = 0.0;
-  public m_maxLifetime = 0.0;
+  public m_minLifetime : number = 0.0;
+  public m_maxLifetime : number = 0.0;
   constructor(minLifetime: number, maxLifetime: number) {
     super();
     this.m_minLifetime = minLifetime;
@@ -46,7 +46,7 @@ export class Faucet extends testbed.Test {
   /**
    * Used to cycle through particle colors.
    */
-  public m_particleColorOffset = 0.0;
+  public m_particleColorOffset : number = 0.0;
   /**
    * Particle emitter.
    */

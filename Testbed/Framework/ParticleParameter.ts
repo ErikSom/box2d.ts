@@ -116,13 +116,13 @@ export class ParticleParameter {
     new ParticleParameterDefinition(ParticleParameter.k_particleTypes),
   ];
 
-  public m_index = 0;
+  public m_index : number = 0;
   public m_changed = false;
   public m_restartOnChange = false;
   public m_value: ParticleParameterValue | null = null;
   public m_definition: ParticleParameterDefinition[] = ParticleParameter.k_defaultDefinition;
-  public m_definitionCount = 0;
-  public m_valueCount = 0;
+  public m_definitionCount : number = 0;
+  public m_valueCount : number = 0;
 
   constructor() {
     this.Reset();

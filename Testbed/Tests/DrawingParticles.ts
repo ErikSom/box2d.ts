@@ -37,9 +37,9 @@ export class DrawingParticles extends testbed.Test {
 
   public m_lastGroup: box2d.b2ParticleGroup | null;
   public m_drawing = true;
-  public m_particleFlags = 0;
-  public m_groupFlags = 0;
-  public m_colorIndex = 0;
+  public m_particleFlags : number = 0;
+  public m_groupFlags : number = 0;
+  public m_colorIndex : number = 0;
 
   public static readonly k_paramValues = [
     new testbed.ParticleParameter.Value(box2d.b2ParticleFlag.b2_zombieParticle, testbed.ParticleParameter.k_DefaultOptions, "erase"),

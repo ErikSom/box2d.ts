@@ -24,7 +24,7 @@ export class Breakable extends testbed.Test {
 
   public readonly m_body1: box2d.b2Body;
   public readonly m_velocity = new box2d.b2Vec2();
-  public m_angularVelocity = 0;
+  public m_angularVelocity : number = 0;
   public readonly m_shape1 = new box2d.b2PolygonShape();
   public readonly m_shape2 = new box2d.b2PolygonShape();
   public m_piece1: box2d.b2Fixture;

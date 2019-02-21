@@ -23,7 +23,7 @@ export class Tumbler extends testbed.Test {
   public static readonly e_count = 800;
 
   public m_joint: box2d.b2RevoluteJoint;
-  public m_count = 0;
+  public m_count : number = 0;
 
   constructor() {
     super();

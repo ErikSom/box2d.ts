@@ -22,8 +22,8 @@ import * as testbed from "Testbed";
 export class DynamicTreeTest extends testbed.Test {
   public static readonly e_actorCount = 128;
 
-  public m_worldExtent = 0.0;
-  public m_proxyExtent = 0.0;
+  public m_worldExtent : number = 0.0;
+  public m_proxyExtent : number = 0.0;
 
   public m_tree = new box2d.b2DynamicTree<DynamicTreeTest.Actor>();
   public m_queryAABB = new box2d.b2AABB();
@@ -31,7 +31,7 @@ export class DynamicTreeTest extends testbed.Test {
   public m_rayCastOutput = new box2d.b2RayCastOutput();
   public m_rayActor: DynamicTreeTest.Actor | null = null;
   public m_actors: DynamicTreeTest.Actor[] = box2d.b2MakeArray(DynamicTreeTest.e_actorCount, () => new DynamicTreeTest.Actor());
-  public m_stepCount = 0;
+  public m_stepCount : number = 0;
   public m_automated = false;
 
   constructor() {
@@ -309,7 +309,7 @@ export class DynamicTreeTest extends testbed.Test {
 export namespace DynamicTreeTest {
   export class Actor {
     public aabb = new box2d.b2AABB();
-    public fraction = 0.0;
+    public fraction : number = 0.0;
     public overlap = false;
     public proxyId: box2d.b2TreeNode<Actor> | null = null;
   }

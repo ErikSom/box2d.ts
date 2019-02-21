@@ -25,7 +25,7 @@ export class PolyCollision extends testbed.Test {
   public m_transformA = new box2d.b2Transform();
   public m_transformB = new box2d.b2Transform();
   public m_positionB = new box2d.b2Vec2();
-  public m_angleB = 0;
+  public m_angleB : number = 0;
 
   constructor() {
     super();

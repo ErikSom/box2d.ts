@@ -23,7 +23,7 @@ export class ConvexHull extends testbed.Test {
   public static readonly e_count = 10;
 
   public m_test_points: box2d.b2Vec2[] = [];
-  public m_count = 0;
+  public m_count : number = 0;
   public m_auto = false;
 
   constructor() {

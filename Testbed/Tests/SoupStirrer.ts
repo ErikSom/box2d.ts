@@ -25,7 +25,7 @@ import { Soup } from "./Soup";
 export class SoupStirrer extends Soup {
   public m_stirrer: box2d.b2Body;
   public m_joint: box2d.b2Joint | null = null;
-  public m_oscillationOffset = 0.0;
+  public m_oscillationOffset : number = 0.0;
 
   constructor() {
     super();

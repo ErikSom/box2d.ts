@@ -21,7 +21,7 @@ import * as testbed from "Testbed";
 
 export class MotorJoint extends testbed.Test {
   public m_joint: box2d.b2MotorJoint;
-  public m_time = 0;
+  public m_time : number = 0;
   public m_go = false;
 
   constructor() {

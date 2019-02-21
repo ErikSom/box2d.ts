@@ -23,7 +23,7 @@ import * as testbed from "Testbed";
 
 export class WaveMachine extends testbed.Test {
   public m_joint: box2d.b2RevoluteJoint;
-  public m_time = 0;
+  public m_time : number = 0;
 
   constructor() {
     super();

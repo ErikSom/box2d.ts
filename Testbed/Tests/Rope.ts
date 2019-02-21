@@ -21,7 +21,7 @@ import * as testbed from "Testbed";
 
 export class Rope extends testbed.Test {
   public m_rope = new box2d.b2Rope();
-  public m_angle = 0.0;
+  public m_angle : number = 0.0;
 
   constructor() {
     super();

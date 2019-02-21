@@ -20,9 +20,9 @@ import * as box2d from "Box2D";
 import * as testbed from "Testbed";
 
 export class OneSidedPlatform extends testbed.Test {
-  public m_radius = 0.0;
-  public m_top = 0.0;
-  public m_bottom = 0.0;
+  public m_radius : number = 0.0;
+  public m_top : number = 0.0;
+  public m_bottom : number = 0.0;
   public m_state = OneSidedPlatform.State.e_unknown;
   public m_platform: box2d.b2Fixture;
   public m_character: box2d.b2Fixture;

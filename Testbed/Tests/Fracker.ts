@@ -885,8 +885,8 @@ export namespace Fracker {
    * tracks the score of the game.
    */
   export class DestructionListener extends ParticleGroupTracker {
-    public m_score = 0;
-    public m_oil = 0;
+    public m_score : number = 0;
+    public m_oil : number = 0;
     public m_world: box2d.b2World;
     public m_previousListener: box2d.b2DestructionListener | null = null;
 

@@ -22,7 +22,7 @@ import * as testbed from "Testbed";
 export class BodyTypes extends testbed.Test {
   public m_attachment: box2d.b2Body;
   public m_platform: box2d.b2Body;
-  public m_speed = 0;
+  public m_speed : number = 0;
 
   constructor() {
     super();

@@ -31,7 +31,7 @@ export class PolyShapesCallback extends box2d.b2QueryCallback {
 
   public m_circle = new box2d.b2CircleShape();
   public m_transform = new box2d.b2Transform();
-  public m_count = 0;
+  public m_count : number = 0;
 
   public ReportFixture(fixture: box2d.b2Fixture) {
     if (this.m_count === PolyShapesCallback.e_maxCount) {
@@ -92,7 +92,7 @@ export class PolyShapesCallback extends box2d.b2QueryCallback {
 export class PolyShapes extends testbed.Test {
   public static readonly e_maxBodies = 256;
 
-  public m_bodyIndex = 0;
+  public m_bodyIndex : number = 0;
   public m_bodies = new Array(PolyShapes.e_maxBodies);
   public m_polygons = box2d.b2MakeArray(4, () => new box2d.b2PolygonShape());
   public m_circle = new box2d.b2CircleShape();

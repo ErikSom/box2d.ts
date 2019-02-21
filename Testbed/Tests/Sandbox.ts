@@ -110,7 +110,7 @@ export class SpecialParticleTracker extends box2d.b2DestructionListener {
   /**
    * Current offset into this.m_colorOscillationPeriod.
    */
-  public m_colorOscillationTime = 0.0;
+  public m_colorOscillationTime : number = 0.0;
   /**
    * Color oscillation period in seconds.
    */
@@ -204,20 +204,20 @@ export class Sandbox extends testbed.Test {
   /**
    * Count of faucets in the world
    */
-  public m_faucetEmitterIndex = 0;
+  public m_faucetEmitterIndex : number = 0;
   /**
    * Count of pumps in the world
    */
-  public m_pumpIndex = 0;
+  public m_pumpIndex : number = 0;
 
   /**
    * How long have we been pushing the pumps?
    */
-  public m_pumpTimer = 0.0;
+  public m_pumpTimer : number = 0.0;
   /**
    * Particle creation flags
    */
-  public m_particleFlags = 0;
+  public m_particleFlags : number = 0;
 
   /**
    * Pump force

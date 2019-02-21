@@ -28,8 +28,8 @@ import * as testbed from "Testbed";
 export class Tiles extends testbed.Test {
   public static readonly e_count = 20;
 
-  public m_fixtureCount = 0;
-  public m_createTime = 0.0;
+  public m_fixtureCount : number = 0;
+  public m_createTime : number = 0.0;
 
   constructor() {
     super();

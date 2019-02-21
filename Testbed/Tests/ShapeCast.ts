@@ -23,12 +23,12 @@ export class ShapeCast extends testbed.Test {
   public static e_vertexCount = 8;
 
   public m_vAs: box2d.b2Vec2[] = [];
-  public m_countA = 0;
-  public m_radiusA = 0;
+  public m_countA : number = 0;
+  public m_radiusA : number = 0;
 
   public m_vBs: box2d.b2Vec2[] = [];
-  public m_countB = 0;
-  public m_radiusB = 0;
+  public m_countB : number = 0;
+  public m_radiusB : number = 0;
 
   constructor() {
     super();

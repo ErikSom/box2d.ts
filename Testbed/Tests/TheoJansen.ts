@@ -28,7 +28,7 @@ export class TheoJansen extends testbed.Test {
   public m_wheel!: box2d.b2Body;
   public m_motorJoint!: box2d.b2RevoluteJoint;
   public m_motorOn = false;
-  public m_motorSpeed = 0;
+  public m_motorSpeed : number = 0;
 
   constructor() {
     super();

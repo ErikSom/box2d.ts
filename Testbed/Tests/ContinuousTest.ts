@@ -21,7 +21,7 @@ import * as testbed from "Testbed";
 
 export class ContinuousTest extends testbed.Test {
   public m_body: box2d.b2Body;
-  public m_angularVelocity = 0.0;
+  public m_angularVelocity : number = 0.0;
 
   constructor() {
     super();
