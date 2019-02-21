@@ -31,7 +31,7 @@ export class SensorTest extends testbed.Test {
 
     this.m_bodies = new Array(SensorTest.e_count);
     this.m_touching = new Array(SensorTest.e_count);
-    for (let i = 0; i < SensorTest.e_count; ++i) {
+    for (let i : number = 0; i < SensorTest.e_count; ++i) {
       this.m_touching[i] = new Array(1);
     }
 
@@ -67,7 +67,7 @@ export class SensorTest extends testbed.Test {
       const shape = new box2d.b2CircleShape();
       shape.m_radius = 1.0;
 
-      for (let i = 0; i < SensorTest.e_count; ++i) {
+      for (let i : number = 0; i < SensorTest.e_count; ++i) {
         //const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(-10.0 + 3.0 * i, 20.0);
@@ -128,7 +128,7 @@ export class SensorTest extends testbed.Test {
 
     // Traverse the contact results. Apply a force on shapes
     // that overlap the sensor.
-    for (let i = 0; i < SensorTest.e_count; ++i) {
+    for (let i : number = 0; i < SensorTest.e_count; ++i) {
       if (!this.m_touching[i][0]) {
         continue;
       }

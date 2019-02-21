@@ -582,7 +582,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                                 continue;
                             }
                             for (let f = b.GetFixtureList(); f; f = f.m_next) {
-                                for (let i = 0; i < f.m_proxyCount; ++i) {
+                                for (let i : number = 0; i < f.m_proxyCount; ++i) {
                                     const proxy = f.m_proxies[i];
                                     const aabb = proxy.treeNode.aabb;
                                     vs[0].Set(aabb.lowerBound.x, aabb.lowerBound.y);
@@ -939,7 +939,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     log("this.m_world.SetGravity(g);\n");
                     log("const bodies: b2Body[] = [];\n");
                     log("const joints: b2Joint[] = [];\n");
-                    let i = 0;
+                    let i : number = 0;
                     for (let b = this.m_bodyList; b; b = b.m_next) {
                         b.m_islandIndex = i;
                         b.Dump(log);
@@ -1111,7 +1111,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         }
                         // Reset island and stack.
                         island.Clear();
-                        let stackCount = 0;
+                        let stackCount : number = 0;
                         stack[stackCount++] = seed;
                         seed.m_islandFlag = true;
                         // Perform a depth first search (DFS) on the constraint graph.
@@ -1187,7 +1187,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         this.m_profile.solveVelocity += profile.solveVelocity;
                         this.m_profile.solvePosition += profile.solvePosition;
                         // Post solve cleanup.
-                        for (let i = 0; i < island.m_bodyCount; ++i) {
+                        for (let i : number = 0; i < island.m_bodyCount; ++i) {
                             // Allow static bodies to participate in other islands.
                             const b = island.m_bodies[i];
                             if (b.GetType() === b2Body_1.b2BodyType.b2_staticBody) {
@@ -1195,7 +1195,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                             }
                         }
                     }
-                    for (let i = 0; i < stack.length; ++i) {
+                    for (let i : number = 0; i < stack.length; ++i) {
                         if (!stack[i]) {
                             break;
                         }
@@ -1358,7 +1358,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         minContact.m_islandFlag = true;
                         // Get contacts on bodyA and bodyB.
                         // const bodies: b2Body[] = [bA, bB];
-                        for (let i = 0; i < 2; ++i) {
+                        for (let i : number = 0; i < 2; ++i) {
                             const body = (i === 0) ? (bA) : (bB); // bodies[i];
                             if (body.m_type === b2Body_1.b2BodyType.b2_dynamicBody) {
                                 for (let ce = body.m_contactList; ce; ce = ce.next) {
@@ -1432,7 +1432,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         subStep.warmStarting = false;
                         island.SolveTOI(subStep, bA.m_islandIndex, bB.m_islandIndex);
                         // Reset island flags and synchronize broad-phase proxies.
-                        for (let i = 0; i < island.m_bodyCount; ++i) {
+                        for (let i : number = 0; i < island.m_bodyCount; ++i) {
                             const body = island.m_bodies[i];
                             body.m_islandFlag = false;
                             if (body.m_type !== b2Body_1.b2BodyType.b2_dynamicBody) {

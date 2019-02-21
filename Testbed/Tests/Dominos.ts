@@ -52,7 +52,7 @@ export class Dominos extends testbed.Test {
       fd.density = 20.0;
       fd.friction = 0.1;
 
-      for (let i = 0; i < 10; ++i) {
+      for (let i : number = 0; i < 10; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(-6.0 + 1.0 * i, 11.25);
@@ -192,7 +192,7 @@ export class Dominos extends testbed.Test {
       const shape = new box2d.b2CircleShape();
       shape.m_radius = radius;
 
-      for (let i = 0; i < 4; ++i) {
+      for (let i : number = 0; i < 4; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(5.9 + 2.0 * radius * i, 2.4);

@@ -44,7 +44,7 @@ export class Pyramid extends testbed.Test {
       const deltaX = new box2d.b2Vec2(0.5625, 1.25);
       const deltaY = new box2d.b2Vec2(1.125, 0.0);
 
-      for (let i = 0; i < Pyramid.e_count; ++i) {
+      for (let i : number = 0; i < Pyramid.e_count; ++i) {
         y.Copy(x);
 
         for (let j = i; j < Pyramid.e_count; ++j) {

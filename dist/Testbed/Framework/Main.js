@@ -105,7 +105,7 @@ System.register(["Box2D", "./Test", "./DebugDraw", "../Tests/TestEntries"], func
                     controls_div.appendChild(document.createTextNode("Tests"));
                     controls_div.appendChild(document.createElement("br"));
                     const test_select = document.createElement("select");
-                    for (let i = 0; i < TestEntries_1.g_testEntries.length; ++i) {
+                    for (let i : number = 0; i < TestEntries_1.g_testEntries.length; ++i) {
                         const option = document.createElement("option");
                         option.text = TestEntries_1.g_testEntries[i].name;
                         option.value = i.toString();

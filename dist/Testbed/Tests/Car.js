@@ -53,14 +53,14 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const hs = [0.25, 1.0, 4.0, 0.0, 0.0, -1.0, -2.0, -2.0, -1.25, 0.0];
                         let x = 20.0, y1 = 0.0;
                         const dx = 5.0;
-                        for (let i = 0; i < 10; ++i) {
+                        for (let i : number = 0; i < 10; ++i) {
                             const y2 = hs[i];
                             shape.Set(new box2d.b2Vec2(x, y1), new box2d.b2Vec2(x + dx, y2));
                             ground.CreateFixture(fd);
                             y1 = y2;
                             x += dx;
                         }
-                        for (let i = 0; i < 10; ++i) {
+                        for (let i : number = 0; i < 10; ++i) {
                             const y2 = hs[i];
                             shape.Set(new box2d.b2Vec2(x, y1), new box2d.b2Vec2(x + dx, y2));
                             ground.CreateFixture(fd);
@@ -110,7 +110,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         fd.friction = 0.6;
                         const jd = new box2d.b2RevoluteJointDef();
                         let prevBody = ground;
-                        for (let i = 0; i < N; ++i) {
+                        for (let i : number = 0; i < N; ++i) {
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
                             bd.position.Set(161.0 + 2.0 * i, -0.125);

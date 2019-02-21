@@ -129,7 +129,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_edge = new box2d.b2EdgeShape();
                     this.m_angle = 0;
                     this.m_mode = 0 /* e_closest */;
-                    for (let i = 0; i < 4; ++i) {
+                    for (let i : number = 0; i < 4; ++i) {
                         this.m_polygons[i] = new box2d.b2PolygonShape();
                     }
                     // Ground body
@@ -179,7 +179,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         this.m_edge.Set(new box2d.b2Vec2(-1, 0), new box2d.b2Vec2(1, 0));
                     }
                     this.m_bodyIndex = 0;
-                    for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
                         this.m_bodies[i] = null;
                     }
                     this.m_angle = 0;
@@ -223,7 +223,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_bodyIndex = (this.m_bodyIndex + 1) % RayCast.e_maxBodies;
                 }
                 DestroyBody() {
-                    for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
                         const body = this.m_bodies[i];
                         if (body !== null) {
                             this.m_world.DestroyBody(body);
@@ -308,7 +308,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const callback = new RayCastMultipleCallback();
                         this.m_world.RayCast(callback, point1, point2);
                         testbed.g_debugDraw.DrawSegment(point1, point2, new box2d.b2Color(0.8, 0.8, 0.8));
-                        for (let i = 0; i < callback.m_count; ++i) {
+                        for (let i : number = 0; i < callback.m_count; ++i) {
                             const p = callback.m_points[i];
                             const n = callback.m_normals[i];
                             testbed.g_debugDraw.DrawPoint(p, 5.0, new box2d.b2Color(0.4, 0.9, 0.4));

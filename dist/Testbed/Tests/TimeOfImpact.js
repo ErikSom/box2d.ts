@@ -68,34 +68,34 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     const vertices = [];
                     const transformA = new box2d.b2Transform();
                     sweepA.GetTransform(transformA, 0.0);
-                    for (let i = 0; i < this.m_shapeA.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_shapeA.m_count; ++i) {
                         vertices[i] = box2d.b2Transform.MulXV(transformA, this.m_shapeA.m_vertices[i], new box2d.b2Vec2());
                     }
                     testbed.g_debugDraw.DrawPolygon(vertices, this.m_shapeA.m_count, new box2d.b2Color(0.9, 0.9, 0.9));
                     const transformB = new box2d.b2Transform();
                     sweepB.GetTransform(transformB, 0.0);
                     //box2d.b2Vec2 localPoint(2.0f, -0.1f);
-                    for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
                         vertices[i] = box2d.b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new box2d.b2Vec2());
                     }
                     testbed.g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new box2d.b2Color(0.5, 0.9, 0.5));
                     testbed.g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${(0.0).toFixed(1)}`);
                     sweepB.GetTransform(transformB, output.t);
-                    for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
                         vertices[i] = box2d.b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new box2d.b2Vec2());
                     }
                     testbed.g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new box2d.b2Color(0.5, 0.7, 0.9));
                     testbed.g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${output.t.toFixed(3)}`);
                     sweepB.GetTransform(transformB, 1.0);
-                    for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
                         vertices[i] = box2d.b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new box2d.b2Vec2());
                     }
                     testbed.g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new box2d.b2Color(0.9, 0.5, 0.5));
                     testbed.g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${(1.0).toFixed(1)}`);
                     // #if 0
-                    for (let t = 0.0; t < 1.0; t += 0.1) {
+                    for (let t : number = 0.0; t < 1.0; t += 0.1) {
                         sweepB.GetTransform(transformB, t);
-                        for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+                        for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
                             vertices[i] = box2d.b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new box2d.b2Vec2());
                         }
                         testbed.g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new box2d.b2Color(0.5, 0.5, 0.5));

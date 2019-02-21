@@ -73,7 +73,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         body.SetMassData(massData);
                     }
                     // Initialize the emitters.
-                    for (let i = 0; i < this.m_emitters.length; ++i) {
+                    for (let i : number = 0; i < this.m_emitters.length; ++i) {
                         const mirrorAlongY = i & 1 ? -1.0 : 1.0;
                         const emitter = this.m_emitters[i];
                         emitter.SetPosition(new box2d.b2Vec2(MultipleParticleSystems.k_emitterPosition.x * mirrorAlongY, MultipleParticleSystems.k_emitterPosition.y));
@@ -90,7 +90,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         dt = 0.0;
                     }
                     super.Step(settings);
-                    for (let i = 0; i < this.m_emitters.length; ++i) {
+                    for (let i : number = 0; i < this.m_emitters.length; ++i) {
                         this.m_emitters[i].Step(dt);
                     }
                 }

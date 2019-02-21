@@ -131,14 +131,14 @@
   const b2_commit = "fbf51801d80fc389d43dc46524520e89043b6faf";
   function b2MakeArray(length, init) {
       const a = [];
-      for (let i = 0; i < length; ++i) {
+      for (let i : number = 0; i < length; ++i) {
           a.push(init(i));
       }
       return a;
   }
   function b2MakeNumberArray(length, init = 0) {
       const a = [];
-      for (let i = 0; i < length; ++i) {
+      for (let i : number = 0; i < length; ++i) {
           a.push(init);
       }
       return a;
@@ -1370,7 +1370,7 @@
           this.m_radius = radius;
       }
       GetSupport(d) {
-          let bestIndex = 0;
+          let bestIndex : number = 0;
           let bestValue = b2Vec2.DotVV(this.m_vertices[0], d);
           for (let i = 1; i < this.m_count; ++i) {
               const value = b2Vec2.DotVV(this.m_vertices[i], d);
@@ -1382,7 +1382,7 @@
           return bestIndex;
       }
       GetSupportVertex(d) {
-          let bestIndex = 0;
+          let bestIndex : number = 0;
           let bestValue = b2Vec2.DotVV(this.m_vertices[0], d);
           for (let i = 1; i < this.m_count; ++i) {
               const value = b2Vec2.DotVV(this.m_vertices[i], d);
@@ -1465,9 +1465,9 @@
           this.iterations = 0;
       }
   }
-  let b2_gjkCalls = 0;
-  let b2_gjkIters = 0;
-  let b2_gjkMaxIters = 0;
+  let b2_gjkCalls : number = 0;
+  let b2_gjkIters : number = 0;
+  let b2_gjkMaxIters : number = 0;
   function b2_gjk_reset() {
       b2_gjkCalls = 0;
       b2_gjkIters = 0;
@@ -1508,7 +1508,7 @@
           // Copy data from cache.
           this.m_count = cache.count;
           const vertices = this.m_vertices;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const v = vertices[i];
               v.indexA = cache.indexA[i];
               v.indexB = cache.indexB[i];
@@ -1547,7 +1547,7 @@
           cache.metric = this.GetMetric();
           cache.count = this.m_count;
           const vertices = this.m_vertices;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               cache.indexA[i] = vertices[i].indexA;
               cache.indexB[i] = vertices[i].indexB;
           }
@@ -1773,13 +1773,13 @@
       // can check for duplicates and prevent cycling.
       const saveA = b2Distance_s_saveA;
       const saveB = b2Distance_s_saveB;
-      let saveCount = 0;
+      let saveCount : number = 0;
       // Main iteration loop.
-      let iter = 0;
+      let iter : number = 0;
       while (iter < k_maxIters) {
           // Copy simplex so we can identify duplicates.
           saveCount = simplex.m_count;
-          for (let i = 0; i < saveCount; ++i) {
+          for (let i : number = 0; i < saveCount; ++i) {
               saveA[i] = vertices[i].indexA;
               saveB[i] = vertices[i].indexB;
           }
@@ -1823,7 +1823,7 @@
           ++b2_gjkIters;
           // Check for duplicate support points. This is the main termination criteria.
           let duplicate = false;
-          for (let i = 0; i < saveCount; ++i) {
+          for (let i : number = 0; i < saveCount; ++i) {
               if (vertex.indexA === saveA[i] && vertex.indexB === saveB[i]) {
                   duplicate = true;
                   break;
@@ -1903,7 +1903,7 @@
       // b2Vec2 n(0.0f, 0.0f);
       const n = b2ShapeCast_s_n.Set(0.0, 0.0);
       // float32 lambda = 0.0f;
-      let lambda = 0.0;
+      let lambda : number = 0.0;
       // Initial simplex
       const simplex = b2ShapeCast_s_simplex;
       simplex.m_count = 0;
@@ -1930,7 +1930,7 @@
       // const int32 k_maxIters = 20;
       const k_maxIters = 20;
       // int32 iter = 0;
-      let iter = 0;
+      let iter : number = 0;
       // while (iter < k_maxIters && b2Abs(v.Length() - sigma) > tolerance)
       while (iter < k_maxIters && b2Abs(v.Length() - sigma) > tolerance) {
           // DEBUG: b2Assert(simplex.m_count < 3);
@@ -2183,7 +2183,7 @@
           this.pointCount = 0;
       }
       Reset() {
-          for (let i = 0; i < b2_maxManifoldPoints; ++i) {
+          for (let i : number = 0; i < b2_maxManifoldPoints; ++i) {
               // DEBUG: b2Assert(this.points[i] instanceof b2ManifoldPoint);
               this.points[i].Reset();
           }
@@ -2194,7 +2194,7 @@
       }
       Copy(o) {
           this.pointCount = o.pointCount;
-          for (let i = 0; i < b2_maxManifoldPoints; ++i) {
+          for (let i : number = 0; i < b2_maxManifoldPoints; ++i) {
               // DEBUG: b2Assert(this.points[i] instanceof b2ManifoldPoint);
               this.points[i].Copy(o.points[i]);
           }
@@ -2234,7 +2234,7 @@
               case b2ManifoldType.e_faceA: {
                   b2Rot.MulRV(xfA.q, manifold.localNormal, this.normal);
                   const planePoint = b2Transform.MulXV(xfA, manifold.localPoint, b2WorldManifold.Initialize_s_planePoint);
-                  for (let i = 0; i < manifold.pointCount; ++i) {
+                  for (let i : number = 0; i < manifold.pointCount; ++i) {
                       const clipPoint = b2Transform.MulXV(xfB, manifold.points[i].localPoint, b2WorldManifold.Initialize_s_clipPoint);
                       const s = radiusA - b2Vec2.DotVV(b2Vec2.SubVV(clipPoint, planePoint, b2Vec2.s_t0), this.normal);
                       const cA = b2Vec2.AddVMulSV(clipPoint, s, this.normal, b2WorldManifold.Initialize_s_cA);
@@ -2247,7 +2247,7 @@
               case b2ManifoldType.e_faceB: {
                   b2Rot.MulRV(xfB.q, manifold.localNormal, this.normal);
                   const planePoint = b2Transform.MulXV(xfB, manifold.localPoint, b2WorldManifold.Initialize_s_planePoint);
-                  for (let i = 0; i < manifold.pointCount; ++i) {
+                  for (let i : number = 0; i < manifold.pointCount; ++i) {
                       const clipPoint = b2Transform.MulXV(xfA, manifold.points[i].localPoint, b2WorldManifold.Initialize_s_clipPoint);
                       const s = radiusB - b2Vec2.DotVV(b2Vec2.SubVV(clipPoint, planePoint, b2Vec2.s_t0), this.normal);
                       const cB = b2Vec2.AddVMulSV(clipPoint, s, this.normal, b2WorldManifold.Initialize_s_cB);
@@ -2285,7 +2285,7 @@
           const id = manifold1.points[i].id;
           const key = id.key;
           state1[i] = b2PointState.b2_removeState;
-          for (let j = 0, jct = manifold2.pointCount; j < jct; ++j) {
+          for (let j : number = 0, jct = manifold2.pointCount; j < jct; ++j) {
               if (manifold2.points[j].id.key === key) {
                   state1[i] = b2PointState.b2_persistState;
                   break;
@@ -2300,7 +2300,7 @@
           const id = manifold2.points[i].id;
           const key = id.key;
           state2[i] = b2PointState.b2_addState;
-          for (let j = 0, jct = manifold1.pointCount; j < jct; ++j) {
+          for (let j : number = 0, jct = manifold1.pointCount; j < jct; ++j) {
               if (manifold1.points[j].id.key === key) {
                   state2[i] = b2PointState.b2_persistState;
                   break;
@@ -2536,7 +2536,7 @@
   /// Clipping for contact manifolds.
   function b2ClipSegmentToLine(vOut, vIn, normal, offset, vertexIndexA) {
       // Start with no output points
-      let numOut = 0;
+      let numOut : number = 0;
       const vIn0 = vIn[0];
       const vIn1 = vIn[1];
       // Calculate the distance of end points to the line
@@ -3382,7 +3382,7 @@
           // Reset pair buffer
           this.m_pairCount = 0;
           // Perform tree queries for all moving proxies.
-          for (let i = 0; i < this.m_moveCount; ++i) {
+          for (let i : number = 0; i < this.m_moveCount; ++i) {
               const queryProxy = this.m_moveBuffer[i];
               if (queryProxy === null) {
                   continue;
@@ -3429,7 +3429,7 @@
           this.m_pairBuffer.length = this.m_pairCount;
           this.m_pairBuffer.sort(b2PairLessThan);
           // Send the pairs back to the client.
-          let i = 0;
+          let i : number = 0;
           while (i < this.m_pairCount) {
               const primaryPair = this.m_pairBuffer[i];
               const userDataA = primaryPair.proxyA.userData; // this.m_tree.GetUserData(primaryPair.proxyA);
@@ -3518,13 +3518,13 @@
   * misrepresented as being the original software.
   * 3. This notice may not be removed or altered from any source distribution.
   */
-  let b2_toiTime = 0;
-  let b2_toiMaxTime = 0;
-  let b2_toiCalls = 0;
-  let b2_toiIters = 0;
-  let b2_toiMaxIters = 0;
-  let b2_toiRootIters = 0;
-  let b2_toiMaxRootIters = 0;
+  let b2_toiTime : number = 0;
+  let b2_toiMaxTime : number = 0;
+  let b2_toiCalls : number = 0;
+  let b2_toiIters : number = 0;
+  let b2_toiMaxIters : number = 0;
+  let b2_toiRootIters : number = 0;
+  let b2_toiMaxRootIters : number = 0;
   function b2_toi_reset() {
       b2_toiTime = 0;
       b2_toiMaxTime = 0;
@@ -3753,9 +3753,9 @@
       const target = b2Max(b2_linearSlop, totalRadius - 3 * b2_linearSlop);
       const tolerance = 0.25 * b2_linearSlop;
       // DEBUG: b2Assert(target > tolerance);
-      let t1 = 0;
+      let t1 : number = 0;
       const k_maxIterations = 20; // TODO_ERIN b2Settings
-      let iter = 0;
+      let iter : number = 0;
       // Prepare input for distance query.
       const cache = b2TimeOfImpact_s_cache;
       cache.count = 0;
@@ -3821,7 +3821,7 @@
           // resolving the deepest point. This loop is bounded by the number of vertices.
           let done = false;
           let t2 = tMax;
-          let pushBackIter = 0;
+          let pushBackIter : number = 0;
           for (;;) {
               // Find the deepest point at t2. Store the witness point indices.
               const indexA = b2TimeOfImpact_s_indexA;
@@ -3860,12 +3860,12 @@
                   break;
               }
               // Compute 1D root of: f(x) - target = 0
-              let rootIterCount = 0;
+              let rootIterCount : number = 0;
               let a1 = t1;
               let a2 = t2;
               for (;;) {
                   // Use a mix of the secant rule and bisection.
-                  let t = 0;
+                  let t : number = 0;
                   if (rootIterCount & 1) {
                       // Secant rule to improve convergence.
                       t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);
@@ -3946,13 +3946,13 @@
       const c = b2Transform.MulXV(xfB, circleB.m_p, b2CollidePolygonAndCircle_s_c);
       const cLocal = b2Transform.MulTXV(xfA, c, b2CollidePolygonAndCircle_s_cLocal);
       // Find the min separating edge.
-      let normalIndex = 0;
+      let normalIndex : number = 0;
       let separation = (-b2_maxFloat);
       const radius = polygonA.m_radius + circleB.m_radius;
       const vertexCount = polygonA.m_count;
       const vertices = polygonA.m_vertices;
       const normals = polygonA.m_normals;
-      for (let i = 0; i < vertexCount; ++i) {
+      for (let i : number = 0; i < vertexCount; ++i) {
           const s = b2Vec2.DotVV(normals[i], b2Vec2.SubVV(cLocal, vertices[i], b2Vec2.s_t0));
           if (s > radius) {
               // Early out.
@@ -4034,9 +4034,9 @@
       const normal1World = b2Rot.MulRV(xf1.q, normals1[edge1], b2EdgeSeparation_s_normal1World);
       const normal1 = b2Rot.MulTRV(xf2.q, normal1World, b2EdgeSeparation_s_normal1);
       // Find support vertex on poly2 for -normal.
-      let index = 0;
+      let index : number = 0;
       let minDot = b2_maxFloat;
-      for (let i = 0; i < count2; ++i) {
+      for (let i : number = 0; i < count2; ++i) {
           const dot = b2Vec2.DotVV(vertices2[i], normal1);
           if (dot < minDot) {
               minDot = dot;
@@ -4057,9 +4057,9 @@
       const d = b2Vec2.SubVV(b2Transform.MulXV(xf2, poly2.m_centroid, b2Vec2.s_t0), b2Transform.MulXV(xf1, poly1.m_centroid, b2Vec2.s_t1), b2FindMaxSeparation_s_d);
       const dLocal1 = b2Rot.MulTRV(xf1.q, d, b2FindMaxSeparation_s_dLocal1);
       // Find edge normal on poly1 that has the largest projection onto d.
-      let edge = 0;
+      let edge : number = 0;
       let maxDot = (-b2_maxFloat);
-      for (let i = 0; i < count1; ++i) {
+      for (let i : number = 0; i < count1; ++i) {
           const dot = b2Vec2.DotVV(normals1[i], dLocal1);
           if (dot > maxDot) {
               maxDot = dot;
@@ -4075,9 +4075,9 @@
       const nextEdge = (edge + 1) % count1;
       const sNext = b2EdgeSeparation(poly1, xf1, nextEdge, poly2, xf2);
       // Find the best edge and the search direction.
-      let bestEdge = 0;
-      let bestSeparation = 0;
-      let increment = 0;
+      let bestEdge : number = 0;
+      let bestSeparation : number = 0;
+      let increment : number = 0;
       if (sPrev > s && sPrev > sNext) {
           increment = -1;
           bestEdge = prevEdge;
@@ -4123,9 +4123,9 @@
       // Get the normal of the reference edge in poly2's frame.
       const normal1 = b2Rot.MulTRV(xf2.q, b2Rot.MulRV(xf1.q, normals1[edge1], b2Vec2.s_t0), b2FindIncidentEdge_s_normal1);
       // Find the incident edge on poly2.
-      let index = 0;
+      let index : number = 0;
       let minDot = b2_maxFloat;
-      for (let i = 0; i < count2; ++i) {
+      for (let i : number = 0; i < count2; ++i) {
           const dot = b2Vec2.DotVV(normal1, normals2[i]);
           if (dot < minDot) {
               minDot = dot;
@@ -4181,8 +4181,8 @@
       let poly1; // reference polygon
       let poly2; // incident polygon
       let xf1, xf2;
-      let edge1 = 0; // reference edge
-      let flip = 0;
+      let edge1 : number = 0; // reference edge
+      let flip : number = 0;
       const k_relativeTol = 0.98;
       const k_absoluteTol = 0.001;
       if (separationB > k_relativeTol * separationA + k_absoluteTol) {
@@ -4242,8 +4242,8 @@
       // Now clipPoints2 contains the clipped points.
       manifold.localNormal.Copy(localNormal);
       manifold.localPoint.Copy(planePoint);
-      let pointCount = 0;
-      for (let i = 0; i < b2_maxManifoldPoints; ++i) {
+      let pointCount : number = 0;
+      for (let i : number = 0; i < b2_maxManifoldPoints; ++i) {
           const cv = clipPoints2[i];
           const separation = b2Vec2.DotVV(normal, cv.v) - frontOffset;
           if (separation <= totalRadius) {
@@ -4437,8 +4437,8 @@
           edge1.Normalize();
           this.m_normal1.Set(edge1.y, -edge1.x);
           const offset1 = b2Vec2.DotVV(this.m_normal1, b2Vec2.SubVV(this.m_centroidB, this.m_v1, b2Vec2.s_t0));
-          let offset0 = 0;
-          let offset2 = 0;
+          let offset0 : number = 0;
+          let offset2 : number = 0;
           let convex1 = false;
           let convex2 = false;
           // Is there a preceding edge?
@@ -4583,7 +4583,7 @@
           }
           // Get polygonB in frameA
           this.m_polygonB.count = polygonB.m_count;
-          for (let i = 0; i < polygonB.m_count; ++i) {
+          for (let i : number = 0; i < polygonB.m_count; ++i) {
               if (this.m_polygonB.vertices.length <= i) {
                   this.m_polygonB.vertices.push(new b2Vec2());
               }
@@ -4625,7 +4625,7 @@
           if (primaryAxis.type === 1 /* e_edgeA */) {
               manifold.type = b2ManifoldType.e_faceA;
               // Search for the polygon normal that is most anti-parallel to the edge normal.
-              let bestIndex = 0;
+              let bestIndex : number = 0;
               let bestValue = b2Vec2.DotVV(this.m_normal, this.m_polygonB.normals[0]);
               for (let i = 1; i < this.m_polygonB.count; ++i) {
                   const value = b2Vec2.DotVV(this.m_normal, this.m_polygonB.normals[i]);
@@ -4690,7 +4690,7 @@
           // Clip incident edge against extruded edge1 side edges.
           const clipPoints1 = b2EPCollider.s_clipPoints1;
           const clipPoints2 = b2EPCollider.s_clipPoints2;
-          let np = 0;
+          let np : number = 0;
           // Clip to box side 1
           np = b2ClipSegmentToLine(clipPoints1, ie, rf.sideNormal1, rf.sideOffset1, rf.i1);
           if (np < b2_maxManifoldPoints) {
@@ -4710,8 +4710,8 @@
               manifold.localNormal.Copy(polygonB.m_normals[rf.i1]);
               manifold.localPoint.Copy(polygonB.m_vertices[rf.i1]);
           }
-          let pointCount = 0;
-          for (let i = 0; i < b2_maxManifoldPoints; ++i) {
+          let pointCount : number = 0;
+          for (let i : number = 0; i < b2_maxManifoldPoints; ++i) {
               let separation;
               separation = b2Vec2.DotVV(rf.normal, b2Vec2.SubVV(clipPoints2[i].v, rf.v1, b2Vec2.s_t0));
               if (separation <= this.m_radius) {
@@ -4737,7 +4737,7 @@
           axis.type = 1 /* e_edgeA */;
           axis.index = this.m_front ? 0 : 1;
           axis.separation = b2_maxFloat;
-          for (let i = 0; i < this.m_polygonB.count; ++i) {
+          for (let i : number = 0; i < this.m_polygonB.count; ++i) {
               const s = b2Vec2.DotVV(this.m_normal, b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v1, b2Vec2.s_t0));
               if (s < axis.separation) {
                   axis.separation = s;
@@ -4751,7 +4751,7 @@
           axis.index = -1;
           axis.separation = -b2_maxFloat;
           const perp = b2EPCollider.s_perp.Set(-this.m_normal.y, this.m_normal.x);
-          for (let i = 0; i < this.m_polygonB.count; ++i) {
+          for (let i : number = 0; i < this.m_polygonB.count; ++i) {
               const n = b2Vec2.NegV(this.m_polygonB.normals[i], b2EPCollider.s_n);
               const s1 = b2Vec2.DotVV(n, b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v1, b2Vec2.s_t0));
               const s2 = b2Vec2.DotVV(n, b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v2, b2Vec2.s_t0));
@@ -5040,7 +5040,7 @@
           this.m_count = other.m_count;
           this.m_vertices = b2Vec2.MakeArray(this.m_count);
           this.m_normals = b2Vec2.MakeArray(this.m_count);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               this.m_vertices[i].Copy(other.m_vertices[i]);
               this.m_normals[i].Copy(other.m_normals[i]);
           }
@@ -5058,7 +5058,7 @@
           let n = count;
           // Perform welding and copy vertices into local buffer.
           const ps = [];
-          for (let i = 0; i < n; ++i) {
+          for (let i : number = 0; i < n; ++i) {
               const /*b2Vec2*/ v = vertices[start + i];
               let /*bool*/ unique = true;
               for (let /*int32*/ j = 0; j < ps.length; ++j) {
@@ -5080,7 +5080,7 @@
           // Create the convex hull using the Gift wrapping algorithm
           // http://en.wikipedia.org/wiki/Gift_wrapping_algorithm
           // Find the right most point on the hull
-          let i0 = 0;
+          let i0 : number = 0;
           let x0 = ps[0].x;
           for (let i = 1; i < n; ++i) {
               const x = ps[i].x;
@@ -5090,11 +5090,11 @@
               }
           }
           const hull = [];
-          let m = 0;
+          let m : number = 0;
           let ih = i0;
           for (;;) {
               hull[m] = ih;
-              let ie = 0;
+              let ie : number = 0;
               for (let j = 1; j < n; ++j) {
                   if (ie === ih) {
                       ie = j;
@@ -5121,11 +5121,11 @@
           this.m_vertices = b2Vec2.MakeArray(this.m_count);
           this.m_normals = b2Vec2.MakeArray(this.m_count);
           // Copy vertices.
-          for (let i = 0; i < m; ++i) {
+          for (let i : number = 0; i < m; ++i) {
               this.m_vertices[i].Copy(ps[hull[i]]);
           }
           // Compute normals. Ensure the edges have non-zero length.
-          for (let i = 0; i < m; ++i) {
+          for (let i : number = 0; i < m; ++i) {
               const vertexi1 = this.m_vertices[i];
               const vertexi2 = this.m_vertices[(i + 1) % m];
               const edge = b2Vec2.SubVV(vertexi2, vertexi1, b2Vec2.s_t0); // edge uses s_t0
@@ -5163,7 +5163,7 @@
               xf.SetPosition(center);
               xf.SetRotationAngle(angle);
               // Transform vertices and normals.
-              for (let i = 0; i < this.m_count; ++i) {
+              for (let i : number = 0; i < this.m_count; ++i) {
                   b2Transform.MulXV(xf, this.m_vertices[i], this.m_vertices[i]);
                   b2Rot.MulRV(xf.q, this.m_normals[i], this.m_normals[i]);
               }
@@ -5172,7 +5172,7 @@
       }
       TestPoint(xf, p) {
           const pLocal = b2Transform.MulTXV(xf, p, b2PolygonShape.TestPoint_s_pLocal);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const dot = b2Vec2.DotVV(this.m_normals[i], b2Vec2.SubVV(pLocal, this.m_vertices[i], b2Vec2.s_t0));
               if (dot > 0) {
                   return false;
@@ -5184,7 +5184,7 @@
           const pLocal = b2Transform.MulTXV(xf, p, b2PolygonShape.ComputeDistance_s_pLocal);
           let maxDistance = -b2_maxFloat;
           const normalForMaxDistance = b2PolygonShape.ComputeDistance_s_normalForMaxDistance.Copy(pLocal);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const dot = b2Vec2.DotVV(this.m_normals[i], b2Vec2.SubVV(pLocal, this.m_vertices[i], b2Vec2.s_t0));
               if (dot > maxDistance) {
                   maxDistance = dot;
@@ -5194,7 +5194,7 @@
           if (maxDistance > 0) {
               const minDistance = b2PolygonShape.ComputeDistance_s_minDistance.Copy(normalForMaxDistance);
               let minDistance2 = maxDistance * maxDistance;
-              for (let i = 0; i < this.m_count; ++i) {
+              for (let i : number = 0; i < this.m_count; ++i) {
                   const distance = b2Vec2.SubVV(pLocal, this.m_vertices[i], b2PolygonShape.ComputeDistance_s_distance);
                   const distance2 = distance.LengthSquared();
                   if (minDistance2 > distance2) {
@@ -5216,9 +5216,9 @@
           const p1 = b2Transform.MulTXV(xf, input.p1, b2PolygonShape.RayCast_s_p1);
           const p2 = b2Transform.MulTXV(xf, input.p2, b2PolygonShape.RayCast_s_p2);
           const d = b2Vec2.SubVV(p2, p1, b2PolygonShape.RayCast_s_d);
-          let lower = 0, upper = input.maxFraction;
+          let lower : number = 0, upper = input.maxFraction;
           let index = -1;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               // p = p1 + a * d
               // dot(normal, p - v) = 0
               // dot(normal, p1 - v) + a * dot(normal, d) = 0
@@ -5265,7 +5265,7 @@
       ComputeAABB(aabb, xf, childIndex) {
           const lower = b2Transform.MulXV(xf, this.m_vertices[0], aabb.lowerBound);
           const upper = aabb.upperBound.Copy(lower);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const v = b2Transform.MulXV(xf, this.m_vertices[i], b2PolygonShape.ComputeAABB_s_v);
               b2Vec2.MinV(v, lower, lower);
               b2Vec2.MaxV(v, upper, upper);
@@ -5300,18 +5300,18 @@
           // The rest of the derivation is handled by computer algebra.
           // DEBUG: b2Assert(this.m_count >= 3);
           const center = b2PolygonShape.ComputeMass_s_center.SetZero();
-          let area = 0;
-          let I = 0;
+          let area : number = 0;
+          let I : number = 0;
           // s is the reference point for forming triangles.
           // It's location doesn't change the result (except for rounding error).
           const s = b2PolygonShape.ComputeMass_s_s.SetZero();
           // This code would put the reference point inside the polygon.
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               s.SelfAdd(this.m_vertices[i]);
           }
           s.SelfMul(1 / this.m_count);
           const k_inv3 = 1 / 3;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               // Triangle vertices.
               const e1 = b2Vec2.SubVV(this.m_vertices[i], s, b2PolygonShape.ComputeMass_s_e1);
               const e2 = b2Vec2.SubVV(this.m_vertices[(i + 1) % this.m_count], s, b2PolygonShape.ComputeMass_s_e2);
@@ -5340,12 +5340,12 @@
           massData.I += massData.mass * (b2Vec2.DotVV(massData.center, massData.center) - b2Vec2.DotVV(center, center));
       }
       Validate() {
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const i1 = i;
               const i2 = (i + 1) % this.m_count;
               const p = this.m_vertices[i1];
               const e = b2Vec2.SubVV(this.m_vertices[i2], p, b2PolygonShape.Validate_s_e);
-              for (let j = 0; j < this.m_count; ++j) {
+              for (let j : number = 0; j < this.m_count; ++j) {
                   if (j === i1 || j === i2) {
                       continue;
                   }
@@ -5368,11 +5368,11 @@
           const normalL = b2Rot.MulTRV(xf.q, normal, b2PolygonShape.ComputeSubmergedArea_s_normalL);
           const offsetL = offset - b2Vec2.DotVV(normal, xf.p);
           const depths = [];
-          let diveCount = 0;
+          let diveCount : number = 0;
           let intoIndex = -1;
           let outoIndex = -1;
           let lastSubmerged = false;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               depths[i] = b2Vec2.DotVV(normalL, this.m_vertices[i]) - offsetL;
               const isSubmerged = depths[i] < (-b2_epsilon);
               if (i > 0) {
@@ -5420,7 +5420,7 @@
           const intoVec = b2PolygonShape.ComputeSubmergedArea_s_intoVec.Set(this.m_vertices[intoIndex].x * (1 - intoLamdda) + this.m_vertices[intoIndex2].x * intoLamdda, this.m_vertices[intoIndex].y * (1 - intoLamdda) + this.m_vertices[intoIndex2].y * intoLamdda);
           const outoVec = b2PolygonShape.ComputeSubmergedArea_s_outoVec.Set(this.m_vertices[outoIndex].x * (1 - outoLamdda) + this.m_vertices[outoIndex2].x * outoLamdda, this.m_vertices[outoIndex].y * (1 - outoLamdda) + this.m_vertices[outoIndex2].y * outoLamdda);
           // Initialize accumulator
-          let area = 0;
+          let area : number = 0;
           const center = b2PolygonShape.ComputeSubmergedArea_s_center.SetZero();
           let p2 = this.m_vertices[intoIndex2];
           let p3;
@@ -5449,7 +5449,7 @@
       Dump(log) {
           log("    const shape: b2PolygonShape = new b2PolygonShape();\n");
           log("    const vs: b2Vec2[] = [];\n");
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               log("    vs[%d] = new b2Vec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
           }
           log("    shape.Set(vs, %d);\n", this.m_count);
@@ -5458,7 +5458,7 @@
           // DEBUG: b2Assert(count >= 3);
           const c = out;
           c.SetZero();
-          let area = 0;
+          let area : number = 0;
           // s is the reference point for forming triangles.
           // It's location doesn't change the result (except for rounding error).
           const pRef = b2PolygonShape.ComputeCentroid_s_pRef.SetZero();
@@ -5472,7 +5472,7 @@
       #endif
           */
           const inv3 = 1 / 3;
-          for (let i = 0; i < count; ++i) {
+          for (let i : number = 0; i < count; ++i) {
               // Triangle vertices.
               const p1 = pRef;
               const p2 = vs[i];
@@ -5756,7 +5756,7 @@
           // DEBUG: }
           this.m_count = count + 1;
           this.m_vertices = b2Vec2.MakeArray(this.m_count);
-          for (let i = 0; i < count; ++i) {
+          for (let i : number = 0; i < count; ++i) {
               this.m_vertices[i].Copy(vertices[start + i]);
           }
           this.m_vertices[count].Copy(this.m_vertices[0]);
@@ -5779,7 +5779,7 @@
           // DEBUG: }
           this.m_count = count;
           this.m_vertices = b2Vec2.MakeArray(count);
-          for (let i = 0; i < count; ++i) {
+          for (let i : number = 0; i < count; ++i) {
               this.m_vertices[i].Copy(vertices[start + i]);
           }
           this.m_hasPrevVertex = false;
@@ -5898,7 +5898,7 @@
       Dump(log) {
           log("    const shape: b2ChainShape = new b2ChainShape();\n");
           log("    const vs: b2Vec2[] = [];\n");
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               log("    vs[%d] = new bVec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
           }
           log("    shape.CreateChain(vs, %d);\n", this.m_count);
@@ -6059,7 +6059,7 @@
           }
           // Touch each proxy so that new pairs may be created
           const broadPhase = world.m_contactManager.m_broadPhase;
-          for (let i = 0; i < this.m_proxyCount; ++i) {
+          for (let i : number = 0; i < this.m_proxyCount; ++i) {
               broadPhase.TouchProxy(this.m_proxies[i].treeNode);
           }
       }
@@ -6193,7 +6193,7 @@
           // DEBUG: b2Assert(this.m_proxyCount === 0);
           // Create proxies in the broad-phase.
           this.m_proxyCount = this.m_shape.GetChildCount();
-          for (let i = 0; i < this.m_proxyCount; ++i) {
+          for (let i : number = 0; i < this.m_proxyCount; ++i) {
               const proxy = this.m_proxies[i] = new b2FixtureProxy(this);
               this.m_shape.ComputeAABB(proxy.aabb, xf, i);
               proxy.treeNode = broadPhase.CreateProxy(proxy.aabb, proxy);
@@ -6203,7 +6203,7 @@
       DestroyProxies() {
           const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
           // Destroy proxies in the broad-phase.
-          for (let i = 0; i < this.m_proxyCount; ++i) {
+          for (let i : number = 0; i < this.m_proxyCount; ++i) {
               const proxy = this.m_proxies[i];
               delete proxy.treeNode.userData;
               broadPhase.DestroyProxy(proxy.treeNode);
@@ -6214,7 +6214,7 @@
       TouchProxies() {
           const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
           const proxyCount = this.m_proxyCount;
-          for (let i = 0; i < proxyCount; ++i) {
+          for (let i : number = 0; i < proxyCount; ++i) {
               broadPhase.TouchProxy(this.m_proxies[i].treeNode);
           }
       }
@@ -6223,7 +6223,7 @@
               return;
           }
           const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
-          for (let i = 0; i < this.m_proxyCount; ++i) {
+          for (let i : number = 0; i < this.m_proxyCount; ++i) {
               const proxy = this.m_proxies[i];
               // Compute an AABB that covers the swept shape (may miss some rotation effect).
               const aabb1 = b2Fixture.Synchronize_s_aabb1;
@@ -7619,7 +7619,7 @@
           djd.frequencyHz = this.m_frequencyHz;
           djd.dampingRatio = this.m_dampingRatio;
           this.m_targetArea = 0;
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const body = this.m_bodies[i];
               const next = this.m_bodies[(i + 1) % this.m_bodies.length];
               const body_c = body.GetWorldCenter();
@@ -7645,7 +7645,7 @@
       }
       SetFrequency(hz) {
           this.m_frequencyHz = hz;
-          for (let i = 0; i < this.m_joints.length; ++i) {
+          for (let i : number = 0; i < this.m_joints.length; ++i) {
               this.m_joints[i].SetFrequency(hz);
           }
       }
@@ -7654,7 +7654,7 @@
       }
       SetDampingRatio(ratio) {
           this.m_dampingRatio = ratio;
-          for (let i = 0; i < this.m_joints.length; ++i) {
+          for (let i : number = 0; i < this.m_joints.length; ++i) {
               this.m_joints[i].SetDampingRatio(ratio);
           }
       }
@@ -7665,7 +7665,7 @@
           log("Area joint dumping is not supported.\n");
       }
       InitVelocityConstraints(data) {
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const prev = this.m_bodies[(i + this.m_bodies.length - 1) % this.m_bodies.length];
               const next = this.m_bodies[(i + 1) % this.m_bodies.length];
               const prev_c = data.positions[prev.m_islandIndex].c;
@@ -7675,7 +7675,7 @@
           }
           if (data.step.warmStarting) {
               this.m_impulse *= data.step.dtRatio;
-              for (let i = 0; i < this.m_bodies.length; ++i) {
+              for (let i : number = 0; i < this.m_bodies.length; ++i) {
                   const body = this.m_bodies[i];
                   const body_v = data.velocities[body.m_islandIndex].v;
                   const delta = this.m_deltas[i];
@@ -7688,9 +7688,9 @@
           }
       }
       SolveVelocityConstraints(data) {
-          let dotMassSum = 0;
-          let crossMassSum = 0;
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          let dotMassSum : number = 0;
+          let crossMassSum : number = 0;
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const body = this.m_bodies[i];
               const body_v = data.velocities[body.m_islandIndex].v;
               const delta = this.m_deltas[i];
@@ -7700,7 +7700,7 @@
           const lambda = -2 * crossMassSum / dotMassSum;
           // lambda = b2Clamp(lambda, -b2_maxLinearCorrection, b2_maxLinearCorrection);
           this.m_impulse += lambda;
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const body = this.m_bodies[i];
               const body_v = data.velocities[body.m_islandIndex].v;
               const delta = this.m_deltas[i];
@@ -7709,9 +7709,9 @@
           }
       }
       SolvePositionConstraints(data) {
-          let perimeter = 0;
-          let area = 0;
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          let perimeter : number = 0;
+          let area : number = 0;
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const body = this.m_bodies[i];
               const next = this.m_bodies[(i + 1) % this.m_bodies.length];
               const body_c = data.positions[body.m_islandIndex].c;
@@ -7730,7 +7730,7 @@
           const deltaArea = this.m_targetArea - area;
           const toExtrude = 0.5 * deltaArea / perimeter;
           let done = true;
-          for (let i = 0; i < this.m_bodies.length; ++i) {
+          for (let i : number = 0; i < this.m_bodies.length; ++i) {
               const body = this.m_bodies[i];
               const body_c = data.positions[body.m_islandIndex].c;
               const next_i = (i + 1) % this.m_bodies.length;
@@ -8286,7 +8286,7 @@
           let coordinateA, coordinateB;
           const JvAC = this.m_JvAC, JvBD = this.m_JvBD;
           let JwA, JwB, JwC, JwD;
-          let mass = 0;
+          let mass : number = 0;
           if (this.m_typeA === b2JointType.e_revoluteJoint) {
               JvAC.SetZero();
               JwA = 1;
@@ -8344,7 +8344,7 @@
               coordinateB = b2Vec2.DotVV(b2Vec2.SubVV(pB, pD, b2Vec2.s_t0), this.m_localAxisD);
           }
           const C = (coordinateA + this.m_ratio * coordinateB) - this.m_constant;
-          let impulse = 0;
+          let impulse : number = 0;
           if (mass > 0) {
               impulse = -C / mass;
           }
@@ -9266,7 +9266,7 @@
           let linearError = b2Abs(C1_x);
           const angularError = b2Abs(C1_y);
           let active = false;
-          let C2 = 0;
+          let C2 : number = 0;
           if (this.m_enableLimit) {
               // float32 translation = b2Dot(axis, d);
               const translation = b2Vec2.DotVV(axis, d);
@@ -10143,13 +10143,13 @@
           let aB = data.positions[this.m_indexB].a;
           // b2Rot qA(aA), qB(aB);
           const qA = this.m_qA.SetAngle(aA), qB = this.m_qB.SetAngle(aB);
-          let angularError = 0;
-          let positionError = 0;
+          let angularError : number = 0;
+          let positionError : number = 0;
           const fixedRotation = (this.m_invIA + this.m_invIB === 0);
           // Solve angular limit constraint.
           if (this.m_enableLimit && this.m_limitState !== b2LimitState.e_inactiveLimit && !fixedRotation) {
               const angle = aB - aA - this.m_referenceAngle;
-              let limitImpulse = 0;
+              let limitImpulse : number = 0;
               if (this.m_limitState === b2LimitState.e_equalLimits) {
                   // Prevent large angular corrections
                   const C = b2Clamp(angle - this.m_lowerAngle, -b2_maxAngularCorrection, b2_maxAngularCorrection);
@@ -11525,12 +11525,12 @@
               touching = this.m_manifold.pointCount > 0;
               // Match old contact ids to new contact ids and copy the
               // stored impulses to warm start the solver.
-              for (let i = 0; i < this.m_manifold.pointCount; ++i) {
+              for (let i : number = 0; i < this.m_manifold.pointCount; ++i) {
                   const mp2 = this.m_manifold.points[i];
                   mp2.normalImpulse = 0;
                   mp2.tangentImpulse = 0;
                   const id2 = mp2.id;
-                  for (let j = 0; j < this.m_oldManifold.pointCount; ++j) {
+                  for (let j : number = 0; j < this.m_oldManifold.pointCount; ++j) {
                       const mp1 = this.m_oldManifold.points[j];
                       if (mp1.id.key === id2.key) {
                           mp2.normalImpulse = mp1.normalImpulse;
@@ -11910,9 +11910,9 @@
       }
       InitializeRegisters() {
           this.m_registers = [ /*b2ShapeType.e_shapeTypeCount*/];
-          for (let i = 0; i < b2ShapeType.e_shapeTypeCount; i++) {
+          for (let i : number = 0; i < b2ShapeType.e_shapeTypeCount; i++) {
               this.m_registers[i] = [ /*b2ShapeType.e_shapeTypeCount*/];
-              for (let j = 0; j < b2ShapeType.e_shapeTypeCount; j++) {
+              for (let j : number = 0; j < b2ShapeType.e_shapeTypeCount; j++) {
                   this.m_registers[i][j] = new b2ContactRegister();
               }
           }
@@ -12606,7 +12606,7 @@
           this.m_velocities = def.velocities;
           this.m_contacts = def.contacts;
           // Initialize position independent portions of the constraints.
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const contact = this.m_contacts[i];
               const fixtureA = contact.m_fixtureA;
               const fixtureB = contact.m_fixtureB;
@@ -12648,7 +12648,7 @@
               pc.radiusA = radiusA;
               pc.radiusB = radiusB;
               pc.type = manifold.type;
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   const cp = manifold.points[j];
                   const vcp = vc.points[j];
                   if (this.m_step.warmStarting) {
@@ -12674,7 +12674,7 @@
           const xfB = b2ContactSolver.InitializeVelocityConstraints_s_xfB;
           const worldManifold = b2ContactSolver.InitializeVelocityConstraints_s_worldManifold;
           const k_maxConditionNumber = 1000;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const vc = this.m_velocityConstraints[i];
               const pc = this.m_positionConstraints[i];
               const radiusA = pc.radiusA;
@@ -12705,7 +12705,7 @@
               vc.normal.Copy(worldManifold.normal);
               b2Vec2.CrossVOne(vc.normal, vc.tangent); // compute from normal
               const pointCount = vc.pointCount;
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   const vcp = vc.points[j];
                   // vcp->rA = worldManifold.points[j] - cA;
                   b2Vec2.SubVV(worldManifold.points[j], cA, vcp.rA);
@@ -12759,7 +12759,7 @@
       WarmStart() {
           const P = b2ContactSolver.WarmStart_s_P;
           // Warm start.
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const vc = this.m_velocityConstraints[i];
               const indexA = vc.indexA;
               const indexB = vc.indexB;
@@ -12775,7 +12775,7 @@
               const normal = vc.normal;
               // b2Vec2 tangent = b2Cross(normal, 1.0f);
               const tangent = vc.tangent; // precomputed from normal
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   const vcp = vc.points[j];
                   // b2Vec2 P = vcp->normalImpulse * normal + vcp->tangentImpulse * tangent;
                   b2Vec2.AddVV(b2Vec2.MulSV(vcp.normalImpulse, normal, b2Vec2.s_t0), b2Vec2.MulSV(vcp.tangentImpulse, tangent, b2Vec2.s_t1), P);
@@ -12806,7 +12806,7 @@
           const P1 = b2ContactSolver.SolveVelocityConstraints_s_P1;
           const P2 = b2ContactSolver.SolveVelocityConstraints_s_P2;
           const P1P2 = b2ContactSolver.SolveVelocityConstraints_s_P1P2;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const vc = this.m_velocityConstraints[i];
               const indexA = vc.indexA;
               const indexB = vc.indexB;
@@ -12827,7 +12827,7 @@
               // DEBUG: b2Assert(pointCount === 1 || pointCount === 2);
               // Solve tangent constraints first because non-penetration is more important
               // than friction.
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   const vcp = vc.points[j];
                   // Relative velocity at contact
                   // b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
@@ -12855,7 +12855,7 @@
               }
               // Solve normal constraints
               if (vc.pointCount === 1 || g_blockSolve === false) {
-                  for (let j = 0; j < pointCount; ++j) {
+                  for (let j : number = 0; j < pointCount; ++j) {
                       const vcp = vc.points[j];
                       // Relative velocity at contact
                       // b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
@@ -13121,10 +13121,10 @@
           }
       }
       StoreImpulses() {
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               const vc = this.m_velocityConstraints[i];
               const manifold = this.m_contacts[vc.contactIndex].GetManifold();
-              for (let j = 0; j < vc.pointCount; ++j) {
+              for (let j : number = 0; j < vc.pointCount; ++j) {
                   manifold.points[j].normalImpulse = vc.points[j].normalImpulse;
                   manifold.points[j].tangentImpulse = vc.points[j].tangentImpulse;
               }
@@ -13137,8 +13137,8 @@
           const rA = b2ContactSolver.SolvePositionConstraints_s_rA;
           const rB = b2ContactSolver.SolvePositionConstraints_s_rB;
           const P = b2ContactSolver.SolvePositionConstraints_s_P;
-          let minSeparation = 0;
-          for (let i = 0; i < this.m_count; ++i) {
+          let minSeparation : number = 0;
+          for (let i : number = 0; i < this.m_count; ++i) {
               const pc = this.m_positionConstraints[i];
               const indexA = pc.indexA;
               const indexB = pc.indexB;
@@ -13154,7 +13154,7 @@
               const cB = this.m_positions[indexB].c;
               let aB = this.m_positions[indexB].a;
               // Solve normal constraints
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   xfA.q.SetAngle(aA);
                   xfB.q.SetAngle(aB);
                   b2Vec2.SubVV(cA, b2Rot.MulRV(xfA.q, localCenterA, b2Vec2.s_t0), xfA.p);
@@ -13207,22 +13207,22 @@
           const rA = b2ContactSolver.SolveTOIPositionConstraints_s_rA;
           const rB = b2ContactSolver.SolveTOIPositionConstraints_s_rB;
           const P = b2ContactSolver.SolveTOIPositionConstraints_s_P;
-          let minSeparation = 0;
-          for (let i = 0; i < this.m_count; ++i) {
+          let minSeparation : number = 0;
+          for (let i : number = 0; i < this.m_count; ++i) {
               const pc = this.m_positionConstraints[i];
               const indexA = pc.indexA;
               const indexB = pc.indexB;
               const localCenterA = pc.localCenterA;
               const localCenterB = pc.localCenterB;
               const pointCount = pc.pointCount;
-              let mA = 0;
-              let iA = 0;
+              let mA : number = 0;
+              let iA : number = 0;
               if (indexA === toiIndexA || indexA === toiIndexB) {
                   mA = pc.invMassA;
                   iA = pc.invIA;
               }
-              let mB = 0;
-              let iB = 0;
+              let mB : number = 0;
+              let iB : number = 0;
               if (indexB === toiIndexA || indexB === toiIndexB) {
                   mB = pc.invMassB;
                   iB = pc.invIB;
@@ -13232,7 +13232,7 @@
               const cB = this.m_positions[indexB].c;
               let aB = this.m_positions[indexB].a;
               // Solve normal constraints
-              for (let j = 0; j < pointCount; ++j) {
+              for (let j : number = 0; j < pointCount; ++j) {
                   xfA.q.SetAngle(aA);
                   xfB.q.SetAngle(aB);
                   b2Vec2.SubVV(cA, b2Rot.MulRV(xfA.q, localCenterA, b2Vec2.s_t0), xfA.p);
@@ -13512,7 +13512,7 @@
           const timer = b2Island.s_timer.Reset();
           const h = step.dt;
           // Integrate velocities and apply damping. Initialize the body state.
-          for (let i = 0; i < this.m_bodyCount; ++i) {
+          for (let i : number = 0; i < this.m_bodyCount; ++i) {
               const b = this.m_bodies[i];
               // const c: b2Vec2 =
               this.m_positions[i].c.Copy(b.m_sweep.c);
@@ -13561,14 +13561,14 @@
           if (step.warmStarting) {
               contactSolver.WarmStart();
           }
-          for (let i = 0; i < this.m_jointCount; ++i) {
+          for (let i : number = 0; i < this.m_jointCount; ++i) {
               this.m_joints[i].InitVelocityConstraints(solverData);
           }
           profile.solveInit = timer.GetMilliseconds();
           // Solve velocity constraints.
           timer.Reset();
-          for (let i = 0; i < step.velocityIterations; ++i) {
-              for (let j = 0; j < this.m_jointCount; ++j) {
+          for (let i : number = 0; i < step.velocityIterations; ++i) {
+              for (let j : number = 0; j < this.m_jointCount; ++j) {
                   this.m_joints[j].SolveVelocityConstraints(solverData);
               }
               contactSolver.SolveVelocityConstraints();
@@ -13577,7 +13577,7 @@
           contactSolver.StoreImpulses();
           profile.solveVelocity = timer.GetMilliseconds();
           // Integrate positions.
-          for (let i = 0; i < this.m_bodyCount; ++i) {
+          for (let i : number = 0; i < this.m_bodyCount; ++i) {
               const c = this.m_positions[i].c;
               let a = this.m_positions[i].a;
               const v = this.m_velocities[i].v;
@@ -13605,10 +13605,10 @@
           // Solve position constraints
           timer.Reset();
           let positionSolved = false;
-          for (let i = 0; i < step.positionIterations; ++i) {
+          for (let i : number = 0; i < step.positionIterations; ++i) {
               const contactsOkay = contactSolver.SolvePositionConstraints();
               let jointsOkay = true;
-              for (let j = 0; j < this.m_jointCount; ++j) {
+              for (let j : number = 0; j < this.m_jointCount; ++j) {
                   const jointOkay = this.m_joints[j].SolvePositionConstraints(solverData);
                   jointsOkay = jointsOkay && jointOkay;
               }
@@ -13619,7 +13619,7 @@
               }
           }
           // Copy state buffers back to the bodies
-          for (let i = 0; i < this.m_bodyCount; ++i) {
+          for (let i : number = 0; i < this.m_bodyCount; ++i) {
               const body = this.m_bodies[i];
               body.m_sweep.c.Copy(this.m_positions[i].c);
               body.m_sweep.a = this.m_positions[i].a;
@@ -13633,7 +13633,7 @@
               let minSleepTime = b2_maxFloat;
               const linTolSqr = b2_linearSleepTolerance * b2_linearSleepTolerance;
               const angTolSqr = b2_angularSleepTolerance * b2_angularSleepTolerance;
-              for (let i = 0; i < this.m_bodyCount; ++i) {
+              for (let i : number = 0; i < this.m_bodyCount; ++i) {
                   const b = this.m_bodies[i];
                   if (b.GetType() === b2BodyType.b2_staticBody) {
                       continue;
@@ -13650,7 +13650,7 @@
                   }
               }
               if (minSleepTime >= b2_timeToSleep && positionSolved) {
-                  for (let i = 0; i < this.m_bodyCount; ++i) {
+                  for (let i : number = 0; i < this.m_bodyCount; ++i) {
                       const b = this.m_bodies[i];
                       b.SetAwake(false);
                   }
@@ -13661,7 +13661,7 @@
           // DEBUG: b2Assert(toiIndexA < this.m_bodyCount);
           // DEBUG: b2Assert(toiIndexB < this.m_bodyCount);
           // Initialize the body state.
-          for (let i = 0; i < this.m_bodyCount; ++i) {
+          for (let i : number = 0; i < this.m_bodyCount; ++i) {
               const b = this.m_bodies[i];
               this.m_positions[i].c.Copy(b.m_sweep.c);
               this.m_positions[i].a = b.m_sweep.a;
@@ -13677,7 +13677,7 @@
           contactSolverDef.velocities = this.m_velocities;
           const contactSolver = b2Island.s_contactSolver.Initialize(contactSolverDef);
           // Solve position constraints.
-          for (let i = 0; i < subStep.positionIterations; ++i) {
+          for (let i : number = 0; i < subStep.positionIterations; ++i) {
               const contactsOkay = contactSolver.SolveTOIPositionConstraints(toiIndexA, toiIndexB);
               if (contactsOkay) {
                   break;
@@ -13724,14 +13724,14 @@
           // starting impulses were applied in the discrete solver.
           contactSolver.InitializeVelocityConstraints();
           // Solve velocity constraints.
-          for (let i = 0; i < subStep.velocityIterations; ++i) {
+          for (let i : number = 0; i < subStep.velocityIterations; ++i) {
               contactSolver.SolveVelocityConstraints();
           }
           // Don't store the TOI contact forces for warm starting
           // because they can be quite large.
           const h = subStep.dt;
           // Integrate positions
-          for (let i = 0; i < this.m_bodyCount; ++i) {
+          for (let i : number = 0; i < this.m_bodyCount; ++i) {
               const c = this.m_positions[i].c;
               let a = this.m_positions[i].a;
               const v = this.m_velocities[i].v;
@@ -13768,7 +13768,7 @@
           if (this.m_listener === null) {
               return;
           }
-          for (let i = 0; i < this.m_contactCount; ++i) {
+          for (let i : number = 0; i < this.m_contactCount; ++i) {
               const c = this.m_contacts[i];
               if (!c) {
                   continue;
@@ -13776,7 +13776,7 @@
               const vc = constraints[i];
               const impulse = b2Island.s_impulse;
               impulse.count = vc.pointCount;
-              for (let j = 0; j < vc.pointCount; ++j) {
+              for (let j : number = 0; j < vc.pointCount; ++j) {
                   impulse.normalImpulses[j] = vc.points[j].normalImpulse;
                   impulse.tangentImpulses[j] = vc.points[j].tangentImpulse;
               }
@@ -13974,7 +13974,7 @@
           if (!this.m_system.m_flagsBuffer.data) {
               throw new Error();
           }
-          let flags = 0;
+          let flags : number = 0;
           for (let i = this.m_firstIndex; i < this.m_lastIndex; i++) {
               flags |= this.m_system.m_flagsBuffer.data[i];
           }
@@ -14213,8 +14213,8 @@
           const inverseRadius = 1 / radius;
           const lower = new b2Vec2(+b2_maxFloat, +b2_maxFloat);
           const upper = new b2Vec2(-b2_maxFloat, -b2_maxFloat);
-          let necessary_count = 0;
-          for (let k = 0; k < this.m_generatorCount; k++) {
+          let necessary_count : number = 0;
+          for (let k : number = 0; k < this.m_generatorCount; k++) {
               const g = this.m_generatorBuffer[k];
               if (g.necessary) {
                   b2Vec2.MinV(lower, g.center, lower);
@@ -14243,7 +14243,7 @@
           // (4 * m_countX * m_countY) is the queue capacity that is experimentally
           // known to be necessary and sufficient for general particle distributions.
           const queue = new b2StackQueue(4 * this.m_countX * this.m_countY);
-          for (let k = 0; k < this.m_generatorCount; k++) {
+          for (let k : number = 0; k < this.m_generatorCount; k++) {
               const g = this.m_generatorBuffer[k];
               ///  g.center = inverseRadius * (g.center - lower);
               g.center.SelfSub(lower).SelfMul(inverseRadius);
@@ -14276,8 +14276,8 @@
                   }
               }
           }
-          for (let y = 0; y < this.m_countY; y++) {
-              for (let x = 0; x < this.m_countX - 1; x++) {
+          for (let y : number = 0; y < this.m_countY; y++) {
+              for (let x : number = 0; x < this.m_countX - 1; x++) {
                   const i = x + y * this.m_countX;
                   const a = this.m_diagram[i];
                   const b = this.m_diagram[i + 1];
@@ -14287,8 +14287,8 @@
                   }
               }
           }
-          for (let y = 0; y < this.m_countY - 1; y++) {
-              for (let x = 0; x < this.m_countX; x++) {
+          for (let y : number = 0; y < this.m_countY - 1; y++) {
+              for (let x : number = 0; x < this.m_countX; x++) {
                   const i = x + y * this.m_countX;
                   const a = this.m_diagram[i];
                   const b = this.m_diagram[i + this.m_countX];
@@ -14337,8 +14337,8 @@
        * generator.
        */
       GetNodes(callback) {
-          for (let y = 0; y < this.m_countY - 1; y++) {
-              for (let x = 0; x < this.m_countX - 1; x++) {
+          for (let y : number = 0; y < this.m_countY - 1; y++) {
+              for (let x : number = 0; x < this.m_countX - 1; x++) {
                   const i = x + y * this.m_countX;
                   const a = this.m_diagram[i];
                   const b = this.m_diagram[i + 1];
@@ -14405,7 +14405,7 @@
   function std_sort(array, first = 0, len = array.length - first, cmp = default_compare) {
       let left = first;
       const stack = [];
-      let pos = 0;
+      let pos : number = 0;
       for (;;) { /* outer loop */
           for (; left + 1 < len; len++) { /* sort left to len-1 */
               const pivot = array[left + Math.floor(Math.random() * (len - left))]; /* pick random pivot */
@@ -14431,8 +14431,8 @@
       return std_sort(array, first, len, cmp);
   }
   function std_remove_if(array, predicate, length = array.length) {
-      let l = 0;
-      for (let c = 0; c < length; ++c) {
+      let l : number = 0;
+      for (let c : number = 0; c < length; ++c) {
           // if we can be collapsed, keep l where it is.
           if (predicate(array[c])) {
               continue;
@@ -14556,8 +14556,8 @@
           return this.capacity;
       }
       RemoveIf(pred) {
-          // DEBUG: let count = 0;
-          // DEBUG: for (let i = 0; i < this.count; ++i) {
+          // DEBUG: let count : number = 0;
+          // DEBUG: for (let i : number = 0; i < this.count; ++i) {
           // DEBUG:   if (!pred(this.data[i])) {
           // DEBUG:     count++;
           // DEBUG:   }
@@ -14584,7 +14584,7 @@
           }
           const shape = fixture.GetShape();
           const childCount = shape.GetChildCount();
-          for (let childIndex = 0; childIndex < childCount; childIndex++) {
+          for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
               const aabb = fixture.GetAABB(childIndex);
               const enumerator = this.m_system.GetInsideBoundsEnumerator(aabb);
               let index;
@@ -15213,7 +15213,7 @@
           }
           if (groupDef.positionData) {
               const count = b2Maybe(groupDef.particleCount, groupDef.positionData.length);
-              for (let i = 0; i < count; i++) {
+              for (let i : number = 0; i < count; i++) {
                   const p = groupDef.positionData[i];
                   this.CreateParticleForGroup(groupDef, transform, p);
               }
@@ -15596,7 +15596,7 @@
       SetPositionBuffer(buffer, capacity) {
           ///if (buffer instanceof Float32Array) {
           ///let array = [];
-          ///for (let i = 0; i < capacity; ++i) {
+          ///for (let i : number = 0; i < capacity; ++i) {
           ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
           ///}
           ///this.SetUserOverridableBuffer(this.m_positionBuffer, array, capacity);
@@ -15607,7 +15607,7 @@
       SetVelocityBuffer(buffer, capacity) {
           ///if (buffer instanceof Float32Array) {
           ///let array = [];
-          ///for (let i = 0; i < capacity; ++i) {
+          ///for (let i : number = 0; i < capacity; ++i) {
           ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
           ///}
           ///this.SetUserOverridableBuffer(this.m_velocityBuffer, array, capacity);
@@ -15618,7 +15618,7 @@
       SetColorBuffer(buffer, capacity) {
           ///if (buffer instanceof Uint8Array) {
           ///let array: b2Color[] = [];
-          ///for (let i = 0; i < capacity; ++i) {
+          ///for (let i : number = 0; i < capacity; ++i) {
           ///  array[i] = new b2Color(buffer.subarray(i * 4, i * 4 + 4));
           ///}
           ///this.SetUserOverridableBuffer(this.m_colorBuffer, array, capacity);
@@ -15737,8 +15737,8 @@
           }
           const s_v = b2ParticleSystem.ComputeCollisionEnergy_s_v;
           const vel_data = this.m_velocityBuffer.data;
-          let sum_v2 = 0;
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          let sum_v2 : number = 0;
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -15785,7 +15785,7 @@
           // Initialize the inverse mapping buffer.
           if (initializeExpirationTimes) {
               const particleCount = this.GetParticleCount();
-              for (let i = 0; i < particleCount; ++i) {
+              for (let i : number = 0; i < particleCount; ++i) {
                   this.m_indexByExpirationTimeBuffer.data[i] = i;
               }
           }
@@ -15950,7 +15950,7 @@
           // Ensure we're not trying to apply force to particles that can't move,
           // such as wall particles.
           // DEBUG: if (!this.m_flagsBuffer.data) { throw new Error(); }
-          // DEBUG: let flags = 0;
+          // DEBUG: let flags : number = 0;
           // DEBUG: for (let i = firstIndex; i < lastIndex; i++) {
           // DEBUG:   flags |= this.m_flagsBuffer.data[i];
           // DEBUG: }
@@ -16113,7 +16113,7 @@
               throw new Error();
           }
           const pos_data = this.m_positionBuffer.data;
-          for (let i = 0; i < particleCount; i++) {
+          for (let i : number = 0; i < particleCount; i++) {
               const p = pos_data[i];
               b2Vec2.MinV(aabb.lowerBound, p, aabb.lowerBound);
               b2Vec2.MaxV(aabb.upperBound, p, aabb.upperBound);
@@ -16254,9 +16254,9 @@
           if (stride === 0) {
               stride = this.GetParticleStride();
           }
-          let positionOnEdge = 0;
+          let positionOnEdge : number = 0;
           const childCount = shape.GetChildCount();
-          for (let childIndex = 0; childIndex < childCount; childIndex++) {
+          for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
               let edge = null;
               if (shape.GetType() === b2ShapeType.e_edgeShape) {
                   edge = shape;
@@ -16429,12 +16429,12 @@
           // * filter.IsNeeded returns true
           // * have one of k_pairFlags/k_triadsFlags
           // DEBUG: b2Assert(firstIndex <= lastIndex);
-          let particleFlags = 0;
+          let particleFlags : number = 0;
           for (let i = firstIndex; i < lastIndex; i++) {
               particleFlags |= this.m_flagsBuffer.data[i];
           }
           if (particleFlags & b2ParticleSystem.k_pairFlags) {
-              for (let k = 0; k < this.m_contactBuffer.count; k++) {
+              for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                   const contact = this.m_contactBuffer.data[k];
                   const a = contact.indexA;
                   const b = contact.indexB;
@@ -16467,7 +16467,7 @@
           }
           if (particleFlags & b2ParticleSystem.k_triadFlags) {
               const diagram = new b2VoronoiDiagram(lastIndex - firstIndex);
-              ///let necessary_count = 0;
+              ///let necessary_count : number = 0;
               for (let i = firstIndex; i < lastIndex; i++) {
                   const flags = this.m_flagsBuffer.data[i];
                   const group = this.m_groupBuffer[i];
@@ -16550,7 +16550,7 @@
           if (!this.m_flagsBuffer.data) {
               throw new Error();
           }
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               this.m_flagsBuffer.data[i] &= ~b2ParticleFlag.b2_reactiveParticle;
           }
           this.m_allParticleFlags &= ~b2ParticleFlag.b2_reactiveParticle;
@@ -16582,7 +16582,7 @@
       static InitializeParticleLists(group, nodeBuffer) {
           const bufferIndex = group.GetBufferIndex();
           const particleCount = group.GetParticleCount();
-          for (let i = 0; i < particleCount; i++) {
+          for (let i : number = 0; i < particleCount; i++) {
               const node = nodeBuffer[i];
               node.list = node;
               node.next = null;
@@ -16592,7 +16592,7 @@
       }
       MergeParticleListsInContact(group, nodeBuffer) {
           const bufferIndex = group.GetBufferIndex();
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               /*const b2ParticleContact&*/
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
@@ -16642,7 +16642,7 @@
       static FindLongestParticleList(group, nodeBuffer) {
           const particleCount = group.GetParticleCount();
           let result = nodeBuffer[0];
-          for (let i = 0; i < particleCount; i++) {
+          for (let i : number = 0; i < particleCount; i++) {
               const node = nodeBuffer[i];
               if (result.count < node.count) {
                   result = node;
@@ -16655,7 +16655,7 @@
               throw new Error();
           }
           const particleCount = group.GetParticleCount();
-          for (let i = 0; i < particleCount; i++) {
+          for (let i : number = 0; i < particleCount; i++) {
               const node = nodeBuffer[i];
               if (node !== survivingList &&
                   (this.m_flagsBuffer.data[node.index] & b2ParticleFlag.b2_zombieParticle)) {
@@ -16687,7 +16687,7 @@
           const def = new b2ParticleGroupDef();
           def.groupFlags = group.GetGroupFlags();
           def.userData = group.GetUserData();
-          for (let i = 0; i < particleCount; i++) {
+          for (let i : number = 0; i < particleCount; i++) {
               const list = nodeBuffer[i];
               if (!list.count || list === survivingList) {
                   continue;
@@ -16710,7 +16710,7 @@
           // replace it with the corresponding value in nodeBuffer.
           // Note that nodeBuffer is allocated only for the group and the index should
           // be shifted by bufferIndex.
-          for (let k = 0; k < this.m_pairBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
               const pair = this.m_pairBuffer.data[k];
               const a = pair.indexA;
               const b = pair.indexB;
@@ -16721,7 +16721,7 @@
                   pair.indexB = nodeBuffer[b - bufferIndex].index;
               }
           }
-          for (let k = 0; k < this.m_triadBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
               const triad = this.m_triadBuffer.data[k];
               const a = triad.indexA;
               const b = triad.indexB;
@@ -16740,8 +16740,8 @@
       ComputeDepth() {
           ///b2ParticleContact* contactGroups = (b2ParticleContact*) this.m_world.m_stackAllocator.Allocate(sizeof(b2ParticleContact) * this.m_contactBuffer.GetCount());
           const contactGroups = []; // TODO: static
-          let contactGroupsCount = 0;
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          let contactGroupsCount : number = 0;
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -16754,7 +16754,7 @@
           }
           ///b2ParticleGroup** groupsToUpdate = (b2ParticleGroup**) this.m_world.m_stackAllocator.Allocate(sizeof(b2ParticleGroup*) * this.m_groupCount);
           const groupsToUpdate = []; // TODO: static
-          let groupsToUpdateCount = 0;
+          let groupsToUpdateCount : number = 0;
           for (let group = this.m_groupList; group; group = group.GetNext()) {
               if (group.m_groupFlags & b2ParticleGroupFlag.b2_particleGroupNeedsUpdateDepth) {
                   groupsToUpdate[groupsToUpdateCount++] = group;
@@ -16766,7 +16766,7 @@
               }
           }
           // Compute sum of weight of contacts except between different groups.
-          for (let k = 0; k < contactGroupsCount; k++) {
+          for (let k : number = 0; k < contactGroupsCount; k++) {
               const contact = contactGroups[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -16775,7 +16775,7 @@
               this.m_accumulationBuffer[b] += w;
           }
           // DEBUG: b2Assert(this.m_depthBuffer !== null);
-          for (let i = 0; i < groupsToUpdateCount; i++) {
+          for (let i : number = 0; i < groupsToUpdateCount; i++) {
               const group = groupsToUpdate[i];
               for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                   const w = this.m_accumulationBuffer[i];
@@ -16787,9 +16787,9 @@
           // than sqrt of total particle number.
           ///int32 iterationCount = (int32)b2Sqrt((float)m_count);
           const iterationCount = b2Sqrt(this.m_count) >> 0;
-          for (let t = 0; t < iterationCount; t++) {
+          for (let t : number = 0; t < iterationCount; t++) {
               let updated = false;
-              for (let k = 0; k < contactGroupsCount; k++) {
+              for (let k : number = 0; k < contactGroupsCount; k++) {
                   const contact = contactGroups[k];
                   const a = contact.indexA;
                   const b = contact.indexB;
@@ -16815,7 +16815,7 @@
                   break;
               }
           }
-          for (let i = 0; i < groupsToUpdateCount; i++) {
+          for (let i : number = 0; i < groupsToUpdateCount; i++) {
               const group = groupsToUpdate[i];
               for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                   if (this.m_depthBuffer[i] < b2_maxFloat) {
@@ -16850,7 +16850,7 @@
               throw new Error();
           }
           this.m_allParticleFlags = 0;
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               this.m_allParticleFlags |= this.m_flagsBuffer.data[i];
           }
           this.m_needsUpdateAllParticleFlags = false;
@@ -16936,7 +16936,7 @@
           }
           const pos_data = this.m_positionBuffer.data;
           const inv_diam = this.m_inverseDiameter;
-          for (let k = 0; k < this.m_proxyBuffer.count; ++k) {
+          for (let k : number = 0; k < this.m_proxyBuffer.count; ++k) {
               const proxy = this.m_proxyBuffer.data[k];
               const i = proxy.index;
               const p = pos_data[i];
@@ -16984,7 +16984,7 @@
           // "invalidating" the ones that still exist.
           ///const b2ParticleContact* const endContact = m_contactBuffer.End();
           ///for (b2ParticleContact* contact = m_contactBuffer.Begin(); contact < endContact; ++contact)
-          for (let k = 0; k < this.m_contactBuffer.count; ++k) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; ++k) {
               const contact = this.m_contactBuffer.data[k];
               {
                   // Just started touching, inform the listener.
@@ -17038,7 +17038,7 @@
           // Loop through all new contacts, reporting any new ones, and
           // "invalidating" the ones that still exist.
           ///for (b2ParticleBodyContact* contact = m_bodyContactBuffer.Begin(); contact !== m_bodyContactBuffer.End(); ++contact)
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               {
                   // Just started touching, report it!
@@ -17078,7 +17078,7 @@
                   throw new Error();
               }
               const particleCount = this.GetParticleCount();
-              for (let i = 0; i < particleCount; i++) {
+              for (let i : number = 0; i < particleCount; i++) {
                   // Detect stuck particles, see comment in
                   // b2ParticleSystem::DetectStuckParticle()
                   this.m_bodyContactCountBuffer.data[i] = 0;
@@ -17195,7 +17195,7 @@
               if (!this.m_velocityBuffer.data) {
                   throw new Error();
               }
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   ///m_positionBuffer.data[i] += subStep.dt * m_velocityBuffer.data[i];
                   this.m_positionBuffer.data[i].SelfMulAdd(subStep.dt, this.m_velocityBuffer.data[i]);
               }
@@ -17220,7 +17220,7 @@
           aabb.lowerBound.y = +b2_maxFloat;
           aabb.upperBound.x = -b2_maxFloat;
           aabb.upperBound.y = -b2_maxFloat;
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               const v = vel_data[i];
               const p1 = pos_data[i];
               ///let p2 = p1 + step.dt * v;
@@ -17242,7 +17242,7 @@
           }
           const vel_data = this.m_velocityBuffer.data;
           const criticalVelocitySquared = this.GetCriticalVelocitySquared(step);
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               const v = vel_data[i];
               const v2 = b2Vec2.DotVV(v, v);
               if (v2 > criticalVelocitySquared) {
@@ -17259,7 +17259,7 @@
           const vel_data = this.m_velocityBuffer.data;
           ///b2Vec2 gravity = step.dt * m_def.gravityScale * m_world.GetGravity();
           const gravity = b2Vec2.MulSV(step.dt * this.m_def.gravityScale, this.m_world.GetGravity(), s_gravity);
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               vel_data[i].SelfAdd(gravity);
           }
       }
@@ -17289,7 +17289,7 @@
           const vel_data = this.m_velocityBuffer.data;
           // If a particle is passing between paired barrier particles,
           // its velocity will be decelerated to avoid passing.
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               const flags = this.m_flagsBuffer.data[i];
               ///if ((flags & b2ParticleSystem.k_barrierWallFlags) === b2ParticleSystem.k_barrierWallFlags)
               if ((flags & b2ParticleSystem.k_barrierWallFlags) !== 0) {
@@ -17298,7 +17298,7 @@
           }
           const tmax = b2_barrierCollisionTime * step.dt;
           const mass = this.GetParticleMass();
-          for (let k = 0; k < this.m_pairBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
               const pair = this.m_pairBuffer.data[k];
               if (pair.flags & b2ParticleFlag.b2_barrierParticle) {
                   const a = pair.indexA;
@@ -17453,12 +17453,12 @@
           ///   p_i and p_j are static pressure of particle i and j
           ///   w_ij is contact weight between particle i and j
           ///   w_i is sum of contact weight of particle i
-          for (let t = 0; t < this.m_def.staticPressureIterations; t++) {
+          for (let t : number = 0; t < this.m_def.staticPressureIterations; t++) {
               ///memset(m_accumulationBuffer, 0, sizeof(*m_accumulationBuffer) * m_count);
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   this.m_accumulationBuffer[i] = 0;
               }
-              for (let k = 0; k < this.m_contactBuffer.count; k++) {
+              for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                   const contact = this.m_contactBuffer.data[k];
                   if (contact.flags & b2ParticleFlag.b2_staticPressureParticle) {
                       const a = contact.indexA;
@@ -17468,7 +17468,7 @@
                       this.m_accumulationBuffer[b] += w * this.m_staticPressureBuffer[a]; // b <- a
                   }
               }
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   const w = this.m_weightBuffer[i];
                   if (this.m_flagsBuffer.data[i] & b2ParticleFlag.b2_staticPressureParticle) {
                       const wh = this.m_accumulationBuffer[i];
@@ -17486,16 +17486,16 @@
           // calculates the sum of contact-weights for each particle
           // that means dimensionless density
           ///memset(m_weightBuffer, 0, sizeof(*m_weightBuffer) * m_count);
-          for (let k = 0; k < this.m_count; k++) {
+          for (let k : number = 0; k < this.m_count; k++) {
               this.m_weightBuffer[k] = 0;
           }
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               const w = contact.weight;
               this.m_weightBuffer[a] += w;
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -17521,14 +17521,14 @@
           const criticalPressure = this.GetCriticalPressure(step);
           const pressurePerWeight = this.m_def.pressureStrength * criticalPressure;
           const maxPressure = b2_maxParticlePressure * criticalPressure;
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               const w = this.m_weightBuffer[i];
               const h = pressurePerWeight * b2Max(0.0, w - b2_minParticleWeight);
               this.m_accumulationBuffer[i] = b2Min(h, maxPressure);
           }
           // ignores particles which have their own repulsive force
           if (this.m_allParticleFlags & b2ParticleSystem.k_noPressureFlags) {
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   if (this.m_flagsBuffer.data[i] & b2ParticleSystem.k_noPressureFlags) {
                       this.m_accumulationBuffer[i] = 0;
                   }
@@ -17537,7 +17537,7 @@
           // static pressure
           if (this.m_allParticleFlags & b2ParticleFlag.b2_staticPressureParticle) {
               // DEBUG: b2Assert(this.m_staticPressureBuffer !== null);
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   if (this.m_flagsBuffer.data[i] & b2ParticleFlag.b2_staticPressureParticle) {
                       this.m_accumulationBuffer[i] += this.m_staticPressureBuffer[i];
                   }
@@ -17546,7 +17546,7 @@
           // applies pressure between each particles in contact
           const velocityPerPressure = step.dt / (this.m_def.density * this.m_particleDiameter);
           const inv_mass = this.GetParticleInvMass();
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               const b = contact.body;
@@ -17561,7 +17561,7 @@
               vel_data[a].SelfMulSub(inv_mass, f);
               b.ApplyLinearImpulse(f, p, true);
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -17591,7 +17591,7 @@
           const linearDamping = this.m_def.dampingStrength;
           const quadraticDamping = 1 / this.GetCriticalVelocity(step);
           const inv_mass = this.GetParticleInvMass();
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               const b = contact.body;
@@ -17612,7 +17612,7 @@
                   b.ApplyLinearImpulse(f.SelfNeg(), p, true);
               }
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -17647,7 +17647,7 @@
           }
           const pos_data = this.m_positionBuffer.data;
           const damping = this.m_def.dampingStrength;
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               const aGroup = this.m_groupBuffer[a];
@@ -17676,7 +17676,7 @@
                   }
               }
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -17725,7 +17725,7 @@
           // is effective in suppressing vibration.
           const pos_data = this.m_positionBuffer.data;
           const inv_mass = this.GetParticleInvMass();
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               if (this.m_flagsBuffer.data[a] & b2ParticleSystem.k_extraDampingFlags) {
@@ -17756,7 +17756,7 @@
               throw new Error();
           }
           const vel_data = this.m_velocityBuffer.data;
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               if (this.m_flagsBuffer.data[i] & b2ParticleFlag.b2_wallParticle) {
                   vel_data[i].SetZero();
               }
@@ -17814,7 +17814,7 @@
           const pos_data = this.m_positionBuffer.data;
           const vel_data = this.m_velocityBuffer.data;
           const elasticStrength = step.inv_dt * this.m_def.elasticStrength;
-          for (let k = 0; k < this.m_triadBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
               const triad = this.m_triadBuffer.data[k];
               if (triad.flags & b2ParticleFlag.b2_elasticParticle) {
                   const a = triad.indexA;
@@ -17895,7 +17895,7 @@
           const pos_data = this.m_positionBuffer.data;
           const vel_data = this.m_velocityBuffer.data;
           const springStrength = step.inv_dt * this.m_def.springStrength;
-          for (let k = 0; k < this.m_pairBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
               const pair = this.m_pairBuffer.data[k];
               if (pair.flags & b2ParticleFlag.b2_springParticle) {
                   ///int32 a = pair.indexA;
@@ -17940,11 +17940,11 @@
           }
           const vel_data = this.m_velocityBuffer.data;
           // DEBUG: b2Assert(this.m_accumulation2Buffer !== null);
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               this.m_accumulation2Buffer[i] = new b2Vec2();
               this.m_accumulation2Buffer[i].SetZero();
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               if (contact.flags & b2ParticleFlag.b2_tensileParticle) {
                   const a = contact.indexA;
@@ -17963,7 +17963,7 @@
           const pressureStrength = this.m_def.surfaceTensionPressureStrength * criticalVelocity;
           const normalStrength = this.m_def.surfaceTensionNormalStrength * criticalVelocity;
           const maxVelocityVariation = b2_maxParticleForce * criticalVelocity;
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               if (contact.flags & b2ParticleFlag.b2_tensileParticle) {
                   const a = contact.indexA;
@@ -17999,7 +17999,7 @@
           const vel_data = this.m_velocityBuffer.data;
           const viscousStrength = this.m_def.viscousStrength;
           const inv_mass = this.GetParticleInvMass();
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               if (this.m_flagsBuffer.data[a] & b2ParticleFlag.b2_viscousParticle) {
@@ -18017,7 +18017,7 @@
                   b.ApplyLinearImpulse(f.SelfNeg(), p, true);
               }
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               if (contact.flags & b2ParticleFlag.b2_viscousParticle) {
                   const a = contact.indexA;
@@ -18041,7 +18041,7 @@
           }
           const vel_data = this.m_velocityBuffer.data;
           const repulsiveStrength = this.m_def.repulsiveStrength * this.GetCriticalVelocity(step);
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               if (contact.flags & b2ParticleFlag.b2_repulsiveParticle) {
                   const a = contact.indexA;
@@ -18075,7 +18075,7 @@
           const powderStrength = this.m_def.powderStrength * this.GetCriticalVelocity(step);
           const minWeight = 1.0 - b2_particleStride;
           const inv_mass = this.GetParticleInvMass();
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               const a = contact.index;
               if (this.m_flagsBuffer.data[a] & b2ParticleFlag.b2_powderParticle) {
@@ -18091,7 +18091,7 @@
                   }
               }
           }
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               if (contact.flags & b2ParticleFlag.b2_powderParticle) {
                   const w = contact.weight;
@@ -18115,7 +18115,7 @@
           // applies extra repulsive force from solid particle groups
           this.m_depthBuffer = this.RequestBuffer(this.m_depthBuffer);
           const ejectionStrength = step.inv_dt * this.m_def.ejectionStrength;
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               const a = contact.indexA;
               const b = contact.indexB;
@@ -18135,7 +18135,7 @@
           }
           const vel_data = this.m_velocityBuffer.data;
           const velocityPerForce = step.dt * this.GetParticleInvMass();
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               ///m_velocityBuffer.data[i] += velocityPerForce * m_forceBuffer[i];
               vel_data[i].SelfMulAdd(velocityPerForce, this.m_forceBuffer[i]);
           }
@@ -18151,7 +18151,7 @@
           }
           const colorMixing = 0.5 * this.m_def.colorMixingStrength;
           if (colorMixing) {
-              for (let k = 0; k < this.m_contactBuffer.count; k++) {
+              for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                   const contact = this.m_contactBuffer.data[k];
                   const a = contact.indexA;
                   const b = contact.indexB;
@@ -18177,15 +18177,15 @@
               throw new Error();
           }
           // removes particles with zombie flag
-          let newCount = 0;
+          let newCount : number = 0;
           ///int32* newIndices = (int32*) this.m_world.m_stackAllocator.Allocate(sizeof(int32) * this.m_count);
           const newIndices = []; // TODO: static
-          for (let i = 0; i < this.m_count; i++) {
+          for (let i : number = 0; i < this.m_count; i++) {
               newIndices[i] = b2_invalidParticleIndex;
           }
           // DEBUG: b2Assert(newIndices.length === this.m_count);
-          let allParticleFlags = 0;
-          for (let i = 0; i < this.m_count; i++) {
+          let allParticleFlags : number = 0;
+          for (let i : number = 0; i < this.m_count; i++) {
               const flags = this.m_flagsBuffer.data[i];
               if (flags & b2ParticleFlag.b2_zombieParticle) {
                   const destructionListener = this.m_world.m_destructionListener;
@@ -18274,33 +18274,33 @@
               },
           };
           // update proxies
-          for (let k = 0; k < this.m_proxyBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_proxyBuffer.count; k++) {
               const proxy = this.m_proxyBuffer.data[k];
               proxy.index = newIndices[proxy.index];
           }
           this.m_proxyBuffer.RemoveIf(Test.IsProxyInvalid);
           // update contacts
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               contact.indexA = newIndices[contact.indexA];
               contact.indexB = newIndices[contact.indexB];
           }
           this.m_contactBuffer.RemoveIf(Test.IsContactInvalid);
           // update particle-body contacts
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               contact.index = newIndices[contact.index];
           }
           this.m_bodyContactBuffer.RemoveIf(Test.IsBodyContactInvalid);
           // update pairs
-          for (let k = 0; k < this.m_pairBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
               const pair = this.m_pairBuffer.data[k];
               pair.indexA = newIndices[pair.indexA];
               pair.indexB = newIndices[pair.indexB];
           }
           this.m_pairBuffer.RemoveIf(Test.IsPairInvalid);
           // update triads
-          for (let k = 0; k < this.m_triadBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
               const triad = this.m_triadBuffer.data[k];
               triad.indexA = newIndices[triad.indexA];
               triad.indexB = newIndices[triad.indexB];
@@ -18309,8 +18309,8 @@
           this.m_triadBuffer.RemoveIf(Test.IsTriadInvalid);
           // Update lifetime indices.
           if (this.m_indexByExpirationTimeBuffer.data) {
-              let writeOffset = 0;
-              for (let readOffset = 0; readOffset < this.m_count; readOffset++) {
+              let writeOffset : number = 0;
+              for (let readOffset : number = 0; readOffset < this.m_count; readOffset++) {
                   const newIndex = newIndices[this.m_indexByExpirationTimeBuffer.data[readOffset]];
                   if (newIndex !== b2_invalidParticleIndex) {
                       this.m_indexByExpirationTimeBuffer.data[writeOffset++] = newIndex;
@@ -18320,7 +18320,7 @@
           // update groups
           for (let group = this.m_groupList; group; group = group.GetNext()) {
               let firstIndex = newCount;
-              let lastIndex = 0;
+              let lastIndex : number = 0;
               let modified = false;
               for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                   const j = newIndices[i];
@@ -18511,34 +18511,34 @@
                   throw new Error();
               }
               const indexByExpirationTime = this.m_indexByExpirationTimeBuffer.data;
-              for (let i = 0; i < particleCount; ++i) {
+              for (let i : number = 0; i < particleCount; ++i) {
                   indexByExpirationTime[i] = newIndices(indexByExpirationTime[i]);
               }
           }
           // update proxies
-          for (let k = 0; k < this.m_proxyBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_proxyBuffer.count; k++) {
               const proxy = this.m_proxyBuffer.data[k];
               proxy.index = newIndices(proxy.index);
           }
           // update contacts
-          for (let k = 0; k < this.m_contactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
               const contact = this.m_contactBuffer.data[k];
               contact.indexA = newIndices(contact.indexA);
               contact.indexB = newIndices(contact.indexB);
           }
           // update particle-body contacts
-          for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
               const contact = this.m_bodyContactBuffer.data[k];
               contact.index = newIndices(contact.index);
           }
           // update pairs
-          for (let k = 0; k < this.m_pairBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
               const pair = this.m_pairBuffer.data[k];
               pair.indexA = newIndices(pair.indexA);
               pair.indexB = newIndices(pair.indexB);
           }
           // update triads
-          for (let k = 0; k < this.m_triadBuffer.count; k++) {
+          for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
               const triad = this.m_triadBuffer.data[k];
               triad.indexA = newIndices(triad.indexA);
               triad.indexB = newIndices(triad.indexB);
@@ -18678,9 +18678,9 @@
           // Index of last particle processed.
           let lastIndex = -1;
           // Number of contacts processed for the current particle.
-          let currentContacts = 0;
+          let currentContacts : number = 0;
           // Output the number of discarded contacts.
-          // let discarded = 0;
+          // let discarded : number = 0;
           const b2ParticleBodyContactRemovePredicate = (contact) => {
               // This implements the selection criteria described in
               // RemoveSpuriousBodyContacts().
@@ -18715,7 +18715,7 @@
               // now lie on or in the fixture generating
               if (!contact.fixture.TestPoint(pos)) {
                   const childCount = contact.fixture.GetShape().GetChildCount();
-                  for (let childIndex = 0; childIndex < childCount; childIndex++) {
+                  for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
                       const normal = s_normal;
                       const distance = contact.fixture.ComputeDistance(pos, normal, childIndex);
                       if (distance < b2_linearSlop) {
@@ -18801,7 +18801,7 @@
       PrepareForceBuffer() {
           if (!this.m_hasForce) {
               ///memset(m_forceBuffer, 0, sizeof(*m_forceBuffer) * m_count);
-              for (let i = 0; i < this.m_count; i++) {
+              for (let i : number = 0; i < this.m_count; i++) {
                   this.m_forceBuffer[i].SetZero();
               }
               this.m_hasForce = true;
@@ -19203,7 +19203,7 @@
            * @see b2Shape::TestPoint
            */
           TestPoint(xf, p) {
-              for (let i = 0; i < this.m_shapeCount; i++) {
+              for (let i : number = 0; i < this.m_shapeCount; i++) {
                   if (this.m_shapes[i].TestPoint(xf, p)) {
                       return true;
                   }
@@ -19234,9 +19234,9 @@
               aabb.upperBound.x = -b2_maxFloat;
               aabb.upperBound.y = -b2_maxFloat;
               // DEBUG: b2Assert(childIndex === 0);
-              for (let i = 0; i < this.m_shapeCount; i++) {
+              for (let i : number = 0; i < this.m_shapeCount; i++) {
                   const childCount = this.m_shapes[i].GetChildCount();
-                  for (let j = 0; j < childCount; j++) {
+                  for (let j : number = 0; j < childCount; j++) {
                       const subaabb = s_subaabb;
                       this.m_shapes[i].ComputeAABB(subaabb, xf, j);
                       aabb.Combine1(subaabb);
@@ -19911,7 +19911,7 @@
                       continue;
                   }
                   for (let f = b.GetFixtureList(); f; f = f.m_next) {
-                      for (let i = 0; i < f.m_proxyCount; ++i) {
+                      for (let i : number = 0; i < f.m_proxyCount; ++i) {
                           const proxy = f.m_proxies[i];
                           const aabb = proxy.treeNode.aabb;
                           vs[0].Set(aabb.lowerBound.x, aabb.lowerBound.y);
@@ -20268,7 +20268,7 @@
           log("this.m_world.SetGravity(g);\n");
           log("const bodies: b2Body[] = [];\n");
           log("const joints: b2Joint[] = [];\n");
-          let i = 0;
+          let i : number = 0;
           for (let b = this.m_bodyList; b; b = b.m_next) {
               b.m_islandIndex = i;
               b.Dump(log);
@@ -20440,7 +20440,7 @@
               }
               // Reset island and stack.
               island.Clear();
-              let stackCount = 0;
+              let stackCount : number = 0;
               stack[stackCount++] = seed;
               seed.m_islandFlag = true;
               // Perform a depth first search (DFS) on the constraint graph.
@@ -20516,7 +20516,7 @@
               this.m_profile.solveVelocity += profile.solveVelocity;
               this.m_profile.solvePosition += profile.solvePosition;
               // Post solve cleanup.
-              for (let i = 0; i < island.m_bodyCount; ++i) {
+              for (let i : number = 0; i < island.m_bodyCount; ++i) {
                   // Allow static bodies to participate in other islands.
                   const b = island.m_bodies[i];
                   if (b.GetType() === b2BodyType.b2_staticBody) {
@@ -20524,7 +20524,7 @@
                   }
               }
           }
-          for (let i = 0; i < stack.length; ++i) {
+          for (let i : number = 0; i < stack.length; ++i) {
               if (!stack[i]) {
                   break;
               }
@@ -20687,7 +20687,7 @@
               minContact.m_islandFlag = true;
               // Get contacts on bodyA and bodyB.
               // const bodies: b2Body[] = [bA, bB];
-              for (let i = 0; i < 2; ++i) {
+              for (let i : number = 0; i < 2; ++i) {
                   const body = (i === 0) ? (bA) : (bB); // bodies[i];
                   if (body.m_type === b2BodyType.b2_dynamicBody) {
                       for (let ce = body.m_contactList; ce; ce = ce.next) {
@@ -20761,7 +20761,7 @@
               subStep.warmStarting = false;
               island.SolveTOI(subStep, bA.m_islandIndex, bB.m_islandIndex);
               // Reset island flags and synchronize broad-phase proxies.
-              for (let i = 0; i < island.m_bodyCount; ++i) {
+              for (let i : number = 0; i < island.m_bodyCount; ++i) {
                   const body = island.m_bodies[i];
                   body.m_islandFlag = false;
                   if (body.m_type !== b2BodyType.b2_dynamicBody) {
@@ -21070,15 +21070,15 @@
               }
               const areac = new b2Vec2();
               const massc = new b2Vec2();
-              let area = 0;
-              let mass = 0;
+              let area : number = 0;
+              let mass : number = 0;
               for (let fixture = body.GetFixtureList(); fixture; fixture = fixture.m_next) {
                   const sc = new b2Vec2();
                   const sarea = fixture.GetShape().ComputeSubmergedArea(this.normal, this.offset, body.GetTransform(), sc);
                   area += sarea;
                   areac.x += sarea * sc.x;
                   areac.y += sarea * sc.y;
-                  let shapeDensity = 0;
+                  let shapeDensity : number = 0;
                   if (this.useDensity) {
                       //TODO: Expose density publicly
                       shapeDensity = fixture.GetDensity();
@@ -21271,7 +21271,7 @@
           this.m_vs = b2Vec2.MakeArray(this.m_count);
           // this.m_ims = (float32*)b2Alloc(this.m_count * sizeof(float32));
           this.m_ims = b2MakeNumberArray(this.m_count);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               this.m_ps[i].Copy(def.vertices[i]);
               this.m_p0s[i].Copy(def.vertices[i]);
               this.m_vs[i].SetZero();
@@ -21289,12 +21289,12 @@
           this.m_Ls = b2MakeNumberArray(count2);
           // this.m_as = (float32*)b2Alloc(count3 * sizeof(float32));
           this.m_as = b2MakeNumberArray(count3);
-          for (let i = 0; i < count2; ++i) {
+          for (let i : number = 0; i < count2; ++i) {
               const p1 = this.m_ps[i];
               const p2 = this.m_ps[i + 1];
               this.m_Ls[i] = b2Vec2.DistanceVV(p1, p2);
           }
-          for (let i = 0; i < count3; ++i) {
+          for (let i : number = 0; i < count3; ++i) {
               const p1 = this.m_ps[i];
               const p2 = this.m_ps[i + 1];
               const p3 = this.m_ps[i + 2];
@@ -21315,7 +21315,7 @@
               return;
           }
           const d = Math.exp(-h * this.m_damping);
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               this.m_p0s[i].Copy(this.m_ps[i]);
               if (this.m_ims[i] > 0) {
                   this.m_vs[i].SelfMulAdd(h, this.m_gravity);
@@ -21323,19 +21323,19 @@
               this.m_vs[i].SelfMul(d);
               this.m_ps[i].SelfMulAdd(h, this.m_vs[i]);
           }
-          for (let i = 0; i < iterations; ++i) {
+          for (let i : number = 0; i < iterations; ++i) {
               this.SolveC2();
               this.SolveC3();
               this.SolveC2();
           }
           const inv_h = 1 / h;
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               b2Vec2.MulSV(inv_h, b2Vec2.SubVV(this.m_ps[i], this.m_p0s[i], b2Vec2.s_t0), this.m_vs[i]);
           }
       }
       SolveC2() {
           const count2 = this.m_count - 1;
-          for (let i = 0; i < count2; ++i) {
+          for (let i : number = 0; i < count2; ++i) {
               const p1 = this.m_ps[i];
               const p2 = this.m_ps[i + 1];
               const d = b2Vec2.SubVV(p2, p1, b2Rope.s_d);
@@ -21355,13 +21355,13 @@
       }
       SetAngle(angle) {
           const count3 = this.m_count - 2;
-          for (let i = 0; i < count3; ++i) {
+          for (let i : number = 0; i < count3; ++i) {
               this.m_as[i] = angle;
           }
       }
       SolveC3() {
           const count3 = this.m_count - 2;
-          for (let i = 0; i < count3; ++i) {
+          for (let i : number = 0; i < count3; ++i) {
               const p1 = this.m_ps[i];
               const p2 = this.m_ps[i + 1];
               const p3 = this.m_ps[i + 2];
@@ -21408,7 +21408,7 @@
       }
       Draw(draw) {
           const c = new b2Color(0.4, 0.5, 0.7);
-          for (let i = 0; i < this.m_count - 1; ++i) {
+          for (let i : number = 0; i < this.m_count - 1; ++i) {
               draw.DrawSegment(this.m_ps[i], this.m_ps[i + 1], c);
           }
       }
@@ -21603,7 +21603,7 @@
           const ctx = this.m_ctx;
           if (ctx) {
               if (colors !== null) {
-                  for (let i = 0; i < count; ++i) {
+                  for (let i : number = 0; i < count; ++i) {
                       const center = centers[i];
                       const color = colors[i];
                       ctx.fillStyle = color.MakeStyleString();
@@ -21616,7 +21616,7 @@
               else {
                   ctx.fillStyle = "rgba(255,255,255,0.5)";
                   // ctx.beginPath();
-                  for (let i = 0; i < count; ++i) {
+                  for (let i : number = 0; i < count; ++i) {
                       const center = centers[i];
                       // ctx.rect(center.x - radius, center.y - radius, 2 * radius, 2 * radius);
                       ctx.beginPath();
@@ -21999,7 +21999,7 @@
           if (this.m_particleSystem === null) {
               throw new Error();
           }
-          let numberOfParticlesCreated = 0;
+          let numberOfParticlesCreated : number = 0;
           // How many (fractional) particles should we have emitted this frame?
           this.m_emitRemainder += this.m_emitRate * dt;
           const pd = new b2ParticleDef();
@@ -22109,8 +22109,8 @@
           this.numValues = numValues;
       }
       CalculateValueMask() {
-          let mask = 0;
-          for (let i = 0; i < this.numValues; i++) {
+          let mask : number = 0;
+          for (let i : number = 0; i < this.numValues; i++) {
               mask |= this.values[i].value;
           }
           return mask;
@@ -22137,7 +22137,7 @@
           this.m_definition = definition;
           this.m_definitionCount = definitionCount;
           this.m_valueCount = 0;
-          for (let i = 0; i < this.m_definitionCount; ++i) {
+          for (let i : number = 0; i < this.m_definitionCount; ++i) {
               this.m_valueCount += this.m_definition[i].numValues;
           }
           // Refresh the selected value.
@@ -22193,11 +22193,11 @@
           return this.m_restartOnChange;
       }
       FindIndexByValue(value) {
-          let index = 0;
-          for (let i = 0; i < this.m_definitionCount; ++i) {
+          let index : number = 0;
+          for (let i : number = 0; i < this.m_definitionCount; ++i) {
               const definition = this.m_definition[i];
               const numValues = definition.numValues;
-              for (let j = 0; j < numValues; ++j, ++index) {
+              for (let j : number = 0; j < numValues; ++j, ++index) {
                   if (definition.values[j].value === value) {
                       return index;
                   }
@@ -22206,9 +22206,9 @@
           return -1;
       }
       FindParticleParameterValue() {
-          let start = 0;
+          let start : number = 0;
           const index = this.Get();
-          for (let i = 0; i < this.m_definitionCount; ++i) {
+          for (let i : number = 0; i < this.m_definitionCount; ++i) {
               const definition = this.m_definition[i];
               const end = start + definition.numValues;
               if (index >= start && index < end) {
@@ -22416,7 +22416,7 @@
           b2GetPointStates(state1, state2, oldManifold, manifold);
           const worldManifold = Test.PreSolve_s_worldManifold;
           contact.GetWorldManifold(worldManifold);
-          for (let i = 0; i < manifold.pointCount && this.m_pointCount < Test.k_maxContactPoints; ++i) {
+          for (let i : number = 0; i < manifold.pointCount && this.m_pointCount < Test.k_maxContactPoints; ++i) {
               const cp = this.m_points[this.m_pointCount];
               cp.fixtureA = fixtureA;
               cp.fixtureB = fixtureB;
@@ -22697,7 +22697,7 @@
           if (settings.drawContactPoints) {
               const k_impulseScale = 0.1;
               const k_axisScale = 0.3;
-              for (let i = 0; i < this.m_pointCount; ++i) {
+              for (let i : number = 0; i < this.m_pointCount; ++i) {
                   const point = this.m_points[i];
                   if (point.state === b2PointState.b2_addState) {
                       // Add
@@ -22770,8 +22770,8 @@
           ///  m_particleParameters = new ParticleParameter::Value[defaultNumValues];
           this.m_particleParameters = [];
           // Disable selection of wall and barrier particle types.
-          let numValues = 0;
-          for (let i = 0; i < defaultNumValues; i++) {
+          let numValues : number = 0;
+          for (let i : number = 0; i < defaultNumValues; i++) {
               if (defaultValues[i].value & filterMask) {
                   continue;
               }
@@ -22881,7 +22881,7 @@
               const maxX = 0.0;
               const minY = 4.0;
               const maxY = 6.0;
-              for (let i = 0; i < 400; ++i) {
+              for (let i : number = 0; i < 400; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(b2RandomRange(minX, maxX), b2RandomRange(minY, maxY));
@@ -23011,7 +23011,7 @@
               fd.shape = shape;
               fd.density = 1.0;
               fd.friction = 0.3;
-              for ( /*int*/let i = 0; i < 10; ++i) {
+              for ( /*int*/let i : number = 0; i < 10; ++i) {
                   /*box2d.b2BodyDef*/
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
@@ -23362,8 +23362,8 @@
           /*int*/
           const count = contact.GetManifold().pointCount;
           /*float32*/
-          let maxImpulse = 0.0;
-          for (let i = 0; i < count; ++i) {
+          let maxImpulse : number = 0.0;
+          for (let i : number = 0; i < count; ++i) {
               maxImpulse = b2Max(maxImpulse, impulse.normalImpulses[i]);
           }
           if (maxImpulse > 40.0) {
@@ -23458,7 +23458,7 @@
               fd.friction = 0.2;
               const jd = new b2RevoluteJointDef();
               let prevBody = ground;
-              for (let i = 0; i < Bridge.e_count; ++i) {
+              for (let i : number = 0; i < Bridge.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-14.5 + 1.0 * i, 5.0);
@@ -23476,7 +23476,7 @@
               jd.Initialize(prevBody, ground, anchor);
               this.m_world.CreateJoint(jd);
           }
-          for (let i = 0; i < 2; ++i) {
+          for (let i : number = 0; i < 2; ++i) {
               const vertices = new Array();
               vertices[0] = new b2Vec2(-0.5, 0.0);
               vertices[1] = new b2Vec2(0.5, 0.0);
@@ -23492,7 +23492,7 @@
               const body = this.m_world.CreateBody(bd);
               body.CreateFixture(fd);
           }
-          for (let i = 0; i < 3; ++i) {
+          for (let i : number = 0; i < 3; ++i) {
               const shape = new b2CircleShape();
               shape.m_radius = 0.5;
               const fd = new b2FixtureDef();
@@ -23652,7 +23652,7 @@
               fd.density = 20.0;
               const jd = new b2WeldJointDef();
               let prevBody = ground;
-              for (let i = 0; i < Cantilever.e_count; ++i) {
+              for (let i : number = 0; i < Cantilever.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-14.5 + 1.0 * i, 5.0);
@@ -23674,7 +23674,7 @@
               jd.frequencyHz = 5.0;
               jd.dampingRatio = 0.7;
               let prevBody = ground;
-              for (let i = 0; i < 3; ++i) {
+              for (let i : number = 0; i < 3; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-14.0 + 2.0 * i, 15.0);
@@ -23694,7 +23694,7 @@
               fd.density = 20.0;
               const jd = new b2WeldJointDef();
               let prevBody = ground;
-              for (let i = 0; i < Cantilever.e_count; ++i) {
+              for (let i : number = 0; i < Cantilever.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-4.5 + 1.0 * i, 15.0);
@@ -23718,7 +23718,7 @@
               jd.frequencyHz = 8.0;
               jd.dampingRatio = 0.7;
               let prevBody = ground;
-              for (let i = 0; i < Cantilever.e_count; ++i) {
+              for (let i : number = 0; i < Cantilever.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(5.5 + 1.0 * i, 10.0);
@@ -23732,7 +23732,7 @@
                   prevBody = body;
               }
           }
-          for (let i = 0; i < 2; ++i) {
+          for (let i : number = 0; i < 2; ++i) {
               const vertices = new Array();
               vertices[0] = new b2Vec2(-0.5, 0.0);
               vertices[1] = new b2Vec2(0.5, 0.0);
@@ -23748,7 +23748,7 @@
               const body = this.m_world.CreateBody(bd);
               body.CreateFixture(fd);
           }
-          for (let i = 0; i < 2; ++i) {
+          for (let i : number = 0; i < 2; ++i) {
               const shape = new b2CircleShape();
               shape.m_radius = 0.5;
               const fd = new b2FixtureDef();
@@ -23811,14 +23811,14 @@
               const hs = [0.25, 1.0, 4.0, 0.0, 0.0, -1.0, -2.0, -2.0, -1.25, 0.0];
               let x = 20.0, y1 = 0.0;
               const dx = 5.0;
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const y2 = hs[i];
                   shape.Set(new b2Vec2(x, y1), new b2Vec2(x + dx, y2));
                   ground.CreateFixture(fd);
                   y1 = y2;
                   x += dx;
               }
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const y2 = hs[i];
                   shape.Set(new b2Vec2(x, y1), new b2Vec2(x + dx, y2));
                   ground.CreateFixture(fd);
@@ -23868,7 +23868,7 @@
               fd.friction = 0.6;
               const jd = new b2RevoluteJointDef();
               let prevBody = ground;
-              for (let i = 0; i < N; ++i) {
+              for (let i : number = 0; i < N; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(161.0 + 2.0 * i, -0.125);
@@ -24147,7 +24147,7 @@
               jd.collideConnected = false;
               const y = 25.0;
               let prevBody = ground;
-              for (let i = 0; i < Chain.e_count; ++i) {
+              for (let i : number = 0; i < Chain.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(0.5 + i, y);
@@ -24316,10 +24316,10 @@
               bd.fixedRotation = true;
               bd.allowSleep = false;
               const body = this.m_world.CreateBody(bd);
-              let angle = 0.0;
+              let angle : number = 0.0;
               const delta = b2_pi / 3.0;
               const vertices = b2Vec2.MakeArray(6);
-              for (let i = 0; i < 6; ++i) {
+              for (let i : number = 0; i < 6; ++i) {
                   vertices[i].Set(0.5 * b2Cos(angle), 0.5 * b2Sin(angle));
                   angle += delta;
               }
@@ -24608,10 +24608,10 @@
           // because they may belong to multiple contact points.
           const k_maxNuke = 6;
           const nuke = new Array(k_maxNuke);
-          let nukeCount = 0;
+          let nukeCount : number = 0;
           // Traverse the contact results. Destroy bodies that
           // are touching heavier bodies.
-          for (let i = 0; i < this.m_pointCount; ++i) {
+          for (let i : number = 0; i < this.m_pointCount; ++i) {
               const point = this.m_points[i];
               const body1 = point.fixtureA.GetBody();
               const body2 = point.fixtureB.GetBody();
@@ -24634,7 +24634,7 @@
               return a - b;
           });
           // Destroy the bodies, skipping duplicates.
-          let i = 0;
+          let i : number = 0;
           while (i < nukeCount) {
               const b = nuke[i++];
               while (i < nukeCount && nuke[i] === b) {
@@ -24684,7 +24684,7 @@
               const circle2 = new b2CircleShape();
               circle2.m_radius = 0.5;
               circle2.m_p.Set(0.5, 0.5);
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const x = b2RandomRange(-0.1, 0.1);
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
@@ -24700,7 +24700,7 @@
               polygon1.SetAsBox(0.25, 0.5);
               const polygon2 = new b2PolygonShape();
               polygon2.SetAsBox(0.25, 0.5, new b2Vec2(0.0, -0.5), 0.5 * b2_pi);
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const x = b2RandomRange(-0.1, 0.1);
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
@@ -24729,7 +24729,7 @@
               vertices[1] = b2Transform.MulXV(xf2, new b2Vec2(1.0, 0.0), new b2Vec2());
               vertices[2] = b2Transform.MulXV(xf2, new b2Vec2(0.0, 0.5), new b2Vec2());
               triangle2.Set(vertices, 3);
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const x = b2RandomRange(-0.1, 0.1);
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
@@ -24809,8 +24809,8 @@
           fd.shape = shape;
           fd.density = 1.0;
           fd.friction = 0.1;
-          for (let j = 0; j < Confined.e_columnCount; ++j) {
-              for (let i = 0; i < Confined.e_rowCount; ++i) {
+          for (let j : number = 0; j < Confined.e_columnCount; ++j) {
+              for (let i : number = 0; i < Confined.e_rowCount; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-10.0 + (2.1 * j + 1.0 + 0.01 * i) * radius, (2.0 * i + 1.0) * radius);
@@ -24900,7 +24900,7 @@
           this.Generate();
       }
       Generate() {
-          for (let i = 0; i < ConvexHull.e_count; ++i) {
+          for (let i : number = 0; i < ConvexHull.e_count; ++i) {
               let x = b2RandomRange(-10.0, 10.0);
               let y = b2RandomRange(-10.0, 10.0);
               // Clamp onto a square to help create collinearities.
@@ -24928,7 +24928,7 @@
           g_debugDraw.DrawString(5, this.m_textLine, "Press g to generate a new random convex hull");
           this.m_textLine += DRAW_STRING_NEW_LINE;
           g_debugDraw.DrawPolygon(shape.m_vertices, shape.m_count, new b2Color(0.9, 0.9, 0.9));
-          for (let i = 0; i < this.m_count; ++i) {
+          for (let i : number = 0; i < this.m_count; ++i) {
               g_debugDraw.DrawPoint(this.m_test_points[i], 3.0, new b2Color(0.3, 0.9, 0.3));
               g_debugDraw.DrawStringWorld(this.m_test_points[i].x + 0.05, this.m_test_points[i].y + 0.05, `${i}`);
           }
@@ -24988,7 +24988,7 @@
               this.m_platform = body.CreateFixture(fd);
           }
           // Boxes
-          for ( /*int*/let i = 0; i < 5; ++i) {
+          for ( /*int*/let i : number = 0; i < 5; ++i) {
               const bd = new b2BodyDef();
               bd.type = b2BodyType.b2_dynamicBody;
               bd.position.Set(-10.0 + 2.0 * i, 7.0);
@@ -25100,11 +25100,11 @@
           {
               const color = new b2Color(0.9, 0.9, 0.9);
               const v = [];
-              for (let i = 0; i < this.m_polygonA.m_count; ++i) {
+              for (let i : number = 0; i < this.m_polygonA.m_count; ++i) {
                   v[i] = b2Transform.MulXV(this.m_transformA, this.m_polygonA.m_vertices[i], new b2Vec2());
               }
               g_debugDraw.DrawPolygon(v, this.m_polygonA.m_count, color);
-              for (let i = 0; i < this.m_polygonB.m_count; ++i) {
+              for (let i : number = 0; i < this.m_polygonB.m_count; ++i) {
                   v[i] = b2Transform.MulXV(this.m_transformB, this.m_polygonB.m_vertices[i], new b2Vec2());
               }
               g_debugDraw.DrawPolygon(v, this.m_polygonB.m_count, color);
@@ -25164,7 +25164,7 @@
               fd.shape = shape;
               fd.density = 20.0;
               fd.friction = 0.1;
-              for (let i = 0; i < 10; ++i) {
+              for (let i : number = 0; i < 10; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-6.0 + 1.0 * i, 11.25);
@@ -25275,7 +25275,7 @@
               const radius = 0.2;
               const shape = new b2CircleShape();
               shape.m_radius = radius;
-              for (let i = 0; i < 4; ++i) {
+              for (let i : number = 0; i < 4; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(5.9 + 2.0 * radius * i, 2.4);
@@ -25602,7 +25602,7 @@
           this.m_worldExtent = 15.0;
           this.m_proxyExtent = 0.5;
           //srand(888);
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               const actor = this.m_actors[i];
               this.GetRandomAABB(actor.aabb);
               actor.proxyId = this.m_tree.CreateProxy(actor.aabb, actor);
@@ -25623,13 +25623,13 @@
           this.Reset();
           if (this.m_automated) {
               const actionCount = b2Max(1, DynamicTreeTest.e_actorCount >> 2);
-              for (let i = 0; i < actionCount; ++i) {
+              for (let i : number = 0; i < actionCount; ++i) {
                   this.Action();
               }
           }
           this.Query();
           this.RayCast();
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               const actor = this.m_actors[i];
               if (actor.proxyId === null) {
                   continue;
@@ -25709,7 +25709,7 @@
           aabb.upperBound.SelfAdd(b2Vec2.SubVV(c, c0, new b2Vec2()));
       }
       CreateProxy() {
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               const j = 0 | b2RandomRange(0, DynamicTreeTest.e_actorCount);
               const actor = this.m_actors[j];
               if (actor.proxyId === null) {
@@ -25720,7 +25720,7 @@
           }
       }
       DestroyProxy() {
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               const j = 0 | b2RandomRange(0, DynamicTreeTest.e_actorCount);
               const actor = this.m_actors[j];
               if (actor.proxyId !== null) {
@@ -25731,7 +25731,7 @@
           }
       }
       MoveProxy() {
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               const j = 0 | b2RandomRange(0, DynamicTreeTest.e_actorCount);
               const actor = this.m_actors[j];
               if (actor.proxyId === null) {
@@ -25747,7 +25747,7 @@
       }
       Reset() {
           this.m_rayActor = null;
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               this.m_actors[i].fraction = 1.0;
               this.m_actors[i].overlap = false;
           }
@@ -25771,7 +25771,7 @@
               actor.overlap = b2TestOverlapAABB(this.m_queryAABB, actor.aabb);
               return true;
           });
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               if (this.m_actors[i].proxyId === null) {
                   continue;
               }
@@ -25800,7 +25800,7 @@
           // Brute force ray cast.
           let bruteActor = null;
           const bruteOutput = new b2RayCastOutput();
-          for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+          for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
               if (this.m_actors[i].proxyId === null) {
                   continue;
               }
@@ -25869,7 +25869,7 @@
           this.m_bodyIndex = 0;
           this.m_bodies = new Array(EdgeShapes.e_maxBodies);
           this.m_polygons = new Array(4);
-          for (let i = 0; i < 4; ++i) {
+          for (let i : number = 0; i < 4; ++i) {
               this.m_polygons[i] = new b2PolygonShape();
           }
           this.m_circle = new b2CircleShape();
@@ -25880,7 +25880,7 @@
               const ground = this.m_world.CreateBody(bd);
               let x1 = -20.0;
               let y1 = 2.0 * b2Cos(x1 / 10.0 * b2_pi);
-              for (let i = 0; i < 80; ++i) {
+              for (let i : number = 0; i < 80; ++i) {
                   const x2 = x1 + 0.5;
                   const y2 = 2.0 * b2Cos(x2 / 10.0 * b2_pi);
                   const shape = new b2EdgeShape();
@@ -25925,7 +25925,7 @@
           {
               this.m_circle.m_radius = 0.5;
           }
-          for (let i = 0; i < EdgeShapes.e_maxBodies; ++i) {
+          for (let i : number = 0; i < EdgeShapes.e_maxBodies; ++i) {
               this.m_bodies[i] = null;
           }
       }
@@ -25962,7 +25962,7 @@
           this.m_bodyIndex = (this.m_bodyIndex + 1) % EdgeShapes.e_maxBodies;
       }
       DestroyBody() {
-          for (let i = 0; i < EdgeShapes.e_maxBodies; ++i) {
+          for (let i : number = 0; i < EdgeShapes.e_maxBodies; ++i) {
               const body = this.m_bodies[i];
               if (body !== null) {
                   this.m_world.DestroyBody(body);
@@ -26896,16 +26896,16 @@
           {
               const color = new b2Color(0.9, 0.9, 0.9);
               const v = [];
-              for (let i = 0; i < this.m_polygonA.m_count; ++i) {
+              for (let i : number = 0; i < this.m_polygonA.m_count; ++i) {
                   v[i] = b2Transform.MulXV(this.m_transformA, this.m_polygonA.m_vertices[i], new b2Vec2());
               }
               g_debugDraw.DrawPolygon(v, this.m_polygonA.m_count, color);
-              for (let i = 0; i < this.m_polygonB.m_count; ++i) {
+              for (let i : number = 0; i < this.m_polygonB.m_count; ++i) {
                   v[i] = b2Transform.MulXV(this.m_transformB, this.m_polygonB.m_vertices[i], new b2Vec2());
               }
               g_debugDraw.DrawPolygon(v, this.m_polygonB.m_count, color);
           }
-          for (let i = 0; i < manifold.pointCount; ++i) {
+          for (let i : number = 0; i < manifold.pointCount; ++i) {
               g_debugDraw.DrawPoint(worldManifold.points[i], 4.0, new b2Color(0.9, 0.3, 0.3));
           }
       }
@@ -26977,7 +26977,7 @@
                       const poly = fixture.GetShape();
                       const vertexCount = poly.m_count;
                       const vertices = [];
-                      for (let i = 0; i < vertexCount; ++i) {
+                      for (let i : number = 0; i < vertexCount; ++i) {
                           vertices[i] = b2Transform.MulXV(xf, poly.m_vertices[i], new b2Vec2());
                       }
                       g_debugDraw.DrawPolygon(vertices, vertexCount, color);
@@ -27039,7 +27039,7 @@
           {
               this.m_circle.m_radius = 0.5;
           }
-          for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+          for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
               this.m_bodies[i] = null;
           }
       }
@@ -27074,7 +27074,7 @@
           this.m_bodyIndex = (this.m_bodyIndex + 1) % PolyShapes.e_maxBodies;
       }
       DestroyBody() {
-          for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+          for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
               if (this.m_bodies[i] !== null) {
                   this.m_world.DestroyBody(this.m_bodies[i]);
                   this.m_bodies[i] = null;
@@ -27092,7 +27092,7 @@
                   this.CreateBody(key.charCodeAt(0) - "1".charCodeAt(0));
                   break;
               case "a":
-                  for (let i = 0; i < PolyShapes.e_maxBodies; i += 2) {
+                  for (let i : number = 0; i < PolyShapes.e_maxBodies; i += 2) {
                       if (this.m_bodies[i]) {
                           const active = this.m_bodies[i].IsActive();
                           this.m_bodies[i].SetActive(!active);
@@ -27315,7 +27315,7 @@
               const y = new b2Vec2(0.0, 0.0);
               const deltaX = new b2Vec2(0.5625, 1.25);
               const deltaY = new b2Vec2(1.125, 0.0);
-              for (let i = 0; i < Pyramid.e_count; ++i) {
+              for (let i : number = 0; i < Pyramid.e_count; ++i) {
                   y.Copy(x);
                   for (let j = i; j < Pyramid.e_count; ++j) {
                       const bd = new b2BodyDef();
@@ -27459,7 +27459,7 @@
           this.m_edge = new b2EdgeShape();
           this.m_angle = 0;
           this.m_mode = 0 /* e_closest */;
-          for (let i = 0; i < 4; ++i) {
+          for (let i : number = 0; i < 4; ++i) {
               this.m_polygons[i] = new b2PolygonShape();
           }
           // Ground body
@@ -27509,7 +27509,7 @@
               this.m_edge.Set(new b2Vec2(-1, 0), new b2Vec2(1, 0));
           }
           this.m_bodyIndex = 0;
-          for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+          for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
               this.m_bodies[i] = null;
           }
           this.m_angle = 0;
@@ -27553,7 +27553,7 @@
           this.m_bodyIndex = (this.m_bodyIndex + 1) % RayCast.e_maxBodies;
       }
       DestroyBody() {
-          for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+          for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
               const body = this.m_bodies[i];
               if (body !== null) {
                   this.m_world.DestroyBody(body);
@@ -27638,7 +27638,7 @@
               const callback = new RayCastMultipleCallback();
               this.m_world.RayCast(callback, point1, point2);
               g_debugDraw.DrawSegment(point1, point2, new b2Color(0.8, 0.8, 0.8));
-              for (let i = 0; i < callback.m_count; ++i) {
+              for (let i : number = 0; i < callback.m_count; ++i) {
                   const p = callback.m_points[i];
                   const n = callback.m_normals[i];
                   g_debugDraw.DrawPoint(p, 5.0, new b2Color(0.4, 0.9, 0.4));
@@ -27884,7 +27884,7 @@
               this.m_ropeDef.localAnchorA.Set(0.0, y);
               /*box2d.b2Body*/
               let prevBody = ground;
-              for ( /*int32*/let i = 0; i < N; ++i) {
+              for ( /*int32*/let i : number = 0; i < N; ++i) {
                   /*box2d.b2BodyDef*/
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
@@ -27968,7 +27968,7 @@
           super();
           this.m_bodies = new Array(SensorTest.e_count);
           this.m_touching = new Array(SensorTest.e_count);
-          for (let i = 0; i < SensorTest.e_count; ++i) {
+          for (let i : number = 0; i < SensorTest.e_count; ++i) {
               this.m_touching[i] = new Array(1);
           }
           const bd = new b2BodyDef();
@@ -27998,7 +27998,7 @@
           {
               const shape = new b2CircleShape();
               shape.m_radius = 1.0;
-              for (let i = 0; i < SensorTest.e_count; ++i) {
+              for (let i : number = 0; i < SensorTest.e_count; ++i) {
                   //const bd = new box2d.b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-10.0 + 3.0 * i, 20.0);
@@ -28049,7 +28049,7 @@
           super.Step(settings);
           // Traverse the contact results. Apply a force on shapes
           // that overlap the sensor.
-          for (let i = 0; i < SensorTest.e_count; ++i) {
+          for (let i : number = 0; i < SensorTest.e_count; ++i) {
               if (!this.m_touching[i][0]) {
                   continue;
               }
@@ -28540,7 +28540,7 @@
           {
               const shape = new b2CircleShape();
               shape.m_radius = 1.0;
-              for (let i = 0; i < SphereStack.e_count; ++i) {
+              for (let i : number = 0; i < SphereStack.e_count; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(0.0, 4.0 + 3.0 * i);
@@ -28682,7 +28682,7 @@
               ground.CreateFixture(shape, 0.0);
           }
           // Balls
-          for (let i = 0; i < 40; ++i) {
+          for (let i : number = 0; i < 40; ++i) {
               const shape = new b2CircleShape();
               shape.m_radius = 0.25;
               const bd = new b2BodyDef();
@@ -28809,9 +28809,9 @@
                   /*box2d.b2Vec2*/
                   const position = new b2Vec2();
                   position.y = 0.0;
-                  for ( /*int32*/let j = 0; j < M; ++j) {
+                  for ( /*int32*/let j : number = 0; j < M; ++j) {
                       position.x = -N * a;
-                      for ( /*int32*/let i = 0; i < N; ++i) {
+                      for ( /*int32*/let i : number = 0; i < N; ++i) {
                           /*box2d.b2PolygonShape*/
                           const shape = new b2PolygonShape();
                           shape.SetAsBox(a, a, position, 0.0);
@@ -28828,10 +28828,10 @@
               //      /*int32*/ const M = 10;
               //      /*box2d.b2Vec2*/ const position = new box2d.b2Vec2();
               //      position.x = -N * a;
-              //      for (/*int32*/ let i = 0; i < N; ++i)
+              //      for (/*int32*/ let i : number = 0; i < N; ++i)
               //      {
               //        position.y = 0.0;
-              //        for (/*int32*/ let j = 0; j < M; ++j)
+              //        for (/*int32*/ let j : number = 0; j < M; ++j)
               //        {
               //          /*box2d.b2PolygonShape*/ const shape = new box2d.b2PolygonShape();
               //          shape.SetAsBox(a, a, position, 0.0);
@@ -28856,7 +28856,7 @@
               const deltaX = new b2Vec2(0.5625, 1.25);
               /*box2d.b2Vec2*/
               const deltaY = new b2Vec2(1.125, 0.0);
-              for ( /*int32*/let i = 0; i < Tiles.e_count; ++i) {
+              for ( /*int32*/let i : number = 0; i < Tiles.e_count; ++i) {
                   y.Copy(x);
                   for ( /*int32*/let j = i; j < Tiles.e_count; ++j) {
                       /*box2d.b2BodyDef*/
@@ -28966,34 +28966,34 @@
           const vertices = [];
           const transformA = new b2Transform();
           sweepA.GetTransform(transformA, 0.0);
-          for (let i = 0; i < this.m_shapeA.m_count; ++i) {
+          for (let i : number = 0; i < this.m_shapeA.m_count; ++i) {
               vertices[i] = b2Transform.MulXV(transformA, this.m_shapeA.m_vertices[i], new b2Vec2());
           }
           g_debugDraw.DrawPolygon(vertices, this.m_shapeA.m_count, new b2Color(0.9, 0.9, 0.9));
           const transformB = new b2Transform();
           sweepB.GetTransform(transformB, 0.0);
           //box2d.b2Vec2 localPoint(2.0f, -0.1f);
-          for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+          for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
               vertices[i] = b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new b2Vec2());
           }
           g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new b2Color(0.5, 0.9, 0.5));
           g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${(0.0).toFixed(1)}`);
           sweepB.GetTransform(transformB, output.t);
-          for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+          for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
               vertices[i] = b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new b2Vec2());
           }
           g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new b2Color(0.5, 0.7, 0.9));
           g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${output.t.toFixed(3)}`);
           sweepB.GetTransform(transformB, 1.0);
-          for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+          for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
               vertices[i] = b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new b2Vec2());
           }
           g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new b2Color(0.9, 0.5, 0.5));
           g_debugDraw.DrawStringWorld(transformB.p.x, transformB.p.y, `${(1.0).toFixed(1)}`);
           // #if 0
-          for (let t = 0.0; t < 1.0; t += 0.1) {
+          for (let t : number = 0.0; t < 1.0; t += 0.1) {
               sweepB.GetTransform(transformB, t);
-              for (let i = 0; i < this.m_shapeB.m_count; ++i) {
+              for (let i : number = 0; i < this.m_shapeB.m_count; ++i) {
                   vertices[i] = b2Transform.MulXV(transformB, this.m_shapeB.m_vertices[i], new b2Vec2());
               }
               g_debugDraw.DrawPolygon(vertices, this.m_shapeB.m_count, new b2Color(0.5, 0.5, 0.5));
@@ -29152,7 +29152,7 @@
               fd.shape = shape;
               fd.density = 25.0;
               const friction = [0.75, 0.5, 0.35, 0.1, 0.0];
-              for (let i = 0; i < 5; ++i) {
+              for (let i : number = 0; i < 5; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-15.0 + 4.0 * i, 28.0);
@@ -29206,7 +29206,7 @@
               fd.shape = shape;
               fd.density = 1.0;
               const restitution = [0.0, 0.1, 0.3, 0.5, 0.75, 0.9, 1.0];
-              for (let i = 0; i < 7; ++i) {
+              for (let i : number = 0; i < 7; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   bd.position.Set(-10.0 + 3.0 * i, 20.0);
@@ -29257,14 +29257,14 @@
               ground.CreateFixture(shape, 0.0);
           }
           const xs = [0.0, -10.0, -5.0, 5.0, 10.0];
-          for (let j = 0; j < VerticalStack.e_columnCount; ++j) {
+          for (let j : number = 0; j < VerticalStack.e_columnCount; ++j) {
               const shape = new b2PolygonShape();
               shape.SetAsBox(0.5, 0.5);
               const fd = new b2FixtureDef();
               fd.shape = shape;
               fd.density = 1.0;
               fd.friction = 0.3;
-              for (let i = 0; i < VerticalStack.e_rowCount; ++i) {
+              for (let i : number = 0; i < VerticalStack.e_rowCount; ++i) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   const n = j * VerticalStack.e_rowCount + i;
@@ -29471,7 +29471,7 @@
           }
       }
       JointDestroyed(joint) {
-          for (let i = 0; i < 8; ++i) {
+          for (let i : number = 0; i < 8; ++i) {
               if (this.m_joints[i] === joint) {
                   this.m_joints[i] = null;
                   break;
@@ -29481,7 +29481,7 @@
       Keyboard(key) {
           switch (key) {
               case "b":
-                  for (let i = 0; i < 4; ++i) {
+                  for (let i : number = 0; i < 4; ++i) {
                       const body = this.m_bodies[i];
                       if (body) {
                           this.m_world.DestroyBody(body);
@@ -29491,7 +29491,7 @@
                   }
                   break;
               case "j":
-                  for (let i = 0; i < 8; ++i) {
+                  for (let i : number = 0; i < 8; ++i) {
                       const joint = this.m_joints[i];
                       if (joint) {
                           this.m_world.DestroyJoint(joint);
@@ -29542,7 +29542,7 @@
           const vertices = b2Vec2.MakeArray(N);
           /*float32[]*/
           const masses = b2MakeNumberArray(N);
-          for (let i = 0; i < N; ++i) {
+          for (let i : number = 0; i < N; ++i) {
               vertices[i].Set(0.0, 20.0 - 0.25 * i);
               masses[i] = 1.0;
           }
@@ -29706,7 +29706,7 @@
               const ry = 5.0;
               const nBodies = 20;
               const bodyRadius = 0.5;
-              for (let i = 0; i < nBodies; ++i) {
+              for (let i : number = 0; i < nBodies; ++i) {
                   const angle = (i * 2.0 * Math.PI) / nBodies;
                   const bd = new b2BodyDef();
                   //bd.isBullet = true;
@@ -29794,7 +29794,7 @@
               body.CreateFixture(fd);
           }
           // add some small circles for effect
-          for (let i = 0; i < 5; i++) {
+          for (let i : number = 0; i < 5; i++) {
               const cd = new b2CircleShape((Math.random() * 1.0 + 0.5));
               fd.shape = cd;
               fd.friction = 0.3;
@@ -29852,7 +29852,7 @@
           const fd = new b2FixtureDef();
           const jd = new b2RevoluteJointDef();
           // Add 2 ragdolls along the top
-          for (let i = 0; i < 2; ++i) {
+          for (let i : number = 0; i < 2; ++i) {
               const startX = -20.0 + Math.random() * 2.0 + 40.0 * i;
               const startY = 30.0 + Math.random() * 5.0;
               // BODIES
@@ -30081,15 +30081,15 @@
           fd.restitution = 0.1;
           polygon.SetAsBox(1.0, 1.0);
           // Create 3 stacks
-          for (let i = 0; i < 10; ++i) {
+          for (let i : number = 0; i < 10; ++i) {
               bd.position.Set((0.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
               this.m_world.CreateBody(bd).CreateFixture(fd);
           }
-          for (let i = 0; i < 10; ++i) {
+          for (let i : number = 0; i < 10; ++i) {
               bd.position.Set((10.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
               this.m_world.CreateBody(bd).CreateFixture(fd);
           }
-          for (let i = 0; i < 10; ++i) {
+          for (let i : number = 0; i < 10; ++i) {
               bd.position.Set((20.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
               this.m_world.CreateBody(bd).CreateFixture(fd);
           }
@@ -30163,8 +30163,8 @@
           body.CreateFixture(fd);
           // Add the dominoes.
           const n = 12;
-          for (let i = 0; i < n; i++) {
-              for (let j = 0; j < (n - i); j++) {
+          for (let i : number = 0; i < n; i++) {
+              for (let j : number = 0; j < (n - i); j++) {
                   const offset = new b2Vec2((j - (n - 1 - i) * 0.5) * 1.5 * HEIGHT, (i + 0.5) * (HEIGHT + 2 * WIDTH) - WIDTH - 240);
                   add_domino(world, offset, false);
                   add_domino(world, b2Vec2.AddVV(offset, new b2Vec2(0, (HEIGHT + WIDTH) / 2), new b2Vec2()), true);
@@ -30256,7 +30256,7 @@
           {
               let currX;
               // Make base
-              for (let i = 0; i < BASE_COUNT; ++i) {
+              for (let i : number = 0; i < BASE_COUNT; ++i) {
                   currX = i * 1.5 * DOMINO_HEIGHT - (1.5 * DOMINO_HEIGHT * BASE_COUNT / 2);
                   makeDomino(currX, DOMINO_HEIGHT / 2.0, false);
                   makeDomino(currX, DOMINO_HEIGHT + DOMINO_WIDTH / 2.0, true);
@@ -30269,7 +30269,7 @@
                   }
                   // The y at the center of the I structure.
                   const currY = DOMINO_HEIGHT * 0.5 + (DOMINO_HEIGHT + 2 * DOMINO_WIDTH) * .99 * j;
-                  for (let i = 0; i < BASE_COUNT - j; ++i) {
+                  for (let i : number = 0; i < BASE_COUNT - j; ++i) {
                       currX = i * 1.5 * DOMINO_HEIGHT - (1.5 * DOMINO_HEIGHT * (BASE_COUNT - j) / 2);
                       dominoDensity *= 2.5;
                       if (i === 0) {
@@ -30420,7 +30420,7 @@
       }
       updateDrive(controlState) {
           //find desired speed
-          let desiredSpeed = 0;
+          let desiredSpeed : number = 0;
           switch (controlState & (TDC_UP | TDC_DOWN)) {
               case TDC_UP:
                   desiredSpeed = this.m_maxForwardSpeed;
@@ -30435,7 +30435,7 @@
           const currentForwardNormal = this.m_body.GetWorldVector(new b2Vec2(0, 1), new b2Vec2());
           const currentSpeed = b2Vec2.DotVV(this.getForwardVelocity(), currentForwardNormal);
           //apply necessary force
-          let force = 0;
+          let force : number = 0;
           if (desiredSpeed > currentSpeed) {
               force = this.m_maxDriveForce;
           }
@@ -30448,7 +30448,7 @@
           this.m_body.ApplyForce(currentForwardNormal.SelfMul(this.m_currentTraction * force), this.m_body.GetWorldCenter());
       }
       updateTurn(controlState) {
-          let desiredTorque = 0;
+          let desiredTorque : number = 0;
           switch (controlState & (TDC_LEFT | TDC_RIGHT)) {
               case TDC_LEFT:
                   desiredTorque = 15;
@@ -30535,7 +30535,7 @@
           const lockAngle = 35 * DEGTORAD;
           const turnSpeedPerSec = 160 * DEGTORAD; //from lock to lock in 0.5 sec
           const turnPerTimeStep = turnSpeedPerSec / 60.0;
-          let desiredAngle = 0;
+          let desiredAngle : number = 0;
           switch (controlState & (TDC_LEFT | TDC_RIGHT)) {
               case TDC_LEFT:
                   desiredAngle = lockAngle;
@@ -30704,7 +30704,7 @@
           }
           // Spawn in a bunch of crap
           {
-              for (let i = 0; i < 5; i++) {
+              for (let i : number = 0; i < 5; i++) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   //bd.isBullet = true;
@@ -30724,7 +30724,7 @@
               }
           }
           {
-              for (let i = 0; i < 5; i++) {
+              for (let i : number = 0; i < 5; i++) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   //bd.isBullet = true;
@@ -30742,7 +30742,7 @@
               }
           }
           {
-              for (let i = 0; i < 15; i++) {
+              for (let i : number = 0; i < 15; i++) {
                   const bd = new b2BodyDef();
                   bd.type = b2BodyType.b2_dynamicBody;
                   //bd.isBullet = true;
@@ -30827,12 +30827,12 @@
               this.m_bodies.push(body);
           }
           // if (box2d.DEBUG) {
-          //   for (let body_i = 0; i < this.m_bodies.length; ++i)
+          //   for (let body_i : number = 0; i < this.m_bodies.length; ++i)
           //     this.m_controller.AddBody(this.m_bodies[body_i]);
-          //   for (let body_i = 0; i < this.m_bodies.length; ++i)
+          //   for (let body_i : number = 0; i < this.m_bodies.length; ++i)
           //     this.m_controller.RemoveBody(this.m_bodies[body_i]);
           // }
-          for (let body_i = 0; body_i < this.m_bodies.length; ++body_i) {
+          for (let body_i : number = 0; body_i < this.m_bodies.length; ++body_i) {
               this.m_controller.AddBody(this.m_bodies[body_i]);
           }
           // if (box2d.DEBUG) {
@@ -30965,7 +30965,7 @@
        */
       Add(particleIndices, numberOfParticles) {
           // DEBUG: box2d.b2Assert(this.m_particleSystem !== null);
-          for (let i = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
+          for (let i : number = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
               const particleIndex = particleIndices[i];
               this.m_particleSystem.SetParticleFlags(particleIndex, this.m_particleSystem.GetFlagsBuffer()[particleIndex] | b2ParticleFlag.b2_destructionListenerParticle);
               this.m_particles.push(this.m_particleSystem.GetParticleHandleFromIndex(particleIndex));
@@ -30983,7 +30983,7 @@
           const colorCoeff = 2.0 * Math.abs((this.m_colorOscillationTime / this.m_colorOscillationPeriod) - 0.5);
           const color = new b2Color().SetByteRGBA(128 + (128.0 * (1.0 - colorCoeff)), 128 + (256.0 * Math.abs(0.5 - colorCoeff)), 128 + (128.0 * colorCoeff), 255);
           // Update the color of all special particles.
-          for (let i = 0; i < this.m_particles.length; ++i) {
+          for (let i : number = 0; i < this.m_particles.length; ++i) {
               this.m_particleSystem.GetColorBuffer()[this.m_particles[i].GetIndex()].Copy(color);
           }
       }
@@ -31045,10 +31045,10 @@
           const bd = new b2BodyDef();
           const ground = this.m_world.CreateBody(bd);
           // Reset our pointers
-          for (let i = 0; i < SandboxParams.k_maxEmitters; i++) {
+          for (let i : number = 0; i < SandboxParams.k_maxEmitters; i++) {
               this.m_emitters[i] = null;
           }
-          for (let i = 0; i < SandboxParams.k_maxPumps; i++) {
+          for (let i : number = 0; i < SandboxParams.k_maxPumps; i++) {
               this.m_pumps[i] = null;
           }
           this.m_world.SetGravity(new b2Vec2(0.0, -20));
@@ -31106,7 +31106,7 @@
       }
       __dtor__() {
           // deallocate our emitters
-          for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+          for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
               ///  delete this.m_emitters[i];
               this.m_emitters[i] = null;
           }
@@ -31159,8 +31159,8 @@
           const green = new b2Color().SetByteRGBA(128, 255, 128, 255);
           const blue = new b2Color().SetByteRGBA(128, 128, 255, 255);
           this.m_pumpForce.Set(SandboxParams.k_pumpForce, 0);
-          for (let i = 0; i < SandboxParams.k_tileWidth; i++) {
-              for (let j = 0; j < SandboxParams.k_tileHeight; j++) {
+          for (let i : number = 0; i < SandboxParams.k_tileWidth; i++) {
+              for (let j : number = 0; j < SandboxParams.k_tileHeight; j++) {
                   const item = maze[j * SandboxParams.k_tileWidth + i];
                   // Calculate center of this square
                   const center = new b2Vec2(SandboxParams.k_playfieldLeftEdge + SandboxParams.k_tileRadius * 2 * i + SandboxParams.k_tileRadius, SandboxParams.k_playfieldBottomEdge - SandboxParams.k_tileRadius * 2 * j +
@@ -31274,7 +31274,7 @@
        */
       Keyboard(key) {
           super.Keyboard(key);
-          let toggle = 0;
+          let toggle : number = 0;
           switch (key) {
               case "a":
                   this.m_particleFlags = 0;
@@ -31325,7 +31325,7 @@
           super.Step(settings);
           this.m_particleFlags = Test.GetParticleParameterValue();
           // Step all the emitters
-          for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+          for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
               const particleIndices = [];
               const emitter = this.m_emitters[i];
               if (emitter) {
@@ -31339,7 +31339,7 @@
           // Do killfield work--kill every particle near the bottom of the screen
           this.m_particleSystem.DestroyParticlesInShape(this.m_killFieldShape, this.m_killFieldTransform);
           // Move the pumps
-          for (let i = 0; i < this.m_pumpIndex; i++) {
+          for (let i : number = 0; i < this.m_pumpIndex; i++) {
               const pump = this.m_pumps[i];
               if (pump) {
                   // Pumps can and will clog up if the pile of particles they're
@@ -31509,13 +31509,13 @@
           this.m_contactPoint = new b2Vec2();
           // Set up array of sparks trackers.
           this.m_VFXIndex = 0;
-          for (let i = 0; i < Sparky.c_maxVFX; i++) {
+          for (let i : number = 0; i < Sparky.c_maxVFX; i++) {
               this.m_VFX[i] = null;
           }
           this.CreateWalls();
           this.m_particleSystem.SetRadius(0.25 * 2); // HACK: increase particle radius
           // Create a list of circles that will spark.
-          for (let i = 0; i < Sparky.c_maxCircles; i++) {
+          for (let i : number = 0; i < Sparky.c_maxCircles; i++) {
               const bd = new b2BodyDef();
               bd.type = b2BodyType.b2_dynamicBody;
               const body = this.m_world.CreateBody(bd);
@@ -31562,7 +31562,7 @@
               this.m_contact = false;
           }
           // Step particle explosions.
-          for (let i = 0; i < Sparky.c_maxVFX; i++) {
+          for (let i : number = 0; i < Sparky.c_maxVFX; i++) {
               const vfx = this.m_VFX[i];
               if (vfx === null) {
                   continue;
@@ -32153,13 +32153,13 @@
               "      (c) color mixing, (s) static pressure",
               "      (+) increase flow, (-) decrease flow",
           ];
-          for (let i = 0; i < k_keys.length; ++i) {
+          for (let i : number = 0; i < k_keys.length; ++i) {
               g_debugDraw.DrawString(5, this.m_textLine, k_keys[i]);
               this.m_textLine += DRAW_STRING_NEW_LINE;
           }
       }
       Keyboard(key) {
-          let parameter = 0;
+          let parameter : number = 0;
           switch (key) {
               case "w":
                   parameter = b2ParticleFlag.b2_waterParticle;
@@ -33147,7 +33147,7 @@
               body.SetMassData(massData);
           }
           // Initialize the emitters.
-          for (let i = 0; i < this.m_emitters.length; ++i) {
+          for (let i : number = 0; i < this.m_emitters.length; ++i) {
               const mirrorAlongY = i & 1 ? -1.0 : 1.0;
               const emitter = this.m_emitters[i];
               emitter.SetPosition(new b2Vec2(MultipleParticleSystems.k_emitterPosition.x * mirrorAlongY, MultipleParticleSystems.k_emitterPosition.y));
@@ -33164,7 +33164,7 @@
               dt = 0.0;
           }
           super.Step(settings);
-          for (let i = 0; i < this.m_emitters.length; ++i) {
+          for (let i : number = 0; i < this.m_emitters.length; ++i) {
               this.m_emitters[i].Step(dt);
           }
       }
@@ -33483,7 +33483,7 @@
        */
       __dtor__() {
           ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
-          for (let it = 0; it < this.m_emitterLifetime.length; ++it) {
+          for (let it : number = 0; it < this.m_emitterLifetime.length; ++it) {
               ///  delete it.first;
               this.m_emitterLifetime[it].emitter.__dtor__();
           }
@@ -33504,7 +33504,7 @@
           ///  std.vector<RadialEmitter*> emittersToDestroy;
           const emittersToDestroy = [];
           ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
-          for (let it = 0; it < this.m_emitterLifetime.length; ++it) {
+          for (let it : number = 0; it < this.m_emitterLifetime.length; ++it) {
               ///  RadialEmitter * const emitter = it.first;
               const emitter = this.m_emitterLifetime[it].emitter;
               ///  const float32 lifetime = it.second - dt;
@@ -33517,7 +33517,7 @@
               emitter.Step(dt);
           }
           ///  for (std.vector<RadialEmitter*>.const_iterator it = emittersToDestroy.begin(); it !== emittersToDestroy.end(); ++it)
-          for (let it = 0; it < emittersToDestroy.length; ++it) {
+          for (let it : number = 0; it < emittersToDestroy.length; ++it) {
               ///  RadialEmitter *emitter = *it;
               const emitter = emittersToDestroy[it];
               /// delete emitter;
@@ -33682,7 +33682,7 @@
        * each tile and the bodies associated with each tile.
        */
       InitializeLayout() {
-          for (let i = 0; i < FrackerSettings.k_worldTiles; ++i) {
+          for (let i : number = 0; i < FrackerSettings.k_worldTiles; ++i) {
               this.m_material[i] = Fracker.Material.EMPTY;
               this.m_bodies[i] = null;
           }
@@ -33739,8 +33739,8 @@
           // DEBUG:   FrackerSettings.k_emptyProbability +
           // DEBUG:   FrackerSettings.k_oilProbability +
           // DEBUG:   FrackerSettings.k_waterProbability === 100);
-          for (let x = 0; x < FrackerSettings.k_worldWidthTiles; x++) {
-              for (let y = 0; y < FrackerSettings.k_worldHeightTiles; y++) {
+          for (let x : number = 0; x < FrackerSettings.k_worldWidthTiles; x++) {
+              for (let y : number = 0; y < FrackerSettings.k_worldHeightTiles; y++) {
                   if (this.GetMaterial(x, y) !== Fracker.Material.EMPTY) {
                       continue;
                   }
@@ -33816,7 +33816,7 @@
           ///  void** const userDataBuffer = m_particleSystem.GetUserDataBuffer() + group.GetBufferIndex();;
           const userDataBuffer = this.m_particleSystem.GetUserDataBuffer();
           const index = group.GetBufferIndex();
-          for (let i = 0; i < particleCount; ++i) {
+          for (let i : number = 0; i < particleCount; ++i) {
               ///  userDataBuffer[i] = GetMaterialStorage(x, y);
               userDataBuffer[index + i] = this.m_material[Fracker.TileToArrayOffset(x, y)];
           }
@@ -34033,7 +34033,7 @@
           ///  const std.set<b2ParticleGroup*> &particleGroups = m_listener.GetParticleGroups();
           const particleGroups = this.m_listener.GetParticleGroups();
           ///  for (std.set<b2ParticleGroup*>.const_iterator it = particleGroups.begin(); it !== particleGroups.end(); ++it)
-          for (let it = 0; it < particleGroups.length; ++it) {
+          for (let it : number = 0; it < particleGroups.length; ++it) {
               ///  b2ParticleGroup * const particleGroup = *it;
               const particleGroup = particleGroups[it];
               const index = particleGroup.GetBufferIndex();
@@ -34042,7 +34042,7 @@
               ///  b2Vec2* const velocityBuffer = m_particleSystem.GetVelocityBuffer() + index;
               const velocityBuffer = this.m_particleSystem.GetVelocityBuffer();
               const particleCount = particleGroup.GetParticleCount();
-              for (let i = 0; i < particleCount; ++i) {
+              for (let i : number = 0; i < particleCount; ++i) {
                   // Apply velocity to particles near the bottom or in the well
                   // sucking them up to the top.
                   const wellEnd = Fracker.CenteredPosition(Fracker.TileToWorld(this.m_wellX, this.m_wellBottom - 2));
@@ -34430,7 +34430,7 @@
               ///    this.m_particleGroup.GetBufferIndex();
               const velocities = this.m_particleSystem.GetVelocityBuffer();
               const index = this.m_particleGroup.GetBufferIndex();
-              for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+              for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
                   ///  b2Vec2& v = *(velocities + i);
                   const v = velocities[index + i];
                   v.Set(RandomFloat() + 1.0, RandomFloat() + 1.0);
@@ -34506,15 +34506,15 @@
       Step(settings) {
           super.Step(settings);
           // Number of particles above (top) and below (bottom) the barrier.
-          let top = 0;
-          let bottom = 0;
+          let top : number = 0;
+          let bottom : number = 0;
           if (this.m_particleGroup) {
               const index = this.m_particleGroup.GetBufferIndex();
               ///  b2Vec2* const velocities = this.m_particleSystem.GetVelocityBuffer() + index;
               const velocities = this.m_particleSystem.GetVelocityBuffer();
               ///  b2Vec2* const positions = this.m_particleSystem.GetPositionBuffer() + index;
               const positions = this.m_particleSystem.GetPositionBuffer();
-              for (let i = 0; i < this.m_particleGroup.GetParticleCount(); i++) {
+              for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); i++) {
                   // Add energy to particles based upon the temperature.
                   ///  b2Vec2& v = velocities[i];
                   const v = velocities[index + i];
@@ -34877,7 +34877,7 @@
                   shape.Set(vertices);
                   ground.CreateFixture(shape, 0.0);
               }
-              for (let y = 0.0; y < yrange; y += ystep) {
+              for (let y : number = 0.0; y < yrange; y += ystep) {
                   const shape = new b2PolygonShape();
                   const vertices = [
                       new b2Vec2(25.0, y),
@@ -35000,7 +35000,7 @@
               // 	v.Normalize();
               // 	v *= kSpeedup;
               // }
-              for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+              for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
                   const v = velocities[index + i];
                   v.Set(RandomFloat(), RandomFloat());
                   v.SelfNormalize();
@@ -35021,7 +35021,7 @@
           // 	v.Normalize();
           // 	v *= kSpeedup;
           // }
-          for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+          for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
               const v = velocities[index + i];
               v.SelfNormalize();
               v.SelfMul(ParticleCollisionFilter.kSpeedup);
@@ -35032,7 +35032,7 @@
                   "Keys: (a) toggle Fixture collisions",
                   "      (s) toggle particle collisions",
               ];
-              for (let i = 0; i < k_keys.length; ++i) {
+              for (let i : number = 0; i < k_keys.length; ++i) {
                   g_debugDraw.DrawString(5, this.m_textLine, k_keys[i]);
                   this.m_textLine += DRAW_STRING_NEW_LINE;
               }
@@ -35326,7 +35326,7 @@
           controls_div.appendChild(document.createTextNode("Tests"));
           controls_div.appendChild(document.createElement("br"));
           const test_select = document.createElement("select");
-          for (let i = 0; i < g_testEntries.length; ++i) {
+          for (let i : number = 0; i < g_testEntries.length; ++i) {
               const option = document.createElement("option");
               option.text = g_testEntries[i].name;
               option.value = i.toString();

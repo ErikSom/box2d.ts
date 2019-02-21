@@ -56,15 +56,15 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     fd.restitution = 0.1;
                     polygon.SetAsBox(1.0, 1.0);
                     // Create 3 stacks
-                    for (let i = 0; i < 10; ++i) {
+                    for (let i : number = 0; i < 10; ++i) {
                         bd.position.Set((0.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
                         this.m_world.CreateBody(bd).CreateFixture(fd);
                     }
-                    for (let i = 0; i < 10; ++i) {
+                    for (let i : number = 0; i < 10; ++i) {
                         bd.position.Set((10.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
                         this.m_world.CreateBody(bd).CreateFixture(fd);
                     }
-                    for (let i = 0; i < 10; ++i) {
+                    for (let i : number = 0; i < 10; ++i) {
                         bd.position.Set((20.0 + Math.random() * 0.2 - 0.1), (30.0 - i * 2.5));
                         this.m_world.CreateBody(bd).CreateFixture(fd);
                     }

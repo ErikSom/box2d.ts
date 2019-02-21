@@ -104,7 +104,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         // 	v.Normalize();
                         // 	v *= kSpeedup;
                         // }
-                        for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+                        for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
                             const v = velocities[index + i];
                             v.Set(testbed.RandomFloat(), testbed.RandomFloat());
                             v.SelfNormalize();
@@ -125,7 +125,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     // 	v.Normalize();
                     // 	v *= kSpeedup;
                     // }
-                    for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+                    for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
                         const v = velocities[index + i];
                         v.SelfNormalize();
                         v.SelfMul(ParticleCollisionFilter.kSpeedup);
@@ -136,7 +136,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                             "Keys: (a) toggle Fixture collisions",
                             "      (s) toggle particle collisions",
                         ];
-                        for (let i = 0; i < k_keys.length; ++i) {
+                        for (let i : number = 0; i < k_keys.length; ++i) {
                             testbed.g_debugDraw.DrawString(5, this.m_textLine, k_keys[i]);
                             this.m_textLine += testbed.DRAW_STRING_NEW_LINE;
                         }

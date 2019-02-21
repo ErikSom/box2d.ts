@@ -45,7 +45,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_worldExtent = 15.0;
                     this.m_proxyExtent = 0.5;
                     //srand(888);
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         const actor = this.m_actors[i];
                         this.GetRandomAABB(actor.aabb);
                         actor.proxyId = this.m_tree.CreateProxy(actor.aabb, actor);
@@ -66,13 +66,13 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.Reset();
                     if (this.m_automated) {
                         const actionCount = box2d.b2Max(1, DynamicTreeTest.e_actorCount >> 2);
-                        for (let i = 0; i < actionCount; ++i) {
+                        for (let i : number = 0; i < actionCount; ++i) {
                             this.Action();
                         }
                     }
                     this.Query();
                     this.RayCast();
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         const actor = this.m_actors[i];
                         if (actor.proxyId === null) {
                             continue;
@@ -152,7 +152,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     aabb.upperBound.SelfAdd(box2d.b2Vec2.SubVV(c, c0, new box2d.b2Vec2()));
                 }
                 CreateProxy() {
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
                         const actor = this.m_actors[j];
                         if (actor.proxyId === null) {
@@ -163,7 +163,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     }
                 }
                 DestroyProxy() {
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
                         const actor = this.m_actors[j];
                         if (actor.proxyId !== null) {
@@ -174,7 +174,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     }
                 }
                 MoveProxy() {
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
                         const actor = this.m_actors[j];
                         if (actor.proxyId === null) {
@@ -190,7 +190,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                 }
                 Reset() {
                     this.m_rayActor = null;
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         this.m_actors[i].fraction = 1.0;
                         this.m_actors[i].overlap = false;
                     }
@@ -214,7 +214,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         actor.overlap = box2d.b2TestOverlapAABB(this.m_queryAABB, actor.aabb);
                         return true;
                     });
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         if (this.m_actors[i].proxyId === null) {
                             continue;
                         }
@@ -243,7 +243,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     // Brute force ray cast.
                     let bruteActor = null;
                     const bruteOutput = new box2d.b2RayCastOutput();
-                    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+                    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
                         if (this.m_actors[i].proxyId === null) {
                             continue;
                         }

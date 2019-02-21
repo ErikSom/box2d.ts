@@ -534,7 +534,7 @@ export class b2ContactSolver {
 
       // Solve normal constraints
       if (vc.pointCount === 1 || g_blockSolve === false) {
-        for (let j = 0; j < pointCount; ++j) {
+        for (let j : number = 0; j < pointCount; ++j) {
           const vcp: b2VelocityConstraintPoint = vc.points[j];
 
           // Relative velocity at contact

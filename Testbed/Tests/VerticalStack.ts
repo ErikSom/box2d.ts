@@ -47,7 +47,7 @@ export class VerticalStack extends testbed.Test {
 
     const xs = [0.0, -10.0, -5.0, 5.0, 10.0];
 
-    for (let j = 0; j < VerticalStack.e_columnCount; ++j) {
+    for (let j : number = 0; j < VerticalStack.e_columnCount; ++j) {
       const shape = new box2d.b2PolygonShape();
       shape.SetAsBox(0.5, 0.5);
 
@@ -56,7 +56,7 @@ export class VerticalStack extends testbed.Test {
       fd.density = 1.0;
       fd.friction = 0.3;
 
-      for (let i = 0; i < VerticalStack.e_rowCount; ++i) {
+      for (let i : number = 0; i < VerticalStack.e_rowCount; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
 

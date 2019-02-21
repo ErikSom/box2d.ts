@@ -48,7 +48,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     const fd = new box2d.b2FixtureDef();
                     const jd = new box2d.b2RevoluteJointDef();
                     // Add 2 ragdolls along the top
-                    for (let i = 0; i < 2; ++i) {
+                    for (let i : number = 0; i < 2; ++i) {
                         const startX = -20.0 + Math.random() * 2.0 + 40.0 * i;
                         const startY = 30.0 + Math.random() * 5.0;
                         // BODIES

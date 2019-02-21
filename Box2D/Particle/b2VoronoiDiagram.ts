@@ -65,8 +65,8 @@ export class b2VoronoiDiagram {
     const inverseRadius = 1 / radius;
     const lower = new b2Vec2(+b2_maxFloat, +b2_maxFloat);
     const upper = new b2Vec2(-b2_maxFloat, -b2_maxFloat);
-    let necessary_count = 0;
-    for (let k = 0; k < this.m_generatorCount; k++) {
+    let necessary_count : number = 0;
+    for (let k : number = 0; k < this.m_generatorCount; k++) {
       const g = this.m_generatorBuffer[k];
       if (g.necessary) {
         b2Vec2.MinV(lower, g.center, lower);
@@ -96,7 +96,7 @@ export class b2VoronoiDiagram {
     // (4 * m_countX * m_countY) is the queue capacity that is experimentally
     // known to be necessary and sufficient for general particle distributions.
     const queue = new b2StackQueue<b2VoronoiDiagram.Task>(4 * this.m_countX * this.m_countY);
-    for (let k = 0; k < this.m_generatorCount; k++) {
+    for (let k : number = 0; k < this.m_generatorCount; k++) {
       const g = this.m_generatorBuffer[k];
       ///  g.center = inverseRadius * (g.center - lower);
       g.center.SelfSub(lower).SelfMul(inverseRadius);
@@ -129,8 +129,8 @@ export class b2VoronoiDiagram {
         }
       }
     }
-    for (let y = 0; y < this.m_countY; y++) {
-      for (let x = 0; x < this.m_countX - 1; x++) {
+    for (let y : number = 0; y < this.m_countY; y++) {
+      for (let x : number = 0; x < this.m_countX - 1; x++) {
         const i = x + y * this.m_countX;
         const a = this.m_diagram[i];
         const b = this.m_diagram[i + 1];
@@ -140,8 +140,8 @@ export class b2VoronoiDiagram {
         }
       }
     }
-    for (let y = 0; y < this.m_countY - 1; y++) {
-      for (let x = 0; x < this.m_countX; x++) {
+    for (let y : number = 0; y < this.m_countY - 1; y++) {
+      for (let x : number = 0; x < this.m_countX; x++) {
         const i = x + y * this.m_countX;
         const a = this.m_diagram[i];
         const b = this.m_diagram[i + this.m_countX];
@@ -191,8 +191,8 @@ export class b2VoronoiDiagram {
    * generator.
    */
   public GetNodes(callback: b2VoronoiDiagram.NodeCallback): void {
-    for (let y = 0; y < this.m_countY - 1; y++) {
-      for (let x = 0; x < this.m_countX - 1; x++) {
+    for (let y : number = 0; y < this.m_countY - 1; y++) {
+      for (let x : number = 0; x < this.m_countX - 1; x++) {
         const i = x + y * this.m_countX;
         const a = this.m_diagram[i];
         const b = this.m_diagram[i + 1];

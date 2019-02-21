@@ -237,7 +237,7 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     if (this.m_particleSystem === null) {
                         throw new Error();
                     }
-                    let numberOfParticlesCreated = 0;
+                    let numberOfParticlesCreated : number = 0;
                     // How many (fractional) particles should we have emitted this frame?
                     this.m_emitRemainder += this.m_emitRate * dt;
                     const pd = new box2d.b2ParticleDef();

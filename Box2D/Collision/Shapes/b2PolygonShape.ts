@@ -80,7 +80,7 @@ export class b2PolygonShape extends b2Shape {
 
     // Perform welding and copy vertices into local buffer.
     const ps: XY[] = [];
-    for (let i = 0; i < n; ++i) {
+    for (let i : number = 0; i < n; ++i) {
       const /*b2Vec2*/ v = vertices[start + i];
 
       let /*bool*/ unique = true;
@@ -242,7 +242,7 @@ export class b2PolygonShape extends b2Shape {
     let maxDistance = -b2_maxFloat;
     const normalForMaxDistance = b2PolygonShape.ComputeDistance_s_normalForMaxDistance.Copy(pLocal);
 
-    for (let i = 0; i < this.m_count; ++i) {
+    for (let i : number = 0; i < this.m_count; ++i) {
       const dot = b2Vec2.DotVV(this.m_normals[i], b2Vec2.SubVV(pLocal, this.m_vertices[i], b2Vec2.s_t0));
       if (dot > maxDistance) {
         maxDistance = dot;
@@ -253,7 +253,7 @@ export class b2PolygonShape extends b2Shape {
     if (maxDistance > 0) {
       const minDistance = b2PolygonShape.ComputeDistance_s_minDistance.Copy(normalForMaxDistance);
       let minDistance2 = maxDistance * maxDistance;
-      for (let i = 0; i < this.m_count; ++i) {
+      for (let i : number = 0; i < this.m_count; ++i) {
         const distance = b2Vec2.SubVV(pLocal, this.m_vertices[i], b2PolygonShape.ComputeDistance_s_distance);
         const distance2 = distance.LengthSquared();
         if (minDistance2 > distance2) {

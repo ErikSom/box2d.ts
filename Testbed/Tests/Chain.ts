@@ -50,7 +50,7 @@ export class Chain extends testbed.Test {
 
       const y = 25.0;
       let prevBody = ground;
-      for (let i = 0; i < Chain.e_count; ++i) {
+      for (let i : number = 0; i < Chain.e_count; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(0.5 + i, y);

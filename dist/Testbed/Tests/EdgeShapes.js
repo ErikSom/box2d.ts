@@ -52,7 +52,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_bodyIndex = 0;
                     this.m_bodies = new Array(EdgeShapes.e_maxBodies);
                     this.m_polygons = new Array(4);
-                    for (let i = 0; i < 4; ++i) {
+                    for (let i : number = 0; i < 4; ++i) {
                         this.m_polygons[i] = new box2d.b2PolygonShape();
                     }
                     this.m_circle = new box2d.b2CircleShape();
@@ -63,7 +63,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const ground = this.m_world.CreateBody(bd);
                         let x1 = -20.0;
                         let y1 = 2.0 * box2d.b2Cos(x1 / 10.0 * box2d.b2_pi);
-                        for (let i = 0; i < 80; ++i) {
+                        for (let i : number = 0; i < 80; ++i) {
                             const x2 = x1 + 0.5;
                             const y2 = 2.0 * box2d.b2Cos(x2 / 10.0 * box2d.b2_pi);
                             const shape = new box2d.b2EdgeShape();
@@ -108,7 +108,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     {
                         this.m_circle.m_radius = 0.5;
                     }
-                    for (let i = 0; i < EdgeShapes.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < EdgeShapes.e_maxBodies; ++i) {
                         this.m_bodies[i] = null;
                     }
                 }
@@ -145,7 +145,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_bodyIndex = (this.m_bodyIndex + 1) % EdgeShapes.e_maxBodies;
                 }
                 DestroyBody() {
-                    for (let i = 0; i < EdgeShapes.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < EdgeShapes.e_maxBodies; ++i) {
                         const body = this.m_bodies[i];
                         if (body !== null) {
                             this.m_world.DestroyBody(body);

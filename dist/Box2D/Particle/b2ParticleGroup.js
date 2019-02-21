@@ -100,7 +100,7 @@ System.register(["../Common/b2Math", "../Common/b2Draw"], function (exports_1, c
                     if (!this.m_system.m_flagsBuffer.data) {
                         throw new Error();
                     }
-                    let flags = 0;
+                    let flags : number = 0;
                     for (let i = this.m_firstIndex; i < this.m_lastIndex; i++) {
                         flags |= this.m_system.m_flagsBuffer.data[i];
                     }

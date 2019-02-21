@@ -42,7 +42,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const maxX = 0.0;
                         const minY = 4.0;
                         const maxY = 6.0;
-                        for (let i = 0; i < 400; ++i) {
+                        for (let i : number = 0; i < 400; ++i) {
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
                             bd.position.Set(box2d.b2RandomRange(minX, maxX), box2d.b2RandomRange(minY, maxY));

@@ -89,7 +89,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         fd.shape = shape;
                         fd.density = 25.0;
                         const friction = [0.75, 0.5, 0.35, 0.1, 0.0];
-                        for (let i = 0; i < 5; ++i) {
+                        for (let i : number = 0; i < 5; ++i) {
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
                             bd.position.Set(-15.0 + 4.0 * i, 28.0);

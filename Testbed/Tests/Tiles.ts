@@ -55,9 +55,9 @@ export class Tiles extends testbed.Test {
         /*box2d.b2Vec2*/
         const position = new box2d.b2Vec2();
         position.y = 0.0;
-        for ( /*int32*/ let j = 0; j < M; ++j) {
+        for ( /*int32*/ let j : number = 0; j < M; ++j) {
           position.x = -N * a;
-          for ( /*int32*/ let i = 0; i < N; ++i) {
+          for ( /*int32*/ let i : number = 0; i < N; ++i) {
             /*box2d.b2PolygonShape*/
             const shape = new box2d.b2PolygonShape();
             shape.SetAsBox(a, a, position, 0.0);
@@ -74,10 +74,10 @@ export class Tiles extends testbed.Test {
       //      /*int32*/ const M = 10;
       //      /*box2d.b2Vec2*/ const position = new box2d.b2Vec2();
       //      position.x = -N * a;
-      //      for (/*int32*/ let i = 0; i < N; ++i)
+      //      for (/*int32*/ let i : number = 0; i < N; ++i)
       //      {
       //        position.y = 0.0;
-      //        for (/*int32*/ let j = 0; j < M; ++j)
+      //        for (/*int32*/ let j : number = 0; j < M; ++j)
       //        {
       //          /*box2d.b2PolygonShape*/ const shape = new box2d.b2PolygonShape();
       //          shape.SetAsBox(a, a, position, 0.0);
@@ -105,7 +105,7 @@ export class Tiles extends testbed.Test {
       /*box2d.b2Vec2*/
       const deltaY = new box2d.b2Vec2(1.125, 0.0);
 
-      for ( /*int32*/ let i = 0; i < Tiles.e_count; ++i) {
+      for ( /*int32*/ let i : number = 0; i < Tiles.e_count; ++i) {
         y.Copy(x);
 
         for ( /*int32*/ let j = i; j < Tiles.e_count; ++j) {

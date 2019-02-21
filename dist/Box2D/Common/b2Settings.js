@@ -55,7 +55,7 @@ System.register([], function (exports_1, context_1) {
     exports_1("b2ParseUInt", b2ParseUInt);
     function b2MakeArray(length, init) {
         const a = [];
-        for (let i = 0; i < length; ++i) {
+        for (let i : number = 0; i < length; ++i) {
             a.push(init(i));
         }
         return a;
@@ -63,7 +63,7 @@ System.register([], function (exports_1, context_1) {
     exports_1("b2MakeArray", b2MakeArray);
     function b2MakeNullArray(length) {
         const a = [];
-        for (let i = 0; i < length; ++i) {
+        for (let i : number = 0; i < length; ++i) {
             a.push(null);
         }
         return a;
@@ -71,7 +71,7 @@ System.register([], function (exports_1, context_1) {
     exports_1("b2MakeNullArray", b2MakeNullArray);
     function b2MakeNumberArray(length, init = 0) {
         const a = [];
-        for (let i = 0; i < length; ++i) {
+        for (let i : number = 0; i < length; ++i) {
             a.push(init);
         }
         return a;

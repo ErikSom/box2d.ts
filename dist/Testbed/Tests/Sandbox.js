@@ -129,7 +129,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                  */
                 Add(particleIndices, numberOfParticles) {
                     // DEBUG: box2d.b2Assert(this.m_particleSystem !== null);
-                    for (let i = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
+                    for (let i : number = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
                         const particleIndex = particleIndices[i];
                         this.m_particleSystem.SetParticleFlags(particleIndex, this.m_particleSystem.GetFlagsBuffer()[particleIndex] | box2d.b2ParticleFlag.b2_destructionListenerParticle);
                         this.m_particles.push(this.m_particleSystem.GetParticleHandleFromIndex(particleIndex));
@@ -147,7 +147,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     const colorCoeff = 2.0 * Math.abs((this.m_colorOscillationTime / this.m_colorOscillationPeriod) - 0.5);
                     const color = new box2d.b2Color().SetByteRGBA(128 + (128.0 * (1.0 - colorCoeff)), 128 + (256.0 * Math.abs(0.5 - colorCoeff)), 128 + (128.0 * colorCoeff), 255);
                     // Update the color of all special particles.
-                    for (let i = 0; i < this.m_particles.length; ++i) {
+                    for (let i : number = 0; i < this.m_particles.length; ++i) {
                         this.m_particleSystem.GetColorBuffer()[this.m_particles[i].GetIndex()].Copy(color);
                     }
                 }
@@ -210,10 +210,10 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     const bd = new box2d.b2BodyDef();
                     const ground = this.m_world.CreateBody(bd);
                     // Reset our pointers
-                    for (let i = 0; i < SandboxParams.k_maxEmitters; i++) {
+                    for (let i : number = 0; i < SandboxParams.k_maxEmitters; i++) {
                         this.m_emitters[i] = null;
                     }
-                    for (let i = 0; i < SandboxParams.k_maxPumps; i++) {
+                    for (let i : number = 0; i < SandboxParams.k_maxPumps; i++) {
                         this.m_pumps[i] = null;
                     }
                     this.m_world.SetGravity(new box2d.b2Vec2(0.0, -20));
@@ -271,7 +271,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                 }
                 __dtor__() {
                     // deallocate our emitters
-                    for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+                    for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
                         ///  delete this.m_emitters[i];
                         this.m_emitters[i] = null;
                     }
@@ -324,8 +324,8 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     const green = new box2d.b2Color().SetByteRGBA(128, 255, 128, 255);
                     const blue = new box2d.b2Color().SetByteRGBA(128, 128, 255, 255);
                     this.m_pumpForce.Set(SandboxParams.k_pumpForce, 0);
-                    for (let i = 0; i < SandboxParams.k_tileWidth; i++) {
-                        for (let j = 0; j < SandboxParams.k_tileHeight; j++) {
+                    for (let i : number = 0; i < SandboxParams.k_tileWidth; i++) {
+                        for (let j : number = 0; j < SandboxParams.k_tileHeight; j++) {
                             const item = maze[j * SandboxParams.k_tileWidth + i];
                             // Calculate center of this square
                             const center = new box2d.b2Vec2(SandboxParams.k_playfieldLeftEdge + SandboxParams.k_tileRadius * 2 * i + SandboxParams.k_tileRadius, SandboxParams.k_playfieldBottomEdge - SandboxParams.k_tileRadius * 2 * j +
@@ -439,7 +439,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                  */
                 Keyboard(key) {
                     super.Keyboard(key);
-                    let toggle = 0;
+                    let toggle : number = 0;
                     switch (key) {
                         case "a":
                             this.m_particleFlags = 0;
@@ -490,7 +490,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     super.Step(settings);
                     this.m_particleFlags = testbed.Test.GetParticleParameterValue();
                     // Step all the emitters
-                    for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+                    for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
                         const particleIndices = [];
                         const emitter = this.m_emitters[i];
                         if (emitter) {
@@ -504,7 +504,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     // Do killfield work--kill every particle near the bottom of the screen
                     this.m_particleSystem.DestroyParticlesInShape(this.m_killFieldShape, this.m_killFieldTransform);
                     // Move the pumps
-                    for (let i = 0; i < this.m_pumpIndex; i++) {
+                    for (let i : number = 0; i < this.m_pumpIndex; i++) {
                         const pump = this.m_pumps[i];
                         if (pump) {
                             // Pumps can and will clog up if the pile of particles they're

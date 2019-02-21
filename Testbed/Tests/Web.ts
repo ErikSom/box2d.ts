@@ -150,7 +150,7 @@ export class Web extends testbed.Test {
   }
 
   public JointDestroyed(joint: box2d.b2Joint) {
-    for (let i = 0; i < 8; ++i) {
+    for (let i : number = 0; i < 8; ++i) {
       if (this.m_joints[i] === joint) {
         this.m_joints[i] = null;
         break;
@@ -161,7 +161,7 @@ export class Web extends testbed.Test {
   public Keyboard(key: string) {
     switch (key) {
       case "b":
-        for (let i = 0; i < 4; ++i) {
+        for (let i : number = 0; i < 4; ++i) {
           const body = this.m_bodies[i];
           if (body) {
             this.m_world.DestroyBody(body);
@@ -172,7 +172,7 @@ export class Web extends testbed.Test {
         break;
 
       case "j":
-        for (let i = 0; i < 8; ++i) {
+        for (let i : number = 0; i < 8; ++i) {
           const joint = this.m_joints[i];
           if (joint) {
             this.m_world.DestroyJoint(joint);

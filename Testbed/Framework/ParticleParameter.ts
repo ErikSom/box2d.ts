@@ -88,8 +88,8 @@ export class ParticleParameterDefinition {
   public numValues: number = 0;
 
   public CalculateValueMask(): number {
-    let mask = 0;
-    for (let i = 0; i < this.numValues; i++) {
+    let mask : number = 0;
+    for (let i : number = 0; i < this.numValues; i++) {
       mask |= this.values[i].value;
     }
     return mask;
@@ -139,7 +139,7 @@ export class ParticleParameter {
     this.m_definition = definition;
     this.m_definitionCount = definitionCount;
     this.m_valueCount = 0;
-    for (let i = 0; i < this.m_definitionCount; ++i) {
+    for (let i : number = 0; i < this.m_definitionCount; ++i) {
       this.m_valueCount += this.m_definition[i].numValues;
     }
     // Refresh the selected value.
@@ -200,11 +200,11 @@ export class ParticleParameter {
   }
 
   public FindIndexByValue(value: number): number {
-    let index = 0;
-    for (let i = 0; i < this.m_definitionCount; ++i) {
+    let index : number = 0;
+    for (let i : number = 0; i < this.m_definitionCount; ++i) {
       const definition = this.m_definition[i];
       const numValues = definition.numValues;
-      for (let j = 0; j < numValues; ++j, ++index) {
+      for (let j : number = 0; j < numValues; ++j, ++index) {
         if (definition.values[j].value === value) { return index; }
       }
     }
@@ -212,9 +212,9 @@ export class ParticleParameter {
   }
 
   public FindParticleParameterValue(): ParticleParameterValue | null {
-    let start = 0;
+    let start : number = 0;
     const index = this.Get();
-    for (let i = 0; i < this.m_definitionCount; ++i) {
+    for (let i : number = 0; i < this.m_definitionCount; ++i) {
       const definition = this.m_definition[i];
       const end = start + definition.numValues;
       if (index >= start && index < end) {

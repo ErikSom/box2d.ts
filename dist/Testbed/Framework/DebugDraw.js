@@ -173,7 +173,7 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     const ctx = this.m_ctx;
                     if (ctx) {
                         if (colors !== null) {
-                            for (let i = 0; i < count; ++i) {
+                            for (let i : number = 0; i < count; ++i) {
                                 const center = centers[i];
                                 const color = colors[i];
                                 ctx.fillStyle = color.MakeStyleString();
@@ -186,7 +186,7 @@ System.register(["Box2D"], function (exports_1, context_1) {
                         else {
                             ctx.fillStyle = "rgba(255,255,255,0.5)";
                             // ctx.beginPath();
-                            for (let i = 0; i < count; ++i) {
+                            for (let i : number = 0; i < count; ++i) {
                                 const center = centers[i];
                                 // ctx.rect(center.x - radius, center.y - radius, 2 * radius, 2 * radius);
                                 ctx.beginPath();

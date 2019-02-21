@@ -84,9 +84,9 @@ System.register(["../../Common/b2Settings", "../../Collision/Shapes/b2Shape", ".
                 }
                 InitializeRegisters() {
                     this.m_registers = [ /*b2ShapeType.e_shapeTypeCount*/];
-                    for (let i = 0; i < b2Shape_1.b2ShapeType.e_shapeTypeCount; i++) {
+                    for (let i : number = 0; i < b2Shape_1.b2ShapeType.e_shapeTypeCount; i++) {
                         this.m_registers[i] = [ /*b2ShapeType.e_shapeTypeCount*/];
-                        for (let j = 0; j < b2Shape_1.b2ShapeType.e_shapeTypeCount; j++) {
+                        for (let j : number = 0; j < b2Shape_1.b2ShapeType.e_shapeTypeCount; j++) {
                             this.m_registers[i][j] = new b2ContactRegister();
                         }
                     }

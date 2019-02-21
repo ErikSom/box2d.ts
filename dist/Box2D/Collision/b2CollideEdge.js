@@ -194,8 +194,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     edge1.Normalize();
                     this.m_normal1.Set(edge1.y, -edge1.x);
                     const offset1 = b2Math_1.b2Vec2.DotVV(this.m_normal1, b2Math_1.b2Vec2.SubVV(this.m_centroidB, this.m_v1, b2Math_1.b2Vec2.s_t0));
-                    let offset0 = 0;
-                    let offset2 = 0;
+                    let offset0 : number = 0;
+                    let offset2 : number = 0;
                     let convex1 = false;
                     let convex2 = false;
                     // Is there a preceding edge?
@@ -340,7 +340,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     }
                     // Get polygonB in frameA
                     this.m_polygonB.count = polygonB.m_count;
-                    for (let i = 0; i < polygonB.m_count; ++i) {
+                    for (let i : number = 0; i < polygonB.m_count; ++i) {
                         if (this.m_polygonB.vertices.length <= i) {
                             this.m_polygonB.vertices.push(new b2Math_1.b2Vec2());
                         }
@@ -382,7 +382,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     if (primaryAxis.type === 1 /* e_edgeA */) {
                         manifold.type = b2Collision_2.b2ManifoldType.e_faceA;
                         // Search for the polygon normal that is most anti-parallel to the edge normal.
-                        let bestIndex = 0;
+                        let bestIndex : number = 0;
                         let bestValue = b2Math_1.b2Vec2.DotVV(this.m_normal, this.m_polygonB.normals[0]);
                         for (let i = 1; i < this.m_polygonB.count; ++i) {
                             const value = b2Math_1.b2Vec2.DotVV(this.m_normal, this.m_polygonB.normals[i]);
@@ -447,7 +447,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     // Clip incident edge against extruded edge1 side edges.
                     const clipPoints1 = b2EPCollider.s_clipPoints1;
                     const clipPoints2 = b2EPCollider.s_clipPoints2;
-                    let np = 0;
+                    let np : number = 0;
                     // Clip to box side 1
                     np = b2Collision_2.b2ClipSegmentToLine(clipPoints1, ie, rf.sideNormal1, rf.sideOffset1, rf.i1);
                     if (np < b2Settings_1.b2_maxManifoldPoints) {
@@ -467,8 +467,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                         manifold.localNormal.Copy(polygonB.m_normals[rf.i1]);
                         manifold.localPoint.Copy(polygonB.m_vertices[rf.i1]);
                     }
-                    let pointCount = 0;
-                    for (let i = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
+                    let pointCount : number = 0;
+                    for (let i : number = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
                         let separation;
                         separation = b2Math_1.b2Vec2.DotVV(rf.normal, b2Math_1.b2Vec2.SubVV(clipPoints2[i].v, rf.v1, b2Math_1.b2Vec2.s_t0));
                         if (separation <= this.m_radius) {
@@ -494,7 +494,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     axis.type = 1 /* e_edgeA */;
                     axis.index = this.m_front ? 0 : 1;
                     axis.separation = b2Settings_1.b2_maxFloat;
-                    for (let i = 0; i < this.m_polygonB.count; ++i) {
+                    for (let i : number = 0; i < this.m_polygonB.count; ++i) {
                         const s = b2Math_1.b2Vec2.DotVV(this.m_normal, b2Math_1.b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v1, b2Math_1.b2Vec2.s_t0));
                         if (s < axis.separation) {
                             axis.separation = s;
@@ -508,7 +508,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
                     axis.index = -1;
                     axis.separation = -b2Settings_1.b2_maxFloat;
                     const perp = b2EPCollider.s_perp.Set(-this.m_normal.y, this.m_normal.x);
-                    for (let i = 0; i < this.m_polygonB.count; ++i) {
+                    for (let i : number = 0; i < this.m_polygonB.count; ++i) {
                         const n = b2Math_1.b2Vec2.NegV(this.m_polygonB.normals[i], b2EPCollider.s_n);
                         const s1 = b2Math_1.b2Vec2.DotVV(n, b2Math_1.b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v1, b2Math_1.b2Vec2.s_t0));
                         const s2 = b2Math_1.b2Vec2.DotVV(n, b2Math_1.b2Vec2.SubVV(this.m_polygonB.vertices[i], this.m_v2, b2Math_1.b2Vec2.s_t0));

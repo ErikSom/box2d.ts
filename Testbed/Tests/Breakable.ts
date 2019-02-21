@@ -78,8 +78,8 @@ export class Breakable extends testbed.Test {
     const count = contact.GetManifold().pointCount;
 
     /*float32*/
-    let maxImpulse = 0.0;
-    for (let i = 0; i < count; ++i) {
+    let maxImpulse : number = 0.0;
+    for (let i : number = 0; i < count; ++i) {
       maxImpulse = box2d.b2Max(maxImpulse, impulse.normalImpulses[i]);
     }
 

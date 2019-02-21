@@ -42,7 +42,7 @@ export class CompoundShapes extends testbed.Test {
       circle2.m_radius = 0.5;
       circle2.m_p.Set(0.5, 0.5);
 
-      for (let i = 0; i < 10; ++i) {
+      for (let i : number = 0; i < 10; ++i) {
         const x = box2d.b2RandomRange(-0.1, 0.1);
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
@@ -61,7 +61,7 @@ export class CompoundShapes extends testbed.Test {
       const polygon2 = new box2d.b2PolygonShape();
       polygon2.SetAsBox(0.25, 0.5, new box2d.b2Vec2(0.0, -0.5), 0.5 * box2d.b2_pi);
 
-      for (let i = 0; i < 10; ++i) {
+      for (let i : number = 0; i < 10; ++i) {
         const x = box2d.b2RandomRange(-0.1, 0.1);
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
@@ -96,7 +96,7 @@ export class CompoundShapes extends testbed.Test {
       vertices[2] = box2d.b2Transform.MulXV(xf2, new box2d.b2Vec2(0.0, 0.5), new box2d.b2Vec2());
       triangle2.Set(vertices, 3);
 
-      for (let i = 0; i < 10; ++i) {
+      for (let i : number = 0; i < 10; ++i) {
         const x = box2d.b2RandomRange(-0.1, 0.1);
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;

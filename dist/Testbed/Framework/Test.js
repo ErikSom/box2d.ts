@@ -191,7 +191,7 @@ System.register(["Box2D", "./DebugDraw", "./FullscreenUI", "./ParticleParameter"
                     box2d.b2GetPointStates(state1, state2, oldManifold, manifold);
                     const worldManifold = Test.PreSolve_s_worldManifold;
                     contact.GetWorldManifold(worldManifold);
-                    for (let i = 0; i < manifold.pointCount && this.m_pointCount < Test.k_maxContactPoints; ++i) {
+                    for (let i : number = 0; i < manifold.pointCount && this.m_pointCount < Test.k_maxContactPoints; ++i) {
                         const cp = this.m_points[this.m_pointCount];
                         cp.fixtureA = fixtureA;
                         cp.fixtureB = fixtureB;
@@ -472,7 +472,7 @@ System.register(["Box2D", "./DebugDraw", "./FullscreenUI", "./ParticleParameter"
                     if (settings.drawContactPoints) {
                         const k_impulseScale = 0.1;
                         const k_axisScale = 0.3;
-                        for (let i = 0; i < this.m_pointCount; ++i) {
+                        for (let i : number = 0; i < this.m_pointCount; ++i) {
                             const point = this.m_points[i];
                             if (point.state === box2d.b2PointState.b2_addState) {
                                 // Add
@@ -545,8 +545,8 @@ System.register(["Box2D", "./DebugDraw", "./FullscreenUI", "./ParticleParameter"
                     ///  m_particleParameters = new ParticleParameter::Value[defaultNumValues];
                     this.m_particleParameters = [];
                     // Disable selection of wall and barrier particle types.
-                    let numValues = 0;
-                    for (let i = 0; i < defaultNumValues; i++) {
+                    let numValues : number = 0;
+                    for (let i : number = 0; i < defaultNumValues; i++) {
                         if (defaultValues[i].value & filterMask) {
                             continue;
                         }

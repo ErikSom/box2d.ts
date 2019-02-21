@@ -75,7 +75,7 @@ export class PolyShapesCallback extends box2d.b2QueryCallback {
           const vertexCount = poly.m_count;
           const vertices = [];
 
-          for (let i = 0; i < vertexCount; ++i) {
+          for (let i : number = 0; i < vertexCount; ++i) {
             vertices[i] = box2d.b2Transform.MulXV(xf, poly.m_vertices[i], new box2d.b2Vec2());
           }
 
@@ -152,7 +152,7 @@ export class PolyShapes extends testbed.Test {
       this.m_circle.m_radius = 0.5;
     }
 
-    for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+    for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
       this.m_bodies[i] = null;
     }
   }
@@ -195,7 +195,7 @@ export class PolyShapes extends testbed.Test {
   }
 
   public DestroyBody() {
-    for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+    for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
       if (this.m_bodies[i] !== null) {
         this.m_world.DestroyBody(this.m_bodies[i]);
         this.m_bodies[i] = null;
@@ -215,7 +215,7 @@ export class PolyShapes extends testbed.Test {
         break;
 
       case "a":
-        for (let i = 0; i < PolyShapes.e_maxBodies; i += 2) {
+        for (let i : number = 0; i < PolyShapes.e_maxBodies; i += 2) {
           if (this.m_bodies[i]) {
             const active = this.m_bodies[i].IsActive();
             this.m_bodies[i].SetActive(!active);

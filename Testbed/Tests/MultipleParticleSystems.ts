@@ -115,7 +115,7 @@ export class MultipleParticleSystems extends testbed.Test {
     }
 
     // Initialize the emitters.
-    for (let i = 0; i < this.m_emitters.length; ++i) {
+    for (let i : number = 0; i < this.m_emitters.length; ++i) {
       const mirrorAlongY = i & 1 ? -1.0 : 1.0;
       const emitter = this.m_emitters[i];
       emitter.SetPosition(
@@ -139,7 +139,7 @@ export class MultipleParticleSystems extends testbed.Test {
 
     super.Step(settings);
 
-    for (let i = 0; i < this.m_emitters.length; ++i) {
+    for (let i : number = 0; i < this.m_emitters.length; ++i) {
       this.m_emitters[i].Step(dt);
     }
   }

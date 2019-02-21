@@ -28,7 +28,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
             const id = manifold1.points[i].id;
             const key = id.key;
             state1[i] = b2PointState.b2_removeState;
-            for (let j = 0, jct = manifold2.pointCount; j < jct; ++j) {
+            for (let j : number = 0, jct = manifold2.pointCount; j < jct; ++j) {
                 if (manifold2.points[j].id.key === key) {
                     state1[i] = b2PointState.b2_persistState;
                     break;
@@ -43,7 +43,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
             const id = manifold2.points[i].id;
             const key = id.key;
             state2[i] = b2PointState.b2_addState;
-            for (let j = 0, jct = manifold1.pointCount; j < jct; ++j) {
+            for (let j : number = 0, jct = manifold1.pointCount; j < jct; ++j) {
                 if (manifold1.points[j].id.key === key) {
                     state2[i] = b2PointState.b2_persistState;
                     break;
@@ -72,7 +72,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
     /// Clipping for contact manifolds.
     function b2ClipSegmentToLine(vOut, vIn, normal, offset, vertexIndexA) {
         // Start with no output points
-        let numOut = 0;
+        let numOut : number = 0;
         const vIn0 = vIn[0];
         const vIn1 = vIn[1];
         // Calculate the distance of end points to the line
@@ -281,7 +281,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
                     this.pointCount = 0;
                 }
                 Reset() {
-                    for (let i = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
+                    for (let i : number = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
                         // DEBUG: b2Assert(this.points[i] instanceof b2ManifoldPoint);
                         this.points[i].Reset();
                     }
@@ -292,7 +292,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
                 }
                 Copy(o) {
                     this.pointCount = o.pointCount;
-                    for (let i = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
+                    for (let i : number = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
                         // DEBUG: b2Assert(this.points[i] instanceof b2ManifoldPoint);
                         this.points[i].Copy(o.points[i]);
                     }
@@ -333,7 +333,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
                         case b2ManifoldType.e_faceA: {
                             b2Math_1.b2Rot.MulRV(xfA.q, manifold.localNormal, this.normal);
                             const planePoint = b2Math_1.b2Transform.MulXV(xfA, manifold.localPoint, b2WorldManifold.Initialize_s_planePoint);
-                            for (let i = 0; i < manifold.pointCount; ++i) {
+                            for (let i : number = 0; i < manifold.pointCount; ++i) {
                                 const clipPoint = b2Math_1.b2Transform.MulXV(xfB, manifold.points[i].localPoint, b2WorldManifold.Initialize_s_clipPoint);
                                 const s = radiusA - b2Math_1.b2Vec2.DotVV(b2Math_1.b2Vec2.SubVV(clipPoint, planePoint, b2Math_1.b2Vec2.s_t0), this.normal);
                                 const cA = b2Math_1.b2Vec2.AddVMulSV(clipPoint, s, this.normal, b2WorldManifold.Initialize_s_cA);
@@ -346,7 +346,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Distance"], fu
                         case b2ManifoldType.e_faceB: {
                             b2Math_1.b2Rot.MulRV(xfB.q, manifold.localNormal, this.normal);
                             const planePoint = b2Math_1.b2Transform.MulXV(xfB, manifold.localPoint, b2WorldManifold.Initialize_s_planePoint);
-                            for (let i = 0; i < manifold.pointCount; ++i) {
+                            for (let i : number = 0; i < manifold.pointCount; ++i) {
                                 const clipPoint = b2Math_1.b2Transform.MulXV(xfA, manifold.points[i].localPoint, b2WorldManifold.Initialize_s_clipPoint);
                                 const s = radiusB - b2Math_1.b2Vec2.DotVV(b2Math_1.b2Vec2.SubVV(clipPoint, planePoint, b2Math_1.b2Vec2.s_t0), this.normal);
                                 const cB = b2Math_1.b2Vec2.AddVMulSV(clipPoint, s, this.normal, b2WorldManifold.Initialize_s_cB);

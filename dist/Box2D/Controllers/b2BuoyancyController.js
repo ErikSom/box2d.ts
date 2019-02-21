@@ -96,15 +96,15 @@ System.register(["./b2Controller", "../Common/b2Math", "../Common/b2Settings", "
                         }
                         const areac = new b2Math_1.b2Vec2();
                         const massc = new b2Math_1.b2Vec2();
-                        let area = 0;
-                        let mass = 0;
+                        let area : number = 0;
+                        let mass : number = 0;
                         for (let fixture = body.GetFixtureList(); fixture; fixture = fixture.m_next) {
                             const sc = new b2Math_1.b2Vec2();
                             const sarea = fixture.GetShape().ComputeSubmergedArea(this.normal, this.offset, body.GetTransform(), sc);
                             area += sarea;
                             areac.x += sarea * sc.x;
                             areac.y += sarea * sc.y;
-                            let shapeDensity = 0;
+                            let shapeDensity : number = 0;
                             if (this.useDensity) {
                                 //TODO: Expose density publicly
                                 shapeDensity = fixture.GetDensity();

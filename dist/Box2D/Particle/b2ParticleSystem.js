@@ -28,7 +28,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
     function std_sort(array, first = 0, len = array.length - first, cmp = default_compare) {
         let left = first;
         const stack = [];
-        let pos = 0;
+        let pos : number = 0;
         for (;;) { /* outer loop */
             for (; left + 1 < len; len++) { /* sort left to len-1 */
                 const pivot = array[left + Math.floor(Math.random() * (len - left))]; /* pick random pivot */
@@ -54,8 +54,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
         return std_sort(array, first, len, cmp);
     }
     function std_remove_if(array, predicate, length = array.length) {
-        let l = 0;
-        for (let c = 0; c < length; ++c) {
+        let l : number = 0;
+        for (let c : number = 0; c < length; ++c) {
             // if we can be collapsed, keep l where it is.
             if (predicate(array[c])) {
                 continue;
@@ -217,8 +217,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     return this.capacity;
                 }
                 RemoveIf(pred) {
-                    // DEBUG: let count = 0;
-                    // DEBUG: for (let i = 0; i < this.count; ++i) {
+                    // DEBUG: let count : number = 0;
+                    // DEBUG: for (let i : number = 0; i < this.count; ++i) {
                     // DEBUG:   if (!pred(this.data[i])) {
                     // DEBUG:     count++;
                     // DEBUG:   }
@@ -246,7 +246,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const shape = fixture.GetShape();
                     const childCount = shape.GetChildCount();
-                    for (let childIndex = 0; childIndex < childCount; childIndex++) {
+                    for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
                         const aabb = fixture.GetAABB(childIndex);
                         const enumerator = this.m_system.GetInsideBoundsEnumerator(aabb);
                         let index;
@@ -881,7 +881,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     if (groupDef.positionData) {
                         const count = b2Settings_1.b2Maybe(groupDef.particleCount, groupDef.positionData.length);
-                        for (let i = 0; i < count; i++) {
+                        for (let i : number = 0; i < count; i++) {
                             const p = groupDef.positionData[i];
                             this.CreateParticleForGroup(groupDef, transform, p);
                         }
@@ -1264,7 +1264,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 SetPositionBuffer(buffer, capacity) {
                     ///if (buffer instanceof Float32Array) {
                     ///let array = [];
-                    ///for (let i = 0; i < capacity; ++i) {
+                    ///for (let i : number = 0; i < capacity; ++i) {
                     ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
                     ///}
                     ///this.SetUserOverridableBuffer(this.m_positionBuffer, array, capacity);
@@ -1275,7 +1275,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 SetVelocityBuffer(buffer, capacity) {
                     ///if (buffer instanceof Float32Array) {
                     ///let array = [];
-                    ///for (let i = 0; i < capacity; ++i) {
+                    ///for (let i : number = 0; i < capacity; ++i) {
                     ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
                     ///}
                     ///this.SetUserOverridableBuffer(this.m_velocityBuffer, array, capacity);
@@ -1286,7 +1286,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 SetColorBuffer(buffer, capacity) {
                     ///if (buffer instanceof Uint8Array) {
                     ///let array: b2Color[] = [];
-                    ///for (let i = 0; i < capacity; ++i) {
+                    ///for (let i : number = 0; i < capacity; ++i) {
                     ///  array[i] = new b2Color(buffer.subarray(i * 4, i * 4 + 4));
                     ///}
                     ///this.SetUserOverridableBuffer(this.m_colorBuffer, array, capacity);
@@ -1405,8 +1405,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const s_v = b2ParticleSystem.ComputeCollisionEnergy_s_v;
                     const vel_data = this.m_velocityBuffer.data;
-                    let sum_v2 = 0;
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    let sum_v2 : number = 0;
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -1453,7 +1453,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // Initialize the inverse mapping buffer.
                     if (initializeExpirationTimes) {
                         const particleCount = this.GetParticleCount();
-                        for (let i = 0; i < particleCount; ++i) {
+                        for (let i : number = 0; i < particleCount; ++i) {
                             this.m_indexByExpirationTimeBuffer.data[i] = i;
                         }
                     }
@@ -1618,7 +1618,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // Ensure we're not trying to apply force to particles that can't move,
                     // such as wall particles.
                     // DEBUG: if (!this.m_flagsBuffer.data) { throw new Error(); }
-                    // DEBUG: let flags = 0;
+                    // DEBUG: let flags : number = 0;
                     // DEBUG: for (let i = firstIndex; i < lastIndex; i++) {
                     // DEBUG:   flags |= this.m_flagsBuffer.data[i];
                     // DEBUG: }
@@ -1781,7 +1781,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         throw new Error();
                     }
                     const pos_data = this.m_positionBuffer.data;
-                    for (let i = 0; i < particleCount; i++) {
+                    for (let i : number = 0; i < particleCount; i++) {
                         const p = pos_data[i];
                         b2Math_1.b2Vec2.MinV(aabb.lowerBound, p, aabb.lowerBound);
                         b2Math_1.b2Vec2.MaxV(aabb.upperBound, p, aabb.upperBound);
@@ -1922,9 +1922,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     if (stride === 0) {
                         stride = this.GetParticleStride();
                     }
-                    let positionOnEdge = 0;
+                    let positionOnEdge : number = 0;
                     const childCount = shape.GetChildCount();
-                    for (let childIndex = 0; childIndex < childCount; childIndex++) {
+                    for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
                         let edge = null;
                         if (shape.GetType() === b2Shape_1.b2ShapeType.e_edgeShape) {
                             edge = shape;
@@ -2097,12 +2097,12 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // * filter.IsNeeded returns true
                     // * have one of k_pairFlags/k_triadsFlags
                     // DEBUG: b2Assert(firstIndex <= lastIndex);
-                    let particleFlags = 0;
+                    let particleFlags : number = 0;
                     for (let i = firstIndex; i < lastIndex; i++) {
                         particleFlags |= this.m_flagsBuffer.data[i];
                     }
                     if (particleFlags & b2ParticleSystem.k_pairFlags) {
-                        for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                        for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                             const contact = this.m_contactBuffer.data[k];
                             const a = contact.indexA;
                             const b = contact.indexB;
@@ -2135,7 +2135,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     if (particleFlags & b2ParticleSystem.k_triadFlags) {
                         const diagram = new b2VoronoiDiagram_1.b2VoronoiDiagram(lastIndex - firstIndex);
-                        ///let necessary_count = 0;
+                        ///let necessary_count : number = 0;
                         for (let i = firstIndex; i < lastIndex; i++) {
                             const flags = this.m_flagsBuffer.data[i];
                             const group = this.m_groupBuffer[i];
@@ -2218,7 +2218,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     if (!this.m_flagsBuffer.data) {
                         throw new Error();
                     }
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         this.m_flagsBuffer.data[i] &= ~b2Particle_1.b2ParticleFlag.b2_reactiveParticle;
                     }
                     this.m_allParticleFlags &= ~b2Particle_1.b2ParticleFlag.b2_reactiveParticle;
@@ -2250,7 +2250,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 static InitializeParticleLists(group, nodeBuffer) {
                     const bufferIndex = group.GetBufferIndex();
                     const particleCount = group.GetParticleCount();
-                    for (let i = 0; i < particleCount; i++) {
+                    for (let i : number = 0; i < particleCount; i++) {
                         const node = nodeBuffer[i];
                         node.list = node;
                         node.next = null;
@@ -2260,7 +2260,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 }
                 MergeParticleListsInContact(group, nodeBuffer) {
                     const bufferIndex = group.GetBufferIndex();
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         /*const b2ParticleContact&*/
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
@@ -2310,7 +2310,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 static FindLongestParticleList(group, nodeBuffer) {
                     const particleCount = group.GetParticleCount();
                     let result = nodeBuffer[0];
-                    for (let i = 0; i < particleCount; i++) {
+                    for (let i : number = 0; i < particleCount; i++) {
                         const node = nodeBuffer[i];
                         if (result.count < node.count) {
                             result = node;
@@ -2323,7 +2323,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         throw new Error();
                     }
                     const particleCount = group.GetParticleCount();
-                    for (let i = 0; i < particleCount; i++) {
+                    for (let i : number = 0; i < particleCount; i++) {
                         const node = nodeBuffer[i];
                         if (node !== survivingList &&
                             (this.m_flagsBuffer.data[node.index] & b2Particle_1.b2ParticleFlag.b2_zombieParticle)) {
@@ -2355,7 +2355,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const def = new b2ParticleGroup_1.b2ParticleGroupDef();
                     def.groupFlags = group.GetGroupFlags();
                     def.userData = group.GetUserData();
-                    for (let i = 0; i < particleCount; i++) {
+                    for (let i : number = 0; i < particleCount; i++) {
                         const list = nodeBuffer[i];
                         if (!list.count || list === survivingList) {
                             continue;
@@ -2378,7 +2378,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // replace it with the corresponding value in nodeBuffer.
                     // Note that nodeBuffer is allocated only for the group and the index should
                     // be shifted by bufferIndex.
-                    for (let k = 0; k < this.m_pairBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
                         const pair = this.m_pairBuffer.data[k];
                         const a = pair.indexA;
                         const b = pair.indexB;
@@ -2389,7 +2389,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             pair.indexB = nodeBuffer[b - bufferIndex].index;
                         }
                     }
-                    for (let k = 0; k < this.m_triadBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
                         const triad = this.m_triadBuffer.data[k];
                         const a = triad.indexA;
                         const b = triad.indexB;
@@ -2408,8 +2408,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 ComputeDepth() {
                     ///b2ParticleContact* contactGroups = (b2ParticleContact*) this.m_world.m_stackAllocator.Allocate(sizeof(b2ParticleContact) * this.m_contactBuffer.GetCount());
                     const contactGroups = []; // TODO: static
-                    let contactGroupsCount = 0;
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    let contactGroupsCount : number = 0;
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -2422,7 +2422,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     ///b2ParticleGroup** groupsToUpdate = (b2ParticleGroup**) this.m_world.m_stackAllocator.Allocate(sizeof(b2ParticleGroup*) * this.m_groupCount);
                     const groupsToUpdate = []; // TODO: static
-                    let groupsToUpdateCount = 0;
+                    let groupsToUpdateCount : number = 0;
                     for (let group = this.m_groupList; group; group = group.GetNext()) {
                         if (group.m_groupFlags & b2ParticleGroup_1.b2ParticleGroupFlag.b2_particleGroupNeedsUpdateDepth) {
                             groupsToUpdate[groupsToUpdateCount++] = group;
@@ -2434,7 +2434,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         }
                     }
                     // Compute sum of weight of contacts except between different groups.
-                    for (let k = 0; k < contactGroupsCount; k++) {
+                    for (let k : number = 0; k < contactGroupsCount; k++) {
                         const contact = contactGroups[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -2443,7 +2443,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         this.m_accumulationBuffer[b] += w;
                     }
                     // DEBUG: b2Assert(this.m_depthBuffer !== null);
-                    for (let i = 0; i < groupsToUpdateCount; i++) {
+                    for (let i : number = 0; i < groupsToUpdateCount; i++) {
                         const group = groupsToUpdate[i];
                         for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                             const w = this.m_accumulationBuffer[i];
@@ -2455,9 +2455,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // than sqrt of total particle number.
                     ///int32 iterationCount = (int32)b2Sqrt((float)m_count);
                     const iterationCount = b2Math_1.b2Sqrt(this.m_count) >> 0;
-                    for (let t = 0; t < iterationCount; t++) {
+                    for (let t : number = 0; t < iterationCount; t++) {
                         let updated = false;
-                        for (let k = 0; k < contactGroupsCount; k++) {
+                        for (let k : number = 0; k < contactGroupsCount; k++) {
                             const contact = contactGroups[k];
                             const a = contact.indexA;
                             const b = contact.indexB;
@@ -2483,7 +2483,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             break;
                         }
                     }
-                    for (let i = 0; i < groupsToUpdateCount; i++) {
+                    for (let i : number = 0; i < groupsToUpdateCount; i++) {
                         const group = groupsToUpdate[i];
                         for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                             if (this.m_depthBuffer[i] < b2Settings_1.b2_maxFloat) {
@@ -2518,7 +2518,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         throw new Error();
                     }
                     this.m_allParticleFlags = 0;
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         this.m_allParticleFlags |= this.m_flagsBuffer.data[i];
                     }
                     this.m_needsUpdateAllParticleFlags = false;
@@ -2604,7 +2604,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const pos_data = this.m_positionBuffer.data;
                     const inv_diam = this.m_inverseDiameter;
-                    for (let k = 0; k < this.m_proxyBuffer.count; ++k) {
+                    for (let k : number = 0; k < this.m_proxyBuffer.count; ++k) {
                         const proxy = this.m_proxyBuffer.data[k];
                         const i = proxy.index;
                         const p = pos_data[i];
@@ -2652,7 +2652,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // "invalidating" the ones that still exist.
                     ///const b2ParticleContact* const endContact = m_contactBuffer.End();
                     ///for (b2ParticleContact* contact = m_contactBuffer.Begin(); contact < endContact; ++contact)
-                    for (let k = 0; k < this.m_contactBuffer.count; ++k) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; ++k) {
                         const contact = this.m_contactBuffer.data[k];
                         ///ParticlePair pair;
                         ///pair.first = contact.GetIndexA();
@@ -2715,7 +2715,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // Loop through all new contacts, reporting any new ones, and
                     // "invalidating" the ones that still exist.
                     ///for (b2ParticleBodyContact* contact = m_bodyContactBuffer.Begin(); contact !== m_bodyContactBuffer.End(); ++contact)
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         // DEBUG: b2Assert(contact !== null);
                         ///FixtureParticle fixtureParticleToFind;
@@ -2765,7 +2765,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             throw new Error();
                         }
                         const particleCount = this.GetParticleCount();
-                        for (let i = 0; i < particleCount; i++) {
+                        for (let i : number = 0; i < particleCount; i++) {
                             // Detect stuck particles, see comment in
                             // b2ParticleSystem::DetectStuckParticle()
                             this.m_bodyContactCountBuffer.data[i] = 0;
@@ -2882,7 +2882,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         if (!this.m_velocityBuffer.data) {
                             throw new Error();
                         }
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             ///m_positionBuffer.data[i] += subStep.dt * m_velocityBuffer.data[i];
                             this.m_positionBuffer.data[i].SelfMulAdd(subStep.dt, this.m_velocityBuffer.data[i]);
                         }
@@ -2907,7 +2907,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     aabb.lowerBound.y = +b2Settings_1.b2_maxFloat;
                     aabb.upperBound.x = -b2Settings_1.b2_maxFloat;
                     aabb.upperBound.y = -b2Settings_1.b2_maxFloat;
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         const v = vel_data[i];
                         const p1 = pos_data[i];
                         ///let p2 = p1 + step.dt * v;
@@ -2929,7 +2929,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const vel_data = this.m_velocityBuffer.data;
                     const criticalVelocitySquared = this.GetCriticalVelocitySquared(step);
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         const v = vel_data[i];
                         const v2 = b2Math_1.b2Vec2.DotVV(v, v);
                         if (v2 > criticalVelocitySquared) {
@@ -2946,7 +2946,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const vel_data = this.m_velocityBuffer.data;
                     ///b2Vec2 gravity = step.dt * m_def.gravityScale * m_world.GetGravity();
                     const gravity = b2Math_1.b2Vec2.MulSV(step.dt * this.m_def.gravityScale, this.m_world.GetGravity(), s_gravity);
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         vel_data[i].SelfAdd(gravity);
                     }
                 }
@@ -2976,7 +2976,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const vel_data = this.m_velocityBuffer.data;
                     // If a particle is passing between paired barrier particles,
                     // its velocity will be decelerated to avoid passing.
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         const flags = this.m_flagsBuffer.data[i];
                         ///if ((flags & b2ParticleSystem.k_barrierWallFlags) === b2ParticleSystem.k_barrierWallFlags)
                         if ((flags & b2ParticleSystem.k_barrierWallFlags) !== 0) {
@@ -2985,7 +2985,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const tmax = b2Settings_1.b2_barrierCollisionTime * step.dt;
                     const mass = this.GetParticleMass();
-                    for (let k = 0; k < this.m_pairBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
                         const pair = this.m_pairBuffer.data[k];
                         if (pair.flags & b2Particle_1.b2ParticleFlag.b2_barrierParticle) {
                             const a = pair.indexA;
@@ -3140,12 +3140,12 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     ///   p_i and p_j are static pressure of particle i and j
                     ///   w_ij is contact weight between particle i and j
                     ///   w_i is sum of contact weight of particle i
-                    for (let t = 0; t < this.m_def.staticPressureIterations; t++) {
+                    for (let t : number = 0; t < this.m_def.staticPressureIterations; t++) {
                         ///memset(m_accumulationBuffer, 0, sizeof(*m_accumulationBuffer) * m_count);
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             this.m_accumulationBuffer[i] = 0;
                         }
-                        for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                        for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                             const contact = this.m_contactBuffer.data[k];
                             if (contact.flags & b2Particle_1.b2ParticleFlag.b2_staticPressureParticle) {
                                 const a = contact.indexA;
@@ -3155,7 +3155,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                                 this.m_accumulationBuffer[b] += w * this.m_staticPressureBuffer[a]; // b <- a
                             }
                         }
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             const w = this.m_weightBuffer[i];
                             if (this.m_flagsBuffer.data[i] & b2Particle_1.b2ParticleFlag.b2_staticPressureParticle) {
                                 const wh = this.m_accumulationBuffer[i];
@@ -3173,16 +3173,16 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // calculates the sum of contact-weights for each particle
                     // that means dimensionless density
                     ///memset(m_weightBuffer, 0, sizeof(*m_weightBuffer) * m_count);
-                    for (let k = 0; k < this.m_count; k++) {
+                    for (let k : number = 0; k < this.m_count; k++) {
                         this.m_weightBuffer[k] = 0;
                     }
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let $1 : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         const w = contact.weight;
                         this.m_weightBuffer[a] += w;
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -3208,14 +3208,14 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const criticalPressure = this.GetCriticalPressure(step);
                     const pressurePerWeight = this.m_def.pressureStrength * criticalPressure;
                     const maxPressure = b2Settings_2.b2_maxParticlePressure * criticalPressure;
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         const w = this.m_weightBuffer[i];
                         const h = pressurePerWeight * b2Math_1.b2Max(0.0, w - b2Settings_2.b2_minParticleWeight);
                         this.m_accumulationBuffer[i] = b2Math_1.b2Min(h, maxPressure);
                     }
                     // ignores particles which have their own repulsive force
                     if (this.m_allParticleFlags & b2ParticleSystem.k_noPressureFlags) {
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             if (this.m_flagsBuffer.data[i] & b2ParticleSystem.k_noPressureFlags) {
                                 this.m_accumulationBuffer[i] = 0;
                             }
@@ -3224,7 +3224,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // static pressure
                     if (this.m_allParticleFlags & b2Particle_1.b2ParticleFlag.b2_staticPressureParticle) {
                         // DEBUG: b2Assert(this.m_staticPressureBuffer !== null);
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             if (this.m_flagsBuffer.data[i] & b2Particle_1.b2ParticleFlag.b2_staticPressureParticle) {
                                 this.m_accumulationBuffer[i] += this.m_staticPressureBuffer[i];
                             }
@@ -3233,7 +3233,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // applies pressure between each particles in contact
                     const velocityPerPressure = step.dt / (this.m_def.density * this.m_particleDiameter);
                     const inv_mass = this.GetParticleInvMass();
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         const b = contact.body;
@@ -3248,7 +3248,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         vel_data[a].SelfMulSub(inv_mass, f);
                         b.ApplyLinearImpulse(f, p, true);
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -3278,7 +3278,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const linearDamping = this.m_def.dampingStrength;
                     const quadraticDamping = 1 / this.GetCriticalVelocity(step);
                     const inv_mass = this.GetParticleInvMass();
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         const b = contact.body;
@@ -3299,7 +3299,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             b.ApplyLinearImpulse(f.SelfNeg(), p, true);
                         }
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -3334,7 +3334,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const pos_data = this.m_positionBuffer.data;
                     const damping = this.m_def.dampingStrength;
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         const aGroup = this.m_groupBuffer[a];
@@ -3363,7 +3363,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             }
                         }
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -3412,7 +3412,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // is effective in suppressing vibration.
                     const pos_data = this.m_positionBuffer.data;
                     const inv_mass = this.GetParticleInvMass();
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         if (this.m_flagsBuffer.data[a] & b2ParticleSystem.k_extraDampingFlags) {
@@ -3443,7 +3443,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         throw new Error();
                     }
                     const vel_data = this.m_velocityBuffer.data;
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         if (this.m_flagsBuffer.data[i] & b2Particle_1.b2ParticleFlag.b2_wallParticle) {
                             vel_data[i].SetZero();
                         }
@@ -3501,7 +3501,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const pos_data = this.m_positionBuffer.data;
                     const vel_data = this.m_velocityBuffer.data;
                     const elasticStrength = step.inv_dt * this.m_def.elasticStrength;
-                    for (let k = 0; k < this.m_triadBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
                         const triad = this.m_triadBuffer.data[k];
                         if (triad.flags & b2Particle_1.b2ParticleFlag.b2_elasticParticle) {
                             const a = triad.indexA;
@@ -3582,7 +3582,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const pos_data = this.m_positionBuffer.data;
                     const vel_data = this.m_velocityBuffer.data;
                     const springStrength = step.inv_dt * this.m_def.springStrength;
-                    for (let k = 0; k < this.m_pairBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
                         const pair = this.m_pairBuffer.data[k];
                         if (pair.flags & b2Particle_1.b2ParticleFlag.b2_springParticle) {
                             ///int32 a = pair.indexA;
@@ -3627,11 +3627,11 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const vel_data = this.m_velocityBuffer.data;
                     // DEBUG: b2Assert(this.m_accumulation2Buffer !== null);
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         this.m_accumulation2Buffer[i] = new b2Math_1.b2Vec2();
                         this.m_accumulation2Buffer[i].SetZero();
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         if (contact.flags & b2Particle_1.b2ParticleFlag.b2_tensileParticle) {
                             const a = contact.indexA;
@@ -3650,7 +3650,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const pressureStrength = this.m_def.surfaceTensionPressureStrength * criticalVelocity;
                     const normalStrength = this.m_def.surfaceTensionNormalStrength * criticalVelocity;
                     const maxVelocityVariation = b2Settings_2.b2_maxParticleForce * criticalVelocity;
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         if (contact.flags & b2Particle_1.b2ParticleFlag.b2_tensileParticle) {
                             const a = contact.indexA;
@@ -3686,7 +3686,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const vel_data = this.m_velocityBuffer.data;
                     const viscousStrength = this.m_def.viscousStrength;
                     const inv_mass = this.GetParticleInvMass();
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         if (this.m_flagsBuffer.data[a] & b2Particle_1.b2ParticleFlag.b2_viscousParticle) {
@@ -3704,7 +3704,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             b.ApplyLinearImpulse(f.SelfNeg(), p, true);
                         }
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         if (contact.flags & b2Particle_1.b2ParticleFlag.b2_viscousParticle) {
                             const a = contact.indexA;
@@ -3728,7 +3728,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const vel_data = this.m_velocityBuffer.data;
                     const repulsiveStrength = this.m_def.repulsiveStrength * this.GetCriticalVelocity(step);
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         if (contact.flags & b2Particle_1.b2ParticleFlag.b2_repulsiveParticle) {
                             const a = contact.indexA;
@@ -3762,7 +3762,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     const powderStrength = this.m_def.powderStrength * this.GetCriticalVelocity(step);
                     const minWeight = 1.0 - b2Settings_2.b2_particleStride;
                     const inv_mass = this.GetParticleInvMass();
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         const a = contact.index;
                         if (this.m_flagsBuffer.data[a] & b2Particle_1.b2ParticleFlag.b2_powderParticle) {
@@ -3778,7 +3778,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             }
                         }
                     }
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         if (contact.flags & b2Particle_1.b2ParticleFlag.b2_powderParticle) {
                             const w = contact.weight;
@@ -3802,7 +3802,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // applies extra repulsive force from solid particle groups
                     this.m_depthBuffer = this.RequestBuffer(this.m_depthBuffer);
                     const ejectionStrength = step.inv_dt * this.m_def.ejectionStrength;
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         const a = contact.indexA;
                         const b = contact.indexB;
@@ -3822,7 +3822,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const vel_data = this.m_velocityBuffer.data;
                     const velocityPerForce = step.dt * this.GetParticleInvMass();
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         ///m_velocityBuffer.data[i] += velocityPerForce * m_forceBuffer[i];
                         vel_data[i].SelfMulAdd(velocityPerForce, this.m_forceBuffer[i]);
                     }
@@ -3838,7 +3838,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     }
                     const colorMixing = 0.5 * this.m_def.colorMixingStrength;
                     if (colorMixing) {
-                        for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                        for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                             const contact = this.m_contactBuffer.data[k];
                             const a = contact.indexA;
                             const b = contact.indexB;
@@ -3864,15 +3864,15 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         throw new Error();
                     }
                     // removes particles with zombie flag
-                    let newCount = 0;
+                    let newCount : number = 0;
                     ///int32* newIndices = (int32*) this.m_world.m_stackAllocator.Allocate(sizeof(int32) * this.m_count);
                     const newIndices = []; // TODO: static
-                    for (let i = 0; i < this.m_count; i++) {
+                    for (let i : number = 0; i < this.m_count; i++) {
                         newIndices[i] = b2Settings_1.b2_invalidParticleIndex;
                     }
                     // DEBUG: b2Assert(newIndices.length === this.m_count);
-                    let allParticleFlags = 0;
-                    for (let i = 0; i < this.m_count; i++) {
+                    let allParticleFlags : number = 0;
+                    for (let i : number = 0; i < this.m_count; i++) {
                         const flags = this.m_flagsBuffer.data[i];
                         if (flags & b2Particle_1.b2ParticleFlag.b2_zombieParticle) {
                             const destructionListener = this.m_world.m_destructionListener;
@@ -3961,33 +3961,33 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         },
                     };
                     // update proxies
-                    for (let k = 0; k < this.m_proxyBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_proxyBuffer.count; k++) {
                         const proxy = this.m_proxyBuffer.data[k];
                         proxy.index = newIndices[proxy.index];
                     }
                     this.m_proxyBuffer.RemoveIf(Test.IsProxyInvalid);
                     // update contacts
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         contact.indexA = newIndices[contact.indexA];
                         contact.indexB = newIndices[contact.indexB];
                     }
                     this.m_contactBuffer.RemoveIf(Test.IsContactInvalid);
                     // update particle-body contacts
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         contact.index = newIndices[contact.index];
                     }
                     this.m_bodyContactBuffer.RemoveIf(Test.IsBodyContactInvalid);
                     // update pairs
-                    for (let k = 0; k < this.m_pairBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
                         const pair = this.m_pairBuffer.data[k];
                         pair.indexA = newIndices[pair.indexA];
                         pair.indexB = newIndices[pair.indexB];
                     }
                     this.m_pairBuffer.RemoveIf(Test.IsPairInvalid);
                     // update triads
-                    for (let k = 0; k < this.m_triadBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
                         const triad = this.m_triadBuffer.data[k];
                         triad.indexA = newIndices[triad.indexA];
                         triad.indexB = newIndices[triad.indexB];
@@ -3996,8 +3996,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     this.m_triadBuffer.RemoveIf(Test.IsTriadInvalid);
                     // Update lifetime indices.
                     if (this.m_indexByExpirationTimeBuffer.data) {
-                        let writeOffset = 0;
-                        for (let readOffset = 0; readOffset < this.m_count; readOffset++) {
+                        let writeOffset : number = 0;
+                        for (let readOffset : number = 0; readOffset < this.m_count; readOffset++) {
                             const newIndex = newIndices[this.m_indexByExpirationTimeBuffer.data[readOffset]];
                             if (newIndex !== b2Settings_1.b2_invalidParticleIndex) {
                                 this.m_indexByExpirationTimeBuffer.data[writeOffset++] = newIndex;
@@ -4007,7 +4007,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // update groups
                     for (let group = this.m_groupList; group; group = group.GetNext()) {
                         let firstIndex = newCount;
-                        let lastIndex = 0;
+                        let lastIndex : number = 0;
                         let modified = false;
                         for (let i = group.m_firstIndex; i < group.m_lastIndex; i++) {
                             const j = newIndices[i];
@@ -4198,34 +4198,34 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                             throw new Error();
                         }
                         const indexByExpirationTime = this.m_indexByExpirationTimeBuffer.data;
-                        for (let i = 0; i < particleCount; ++i) {
+                        for (let i : number = 0; i < particleCount; ++i) {
                             indexByExpirationTime[i] = newIndices(indexByExpirationTime[i]);
                         }
                     }
                     // update proxies
-                    for (let k = 0; k < this.m_proxyBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_proxyBuffer.count; k++) {
                         const proxy = this.m_proxyBuffer.data[k];
                         proxy.index = newIndices(proxy.index);
                     }
                     // update contacts
-                    for (let k = 0; k < this.m_contactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_contactBuffer.count; k++) {
                         const contact = this.m_contactBuffer.data[k];
                         contact.indexA = newIndices(contact.indexA);
                         contact.indexB = newIndices(contact.indexB);
                     }
                     // update particle-body contacts
-                    for (let k = 0; k < this.m_bodyContactBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_bodyContactBuffer.count; k++) {
                         const contact = this.m_bodyContactBuffer.data[k];
                         contact.index = newIndices(contact.index);
                     }
                     // update pairs
-                    for (let k = 0; k < this.m_pairBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_pairBuffer.count; k++) {
                         const pair = this.m_pairBuffer.data[k];
                         pair.indexA = newIndices(pair.indexA);
                         pair.indexB = newIndices(pair.indexB);
                     }
                     // update triads
-                    for (let k = 0; k < this.m_triadBuffer.count; k++) {
+                    for (let k : number = 0; k < this.m_triadBuffer.count; k++) {
                         const triad = this.m_triadBuffer.data[k];
                         triad.indexA = newIndices(triad.indexA);
                         triad.indexB = newIndices(triad.indexB);
@@ -4365,9 +4365,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                     // Index of last particle processed.
                     let lastIndex = -1;
                     // Number of contacts processed for the current particle.
-                    let currentContacts = 0;
+                    let currentContacts : number = 0;
                     // Output the number of discarded contacts.
-                    // let discarded = 0;
+                    // let discarded : number = 0;
                     const b2ParticleBodyContactRemovePredicate = (contact) => {
                         // This implements the selection criteria described in
                         // RemoveSpuriousBodyContacts().
@@ -4402,7 +4402,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         // now lie on or in the fixture generating
                         if (!contact.fixture.TestPoint(pos)) {
                             const childCount = contact.fixture.GetShape().GetChildCount();
-                            for (let childIndex = 0; childIndex < childCount; childIndex++) {
+                            for (let childIndex : number = 0; childIndex < childCount; childIndex++) {
                                 const normal = s_normal;
                                 const distance = contact.fixture.ComputeDistance(pos, normal, childIndex);
                                 if (distance < b2Settings_1.b2_linearSlop) {
@@ -4488,7 +4488,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                 PrepareForceBuffer() {
                     if (!this.m_hasForce) {
                         ///memset(m_forceBuffer, 0, sizeof(*m_forceBuffer) * m_count);
-                        for (let i = 0; i < this.m_count; i++) {
+                        for (let i : number = 0; i < this.m_count; i++) {
                             this.m_forceBuffer[i].SetZero();
                         }
                         this.m_hasForce = true;
@@ -4891,7 +4891,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                      * @see b2Shape::TestPoint
                      */
                     TestPoint(xf, p) {
-                        for (let i = 0; i < this.m_shapeCount; i++) {
+                        for (let i : number = 0; i < this.m_shapeCount; i++) {
                             if (this.m_shapes[i].TestPoint(xf, p)) {
                                 return true;
                             }
@@ -4922,9 +4922,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw",
                         aabb.upperBound.x = -b2Settings_1.b2_maxFloat;
                         aabb.upperBound.y = -b2Settings_1.b2_maxFloat;
                         // DEBUG: b2Assert(childIndex === 0);
-                        for (let i = 0; i < this.m_shapeCount; i++) {
+                        for (let i : number = 0; i < this.m_shapeCount; i++) {
                             const childCount = this.m_shapes[i].GetChildCount();
-                            for (let j = 0; j < childCount; j++) {
+                            for (let j : number = 0; j < childCount; j++) {
                                 const subaabb = s_subaabb;
                                 this.m_shapes[i].ComputeAABB(subaabb, xf, j);
                                 aabb.Combine1(subaabb);

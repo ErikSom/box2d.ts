@@ -126,7 +126,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         ground.CreateFixture(shape, 0.0);
                     }
                     // Balls
-                    for (let i = 0; i < 40; ++i) {
+                    for (let i : number = 0; i < 40; ++i) {
                         const shape = new box2d.b2CircleShape();
                         shape.m_radius = 0.25;
                         const bd = new box2d.b2BodyDef();

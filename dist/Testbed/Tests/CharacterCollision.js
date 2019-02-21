@@ -159,10 +159,10 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         bd.fixedRotation = true;
                         bd.allowSleep = false;
                         const body = this.m_world.CreateBody(bd);
-                        let angle = 0.0;
+                        let angle : number = 0.0;
                         const delta = box2d.b2_pi / 3.0;
                         const vertices = box2d.b2Vec2.MakeArray(6);
-                        for (let i = 0; i < 6; ++i) {
+                        for (let i : number = 0; i < 6; ++i) {
                             vertices[i].Set(0.5 * box2d.b2Cos(angle), 0.5 * box2d.b2Sin(angle));
                             angle += delta;
                         }

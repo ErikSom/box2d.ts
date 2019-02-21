@@ -148,7 +148,7 @@ export class TheoJansen extends testbed.Test {
     }
 
     // Balls
-    for (let i = 0; i < 40; ++i) {
+    for (let i : number = 0; i < 40; ++i) {
       const shape = new box2d.b2CircleShape();
       shape.m_radius = 0.25;
 

@@ -79,7 +79,7 @@ export class DominoTower extends testbed.Test {
 
       let currX;
       // Make base
-      for (let i = 0; i < BASE_COUNT; ++i) {
+      for (let i : number = 0; i < BASE_COUNT; ++i) {
         currX = i * 1.5 * DOMINO_HEIGHT - (1.5 * DOMINO_HEIGHT * BASE_COUNT / 2);
         makeDomino(currX, DOMINO_HEIGHT / 2.0, false);
         makeDomino(currX, DOMINO_HEIGHT + DOMINO_WIDTH / 2.0, true);
@@ -93,7 +93,7 @@ export class DominoTower extends testbed.Test {
         // The y at the center of the I structure.
         const currY = DOMINO_HEIGHT * 0.5 + (DOMINO_HEIGHT + 2 * DOMINO_WIDTH) * .99 * j;
 
-        for (let i = 0; i < BASE_COUNT - j; ++i) {
+        for (let i : number = 0; i < BASE_COUNT - j; ++i) {
           currX = i * 1.5 * DOMINO_HEIGHT - (1.5 * DOMINO_HEIGHT * (BASE_COUNT - j) / 2);
           dominoDensity *= 2.5;
           if (i === 0) {

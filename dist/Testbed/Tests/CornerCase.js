@@ -71,7 +71,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                             shape.Set(vertices);
                             ground.CreateFixture(shape, 0.0);
                         }
-                        for (let y = 0.0; y < yrange; y += ystep) {
+                        for (let y : number = 0.0; y < yrange; y += ystep) {
                             const shape = new box2d.b2PolygonShape();
                             const vertices = [
                                 new box2d.b2Vec2(25.0, y),

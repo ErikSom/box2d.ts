@@ -67,7 +67,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape", 
                     // DEBUG: }
                     this.m_count = count + 1;
                     this.m_vertices = b2Math_1.b2Vec2.MakeArray(this.m_count);
-                    for (let i = 0; i < count; ++i) {
+                    for (let i : number = 0; i < count; ++i) {
                         this.m_vertices[i].Copy(vertices[start + i]);
                     }
                     this.m_vertices[count].Copy(this.m_vertices[0]);
@@ -90,7 +90,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape", 
                     // DEBUG: }
                     this.m_count = count;
                     this.m_vertices = b2Math_1.b2Vec2.MakeArray(count);
-                    for (let i = 0; i < count; ++i) {
+                    for (let i : number = 0; i < count; ++i) {
                         this.m_vertices[i].Copy(vertices[start + i]);
                     }
                     this.m_hasPrevVertex = false;
@@ -209,7 +209,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape", 
                 Dump(log) {
                     log("    const shape: b2ChainShape = new b2ChainShape();\n");
                     log("    const vs: b2Vec2[] = [];\n");
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         log("    vs[%d] = new bVec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
                     }
                     log("    shape.CreateChain(vs, %d);\n", this.m_count);

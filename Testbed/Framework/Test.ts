@@ -629,8 +629,8 @@ export class Test extends box2d.b2ContactListener {
     ///  m_particleParameters = new ParticleParameter::Value[defaultNumValues];
     this.m_particleParameters = [];
     // Disable selection of wall and barrier particle types.
-    let numValues = 0;
-    for (let i = 0; i < defaultNumValues; i++) {
+    let numValues : number = 0;
+    for (let i : number = 0; i < defaultNumValues; i++) {
       if (defaultValues[i].value & filterMask) {
         continue;
       }

@@ -106,10 +106,10 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     // because they may belong to multiple contact points.
                     const k_maxNuke = 6;
                     const nuke = new Array(k_maxNuke);
-                    let nukeCount = 0;
+                    let nukeCount : number = 0;
                     // Traverse the contact results. Destroy bodies that
                     // are touching heavier bodies.
-                    for (let i = 0; i < this.m_pointCount; ++i) {
+                    for (let i : number = 0; i < this.m_pointCount; ++i) {
                         const point = this.m_points[i];
                         const body1 = point.fixtureA.GetBody();
                         const body2 = point.fixtureB.GetBody();
@@ -132,7 +132,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         return a - b;
                     });
                     // Destroy the bodies, skipping duplicates.
-                    let i = 0;
+                    let i : number = 0;
                     while (i < nukeCount) {
                         const b = nuke[i++];
                         while (i < nukeCount && nuke[i] === b) {

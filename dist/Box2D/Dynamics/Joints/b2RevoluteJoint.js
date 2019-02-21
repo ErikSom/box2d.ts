@@ -310,13 +310,13 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint"],
                     let aB = data.positions[this.m_indexB].a;
                     // b2Rot qA(aA), qB(aB);
                     const qA = this.m_qA.SetAngle(aA), qB = this.m_qB.SetAngle(aB);
-                    let angularError = 0;
-                    let positionError = 0;
+                    let angularError : number = 0;
+                    let positionError : number = 0;
                     const fixedRotation = (this.m_invIA + this.m_invIB === 0);
                     // Solve angular limit constraint.
                     if (this.m_enableLimit && this.m_limitState !== b2Joint_1.b2LimitState.e_inactiveLimit && !fixedRotation) {
                         const angle = aB - aA - this.m_referenceAngle;
-                        let limitImpulse = 0;
+                        let limitImpulse : number = 0;
                         if (this.m_limitState === b2Joint_1.b2LimitState.e_equalLimits) {
                             // Prevent large angular corrections
                             const C = b2Math_1.b2Clamp(angle - this.m_lowerAngle, -b2Settings_1.b2_maxAngularCorrection, b2Settings_1.b2_maxAngularCorrection);

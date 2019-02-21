@@ -199,12 +199,12 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         touching = this.m_manifold.pointCount > 0;
                         // Match old contact ids to new contact ids and copy the
                         // stored impulses to warm start the solver.
-                        for (let i = 0; i < this.m_manifold.pointCount; ++i) {
+                        for (let i : number = 0; i < this.m_manifold.pointCount; ++i) {
                             const mp2 = this.m_manifold.points[i];
                             mp2.normalImpulse = 0;
                             mp2.tangentImpulse = 0;
                             const id2 = mp2.id;
-                            for (let j = 0; j < this.m_oldManifold.pointCount; ++j) {
+                            for (let j : number = 0; j < this.m_oldManifold.pointCount; ++j) {
                                 const mp1 = this.m_oldManifold.points[j];
                                 if (mp1.id.key === id2.key) {
                                     mp2.normalImpulse = mp1.normalImpulse;

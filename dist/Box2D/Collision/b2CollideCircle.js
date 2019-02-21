@@ -25,13 +25,13 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         const c = b2Math_1.b2Transform.MulXV(xfB, circleB.m_p, b2CollidePolygonAndCircle_s_c);
         const cLocal = b2Math_1.b2Transform.MulTXV(xfA, c, b2CollidePolygonAndCircle_s_cLocal);
         // Find the min separating edge.
-        let normalIndex = 0;
+        let normalIndex : number = 0;
         let separation = (-b2Settings_1.b2_maxFloat);
         const radius = polygonA.m_radius + circleB.m_radius;
         const vertexCount = polygonA.m_count;
         const vertices = polygonA.m_vertices;
         const normals = polygonA.m_normals;
-        for (let i = 0; i < vertexCount; ++i) {
+        for (let i : number = 0; i < vertexCount; ++i) {
             const s = b2Math_1.b2Vec2.DotVV(normals[i], b2Math_1.b2Vec2.SubVV(cLocal, vertices[i], b2Math_1.b2Vec2.s_t0));
             if (s > radius) {
                 // Early out.

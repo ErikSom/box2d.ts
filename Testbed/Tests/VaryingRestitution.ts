@@ -45,7 +45,7 @@ export class VaryingRestitution extends testbed.Test {
 
       const restitution = [0.0, 0.1, 0.3, 0.5, 0.75, 0.9, 1.0];
 
-      for (let i = 0; i < 7; ++i) {
+      for (let i : number = 0; i < 7; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(-10.0 + 3.0 * i, 20.0);

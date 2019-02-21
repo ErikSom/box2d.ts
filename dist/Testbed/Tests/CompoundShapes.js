@@ -46,7 +46,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const circle2 = new box2d.b2CircleShape();
                         circle2.m_radius = 0.5;
                         circle2.m_p.Set(0.5, 0.5);
-                        for (let i = 0; i < 10; ++i) {
+                        for (let i : number = 0; i < 10; ++i) {
                             const x = box2d.b2RandomRange(-0.1, 0.1);
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
@@ -62,7 +62,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         polygon1.SetAsBox(0.25, 0.5);
                         const polygon2 = new box2d.b2PolygonShape();
                         polygon2.SetAsBox(0.25, 0.5, new box2d.b2Vec2(0.0, -0.5), 0.5 * box2d.b2_pi);
-                        for (let i = 0; i < 10; ++i) {
+                        for (let i : number = 0; i < 10; ++i) {
                             const x = box2d.b2RandomRange(-0.1, 0.1);
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
@@ -91,7 +91,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         vertices[1] = box2d.b2Transform.MulXV(xf2, new box2d.b2Vec2(1.0, 0.0), new box2d.b2Vec2());
                         vertices[2] = box2d.b2Transform.MulXV(xf2, new box2d.b2Vec2(0.0, 0.5), new box2d.b2Vec2());
                         triangle2.Set(vertices, 3);
-                        for (let i = 0; i < 10; ++i) {
+                        for (let i : number = 0; i < 10; ++i) {
                             const x = box2d.b2RandomRange(-0.1, 0.1);
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;

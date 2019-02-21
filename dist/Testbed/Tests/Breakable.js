@@ -74,8 +74,8 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     /*int*/
                     const count = contact.GetManifold().pointCount;
                     /*float32*/
-                    let maxImpulse = 0.0;
-                    for (let i = 0; i < count; ++i) {
+                    let maxImpulse : number = 0.0;
+                    for (let i : number = 0; i < count; ++i) {
                         maxImpulse = box2d.b2Max(maxImpulse, impulse.normalImpulses[i]);
                     }
                     if (maxImpulse > 40.0) {

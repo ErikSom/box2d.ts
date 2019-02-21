@@ -64,7 +64,7 @@ export class RopeJoint extends testbed.Test {
 
       /*box2d.b2Body*/
       let prevBody = ground;
-      for ( /*int32*/ let i = 0; i < N; ++i) {
+      for ( /*int32*/ let i : number = 0; i < N; ++i) {
         /*box2d.b2BodyDef*/
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;

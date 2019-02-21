@@ -138,7 +138,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     }
                 }
                 JointDestroyed(joint) {
-                    for (let i = 0; i < 8; ++i) {
+                    for (let i : number = 0; i < 8; ++i) {
                         if (this.m_joints[i] === joint) {
                             this.m_joints[i] = null;
                             break;
@@ -148,7 +148,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                 Keyboard(key) {
                     switch (key) {
                         case "b":
-                            for (let i = 0; i < 4; ++i) {
+                            for (let i : number = 0; i < 4; ++i) {
                                 const body = this.m_bodies[i];
                                 if (body) {
                                     this.m_world.DestroyBody(body);
@@ -158,7 +158,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                             }
                             break;
                         case "j":
-                            for (let i = 0; i < 8; ++i) {
+                            for (let i : number = 0; i < 8; ++i) {
                                 const joint = this.m_joints[i];
                                 if (joint) {
                                     this.m_world.DestroyJoint(joint);

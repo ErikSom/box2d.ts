@@ -92,11 +92,11 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     {
                         const color = new box2d.b2Color(0.9, 0.9, 0.9);
                         const v = [];
-                        for (let i = 0; i < this.m_polygonA.m_count; ++i) {
+                        for (let i : number = 0; i < this.m_polygonA.m_count; ++i) {
                             v[i] = box2d.b2Transform.MulXV(this.m_transformA, this.m_polygonA.m_vertices[i], new box2d.b2Vec2());
                         }
                         testbed.g_debugDraw.DrawPolygon(v, this.m_polygonA.m_count, color);
-                        for (let i = 0; i < this.m_polygonB.m_count; ++i) {
+                        for (let i : number = 0; i < this.m_polygonB.m_count; ++i) {
                             v[i] = box2d.b2Transform.MulXV(this.m_transformB, this.m_polygonB.m_vertices[i], new box2d.b2Vec2());
                         }
                         testbed.g_debugDraw.DrawPolygon(v, this.m_polygonB.m_count, color);

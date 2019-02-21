@@ -43,7 +43,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     {
                         const shape = new box2d.b2CircleShape();
                         shape.m_radius = 1.0;
-                        for (let i = 0; i < SphereStack.e_count; ++i) {
+                        for (let i : number = 0; i < SphereStack.e_count; ++i) {
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
                             bd.position.Set(0.0, 4.0 + 3.0 * i);

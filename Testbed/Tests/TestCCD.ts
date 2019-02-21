@@ -70,7 +70,7 @@ export class TestCCD extends testbed.Test {
     }
 
     // add some small circles for effect
-    for (let i = 0; i < 5; i++) {
+    for (let i : number = 0; i < 5; i++) {
       const cd = new box2d.b2CircleShape((Math.random() * 1.0 + 0.5));
       fd.shape = cd;
       fd.friction = 0.3;

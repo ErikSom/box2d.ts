@@ -50,8 +50,8 @@ export class PyramidTopple extends testbed.Test {
 
     // Add the dominoes.
     const n = 12;
-    for (let i = 0; i < n; i++) {
-      for (let j = 0; j < (n - i); j++) {
+    for (let i : number = 0; i < n; i++) {
+      for (let j : number = 0; j < (n - i); j++) {
         const offset = new box2d.b2Vec2((j - (n - 1 - i) * 0.5) * 1.5 * HEIGHT, (i + 0.5) * (HEIGHT + 2 * WIDTH) - WIDTH - 240);
         add_domino(world, offset, false);
         add_domino(world, box2d.b2Vec2.AddVV(offset, new box2d.b2Vec2(0, (HEIGHT + WIDTH) / 2), new box2d.b2Vec2()), true);

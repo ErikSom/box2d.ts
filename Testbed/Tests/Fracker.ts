@@ -33,7 +33,7 @@ export class EmitterTracker {
    */
   public __dtor__() {
     ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
-    for (let it = 0; it < this.m_emitterLifetime.length; ++it) {
+    for (let it : number = 0; it < this.m_emitterLifetime.length; ++it) {
       ///  delete it.first;
       this.m_emitterLifetime[it].emitter.__dtor__();
     }
@@ -56,7 +56,7 @@ export class EmitterTracker {
     ///  std.vector<RadialEmitter*> emittersToDestroy;
     const emittersToDestroy: testbed.RadialEmitter[] = [];
     ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
-    for (let it = 0; it < this.m_emitterLifetime.length; ++it) {
+    for (let it : number = 0; it < this.m_emitterLifetime.length; ++it) {
       ///  RadialEmitter * const emitter = it.first;
       const emitter = this.m_emitterLifetime[it].emitter;
       ///  const float32 lifetime = it.second - dt;
@@ -70,7 +70,7 @@ export class EmitterTracker {
       emitter.Step(dt);
     }
     ///  for (std.vector<RadialEmitter*>.const_iterator it = emittersToDestroy.begin(); it !== emittersToDestroy.end(); ++it)
-    for (let it = 0; it < emittersToDestroy.length; ++it) {
+    for (let it : number = 0; it < emittersToDestroy.length; ++it) {
       ///  RadialEmitter *emitter = *it;
       const emitter = emittersToDestroy[it];
       /// delete emitter;
@@ -252,7 +252,7 @@ export class Fracker extends testbed.Test {
    * each tile and the bodies associated with each tile.
    */
   public InitializeLayout(): void {
-    for (let i = 0; i < FrackerSettings.k_worldTiles; ++i) {
+    for (let i : number = 0; i < FrackerSettings.k_worldTiles; ++i) {
       this.m_material[i] = Fracker.Material.EMPTY;
       this.m_bodies[i] = null;
     }
@@ -322,8 +322,8 @@ export class Fracker extends testbed.Test {
     // DEBUG:   FrackerSettings.k_emptyProbability +
     // DEBUG:   FrackerSettings.k_oilProbability +
     // DEBUG:   FrackerSettings.k_waterProbability === 100);
-    for (let x = 0; x < FrackerSettings.k_worldWidthTiles; x++) {
-      for (let y = 0; y < FrackerSettings.k_worldHeightTiles; y++) {
+    for (let x : number = 0; x < FrackerSettings.k_worldWidthTiles; x++) {
+      for (let y : number = 0; y < FrackerSettings.k_worldHeightTiles; y++) {
         if (this.GetMaterial(x, y) !== Fracker.Material.EMPTY) {
           continue;
         }
@@ -405,7 +405,7 @@ export class Fracker extends testbed.Test {
     ///  void** const userDataBuffer = m_particleSystem.GetUserDataBuffer() + group.GetBufferIndex();;
     const userDataBuffer = this.m_particleSystem.GetUserDataBuffer();
     const index = group.GetBufferIndex();
-    for (let i = 0; i < particleCount; ++i) {
+    for (let i : number = 0; i < particleCount; ++i) {
       ///  userDataBuffer[i] = GetMaterialStorage(x, y);
       userDataBuffer[index + i] = this.m_material[Fracker.TileToArrayOffset(x, y)];
     }
@@ -653,7 +653,7 @@ export class Fracker extends testbed.Test {
     ///  const std.set<b2ParticleGroup*> &particleGroups = m_listener.GetParticleGroups();
     const particleGroups = this.m_listener.GetParticleGroups();
     ///  for (std.set<b2ParticleGroup*>.const_iterator it = particleGroups.begin(); it !== particleGroups.end(); ++it)
-    for (let it = 0; it < particleGroups.length; ++it) {
+    for (let it : number = 0; it < particleGroups.length; ++it) {
       ///  b2ParticleGroup * const particleGroup = *it;
       const particleGroup = particleGroups[it];
       const index = particleGroup.GetBufferIndex();
@@ -662,7 +662,7 @@ export class Fracker extends testbed.Test {
       ///  b2Vec2* const velocityBuffer = m_particleSystem.GetVelocityBuffer() + index;
       const velocityBuffer = this.m_particleSystem.GetVelocityBuffer();
       const particleCount = particleGroup.GetParticleCount();
-      for (let i = 0; i < particleCount; ++i) {
+      for (let i : number = 0; i < particleCount; ++i) {
         // Apply velocity to particles near the bottom or in the well
         // sucking them up to the top.
         const wellEnd = Fracker.CenteredPosition(Fracker.TileToWorld(this.m_wellX, this.m_wellBottom - 2));

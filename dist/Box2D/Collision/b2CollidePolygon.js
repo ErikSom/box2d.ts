@@ -13,9 +13,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         const normal1World = b2Math_1.b2Rot.MulRV(xf1.q, normals1[edge1], b2EdgeSeparation_s_normal1World);
         const normal1 = b2Math_1.b2Rot.MulTRV(xf2.q, normal1World, b2EdgeSeparation_s_normal1);
         // Find support vertex on poly2 for -normal.
-        let index = 0;
+        let index : number = 0;
         let minDot = b2Settings_1.b2_maxFloat;
-        for (let i = 0; i < count2; ++i) {
+        for (let i : number = 0; i < count2; ++i) {
             const dot = b2Math_1.b2Vec2.DotVV(vertices2[i], normal1);
             if (dot < minDot) {
                 minDot = dot;
@@ -34,9 +34,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         const d = b2Math_1.b2Vec2.SubVV(b2Math_1.b2Transform.MulXV(xf2, poly2.m_centroid, b2Math_1.b2Vec2.s_t0), b2Math_1.b2Transform.MulXV(xf1, poly1.m_centroid, b2Math_1.b2Vec2.s_t1), b2FindMaxSeparation_s_d);
         const dLocal1 = b2Math_1.b2Rot.MulTRV(xf1.q, d, b2FindMaxSeparation_s_dLocal1);
         // Find edge normal on poly1 that has the largest projection onto d.
-        let edge = 0;
+        let edge : number = 0;
         let maxDot = (-b2Settings_1.b2_maxFloat);
-        for (let i = 0; i < count1; ++i) {
+        for (let i : number = 0; i < count1; ++i) {
             const dot = b2Math_1.b2Vec2.DotVV(normals1[i], dLocal1);
             if (dot > maxDot) {
                 maxDot = dot;
@@ -52,9 +52,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         const nextEdge = (edge + 1) % count1;
         const sNext = b2EdgeSeparation(poly1, xf1, nextEdge, poly2, xf2);
         // Find the best edge and the search direction.
-        let bestEdge = 0;
-        let bestSeparation = 0;
-        let increment = 0;
+        let bestEdge : number = 0;
+        let bestSeparation : number = 0;
+        let increment : number = 0;
         if (sPrev > s && sPrev > sNext) {
             increment = -1;
             bestEdge = prevEdge;
@@ -99,9 +99,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         // Get the normal of the reference edge in poly2's frame.
         const normal1 = b2Math_1.b2Rot.MulTRV(xf2.q, b2Math_1.b2Rot.MulRV(xf1.q, normals1[edge1], b2Math_1.b2Vec2.s_t0), b2FindIncidentEdge_s_normal1);
         // Find the incident edge on poly2.
-        let index = 0;
+        let index : number = 0;
         let minDot = b2Settings_1.b2_maxFloat;
-        for (let i = 0; i < count2; ++i) {
+        for (let i : number = 0; i < count2; ++i) {
             const dot = b2Math_1.b2Vec2.DotVV(normal1, normals2[i]);
             if (dot < minDot) {
                 minDot = dot;
@@ -144,8 +144,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         let poly1; // reference polygon
         let poly2; // incident polygon
         let xf1, xf2;
-        let edge1 = 0; // reference edge
-        let flip = 0;
+        let edge1 : number = 0; // reference edge
+        let flip : number = 0;
         const k_relativeTol = 0.98;
         const k_absoluteTol = 0.001;
         if (separationB > k_relativeTol * separationA + k_absoluteTol) {
@@ -205,8 +205,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2Collision"], f
         // Now clipPoints2 contains the clipped points.
         manifold.localNormal.Copy(localNormal);
         manifold.localPoint.Copy(planePoint);
-        let pointCount = 0;
-        for (let i = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
+        let pointCount : number = 0;
+        for (let i : number = 0; i < b2Settings_1.b2_maxManifoldPoints; ++i) {
             const cv = clipPoints2[i];
             const separation = b2Math_1.b2Vec2.DotVV(normal, cv.v) - frontOffset;
             if (separation <= totalRadius) {

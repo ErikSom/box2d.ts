@@ -670,7 +670,7 @@ export function b2ShapeCast(output: b2ShapeCastOutput, input: b2ShapeCastInput):
   // b2Vec2 n(0.0f, 0.0f);
   const n = b2ShapeCast_s_n.Set(0.0, 0.0);
   // float32 lambda = 0.0f;
-  let lambda = 0.0;
+  let lambda : number = 0.0;
 
   // Initial simplex
   const simplex = b2ShapeCast_s_simplex;
@@ -702,7 +702,7 @@ export function b2ShapeCast(output: b2ShapeCastOutput, input: b2ShapeCastInput):
   // const int32 k_maxIters = 20;
   const k_maxIters = 20;
   // int32 iter = 0;
-  let iter = 0;
+  let iter : number = 0;
   // while (iter < k_maxIters && b2Abs(v.Length() - sigma) > tolerance)
   while (iter < k_maxIters && b2Abs(v.Length() - sigma) > tolerance) {
     // DEBUG: b2Assert(simplex.m_count < 3);

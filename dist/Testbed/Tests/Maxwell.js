@@ -129,7 +129,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         ///    this.m_particleGroup.GetBufferIndex();
                         const velocities = this.m_particleSystem.GetVelocityBuffer();
                         const index = this.m_particleGroup.GetBufferIndex();
-                        for (let i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
+                        for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
                             ///  b2Vec2& v = *(velocities + i);
                             const v = velocities[index + i];
                             v.Set(testbed.RandomFloat() + 1.0, testbed.RandomFloat() + 1.0);
@@ -205,15 +205,15 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                 Step(settings) {
                     super.Step(settings);
                     // Number of particles above (top) and below (bottom) the barrier.
-                    let top = 0;
-                    let bottom = 0;
+                    let top : number = 0;
+                    let bottom : number = 0;
                     if (this.m_particleGroup) {
                         const index = this.m_particleGroup.GetBufferIndex();
                         ///  b2Vec2* const velocities = this.m_particleSystem.GetVelocityBuffer() + index;
                         const velocities = this.m_particleSystem.GetVelocityBuffer();
                         ///  b2Vec2* const positions = this.m_particleSystem.GetPositionBuffer() + index;
                         const positions = this.m_particleSystem.GetPositionBuffer();
-                        for (let i = 0; i < this.m_particleGroup.GetParticleCount(); i++) {
+                        for (let i : number = 0; i < this.m_particleGroup.GetParticleCount(); i++) {
                             // Add energy to particles based upon the temperature.
                             ///  b2Vec2& v = velocities[i];
                             const v = velocities[index + i];

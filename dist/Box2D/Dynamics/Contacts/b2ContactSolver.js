@@ -203,7 +203,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     this.m_velocities = def.velocities;
                     this.m_contacts = def.contacts;
                     // Initialize position independent portions of the constraints.
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const contact = this.m_contacts[i];
                         const fixtureA = contact.m_fixtureA;
                         const fixtureB = contact.m_fixtureB;
@@ -245,7 +245,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         pc.radiusA = radiusA;
                         pc.radiusB = radiusB;
                         pc.type = manifold.type;
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             const cp = manifold.points[j];
                             const vcp = vc.points[j];
                             if (this.m_step.warmStarting) {
@@ -271,7 +271,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     const xfB = b2ContactSolver.InitializeVelocityConstraints_s_xfB;
                     const worldManifold = b2ContactSolver.InitializeVelocityConstraints_s_worldManifold;
                     const k_maxConditionNumber = 1000;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const vc = this.m_velocityConstraints[i];
                         const pc = this.m_positionConstraints[i];
                         const radiusA = pc.radiusA;
@@ -302,7 +302,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         vc.normal.Copy(worldManifold.normal);
                         b2Math_1.b2Vec2.CrossVOne(vc.normal, vc.tangent); // compute from normal
                         const pointCount = vc.pointCount;
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             const vcp = vc.points[j];
                             // vcp->rA = worldManifold.points[j] - cA;
                             b2Math_1.b2Vec2.SubVV(worldManifold.points[j], cA, vcp.rA);
@@ -356,7 +356,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                 WarmStart() {
                     const P = b2ContactSolver.WarmStart_s_P;
                     // Warm start.
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const vc = this.m_velocityConstraints[i];
                         const indexA = vc.indexA;
                         const indexB = vc.indexB;
@@ -372,7 +372,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         const normal = vc.normal;
                         // b2Vec2 tangent = b2Cross(normal, 1.0f);
                         const tangent = vc.tangent; // precomputed from normal
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             const vcp = vc.points[j];
                             // b2Vec2 P = vcp->normalImpulse * normal + vcp->tangentImpulse * tangent;
                             b2Math_1.b2Vec2.AddVV(b2Math_1.b2Vec2.MulSV(vcp.normalImpulse, normal, b2Math_1.b2Vec2.s_t0), b2Math_1.b2Vec2.MulSV(vcp.tangentImpulse, tangent, b2Math_1.b2Vec2.s_t1), P);
@@ -403,7 +403,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     const P1 = b2ContactSolver.SolveVelocityConstraints_s_P1;
                     const P2 = b2ContactSolver.SolveVelocityConstraints_s_P2;
                     const P1P2 = b2ContactSolver.SolveVelocityConstraints_s_P1P2;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const vc = this.m_velocityConstraints[i];
                         const indexA = vc.indexA;
                         const indexB = vc.indexB;
@@ -424,7 +424,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         // DEBUG: b2Assert(pointCount === 1 || pointCount === 2);
                         // Solve tangent constraints first because non-penetration is more important
                         // than friction.
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             const vcp = vc.points[j];
                             // Relative velocity at contact
                             // b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
@@ -452,7 +452,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         }
                         // Solve normal constraints
                         if (vc.pointCount === 1 || g_blockSolve === false) {
-                            for (let j = 0; j < pointCount; ++j) {
+                            for (let j : number = 0; j < pointCount; ++j) {
                                 const vcp = vc.points[j];
                                 // Relative velocity at contact
                                 // b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
@@ -718,10 +718,10 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     }
                 }
                 StoreImpulses() {
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const vc = this.m_velocityConstraints[i];
                         const manifold = this.m_contacts[vc.contactIndex].GetManifold();
-                        for (let j = 0; j < vc.pointCount; ++j) {
+                        for (let j : number = 0; j < vc.pointCount; ++j) {
                             manifold.points[j].normalImpulse = vc.points[j].normalImpulse;
                             manifold.points[j].tangentImpulse = vc.points[j].tangentImpulse;
                         }
@@ -734,8 +734,8 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     const rA = b2ContactSolver.SolvePositionConstraints_s_rA;
                     const rB = b2ContactSolver.SolvePositionConstraints_s_rB;
                     const P = b2ContactSolver.SolvePositionConstraints_s_P;
-                    let minSeparation = 0;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    let minSeparation : number = 0;
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const pc = this.m_positionConstraints[i];
                         const indexA = pc.indexA;
                         const indexB = pc.indexB;
@@ -751,7 +751,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         const cB = this.m_positions[indexB].c;
                         let aB = this.m_positions[indexB].a;
                         // Solve normal constraints
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             xfA.q.SetAngle(aA);
                             xfB.q.SetAngle(aB);
                             b2Math_1.b2Vec2.SubVV(cA, b2Math_1.b2Rot.MulRV(xfA.q, localCenterA, b2Math_1.b2Vec2.s_t0), xfA.p);
@@ -804,22 +804,22 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                     const rA = b2ContactSolver.SolveTOIPositionConstraints_s_rA;
                     const rB = b2ContactSolver.SolveTOIPositionConstraints_s_rB;
                     const P = b2ContactSolver.SolveTOIPositionConstraints_s_P;
-                    let minSeparation = 0;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    let minSeparation : number = 0;
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const pc = this.m_positionConstraints[i];
                         const indexA = pc.indexA;
                         const indexB = pc.indexB;
                         const localCenterA = pc.localCenterA;
                         const localCenterB = pc.localCenterB;
                         const pointCount = pc.pointCount;
-                        let mA = 0;
-                        let iA = 0;
+                        let mA : number = 0;
+                        let iA : number = 0;
                         if (indexA === toiIndexA || indexA === toiIndexB) {
                             mA = pc.invMassA;
                             iA = pc.invIA;
                         }
-                        let mB = 0;
-                        let iB = 0;
+                        let mB : number = 0;
+                        let iB : number = 0;
                         if (indexB === toiIndexA || indexB === toiIndexB) {
                             mB = pc.invMassB;
                             iB = pc.invIB;
@@ -829,7 +829,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "../../Collis
                         const cB = this.m_positions[indexB].c;
                         let aB = this.m_positions[indexB].a;
                         // Solve normal constraints
-                        for (let j = 0; j < pointCount; ++j) {
+                        for (let j : number = 0; j < pointCount; ++j) {
                             xfA.q.SetAngle(aA);
                             xfB.q.SetAngle(aB);
                             b2Math_1.b2Vec2.SubVV(cA, b2Math_1.b2Rot.MulRV(xfA.q, localCenterA, b2Math_1.b2Vec2.s_t0), xfA.p);

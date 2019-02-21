@@ -42,7 +42,7 @@ export class TestRagdoll extends testbed.Test {
     const jd = new box2d.b2RevoluteJointDef();
 
     // Add 2 ragdolls along the top
-    for (let i = 0; i < 2; ++i) {
+    for (let i : number = 0; i < 2; ++i) {
       const startX = -20.0 + Math.random() * 2.0 + 40.0 * i;
       const startY = 30.0 + Math.random() * 5.0;
 

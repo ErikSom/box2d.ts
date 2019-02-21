@@ -387,7 +387,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint"],
                     let linearError = b2Math_1.b2Abs(C1_x);
                     const angularError = b2Math_1.b2Abs(C1_y);
                     let active = false;
-                    let C2 = 0;
+                    let C2 : number = 0;
                     if (this.m_enableLimit) {
                         // float32 translation = b2Dot(axis, d);
                         const translation = b2Math_1.b2Vec2.DotVV(axis, d);

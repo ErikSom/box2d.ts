@@ -114,7 +114,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         fd.shape = shape;
                         fd.density = 1.0;
                         fd.friction = 0.3;
-                        for ( /*int*/let i = 0; i < 10; ++i) {
+                        for ( /*int*/let i : number = 0; i < 10; ++i) {
                             /*box2d.b2BodyDef*/
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;

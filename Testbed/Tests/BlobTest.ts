@@ -44,7 +44,7 @@ export class BlobTest extends testbed.Test {
       const ry = 5.0;
       const nBodies = 20;
       const bodyRadius = 0.5;
-      for (let i = 0; i < nBodies; ++i) {
+      for (let i : number = 0; i < nBodies; ++i) {
         const angle = (i * 2.0 * Math.PI) / nBodies;
         const bd = new box2d.b2BodyDef();
         //bd.isBullet = true;

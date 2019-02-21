@@ -48,9 +48,9 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
         const target = b2Math_1.b2Max(b2Settings_1.b2_linearSlop, totalRadius - 3 * b2Settings_1.b2_linearSlop);
         const tolerance = 0.25 * b2Settings_1.b2_linearSlop;
         // DEBUG: b2Assert(target > tolerance);
-        let t1 = 0;
+        let t1 : number = 0;
         const k_maxIterations = 20; // TODO_ERIN b2Settings
-        let iter = 0;
+        let iter : number = 0;
         // Prepare input for distance query.
         const cache = b2TimeOfImpact_s_cache;
         cache.count = 0;
@@ -116,7 +116,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
             // resolving the deepest point. This loop is bounded by the number of vertices.
             let done = false;
             let t2 = tMax;
-            let pushBackIter = 0;
+            let pushBackIter : number = 0;
             for (;;) {
                 // Find the deepest point at t2. Store the witness point indices.
                 const indexA = b2TimeOfImpact_s_indexA;
@@ -155,12 +155,12 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     break;
                 }
                 // Compute 1D root of: f(x) - target = 0
-                let rootIterCount = 0;
+                let rootIterCount : number = 0;
                 let a1 = t1;
                 let a2 = t2;
                 for (;;) {
                     // Use a mix of the secant rule and bisection.
-                    let t = 0;
+                    let t : number = 0;
                     if (rootIterCount & 1) {
                         // Secant rule to improve convergence.
                         t = a1 + (target - s1) * (a2 - a1) / (s2 - s1);

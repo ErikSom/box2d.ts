@@ -33,7 +33,7 @@ export class Rope extends testbed.Test {
     /*float32[]*/
     const masses = box2d.b2MakeNumberArray(N);
 
-    for (let i = 0; i < N; ++i) {
+    for (let i : number = 0; i < N; ++i) {
       vertices[i].Set(0.0, 20.0 - 0.25 * i);
       masses[i] = 1.0;
     }

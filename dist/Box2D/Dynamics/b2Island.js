@@ -235,7 +235,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     const timer = b2Island.s_timer.Reset();
                     const h = step.dt;
                     // Integrate velocities and apply damping. Initialize the body state.
-                    for (let i = 0; i < this.m_bodyCount; ++i) {
+                    for (let i : number = 0; i < this.m_bodyCount; ++i) {
                         const b = this.m_bodies[i];
                         // const c: b2Vec2 =
                         this.m_positions[i].c.Copy(b.m_sweep.c);
@@ -284,14 +284,14 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     if (step.warmStarting) {
                         contactSolver.WarmStart();
                     }
-                    for (let i = 0; i < this.m_jointCount; ++i) {
+                    for (let i : number = 0; i < this.m_jointCount; ++i) {
                         this.m_joints[i].InitVelocityConstraints(solverData);
                     }
                     profile.solveInit = timer.GetMilliseconds();
                     // Solve velocity constraints.
                     timer.Reset();
-                    for (let i = 0; i < step.velocityIterations; ++i) {
-                        for (let j = 0; j < this.m_jointCount; ++j) {
+                    for (let i : number = 0; i < step.velocityIterations; ++i) {
+                        for (let j : number = 0; j < this.m_jointCount; ++j) {
                             this.m_joints[j].SolveVelocityConstraints(solverData);
                         }
                         contactSolver.SolveVelocityConstraints();
@@ -300,7 +300,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     contactSolver.StoreImpulses();
                     profile.solveVelocity = timer.GetMilliseconds();
                     // Integrate positions.
-                    for (let i = 0; i < this.m_bodyCount; ++i) {
+                    for (let i : number = 0; i < this.m_bodyCount; ++i) {
                         const c = this.m_positions[i].c;
                         let a = this.m_positions[i].a;
                         const v = this.m_velocities[i].v;
@@ -328,10 +328,10 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     // Solve position constraints
                     timer.Reset();
                     let positionSolved = false;
-                    for (let i = 0; i < step.positionIterations; ++i) {
+                    for (let i : number = 0; i < step.positionIterations; ++i) {
                         const contactsOkay = contactSolver.SolvePositionConstraints();
                         let jointsOkay = true;
-                        for (let j = 0; j < this.m_jointCount; ++j) {
+                        for (let j : number = 0; j < this.m_jointCount; ++j) {
                             const jointOkay = this.m_joints[j].SolvePositionConstraints(solverData);
                             jointsOkay = jointsOkay && jointOkay;
                         }
@@ -342,7 +342,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         }
                     }
                     // Copy state buffers back to the bodies
-                    for (let i = 0; i < this.m_bodyCount; ++i) {
+                    for (let i : number = 0; i < this.m_bodyCount; ++i) {
                         const body = this.m_bodies[i];
                         body.m_sweep.c.Copy(this.m_positions[i].c);
                         body.m_sweep.a = this.m_positions[i].a;
@@ -356,7 +356,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         let minSleepTime = b2Settings_1.b2_maxFloat;
                         const linTolSqr = b2Settings_4.b2_linearSleepTolerance * b2Settings_4.b2_linearSleepTolerance;
                         const angTolSqr = b2Settings_4.b2_angularSleepTolerance * b2Settings_4.b2_angularSleepTolerance;
-                        for (let i = 0; i < this.m_bodyCount; ++i) {
+                        for (let i : number = 0; i < this.m_bodyCount; ++i) {
                             const b = this.m_bodies[i];
                             if (b.GetType() === b2Body_1.b2BodyType.b2_staticBody) {
                                 continue;
@@ -373,7 +373,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                             }
                         }
                         if (minSleepTime >= b2Settings_1.b2_timeToSleep && positionSolved) {
-                            for (let i = 0; i < this.m_bodyCount; ++i) {
+                            for (let i : number = 0; i < this.m_bodyCount; ++i) {
                                 const b = this.m_bodies[i];
                                 b.SetAwake(false);
                             }
@@ -384,7 +384,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     // DEBUG: b2Assert(toiIndexA < this.m_bodyCount);
                     // DEBUG: b2Assert(toiIndexB < this.m_bodyCount);
                     // Initialize the body state.
-                    for (let i = 0; i < this.m_bodyCount; ++i) {
+                    for (let i : number = 0; i < this.m_bodyCount; ++i) {
                         const b = this.m_bodies[i];
                         this.m_positions[i].c.Copy(b.m_sweep.c);
                         this.m_positions[i].a = b.m_sweep.a;
@@ -400,7 +400,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     contactSolverDef.velocities = this.m_velocities;
                     const contactSolver = b2Island.s_contactSolver.Initialize(contactSolverDef);
                     // Solve position constraints.
-                    for (let i = 0; i < subStep.positionIterations; ++i) {
+                    for (let i : number = 0; i < subStep.positionIterations; ++i) {
                         const contactsOkay = contactSolver.SolveTOIPositionConstraints(toiIndexA, toiIndexB);
                         if (contactsOkay) {
                             break;
@@ -447,14 +447,14 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     // starting impulses were applied in the discrete solver.
                     contactSolver.InitializeVelocityConstraints();
                     // Solve velocity constraints.
-                    for (let i = 0; i < subStep.velocityIterations; ++i) {
+                    for (let i : number = 0; i < subStep.velocityIterations; ++i) {
                         contactSolver.SolveVelocityConstraints();
                     }
                     // Don't store the TOI contact forces for warm starting
                     // because they can be quite large.
                     const h = subStep.dt;
                     // Integrate positions
-                    for (let i = 0; i < this.m_bodyCount; ++i) {
+                    for (let i : number = 0; i < this.m_bodyCount; ++i) {
                         const c = this.m_positions[i].c;
                         let a = this.m_positions[i].a;
                         const v = this.m_velocities[i].v;
@@ -491,7 +491,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                     if (this.m_listener === null) {
                         return;
                     }
-                    for (let i = 0; i < this.m_contactCount; ++i) {
+                    for (let i : number = 0; i < this.m_contactCount; ++i) {
                         const c = this.m_contacts[i];
                         if (!c) {
                             continue;
@@ -499,7 +499,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Timer"
                         const vc = constraints[i];
                         const impulse = b2Island.s_impulse;
                         impulse.count = vc.pointCount;
-                        for (let j = 0; j < vc.pointCount; ++j) {
+                        for (let j : number = 0; j < vc.pointCount; ++j) {
                             impulse.normalImpulses[j] = vc.points[j].normalImpulse;
                             impulse.tangentImpulses[j] = vc.points[j].tangentImpulse;
                         }

@@ -33,7 +33,7 @@ export class ConvexHull extends testbed.Test {
   }
 
   public Generate(): void {
-    for (let i = 0; i < ConvexHull.e_count; ++i) {
+    for (let i : number = 0; i < ConvexHull.e_count; ++i) {
       let x = box2d.b2RandomRange(-10.0, 10.0);
       let y = box2d.b2RandomRange(-10.0, 10.0);
 
@@ -70,7 +70,7 @@ export class ConvexHull extends testbed.Test {
 
     testbed.g_debugDraw.DrawPolygon(shape.m_vertices, shape.m_count, new box2d.b2Color(0.9, 0.9, 0.9));
 
-    for (let i = 0; i < this.m_count; ++i) {
+    for (let i : number = 0; i < this.m_count; ++i) {
       testbed.g_debugDraw.DrawPoint(this.m_test_points[i], 3.0, new box2d.b2Color(0.3, 0.9, 0.3));
       testbed.g_debugDraw.DrawStringWorld(this.m_test_points[i].x + 0.05, this.m_test_points[i].y + 0.05, `${i}`);
     }

@@ -256,14 +256,14 @@ export class Faucet extends testbed.Test {
       "      (c) color mixing, (s) static pressure",
       "      (+) increase flow, (-) decrease flow",
     ];
-    for (let i = 0; i < k_keys.length; ++i) {
+    for (let i : number = 0; i < k_keys.length; ++i) {
       testbed.g_debugDraw.DrawString(5, this.m_textLine, k_keys[i]);
       this.m_textLine += testbed.DRAW_STRING_NEW_LINE;
     }
   }
 
   public Keyboard(key: string): void {
-    let parameter = 0;
+    let parameter : number = 0;
     switch (key) {
       case "w":
         parameter = box2d.b2ParticleFlag.b2_waterParticle;

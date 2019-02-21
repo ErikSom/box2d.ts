@@ -55,7 +55,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     this.m_count = other.m_count;
                     this.m_vertices = b2Math_1.b2Vec2.MakeArray(this.m_count);
                     this.m_normals = b2Math_1.b2Vec2.MakeArray(this.m_count);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         this.m_vertices[i].Copy(other.m_vertices[i]);
                         this.m_normals[i].Copy(other.m_normals[i]);
                     }
@@ -73,7 +73,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     let n = count;
                     // Perform welding and copy vertices into local buffer.
                     const ps = [];
-                    for (let i = 0; i < n; ++i) {
+                    for (let i : number = 0; i < n; ++i) {
                         const /*b2Vec2*/ v = vertices[start + i];
                         let /*bool*/ unique = true;
                         for (let /*int32*/ j = 0; j < ps.length; ++j) {
@@ -95,7 +95,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     // Create the convex hull using the Gift wrapping algorithm
                     // http://en.wikipedia.org/wiki/Gift_wrapping_algorithm
                     // Find the right most point on the hull
-                    let i0 = 0;
+                    let i0 : number = 0;
                     let x0 = ps[0].x;
                     for (let i = 1; i < n; ++i) {
                         const x = ps[i].x;
@@ -105,11 +105,11 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                         }
                     }
                     const hull = [];
-                    let m = 0;
+                    let m : number = 0;
                     let ih = i0;
                     for (;;) {
                         hull[m] = ih;
-                        let ie = 0;
+                        let ie : number = 0;
                         for (let j = 1; j < n; ++j) {
                             if (ie === ih) {
                                 ie = j;
@@ -136,11 +136,11 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     this.m_vertices = b2Math_1.b2Vec2.MakeArray(this.m_count);
                     this.m_normals = b2Math_1.b2Vec2.MakeArray(this.m_count);
                     // Copy vertices.
-                    for (let i = 0; i < m; ++i) {
+                    for (let i : number = 0; i < m; ++i) {
                         this.m_vertices[i].Copy(ps[hull[i]]);
                     }
                     // Compute normals. Ensure the edges have non-zero length.
-                    for (let i = 0; i < m; ++i) {
+                    for (let i : number = 0; i < m; ++i) {
                         const vertexi1 = this.m_vertices[i];
                         const vertexi2 = this.m_vertices[(i + 1) % m];
                         const edge = b2Math_1.b2Vec2.SubVV(vertexi2, vertexi1, b2Math_1.b2Vec2.s_t0); // edge uses s_t0
@@ -178,7 +178,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                         xf.SetPosition(center);
                         xf.SetRotationAngle(angle);
                         // Transform vertices and normals.
-                        for (let i = 0; i < this.m_count; ++i) {
+                        for (let i : number = 0; i < this.m_count; ++i) {
                             b2Math_1.b2Transform.MulXV(xf, this.m_vertices[i], this.m_vertices[i]);
                             b2Math_1.b2Rot.MulRV(xf.q, this.m_normals[i], this.m_normals[i]);
                         }
@@ -187,7 +187,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                 }
                 TestPoint(xf, p) {
                     const pLocal = b2Math_1.b2Transform.MulTXV(xf, p, b2PolygonShape.TestPoint_s_pLocal);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const dot = b2Math_1.b2Vec2.DotVV(this.m_normals[i], b2Math_1.b2Vec2.SubVV(pLocal, this.m_vertices[i], b2Math_1.b2Vec2.s_t0));
                         if (dot > 0) {
                             return false;
@@ -199,7 +199,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     const pLocal = b2Math_1.b2Transform.MulTXV(xf, p, b2PolygonShape.ComputeDistance_s_pLocal);
                     let maxDistance = -b2Settings_1.b2_maxFloat;
                     const normalForMaxDistance = b2PolygonShape.ComputeDistance_s_normalForMaxDistance.Copy(pLocal);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const dot = b2Math_1.b2Vec2.DotVV(this.m_normals[i], b2Math_1.b2Vec2.SubVV(pLocal, this.m_vertices[i], b2Math_1.b2Vec2.s_t0));
                         if (dot > maxDistance) {
                             maxDistance = dot;
@@ -209,7 +209,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     if (maxDistance > 0) {
                         const minDistance = b2PolygonShape.ComputeDistance_s_minDistance.Copy(normalForMaxDistance);
                         let minDistance2 = maxDistance * maxDistance;
-                        for (let i = 0; i < this.m_count; ++i) {
+                        for (let i : number = 0; i < this.m_count; ++i) {
                             const distance = b2Math_1.b2Vec2.SubVV(pLocal, this.m_vertices[i], b2PolygonShape.ComputeDistance_s_distance);
                             const distance2 = distance.LengthSquared();
                             if (minDistance2 > distance2) {
@@ -231,9 +231,9 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     const p1 = b2Math_1.b2Transform.MulTXV(xf, input.p1, b2PolygonShape.RayCast_s_p1);
                     const p2 = b2Math_1.b2Transform.MulTXV(xf, input.p2, b2PolygonShape.RayCast_s_p2);
                     const d = b2Math_1.b2Vec2.SubVV(p2, p1, b2PolygonShape.RayCast_s_d);
-                    let lower = 0, upper = input.maxFraction;
+                    let lower : number = 0, upper = input.maxFraction;
                     let index = -1;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         // p = p1 + a * d
                         // dot(normal, p - v) = 0
                         // dot(normal, p1 - v) + a * dot(normal, d) = 0
@@ -280,7 +280,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                 ComputeAABB(aabb, xf, childIndex) {
                     const lower = b2Math_1.b2Transform.MulXV(xf, this.m_vertices[0], aabb.lowerBound);
                     const upper = aabb.upperBound.Copy(lower);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const v = b2Math_1.b2Transform.MulXV(xf, this.m_vertices[i], b2PolygonShape.ComputeAABB_s_v);
                         b2Math_1.b2Vec2.MinV(v, lower, lower);
                         b2Math_1.b2Vec2.MaxV(v, upper, upper);
@@ -315,18 +315,18 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     // The rest of the derivation is handled by computer algebra.
                     // DEBUG: b2Assert(this.m_count >= 3);
                     const center = b2PolygonShape.ComputeMass_s_center.SetZero();
-                    let area = 0;
-                    let I = 0;
+                    let area : number = 0;
+                    let I : number = 0;
                     // s is the reference point for forming triangles.
                     // It's location doesn't change the result (except for rounding error).
                     const s = b2PolygonShape.ComputeMass_s_s.SetZero();
                     // This code would put the reference point inside the polygon.
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         s.SelfAdd(this.m_vertices[i]);
                     }
                     s.SelfMul(1 / this.m_count);
                     const k_inv3 = 1 / 3;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         // Triangle vertices.
                         const e1 = b2Math_1.b2Vec2.SubVV(this.m_vertices[i], s, b2PolygonShape.ComputeMass_s_e1);
                         const e2 = b2Math_1.b2Vec2.SubVV(this.m_vertices[(i + 1) % this.m_count], s, b2PolygonShape.ComputeMass_s_e2);
@@ -355,12 +355,12 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     massData.I += massData.mass * (b2Math_1.b2Vec2.DotVV(massData.center, massData.center) - b2Math_1.b2Vec2.DotVV(center, center));
                 }
                 Validate() {
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const i1 = i;
                         const i2 = (i + 1) % this.m_count;
                         const p = this.m_vertices[i1];
                         const e = b2Math_1.b2Vec2.SubVV(this.m_vertices[i2], p, b2PolygonShape.Validate_s_e);
-                        for (let j = 0; j < this.m_count; ++j) {
+                        for (let j : number = 0; j < this.m_count; ++j) {
                             if (j === i1 || j === i2) {
                                 continue;
                             }
@@ -383,11 +383,11 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     const normalL = b2Math_1.b2Rot.MulTRV(xf.q, normal, b2PolygonShape.ComputeSubmergedArea_s_normalL);
                     const offsetL = offset - b2Math_1.b2Vec2.DotVV(normal, xf.p);
                     const depths = [];
-                    let diveCount = 0;
+                    let diveCount : number = 0;
                     let intoIndex = -1;
                     let outoIndex = -1;
                     let lastSubmerged = false;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         depths[i] = b2Math_1.b2Vec2.DotVV(normalL, this.m_vertices[i]) - offsetL;
                         const isSubmerged = depths[i] < (-b2Settings_1.b2_epsilon);
                         if (i > 0) {
@@ -435,7 +435,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     const intoVec = b2PolygonShape.ComputeSubmergedArea_s_intoVec.Set(this.m_vertices[intoIndex].x * (1 - intoLamdda) + this.m_vertices[intoIndex2].x * intoLamdda, this.m_vertices[intoIndex].y * (1 - intoLamdda) + this.m_vertices[intoIndex2].y * intoLamdda);
                     const outoVec = b2PolygonShape.ComputeSubmergedArea_s_outoVec.Set(this.m_vertices[outoIndex].x * (1 - outoLamdda) + this.m_vertices[outoIndex2].x * outoLamdda, this.m_vertices[outoIndex].y * (1 - outoLamdda) + this.m_vertices[outoIndex2].y * outoLamdda);
                     // Initialize accumulator
-                    let area = 0;
+                    let area : number = 0;
                     const center = b2PolygonShape.ComputeSubmergedArea_s_center.SetZero();
                     let p2 = this.m_vertices[intoIndex2];
                     let p3;
@@ -464,7 +464,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                 Dump(log) {
                     log("    const shape: b2PolygonShape = new b2PolygonShape();\n");
                     log("    const vs: b2Vec2[] = [];\n");
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         log("    vs[%d] = new b2Vec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
                     }
                     log("    shape.Set(vs, %d);\n", this.m_count);
@@ -473,7 +473,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                     // DEBUG: b2Assert(count >= 3);
                     const c = out;
                     c.SetZero();
-                    let area = 0;
+                    let area : number = 0;
                     // s is the reference point for forming triangles.
                     // It's location doesn't change the result (except for rounding error).
                     const pRef = b2PolygonShape.ComputeCentroid_s_pRef.SetZero();
@@ -487,7 +487,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Shape"],
                 #endif
                     */
                     const inv3 = 1 / 3;
-                    for (let i = 0; i < count; ++i) {
+                    for (let i : number = 0; i < count; ++i) {
                         // Triangle vertices.
                         const p1 = pRef;
                         const p2 = vs[i];

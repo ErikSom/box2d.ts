@@ -66,7 +66,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         this.m_ropeDef.localAnchorA.Set(0.0, y);
                         /*box2d.b2Body*/
                         let prevBody = ground;
-                        for ( /*int32*/let i = 0; i < N; ++i) {
+                        for ( /*int32*/let i : number = 0; i < N; ++i) {
                             /*box2d.b2BodyDef*/
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;

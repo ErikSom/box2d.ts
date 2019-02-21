@@ -42,7 +42,7 @@ export class DynamicTreeTest extends testbed.Test {
 
     //srand(888);
 
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       const actor = this.m_actors[i];
       this.GetRandomAABB(actor.aabb);
       actor.proxyId = this.m_tree.CreateProxy(actor.aabb, actor);
@@ -71,7 +71,7 @@ export class DynamicTreeTest extends testbed.Test {
     if (this.m_automated) {
       const actionCount = box2d.b2Max(1, DynamicTreeTest.e_actorCount >> 2);
 
-      for (let i = 0; i < actionCount; ++i) {
+      for (let i : number = 0; i < actionCount; ++i) {
         this.Action();
       }
     }
@@ -79,7 +79,7 @@ export class DynamicTreeTest extends testbed.Test {
     this.Query();
     this.RayCast();
 
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       const actor = this.m_actors[i];
       if (actor.proxyId === null) {
         continue;
@@ -173,7 +173,7 @@ export class DynamicTreeTest extends testbed.Test {
   }
 
   public CreateProxy(): void {
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
       const actor = this.m_actors[j];
       if (actor.proxyId === null) {
@@ -185,7 +185,7 @@ export class DynamicTreeTest extends testbed.Test {
   }
 
   public DestroyProxy(): void {
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
       const actor = this.m_actors[j];
       if (actor.proxyId !== null) {
@@ -197,7 +197,7 @@ export class DynamicTreeTest extends testbed.Test {
   }
 
   public MoveProxy(): void {
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       const j = 0 | box2d.b2RandomRange(0, DynamicTreeTest.e_actorCount);
       const actor = this.m_actors[j];
       if (actor.proxyId === null) {
@@ -215,7 +215,7 @@ export class DynamicTreeTest extends testbed.Test {
 
   public Reset(): void {
     this.m_rayActor = null;
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       this.m_actors[i].fraction = 1.0;
       this.m_actors[i].overlap = false;
     }
@@ -245,7 +245,7 @@ export class DynamicTreeTest extends testbed.Test {
       return true;
     });
 
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       if (this.m_actors[i].proxyId === null) {
         continue;
       }
@@ -282,7 +282,7 @@ export class DynamicTreeTest extends testbed.Test {
     // Brute force ray cast.
     let bruteActor = null;
     const bruteOutput = new box2d.b2RayCastOutput();
-    for (let i = 0; i < DynamicTreeTest.e_actorCount; ++i) {
+    for (let i : number = 0; i < DynamicTreeTest.e_actorCount; ++i) {
       if (this.m_actors[i].proxyId === null) {
         continue;
       }

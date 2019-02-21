@@ -70,8 +70,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2StackQueue"], 
                     const inverseRadius = 1 / radius;
                     const lower = new b2Math_1.b2Vec2(+b2Settings_1.b2_maxFloat, +b2Settings_1.b2_maxFloat);
                     const upper = new b2Math_1.b2Vec2(-b2Settings_1.b2_maxFloat, -b2Settings_1.b2_maxFloat);
-                    let necessary_count = 0;
-                    for (let k = 0; k < this.m_generatorCount; k++) {
+                    let necessary_count : number = 0;
+                    for (let k : number = 0; k < this.m_generatorCount; k++) {
                         const g = this.m_generatorBuffer[k];
                         if (g.necessary) {
                             b2Math_1.b2Vec2.MinV(lower, g.center, lower);
@@ -100,7 +100,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2StackQueue"], 
                     // (4 * m_countX * m_countY) is the queue capacity that is experimentally
                     // known to be necessary and sufficient for general particle distributions.
                     const queue = new b2StackQueue_1.b2StackQueue(4 * this.m_countX * this.m_countY);
-                    for (let k = 0; k < this.m_generatorCount; k++) {
+                    for (let k : number = 0; k < this.m_generatorCount; k++) {
                         const g = this.m_generatorBuffer[k];
                         ///  g.center = inverseRadius * (g.center - lower);
                         g.center.SelfSub(lower).SelfMul(inverseRadius);
@@ -133,8 +133,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2StackQueue"], 
                             }
                         }
                     }
-                    for (let y = 0; y < this.m_countY; y++) {
-                        for (let x = 0; x < this.m_countX - 1; x++) {
+                    for (let y : number = 0; y < this.m_countY; y++) {
+                        for (let x : number = 0; x < this.m_countX - 1; x++) {
                             const i = x + y * this.m_countX;
                             const a = this.m_diagram[i];
                             const b = this.m_diagram[i + 1];
@@ -144,8 +144,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2StackQueue"], 
                             }
                         }
                     }
-                    for (let y = 0; y < this.m_countY - 1; y++) {
-                        for (let x = 0; x < this.m_countX; x++) {
+                    for (let y : number = 0; y < this.m_countY - 1; y++) {
+                        for (let x : number = 0; x < this.m_countX; x++) {
                             const i = x + y * this.m_countX;
                             const a = this.m_diagram[i];
                             const b = this.m_diagram[i + this.m_countX];
@@ -194,8 +194,8 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "./b2StackQueue"], 
                  * generator.
                  */
                 GetNodes(callback) {
-                    for (let y = 0; y < this.m_countY - 1; y++) {
-                        for (let x = 0; x < this.m_countX - 1; x++) {
+                    for (let y : number = 0; y < this.m_countY - 1; y++) {
+                        for (let x : number = 0; x < this.m_countX - 1; x++) {
                             const i = x + y * this.m_countX;
                             const a = this.m_diagram[i];
                             const b = this.m_diagram[i + 1];

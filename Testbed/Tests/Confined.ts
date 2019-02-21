@@ -59,8 +59,8 @@ export class Confined extends testbed.Test {
     fd.density = 1.0;
     fd.friction = 0.1;
 
-    for (let j = 0; j < Confined.e_columnCount; ++j) {
-      for (let i = 0; i < Confined.e_rowCount; ++i) {
+    for (let j : number = 0; j < Confined.e_columnCount; ++j) {
+      for (let i : number = 0; i < Confined.e_rowCount; ++i) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         bd.position.Set(-10.0 + (2.1 * j + 1.0 + 0.01 * i) * radius, (2.0 * i + 1.0) * radius);

@@ -85,7 +85,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                     this.m_vs = b2Math_1.b2Vec2.MakeArray(this.m_count);
                     // this.m_ims = (float32*)b2Alloc(this.m_count * sizeof(float32));
                     this.m_ims = b2Settings_1.b2MakeNumberArray(this.m_count);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         this.m_ps[i].Copy(def.vertices[i]);
                         this.m_p0s[i].Copy(def.vertices[i]);
                         this.m_vs[i].SetZero();
@@ -103,12 +103,12 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                     this.m_Ls = b2Settings_1.b2MakeNumberArray(count2);
                     // this.m_as = (float32*)b2Alloc(count3 * sizeof(float32));
                     this.m_as = b2Settings_1.b2MakeNumberArray(count3);
-                    for (let i = 0; i < count2; ++i) {
+                    for (let i : number = 0; i < count2; ++i) {
                         const p1 = this.m_ps[i];
                         const p2 = this.m_ps[i + 1];
                         this.m_Ls[i] = b2Math_1.b2Vec2.DistanceVV(p1, p2);
                     }
-                    for (let i = 0; i < count3; ++i) {
+                    for (let i : number = 0; i < count3; ++i) {
                         const p1 = this.m_ps[i];
                         const p2 = this.m_ps[i + 1];
                         const p3 = this.m_ps[i + 2];
@@ -129,7 +129,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                         return;
                     }
                     const d = Math.exp(-h * this.m_damping);
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         this.m_p0s[i].Copy(this.m_ps[i]);
                         if (this.m_ims[i] > 0) {
                             this.m_vs[i].SelfMulAdd(h, this.m_gravity);
@@ -137,19 +137,19 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                         this.m_vs[i].SelfMul(d);
                         this.m_ps[i].SelfMulAdd(h, this.m_vs[i]);
                     }
-                    for (let i = 0; i < iterations; ++i) {
+                    for (let i : number = 0; i < iterations; ++i) {
                         this.SolveC2();
                         this.SolveC3();
                         this.SolveC2();
                     }
                     const inv_h = 1 / h;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         b2Math_1.b2Vec2.MulSV(inv_h, b2Math_1.b2Vec2.SubVV(this.m_ps[i], this.m_p0s[i], b2Math_1.b2Vec2.s_t0), this.m_vs[i]);
                     }
                 }
                 SolveC2() {
                     const count2 = this.m_count - 1;
-                    for (let i = 0; i < count2; ++i) {
+                    for (let i : number = 0; i < count2; ++i) {
                         const p1 = this.m_ps[i];
                         const p2 = this.m_ps[i + 1];
                         const d = b2Math_1.b2Vec2.SubVV(p2, p1, b2Rope.s_d);
@@ -169,13 +169,13 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                 }
                 SetAngle(angle) {
                     const count3 = this.m_count - 2;
-                    for (let i = 0; i < count3; ++i) {
+                    for (let i : number = 0; i < count3; ++i) {
                         this.m_as[i] = angle;
                     }
                 }
                 SolveC3() {
                     const count3 = this.m_count - 2;
-                    for (let i = 0; i < count3; ++i) {
+                    for (let i : number = 0; i < count3; ++i) {
                         const p1 = this.m_ps[i];
                         const p2 = this.m_ps[i + 1];
                         const p3 = this.m_ps[i + 2];
@@ -222,7 +222,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Common/b2Draw"]
                 }
                 Draw(draw) {
                     const c = new b2Draw_1.b2Color(0.4, 0.5, 0.7);
-                    for (let i = 0; i < this.m_count - 1; ++i) {
+                    for (let i : number = 0; i < this.m_count - 1; ++i) {
                         draw.DrawSegment(this.m_ps[i], this.m_ps[i + 1], c);
                     }
                 }

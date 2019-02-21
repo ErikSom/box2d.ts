@@ -156,7 +156,7 @@ export class TDTire {
   public updateDrive(controlState: number): void {
 
     //find desired speed
-    let desiredSpeed = 0;
+    let desiredSpeed : number = 0;
     switch (controlState & (TDC_UP | TDC_DOWN)) {
       case TDC_UP:
         desiredSpeed = this.m_maxForwardSpeed;
@@ -173,7 +173,7 @@ export class TDTire {
     const currentSpeed = box2d.b2Vec2.DotVV(this.getForwardVelocity(), currentForwardNormal);
 
     //apply necessary force
-    let force = 0;
+    let force : number = 0;
     if (desiredSpeed > currentSpeed) {
       force = this.m_maxDriveForce;
     } else if (desiredSpeed < currentSpeed) {
@@ -185,7 +185,7 @@ export class TDTire {
   }
 
   public updateTurn(controlState: number): void {
-    let desiredTorque = 0;
+    let desiredTorque : number = 0;
     switch (controlState & (TDC_LEFT | TDC_RIGHT)) {
       case TDC_LEFT:
         desiredTorque = 15;
@@ -288,7 +288,7 @@ export class TDCar {
     const lockAngle = 35 * DEGTORAD;
     const turnSpeedPerSec = 160 * DEGTORAD; //from lock to lock in 0.5 sec
     const turnPerTimeStep = turnSpeedPerSec / 60.0;
-    let desiredAngle = 0;
+    let desiredAngle : number = 0;
     switch (controlState & (TDC_LEFT | TDC_RIGHT)) {
       case TDC_LEFT:
         desiredAngle = lockAngle;

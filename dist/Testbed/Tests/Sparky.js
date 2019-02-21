@@ -138,13 +138,13 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_contactPoint = new box2d.b2Vec2();
                     // Set up array of sparks trackers.
                     this.m_VFXIndex = 0;
-                    for (let i = 0; i < Sparky.c_maxVFX; i++) {
+                    for (let i : number = 0; i < Sparky.c_maxVFX; i++) {
                         this.m_VFX[i] = null;
                     }
                     this.CreateWalls();
                     this.m_particleSystem.SetRadius(0.25 * 2); // HACK: increase particle radius
                     // Create a list of circles that will spark.
-                    for (let i = 0; i < Sparky.c_maxCircles; i++) {
+                    for (let i : number = 0; i < Sparky.c_maxCircles; i++) {
                         const bd = new box2d.b2BodyDef();
                         bd.type = box2d.b2BodyType.b2_dynamicBody;
                         const body = this.m_world.CreateBody(bd);
@@ -191,7 +191,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         this.m_contact = false;
                     }
                     // Step particle explosions.
-                    for (let i = 0; i < Sparky.c_maxVFX; i++) {
+                    for (let i : number = 0; i < Sparky.c_maxVFX; i++) {
                         const vfx = this.m_VFX[i];
                         if (vfx === null) {
                             continue;

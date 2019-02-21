@@ -57,7 +57,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     djd.frequencyHz = this.m_frequencyHz;
                     djd.dampingRatio = this.m_dampingRatio;
                     this.m_targetArea = 0;
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const body = this.m_bodies[i];
                         const next = this.m_bodies[(i + 1) % this.m_bodies.length];
                         const body_c = body.GetWorldCenter();
@@ -83,7 +83,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                 }
                 SetFrequency(hz) {
                     this.m_frequencyHz = hz;
-                    for (let i = 0; i < this.m_joints.length; ++i) {
+                    for (let i : number = 0; i < this.m_joints.length; ++i) {
                         this.m_joints[i].SetFrequency(hz);
                     }
                 }
@@ -92,7 +92,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                 }
                 SetDampingRatio(ratio) {
                     this.m_dampingRatio = ratio;
-                    for (let i = 0; i < this.m_joints.length; ++i) {
+                    for (let i : number = 0; i < this.m_joints.length; ++i) {
                         this.m_joints[i].SetDampingRatio(ratio);
                     }
                 }
@@ -103,7 +103,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     log("Area joint dumping is not supported.\n");
                 }
                 InitVelocityConstraints(data) {
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const prev = this.m_bodies[(i + this.m_bodies.length - 1) % this.m_bodies.length];
                         const next = this.m_bodies[(i + 1) % this.m_bodies.length];
                         const prev_c = data.positions[prev.m_islandIndex].c;
@@ -113,7 +113,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     }
                     if (data.step.warmStarting) {
                         this.m_impulse *= data.step.dtRatio;
-                        for (let i = 0; i < this.m_bodies.length; ++i) {
+                        for (let i : number = 0; i < this.m_bodies.length; ++i) {
                             const body = this.m_bodies[i];
                             const body_v = data.velocities[body.m_islandIndex].v;
                             const delta = this.m_deltas[i];
@@ -126,9 +126,9 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     }
                 }
                 SolveVelocityConstraints(data) {
-                    let dotMassSum = 0;
-                    let crossMassSum = 0;
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    let dotMassSum : number = 0;
+                    let crossMassSum : number = 0;
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const body = this.m_bodies[i];
                         const body_v = data.velocities[body.m_islandIndex].v;
                         const delta = this.m_deltas[i];
@@ -138,7 +138,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     const lambda = -2 * crossMassSum / dotMassSum;
                     // lambda = b2Clamp(lambda, -b2_maxLinearCorrection, b2_maxLinearCorrection);
                     this.m_impulse += lambda;
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const body = this.m_bodies[i];
                         const body_v = data.velocities[body.m_islandIndex].v;
                         const delta = this.m_deltas[i];
@@ -147,9 +147,9 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     }
                 }
                 SolvePositionConstraints(data) {
-                    let perimeter = 0;
-                    let area = 0;
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    let perimeter : number = 0;
+                    let area : number = 0;
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const body = this.m_bodies[i];
                         const next = this.m_bodies[(i + 1) % this.m_bodies.length];
                         const body_c = data.positions[body.m_islandIndex].c;
@@ -168,7 +168,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint", 
                     const deltaArea = this.m_targetArea - area;
                     const toExtrude = 0.5 * deltaArea / perimeter;
                     let done = true;
-                    for (let i = 0; i < this.m_bodies.length; ++i) {
+                    for (let i : number = 0; i < this.m_bodies.length; ++i) {
                         const body = this.m_bodies[i];
                         const body_c = data.positions[body.m_islandIndex].c;
                         const next_i = (i + 1) % this.m_bodies.length;

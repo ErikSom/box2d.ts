@@ -51,7 +51,7 @@ export class BuoyancyTest extends testbed.Test {
 
     // Spawn in a bunch of crap
     {
-      for (let i = 0; i < 5; i++) {
+      for (let i : number = 0; i < 5; i++) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         //bd.isBullet = true;
@@ -74,7 +74,7 @@ export class BuoyancyTest extends testbed.Test {
     }
 
     {
-      for (let i = 0; i < 5; i++) {
+      for (let i : number = 0; i < 5; i++) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         //bd.isBullet = true;
@@ -95,7 +95,7 @@ export class BuoyancyTest extends testbed.Test {
     }
 
     {
-      for (let i = 0; i < 15; i++) {
+      for (let i : number = 0; i < 15; i++) {
         const bd = new box2d.b2BodyDef();
         bd.type = box2d.b2BodyType.b2_dynamicBody;
         //bd.isBullet = true;
@@ -188,12 +188,12 @@ export class BuoyancyTest extends testbed.Test {
     }
 
     // if (box2d.DEBUG) {
-    //   for (let body_i = 0; i < this.m_bodies.length; ++i)
+    //   for (let body_i : number = 0; i < this.m_bodies.length; ++i)
     //     this.m_controller.AddBody(this.m_bodies[body_i]);
-    //   for (let body_i = 0; i < this.m_bodies.length; ++i)
+    //   for (let body_i : number = 0; i < this.m_bodies.length; ++i)
     //     this.m_controller.RemoveBody(this.m_bodies[body_i]);
     // }
-    for (let body_i = 0; body_i < this.m_bodies.length; ++body_i) {
+    for (let body_i : number = 0; body_i < this.m_bodies.length; ++body_i) {
       this.m_controller.AddBody(this.m_bodies[body_i]);
     }
     // if (box2d.DEBUG) {

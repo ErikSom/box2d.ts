@@ -315,7 +315,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint"],
                     let coordinateA, coordinateB;
                     const JvAC = this.m_JvAC, JvBD = this.m_JvBD;
                     let JwA, JwB, JwC, JwD;
-                    let mass = 0;
+                    let mass : number = 0;
                     if (this.m_typeA === b2Joint_1.b2JointType.e_revoluteJoint) {
                         JvAC.SetZero();
                         JwA = 1;
@@ -373,7 +373,7 @@ System.register(["../../Common/b2Settings", "../../Common/b2Math", "./b2Joint"],
                         coordinateB = b2Math_1.b2Vec2.DotVV(b2Math_1.b2Vec2.SubVV(pB, pD, b2Math_1.b2Vec2.s_t0), this.m_localAxisD);
                     }
                     const C = (coordinateA + this.m_ratio * coordinateB) - this.m_constant;
-                    let impulse = 0;
+                    let impulse : number = 0;
                     if (mass > 0) {
                         impulse = -C / mass;
                     }

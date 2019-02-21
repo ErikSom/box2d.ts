@@ -162,7 +162,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Collision/b2Col
                     }
                     // Touch each proxy so that new pairs may be created
                     const broadPhase = world.m_contactManager.m_broadPhase;
-                    for (let i = 0; i < this.m_proxyCount; ++i) {
+                    for (let i : number = 0; i < this.m_proxyCount; ++i) {
                         broadPhase.TouchProxy(this.m_proxies[i].treeNode);
                     }
                 }
@@ -296,7 +296,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Collision/b2Col
                     // DEBUG: b2Assert(this.m_proxyCount === 0);
                     // Create proxies in the broad-phase.
                     this.m_proxyCount = this.m_shape.GetChildCount();
-                    for (let i = 0; i < this.m_proxyCount; ++i) {
+                    for (let i : number = 0; i < this.m_proxyCount; ++i) {
                         const proxy = this.m_proxies[i] = new b2FixtureProxy(this);
                         this.m_shape.ComputeAABB(proxy.aabb, xf, i);
                         proxy.treeNode = broadPhase.CreateProxy(proxy.aabb, proxy);
@@ -306,7 +306,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Collision/b2Col
                 DestroyProxies() {
                     const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
                     // Destroy proxies in the broad-phase.
-                    for (let i = 0; i < this.m_proxyCount; ++i) {
+                    for (let i : number = 0; i < this.m_proxyCount; ++i) {
                         const proxy = this.m_proxies[i];
                         delete proxy.treeNode.userData;
                         broadPhase.DestroyProxy(proxy.treeNode);
@@ -317,7 +317,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Collision/b2Col
                 TouchProxies() {
                     const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
                     const proxyCount = this.m_proxyCount;
-                    for (let i = 0; i < proxyCount; ++i) {
+                    for (let i : number = 0; i < proxyCount; ++i) {
                         broadPhase.TouchProxy(this.m_proxies[i].treeNode);
                     }
                 }
@@ -326,7 +326,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math", "../Collision/b2Col
                         return;
                     }
                     const broadPhase = this.m_body.m_world.m_contactManager.m_broadPhase;
-                    for (let i = 0; i < this.m_proxyCount; ++i) {
+                    for (let i : number = 0; i < this.m_proxyCount; ++i) {
                         const proxy = this.m_proxies[i];
                         // Compute an AABB that covers the swept shape (may miss some rotation effect).
                         const aabb1 = b2Fixture.Synchronize_s_aabb1;

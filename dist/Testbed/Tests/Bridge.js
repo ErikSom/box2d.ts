@@ -49,7 +49,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         fd.friction = 0.2;
                         const jd = new box2d.b2RevoluteJointDef();
                         let prevBody = ground;
-                        for (let i = 0; i < Bridge.e_count; ++i) {
+                        for (let i : number = 0; i < Bridge.e_count; ++i) {
                             const bd = new box2d.b2BodyDef();
                             bd.type = box2d.b2BodyType.b2_dynamicBody;
                             bd.position.Set(-14.5 + 1.0 * i, 5.0);
@@ -67,7 +67,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         jd.Initialize(prevBody, ground, anchor);
                         this.m_world.CreateJoint(jd);
                     }
-                    for (let i = 0; i < 2; ++i) {
+                    for (let i : number = 0; i < 2; ++i) {
                         const vertices = new Array();
                         vertices[0] = new box2d.b2Vec2(-0.5, 0.0);
                         vertices[1] = new box2d.b2Vec2(0.5, 0.0);
@@ -83,7 +83,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         const body = this.m_world.CreateBody(bd);
                         body.CreateFixture(fd);
                     }
-                    for (let i = 0; i < 3; ++i) {
+                    for (let i : number = 0; i < 3; ++i) {
                         const shape = new box2d.b2CircleShape();
                         shape.m_radius = 0.5;
                         const fd = new box2d.b2FixtureDef();

@@ -75,7 +75,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                                 const poly = fixture.GetShape();
                                 const vertexCount = poly.m_count;
                                 const vertices = [];
-                                for (let i = 0; i < vertexCount; ++i) {
+                                for (let i : number = 0; i < vertexCount; ++i) {
                                     vertices[i] = box2d.b2Transform.MulXV(xf, poly.m_vertices[i], new box2d.b2Vec2());
                                 }
                                 testbed.g_debugDraw.DrawPolygon(vertices, vertexCount, color);
@@ -138,7 +138,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     {
                         this.m_circle.m_radius = 0.5;
                     }
-                    for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
                         this.m_bodies[i] = null;
                     }
                 }
@@ -173,7 +173,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                     this.m_bodyIndex = (this.m_bodyIndex + 1) % PolyShapes.e_maxBodies;
                 }
                 DestroyBody() {
-                    for (let i = 0; i < PolyShapes.e_maxBodies; ++i) {
+                    for (let i : number = 0; i < PolyShapes.e_maxBodies; ++i) {
                         if (this.m_bodies[i] !== null) {
                             this.m_world.DestroyBody(this.m_bodies[i]);
                             this.m_bodies[i] = null;
@@ -191,7 +191,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                             this.CreateBody(key.charCodeAt(0) - "1".charCodeAt(0));
                             break;
                         case "a":
-                            for (let i = 0; i < PolyShapes.e_maxBodies; i += 2) {
+                            for (let i : number = 0; i < PolyShapes.e_maxBodies; i += 2) {
                                 if (this.m_bodies[i]) {
                                     const active = this.m_bodies[i].IsActive();
                                     this.m_bodies[i].SetActive(!active);

@@ -139,7 +139,7 @@ export class SpecialParticleTracker extends box2d.b2DestructionListener {
    */
   public Add(particleIndices: number[], numberOfParticles: number) {
     // DEBUG: box2d.b2Assert(this.m_particleSystem !== null);
-    for (let i = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
+    for (let i : number = 0; i < numberOfParticles && this.m_particles.length < SandboxParams.k_numberOfSpecialParticles; ++i) {
       const particleIndex = particleIndices[i];
       this.m_particleSystem.SetParticleFlags(particleIndex, this.m_particleSystem.GetFlagsBuffer()[particleIndex] | box2d.b2ParticleFlag.b2_destructionListenerParticle);
       this.m_particles.push(this.m_particleSystem.GetParticleHandleFromIndex(particleIndex));
@@ -163,7 +163,7 @@ export class SpecialParticleTracker extends box2d.b2DestructionListener {
       128 + (256.0 * Math.abs(0.5 - colorCoeff)),
       128 + (128.0 * colorCoeff), 255);
     // Update the color of all special particles.
-    for (let i = 0; i < this.m_particles.length; ++i) {
+    for (let i : number = 0; i < this.m_particles.length; ++i) {
       this.m_particleSystem.GetColorBuffer()[this.m_particles[i].GetIndex()].Copy(color);
     }
   }
@@ -269,11 +269,11 @@ export class Sandbox extends testbed.Test {
     const ground = this.m_world.CreateBody(bd);
 
     // Reset our pointers
-    for (let i = 0; i < SandboxParams.k_maxEmitters; i++) {
+    for (let i : number = 0; i < SandboxParams.k_maxEmitters; i++) {
       this.m_emitters[i] = null;
     }
 
-    for (let i = 0; i < SandboxParams.k_maxPumps; i++) {
+    for (let i : number = 0; i < SandboxParams.k_maxPumps; i++) {
       this.m_pumps[i] = null;
     }
 
@@ -343,7 +343,7 @@ export class Sandbox extends testbed.Test {
 
   public __dtor__() {
     // deallocate our emitters
-    for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+    for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
       ///  delete this.m_emitters[i];
       this.m_emitters[i] = null;
     }
@@ -407,8 +407,8 @@ export class Sandbox extends testbed.Test {
 
     this.m_pumpForce.Set(SandboxParams.k_pumpForce, 0);
 
-    for (let i = 0; i < SandboxParams.k_tileWidth; i++) {
-      for (let j = 0; j < SandboxParams.k_tileHeight; j++) {
+    for (let i : number = 0; i < SandboxParams.k_tileWidth; i++) {
+      for (let j : number = 0; j < SandboxParams.k_tileHeight; j++) {
         const item = maze[j * SandboxParams.k_tileWidth + i];
 
         // Calculate center of this square
@@ -543,7 +543,7 @@ export class Sandbox extends testbed.Test {
    */
   public Keyboard(key: string): void {
     super.Keyboard(key);
-    let toggle = 0;
+    let toggle : number = 0;
     switch (key) {
       case "a":
         this.m_particleFlags = 0;
@@ -600,7 +600,7 @@ export class Sandbox extends testbed.Test {
     this.m_particleFlags = testbed.Test.GetParticleParameterValue();
 
     // Step all the emitters
-    for (let i = 0; i < this.m_faucetEmitterIndex; i++) {
+    for (let i : number = 0; i < this.m_faucetEmitterIndex; i++) {
       const particleIndices: number[] = [];
       const emitter = this.m_emitters[i];
       if (emitter) {
@@ -617,7 +617,7 @@ export class Sandbox extends testbed.Test {
     this.m_particleSystem.DestroyParticlesInShape(this.m_killFieldShape, this.m_killFieldTransform);
 
     // Move the pumps
-    for (let i = 0; i < this.m_pumpIndex; i++) {
+    for (let i : number = 0; i < this.m_pumpIndex; i++) {
       const pump = this.m_pumps[i];
       if (pump) {
         // Pumps can and will clog up if the pile of particles they're

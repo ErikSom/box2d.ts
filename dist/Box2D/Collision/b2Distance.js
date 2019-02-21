@@ -41,13 +41,13 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
         // can check for duplicates and prevent cycling.
         const saveA = b2Distance_s_saveA;
         const saveB = b2Distance_s_saveB;
-        let saveCount = 0;
+        let saveCount : number = 0;
         // Main iteration loop.
-        let iter = 0;
+        let iter : number = 0;
         while (iter < k_maxIters) {
             // Copy simplex so we can identify duplicates.
             saveCount = simplex.m_count;
-            for (let i = 0; i < saveCount; ++i) {
+            for (let i : number = 0; i < saveCount; ++i) {
                 saveA[i] = vertices[i].indexA;
                 saveB[i] = vertices[i].indexB;
             }
@@ -91,7 +91,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
             exports_1("b2_gjkIters", ++b2_gjkIters);
             // Check for duplicate support points. This is the main termination criteria.
             let duplicate = false;
-            for (let i = 0; i < saveCount; ++i) {
+            for (let i : number = 0; i < saveCount; ++i) {
                 if (vertex.indexA === saveA[i] && vertex.indexB === saveB[i]) {
                     duplicate = true;
                     break;
@@ -159,7 +159,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
         // b2Vec2 n(0.0f, 0.0f);
         const n = b2ShapeCast_s_n.Set(0.0, 0.0);
         // float32 lambda = 0.0f;
-        let lambda = 0.0;
+        let lambda : number = 0.0;
         // Initial simplex
         const simplex = b2ShapeCast_s_simplex;
         simplex.m_count = 0;
@@ -186,7 +186,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
         // const int32 k_maxIters = 20;
         const k_maxIters = 20;
         // int32 iter = 0;
-        let iter = 0;
+        let iter : number = 0;
         // while (iter < k_maxIters && b2Abs(v.Length() - sigma) > tolerance)
         while (iter < k_maxIters && b2Math_1.b2Abs(v.Length() - sigma) > tolerance) {
             // DEBUG: b2Assert(simplex.m_count < 3);
@@ -321,7 +321,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
                     this.m_radius = radius;
                 }
                 GetSupport(d) {
-                    let bestIndex = 0;
+                    let bestIndex : number = 0;
                     let bestValue = b2Math_1.b2Vec2.DotVV(this.m_vertices[0], d);
                     for (let i = 1; i < this.m_count; ++i) {
                         const value = b2Math_1.b2Vec2.DotVV(this.m_vertices[i], d);
@@ -333,7 +333,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
                     return bestIndex;
                 }
                 GetSupportVertex(d) {
-                    let bestIndex = 0;
+                    let bestIndex : number = 0;
                     let bestValue = b2Math_1.b2Vec2.DotVV(this.m_vertices[0], d);
                     for (let i = 1; i < this.m_count; ++i) {
                         const value = b2Math_1.b2Vec2.DotVV(this.m_vertices[i], d);
@@ -461,7 +461,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
                     // Copy data from cache.
                     this.m_count = cache.count;
                     const vertices = this.m_vertices;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         const v = vertices[i];
                         v.indexA = cache.indexA[i];
                         v.indexB = cache.indexB[i];
@@ -500,7 +500,7 @@ System.register(["../Common/b2Settings", "../Common/b2Math"], function (exports_
                     cache.metric = this.GetMetric();
                     cache.count = this.m_count;
                     const vertices = this.m_vertices;
-                    for (let i = 0; i < this.m_count; ++i) {
+                    for (let i : number = 0; i < this.m_count; ++i) {
                         cache.indexA[i] = vertices[i].indexA;
                         cache.indexB[i] = vertices[i].indexB;
                     }

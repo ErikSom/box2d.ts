@@ -55,7 +55,7 @@ System.register(["Box2D", "Testbed"], function (exports_1, context_1) {
                         this.m_platform = body.CreateFixture(fd);
                     }
                     // Boxes
-                    for ( /*int*/let i = 0; i < 5; ++i) {
+                    for ( /*int*/let i : number = 0; i < 5; ++i) {
                         const bd = new box2d.b2BodyDef();
                         bd.type = box2d.b2BodyType.b2_dynamicBody;
                         bd.position.Set(-10.0 + 2.0 * i, 7.0);

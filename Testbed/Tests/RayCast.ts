@@ -142,7 +142,7 @@ export class RayCast extends testbed.Test {
   constructor() {
     super();
 
-    for (let i = 0; i < 4; ++i) {
+    for (let i : number = 0; i < 4; ++i) {
       this.m_polygons[i] = new box2d.b2PolygonShape();
     }
 
@@ -203,7 +203,7 @@ export class RayCast extends testbed.Test {
     }
 
     this.m_bodyIndex = 0;
-    for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+    for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
       this.m_bodies[i] = null;
     }
 
@@ -256,7 +256,7 @@ export class RayCast extends testbed.Test {
   }
 
   public DestroyBody(): void {
-    for (let i = 0; i < RayCast.e_maxBodies; ++i) {
+    for (let i : number = 0; i < RayCast.e_maxBodies; ++i) {
       const body = this.m_bodies[i];
       if (body !== null) {
         this.m_world.DestroyBody(body);
@@ -348,7 +348,7 @@ export class RayCast extends testbed.Test {
       this.m_world.RayCast(callback, point1, point2);
       testbed.g_debugDraw.DrawSegment(point1, point2, new box2d.b2Color(0.8, 0.8, 0.8));
 
-      for (let i = 0; i < callback.m_count; ++i) {
+      for (let i : number = 0; i < callback.m_count; ++i) {
         const p = callback.m_points[i];
         const n = callback.m_normals[i];
         testbed.g_debugDraw.DrawPoint(p, 5.0, new box2d.b2Color(0.4, 0.9, 0.4));

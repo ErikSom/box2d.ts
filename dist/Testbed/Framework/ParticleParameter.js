@@ -83,8 +83,8 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     this.numValues = numValues;
                 }
                 CalculateValueMask() {
-                    let mask = 0;
-                    for (let i = 0; i < this.numValues; i++) {
+                    let mask : number = 0;
+                    for (let i : number = 0; i < this.numValues; i++) {
                         mask |= this.values[i].value;
                     }
                     return mask;
@@ -112,7 +112,7 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     this.m_definition = definition;
                     this.m_definitionCount = definitionCount;
                     this.m_valueCount = 0;
-                    for (let i = 0; i < this.m_definitionCount; ++i) {
+                    for (let i : number = 0; i < this.m_definitionCount; ++i) {
                         this.m_valueCount += this.m_definition[i].numValues;
                     }
                     // Refresh the selected value.
@@ -168,11 +168,11 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     return this.m_restartOnChange;
                 }
                 FindIndexByValue(value) {
-                    let index = 0;
-                    for (let i = 0; i < this.m_definitionCount; ++i) {
+                    let index : number = 0;
+                    for (let i : number = 0; i < this.m_definitionCount; ++i) {
                         const definition = this.m_definition[i];
                         const numValues = definition.numValues;
-                        for (let j = 0; j < numValues; ++j, ++index) {
+                        for (let j : number = 0; j < numValues; ++j, ++index) {
                             if (definition.values[j].value === value) {
                                 return index;
                             }
@@ -181,9 +181,9 @@ System.register(["Box2D"], function (exports_1, context_1) {
                     return -1;
                 }
                 FindParticleParameterValue() {
-                    let start = 0;
+                    let start : number = 0;
                     const index = this.Get();
-                    for (let i = 0; i < this.m_definitionCount; ++i) {
+                    for (let i : number = 0; i < this.m_definitionCount; ++i) {
                         const definition = this.m_definition[i];
                         const end = start + definition.numValues;
                         if (index >= start && index < end) {

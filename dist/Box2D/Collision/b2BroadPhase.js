@@ -105,7 +105,7 @@ System.register(["./b2DynamicTree"], function (exports_1, context_1) {
                     // Reset pair buffer
                     this.m_pairCount = 0;
                     // Perform tree queries for all moving proxies.
-                    for (let i = 0; i < this.m_moveCount; ++i) {
+                    for (let i : number = 0; i < this.m_moveCount; ++i) {
                         const queryProxy = this.m_moveBuffer[i];
                         if (queryProxy === null) {
                             continue;
@@ -152,7 +152,7 @@ System.register(["./b2DynamicTree"], function (exports_1, context_1) {
                     this.m_pairBuffer.length = this.m_pairCount;
                     this.m_pairBuffer.sort(b2PairLessThan);
                     // Send the pairs back to the client.
-                    let i = 0;
+                    let i : number = 0;
                     while (i < this.m_pairCount) {
                         const primaryPair = this.m_pairBuffer[i];
                         const userDataA = primaryPair.proxyA.userData; // this.m_tree.GetUserData(primaryPair.proxyA);
