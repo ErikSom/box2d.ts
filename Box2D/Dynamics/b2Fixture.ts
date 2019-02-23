@@ -425,7 +425,7 @@ export class b2Fixture {
 
   private static Synchronize_s_aabb1 = new b2AABB();
   private static Synchronize_s_aabb2 = new b2AABB();
-  private static Synchronize_s_displacement = new b2Vec2();
+  private static Synchronize_s_displacement: b2Vec2 = new b2Vec2();
   public Synchronize(transform1: b2Transform, transform2: b2Transform): void {
     if (this.m_proxyCount === 0) {
       return;

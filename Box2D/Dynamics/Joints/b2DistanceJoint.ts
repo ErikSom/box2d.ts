@@ -162,7 +162,7 @@ export class b2DistanceJoint extends b2Joint {
     log("  joints[%d] = this.m_world.CreateJoint(jd);\n", this.m_index);
   }
 
-  private static InitVelocityConstraints_s_P = new b2Vec2();
+  private static InitVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   public InitVelocityConstraints(data: b2SolverData): void {
     this.m_indexA = this.m_bodyA.m_islandIndex;
     this.m_indexB = this.m_bodyB.m_islandIndex;
@@ -264,9 +264,9 @@ export class b2DistanceJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_vpA = new b2Vec2();
-  private static SolveVelocityConstraints_s_vpB = new b2Vec2();
-  private static SolveVelocityConstraints_s_P = new b2Vec2();
+  private static SolveVelocityConstraints_s_vpA: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_vpB: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const vA: b2Vec2 = data.velocities[this.m_indexA].v;
     let wA: number = data.velocities[this.m_indexA].w;
@@ -301,7 +301,7 @@ export class b2DistanceJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolvePositionConstraints_s_P = new b2Vec2();
+  private static SolvePositionConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     if (this.m_frequencyHz > 0) {
       // There is no position correction for soft distance constraints.

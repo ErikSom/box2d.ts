@@ -1681,7 +1681,7 @@ export class b2ParticleSystem {
     const numParticles = (lastIndex - firstIndex);
     const totalMass = numParticles * this.GetParticleMass();
     ///const b2Vec2 velocityDelta = impulse / totalMass;
-    const velocityDelta = new b2Vec2().Copy(impulse).SelfMul(1 / totalMass);
+    const velocityDelta: b2Vec2 = new b2Vec2().Copy(impulse).SelfMul(1 / totalMass);
     for (let i = firstIndex; i < lastIndex; i++) {
       ///m_velocityBuffer.data[i] += velocityDelta;
       vel_data[i].SelfAdd(velocityDelta);

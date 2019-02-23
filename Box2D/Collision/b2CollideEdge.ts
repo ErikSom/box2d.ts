@@ -536,8 +536,8 @@ class b2EPCollider {
     return axis;
   }
 
-  private static s_n = new b2Vec2();
-  private static s_perp = new b2Vec2();
+  private static s_n: b2Vec2 = new b2Vec2();
+  private static s_perp: b2Vec2 = new b2Vec2();
   public ComputePolygonSeparation(out: b2EPAxis): b2EPAxis {
     const axis: b2EPAxis = out;
     axis.type = b2EPAxisType.e_unknown;

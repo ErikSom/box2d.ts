@@ -214,8 +214,8 @@ export class b2ParticleGroup {
   public UpdateStatistics(): void {
     if (!this.m_system.m_positionBuffer.data) { throw new Error(); }
     if (!this.m_system.m_velocityBuffer.data) { throw new Error(); }
-    const p = new b2Vec2();
-    const v = new b2Vec2();
+    const p: b2Vec2 = new b2Vec2();
+    const v: b2Vec2 = new b2Vec2();
     if (this.m_timestamp !== this.m_system.m_timestamp) {
       const m = this.m_system.GetParticleMass();
       ///  this.m_mass = 0;

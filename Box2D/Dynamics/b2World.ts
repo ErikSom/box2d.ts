@@ -825,7 +825,7 @@ export class b2World {
   /// @param point2 the ray ending point
   private static RayCast_s_input = new b2RayCastInput();
   private static RayCast_s_output = new b2RayCastOutput();
-  private static RayCast_s_point = new b2Vec2();
+  private static RayCast_s_point: b2Vec2 = new b2Vec2();
   public RayCast(callback: b2RayCastCallback | null, point1: b2Vec2, point2: b2Vec2, fn: b2RayCastCallbackFunction): void {
     const input: b2RayCastInput = b2World.RayCast_s_input;
     input.maxFraction = 1;

@@ -63,8 +63,8 @@ export class b2VoronoiDiagram {
    */
   public Generate(radius: number, margin: number): void {
     const inverseRadius = 1 / radius;
-    const lower = new b2Vec2(+b2_maxFloat, +b2_maxFloat);
-    const upper = new b2Vec2(-b2_maxFloat, -b2_maxFloat);
+    const lower: b2Vec2 = new b2Vec2(+b2_maxFloat, +b2_maxFloat);
+    const upper: b2Vec2 = new b2Vec2(-b2_maxFloat, -b2_maxFloat);
     let necessary_count : number = 0;
     for (let k : number = 0; k < this.m_generatorCount; k++) {
       const g = this.m_generatorBuffer[k];

@@ -634,14 +634,14 @@ export function b2Distance(output: b2DistanceOutput, cache: b2SimplexCache, inpu
 // Algorithm by Gino van den Bergen.
 // "Smooth Mesh Contacts with GJK" in Game Physics Pearls. 2010
 // bool b2ShapeCast(b2ShapeCastOutput* output, const b2ShapeCastInput* input);
-const b2ShapeCast_s_n = new b2Vec2();
+const b2ShapeCast_s_n: b2Vec2 = new b2Vec2();
 const b2ShapeCast_s_simplex = new b2Simplex();
-const b2ShapeCast_s_wA = new b2Vec2();
-const b2ShapeCast_s_wB = new b2Vec2();
-const b2ShapeCast_s_v = new b2Vec2();
-const b2ShapeCast_s_p = new b2Vec2();
-const b2ShapeCast_s_pointA = new b2Vec2();
-const b2ShapeCast_s_pointB = new b2Vec2();
+const b2ShapeCast_s_wA: b2Vec2 = new b2Vec2();
+const b2ShapeCast_s_wB: b2Vec2 = new b2Vec2();
+const b2ShapeCast_s_v: b2Vec2 = new b2Vec2();
+const b2ShapeCast_s_p: b2Vec2 = new b2Vec2();
+const b2ShapeCast_s_pointA: b2Vec2 = new b2Vec2();
+const b2ShapeCast_s_pointB: b2Vec2 = new b2Vec2();
 export function b2ShapeCast(output: b2ShapeCastOutput, input: b2ShapeCastInput): boolean {
   output.iterations = 0;
   output.lambda = 1.0;

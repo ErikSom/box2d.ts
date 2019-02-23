@@ -67,8 +67,8 @@ export class b2PolygonShape extends b2Shape {
   /// @warning the points may be re-ordered, even if they form a convex polygon
   /// @warning collinear points are handled but not removed. Collinear points
   /// may lead to poor stacking behavior.
-  private static Set_s_r = new b2Vec2();
-  private static Set_s_v = new b2Vec2();
+  private static Set_s_r: b2Vec2 = new b2Vec2();
+  private static Set_s_v: b2Vec2 = new b2Vec2();
   public Set(vertices: XY[], count: number = vertices.length, start: number = 0): b2PolygonShape {
 
     // DEBUG: b2Assert(3 <= count);
@@ -217,7 +217,7 @@ export class b2PolygonShape extends b2Shape {
   }
 
   /// @see b2Shape::TestPoint
-  private static TestPoint_s_pLocal = new b2Vec2();
+  private static TestPoint_s_pLocal: b2Vec2 = new b2Vec2();
   public TestPoint(xf: b2Transform, p: b2Vec2): boolean {
     const pLocal: b2Vec2 = b2Transform.MulTXV(xf, p, b2PolygonShape.TestPoint_s_pLocal);
 
@@ -233,10 +233,10 @@ export class b2PolygonShape extends b2Shape {
 
   // #if B2_ENABLE_PARTICLE
   /// @see b2Shape::ComputeDistance
-  private static ComputeDistance_s_pLocal = new b2Vec2();
-  private static ComputeDistance_s_normalForMaxDistance = new b2Vec2();
-  private static ComputeDistance_s_minDistance = new b2Vec2();
-  private static ComputeDistance_s_distance = new b2Vec2();
+  private static ComputeDistance_s_pLocal: b2Vec2 = new b2Vec2();
+  private static ComputeDistance_s_normalForMaxDistance: b2Vec2 = new b2Vec2();
+  private static ComputeDistance_s_minDistance: b2Vec2 = new b2Vec2();
+  private static ComputeDistance_s_distance: b2Vec2 = new b2Vec2();
   public ComputeDistance(xf: b2Transform, p: b2Vec2, normal: b2Vec2, childIndex: number): number {
     const pLocal = b2Transform.MulTXV(xf, p, b2PolygonShape.ComputeDistance_s_pLocal);
     let maxDistance = -b2_maxFloat;
@@ -275,7 +275,7 @@ export class b2PolygonShape extends b2Shape {
   /// Implement b2Shape.
   private static RayCast_s_p1 = new b2Vec2();
   private static RayCast_s_p2 = new b2Vec2();
-  private static RayCast_s_d = new b2Vec2();
+  private static RayCast_s_d: b2Vec2 = new b2Vec2();
   public RayCast(output: b2RayCastOutput, input: b2RayCastInput, xf: b2Transform, childIndex: number): boolean {
     // Put the ray into the polygon's frame of reference.
     const p1: b2Vec2 = b2Transform.MulTXV(xf, input.p1, b2PolygonShape.RayCast_s_p1);
@@ -335,7 +335,7 @@ export class b2PolygonShape extends b2Shape {
   }
 
   /// @see b2Shape::ComputeAABB
-  private static ComputeAABB_s_v = new b2Vec2();
+  private static ComputeAABB_s_v: b2Vec2 = new b2Vec2();
   public ComputeAABB(aabb: b2AABB, xf: b2Transform, childIndex: number): void {
     const lower: b2Vec2 = b2Transform.MulXV(xf, this.m_vertices[0], aabb.lowerBound);
     const upper: b2Vec2 = aabb.upperBound.Copy(lower);
@@ -352,8 +352,8 @@ export class b2PolygonShape extends b2Shape {
   }
 
   /// @see b2Shape::ComputeMass
-  private static ComputeMass_s_center = new b2Vec2();
-  private static ComputeMass_s_s = new b2Vec2();
+  private static ComputeMass_s_center: b2Vec2 = new b2Vec2();
+  private static ComputeMass_s_s: b2Vec2 = new b2Vec2();
   private static ComputeMass_s_e1 = new b2Vec2();
   private static ComputeMass_s_e2 = new b2Vec2();
   public ComputeMass(massData: b2MassData, density: number): void {
@@ -438,8 +438,8 @@ export class b2PolygonShape extends b2Shape {
     massData.I += massData.mass * (b2Vec2.DotVV(massData.center, massData.center) - b2Vec2.DotVV(center, center));
   }
 
-  private static Validate_s_e = new b2Vec2();
-  private static Validate_s_v = new b2Vec2();
+  private static Validate_s_e: b2Vec2 = new b2Vec2();
+  private static Validate_s_v: b2Vec2 = new b2Vec2();
   public Validate(): boolean {
     for (let i: number = 0; i < this.m_count; ++i) {
       const i1 = i;
@@ -469,11 +469,11 @@ export class b2PolygonShape extends b2Shape {
     proxy.m_radius = this.m_radius;
   }
 
-  private static ComputeSubmergedArea_s_normalL = new b2Vec2();
+  private static ComputeSubmergedArea_s_normalL: b2Vec2 = new b2Vec2();
   private static ComputeSubmergedArea_s_md = new b2MassData();
-  private static ComputeSubmergedArea_s_intoVec = new b2Vec2();
-  private static ComputeSubmergedArea_s_outoVec = new b2Vec2();
-  private static ComputeSubmergedArea_s_center = new b2Vec2();
+  private static ComputeSubmergedArea_s_intoVec: b2Vec2 = new b2Vec2();
+  private static ComputeSubmergedArea_s_outoVec: b2Vec2 = new b2Vec2();
+  private static ComputeSubmergedArea_s_center: b2Vec2 = new b2Vec2();
   public ComputeSubmergedArea(normal: b2Vec2, offset: number, xf: b2Transform, c: b2Vec2): number {
     // Transform plane into shape co-ordinates
     const normalL: b2Vec2 = b2Rot.MulTRV(xf.q, normal, b2PolygonShape.ComputeSubmergedArea_s_normalL);
@@ -576,7 +576,7 @@ export class b2PolygonShape extends b2Shape {
     log("    shape.Set(vs, %d);\n", this.m_count);
   }
 
-  private static ComputeCentroid_s_pRef = new b2Vec2();
+  private static ComputeCentroid_s_pRef: b2Vec2 = new b2Vec2();
   private static ComputeCentroid_s_e1 = new b2Vec2();
   private static ComputeCentroid_s_e2 = new b2Vec2();
   public static ComputeCentroid(vs: b2Vec2[], count: number, out: b2Vec2): b2Vec2 {

@@ -58,8 +58,8 @@ export class b2CircleShape extends b2Shape {
   }
 
   /// Implement b2Shape.
-  private static TestPoint_s_center = new b2Vec2();
-  private static TestPoint_s_d = new b2Vec2();
+  private static TestPoint_s_center: b2Vec2 = new b2Vec2();
+  private static TestPoint_s_d: b2Vec2 = new b2Vec2();
   public TestPoint(transform: b2Transform, p: XY): boolean {
     const center: b2Vec2 = b2Transform.MulXV(transform, this.m_p, b2CircleShape.TestPoint_s_center);
     const d: b2Vec2 = b2Vec2.SubVV(p, center, b2CircleShape.TestPoint_s_d);
@@ -68,7 +68,7 @@ export class b2CircleShape extends b2Shape {
 
   // #if B2_ENABLE_PARTICLE
   /// @see b2Shape::ComputeDistance
-  private static ComputeDistance_s_center = new b2Vec2();
+  private static ComputeDistance_s_center: b2Vec2 = new b2Vec2();
   public ComputeDistance(xf: b2Transform, p: b2Vec2, normal: b2Vec2, childIndex: number): number {
     const center = b2Transform.MulXV(xf, this.m_p, b2CircleShape.ComputeDistance_s_center);
     b2Vec2.SubVV(p, center, normal);
@@ -81,9 +81,9 @@ export class b2CircleShape extends b2Shape {
   // From Section 3.1.2
   // x = s + a * r
   // norm(x) = radius
-  private static RayCast_s_position = new b2Vec2();
-  private static RayCast_s_s = new b2Vec2();
-  private static RayCast_s_r = new b2Vec2();
+  private static RayCast_s_position: b2Vec2 = new b2Vec2();
+  private static RayCast_s_s: b2Vec2 = new b2Vec2();
+  private static RayCast_s_r: b2Vec2 = new b2Vec2();
   public RayCast(output: b2RayCastOutput, input: b2RayCastInput, transform: b2Transform, childIndex: number): boolean {
     const position: b2Vec2 = b2Transform.MulXV(transform, this.m_p, b2CircleShape.RayCast_s_position);
     const s: b2Vec2 = b2Vec2.SubVV(input.p1, position, b2CircleShape.RayCast_s_s);
@@ -115,7 +115,7 @@ export class b2CircleShape extends b2Shape {
   }
 
   /// @see b2Shape::ComputeAABB
-  private static ComputeAABB_s_p = new b2Vec2();
+  private static ComputeAABB_s_p: b2Vec2 = new b2Vec2();
   public ComputeAABB(aabb: b2AABB, transform: b2Transform, childIndex: number): void {
     const p: b2Vec2 = b2Transform.MulXV(transform, this.m_p, b2CircleShape.ComputeAABB_s_p);
     aabb.lowerBound.Set(p.x - this.m_radius, p.y - this.m_radius);

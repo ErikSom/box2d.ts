@@ -60,9 +60,9 @@ export class b2DynamicTree<T> {
   public m_insertionCount: number = 0;
 
   public readonly m_stack = new b2GrowableStack<b2TreeNode<T>>(256);
-  public static readonly s_r = new b2Vec2();
-  public static readonly s_v = new b2Vec2();
-  public static readonly s_abs_v = new b2Vec2();
+  public static readonly s_r: b2Vec2 = new b2Vec2();
+  public static readonly s_v: b2Vec2 = new b2Vec2();
+  public static readonly s_abs_v: b2Vec2 = new b2Vec2();
   public static readonly s_segmentAABB = new b2AABB();
   public static readonly s_subInput = new b2RayCastInput();
   public static readonly s_combinedAABB = new b2AABB();

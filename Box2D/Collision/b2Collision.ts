@@ -216,12 +216,12 @@ export class b2WorldManifold {
   public readonly points: b2Vec2[] = b2Vec2.MakeArray(b2_maxManifoldPoints);
   public readonly separations: number[] = b2MakeNumberArray(b2_maxManifoldPoints);
 
-  private static Initialize_s_pointA = new b2Vec2();
-  private static Initialize_s_pointB = new b2Vec2();
-  private static Initialize_s_cA = new b2Vec2();
-  private static Initialize_s_cB = new b2Vec2();
-  private static Initialize_s_planePoint = new b2Vec2();
-  private static Initialize_s_clipPoint = new b2Vec2();
+  private static Initialize_s_pointA: b2Vec2 = new b2Vec2();
+  private static Initialize_s_pointB: b2Vec2 = new b2Vec2();
+  private static Initialize_s_cA: b2Vec2 = new b2Vec2();
+  private static Initialize_s_cB: b2Vec2 = new b2Vec2();
+  private static Initialize_s_planePoint: b2Vec2 = new b2Vec2();
+  private static Initialize_s_clipPoint: b2Vec2 = new b2Vec2();
   public Initialize(manifold: b2Manifold, xfA: b2Transform, radiusA: number, xfB: b2Transform, radiusB: number): void {
     if (manifold.pointCount === 0) {
       return;

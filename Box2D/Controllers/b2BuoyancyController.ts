@@ -81,12 +81,12 @@ export class b2BuoyancyController extends b2Controller {
         //so unlike most forces, it is safe to ignore sleeping bodes
         continue;
       }
-      const areac = new b2Vec2();
-      const massc = new b2Vec2();
+      const areac: b2Vec2 = new b2Vec2();
+      const massc: b2Vec2 = new b2Vec2();
       let area : number = 0;
       let mass : number = 0;
       for (let fixture = body.GetFixtureList(); fixture; fixture = fixture.m_next) {
-        const sc = new b2Vec2();
+        const sc: b2Vec2 = new b2Vec2();
         const sarea = fixture.GetShape().ComputeSubmergedArea(this.normal, this.offset, body.GetTransform(), sc);
         area += sarea;
         areac.x += sarea * sc.x;

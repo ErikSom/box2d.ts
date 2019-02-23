@@ -82,8 +82,8 @@ export class b2EdgeShape extends b2Shape {
   /// @see b2Shape::ComputeDistance
   private static ComputeDistance_s_v1 = new b2Vec2();
   private static ComputeDistance_s_v2 = new b2Vec2();
-  private static ComputeDistance_s_d = new b2Vec2();
-  private static ComputeDistance_s_s = new b2Vec2();
+  private static ComputeDistance_s_d: b2Vec2 = new b2Vec2();
+  private static ComputeDistance_s_s: b2Vec2 = new b2Vec2();
   public ComputeDistance(xf: b2Transform, p: b2Vec2, normal: b2Vec2, childIndex: number): number {
     const v1 = b2Transform.MulXV(xf, this.m_vertex1, b2EdgeShape.ComputeDistance_s_v1);
     const v2 = b2Transform.MulXV(xf, this.m_vertex2, b2EdgeShape.ComputeDistance_s_v2);
@@ -111,10 +111,10 @@ export class b2EdgeShape extends b2Shape {
   // s * e - t * d = p1 - v1
   private static RayCast_s_p1 = new b2Vec2();
   private static RayCast_s_p2 = new b2Vec2();
-  private static RayCast_s_d = new b2Vec2();
-  private static RayCast_s_e = new b2Vec2();
-  private static RayCast_s_q = new b2Vec2();
-  private static RayCast_s_r = new b2Vec2();
+  private static RayCast_s_d: b2Vec2 = new b2Vec2();
+  private static RayCast_s_e: b2Vec2 = new b2Vec2();
+  private static RayCast_s_q: b2Vec2 = new b2Vec2();
+  private static RayCast_s_r: b2Vec2 = new b2Vec2();
   public RayCast(output: b2RayCastOutput, input: b2RayCastInput, xf: b2Transform, childIndex: number): boolean {
     // Put the ray into the edge's frame of reference.
     const p1: b2Vec2 = b2Transform.MulTXV(xf, input.p1, b2EdgeShape.RayCast_s_p1);

@@ -234,7 +234,7 @@ export class b2Island {
   private static s_solverData = new b2SolverData();
   private static s_contactSolverDef = new b2ContactSolverDef();
   private static s_contactSolver = new b2ContactSolver();
-  private static s_translation = new b2Vec2();
+  private static s_translation: b2Vec2 = new b2Vec2();
   public Solve(profile: b2Profile, step: b2TimeStep, gravity: b2Vec2, allowSleep: boolean): void {
     const timer: b2Timer = b2Island.s_timer.Reset();
 

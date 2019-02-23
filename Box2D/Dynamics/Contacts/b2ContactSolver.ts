@@ -107,10 +107,10 @@ export class b2PositionSolverManifold {
   public readonly point: b2Vec2 = new b2Vec2();
   public separation: number = 0;
 
-  private static Initialize_s_pointA = new b2Vec2();
-  private static Initialize_s_pointB = new b2Vec2();
-  private static Initialize_s_planePoint = new b2Vec2();
-  private static Initialize_s_clipPoint = new b2Vec2();
+  private static Initialize_s_pointA: b2Vec2 = new b2Vec2();
+  private static Initialize_s_pointB: b2Vec2 = new b2Vec2();
+  private static Initialize_s_planePoint: b2Vec2 = new b2Vec2();
+  private static Initialize_s_clipPoint: b2Vec2 = new b2Vec2();
   public Initialize(pc: b2ContactPositionConstraint, xfA: b2Transform, xfB: b2Transform, index: number): void {
     const pointA: b2Vec2 = b2PositionSolverManifold.Initialize_s_pointA;
     const pointB: b2Vec2 = b2PositionSolverManifold.Initialize_s_pointB;
@@ -397,7 +397,7 @@ export class b2ContactSolver {
     }
   }
 
-  private static WarmStart_s_P = new b2Vec2();
+  private static WarmStart_s_P: b2Vec2 = new b2Vec2();
   public WarmStart(): void {
     const P: b2Vec2 = b2ContactSolver.WarmStart_s_P;
 
@@ -446,14 +446,14 @@ export class b2ContactSolver {
     }
   }
 
-  private static SolveVelocityConstraints_s_dv = new b2Vec2();
+  private static SolveVelocityConstraints_s_dv: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_dv1 = new b2Vec2();
   private static SolveVelocityConstraints_s_dv2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_P = new b2Vec2();
-  private static SolveVelocityConstraints_s_a = new b2Vec2();
-  private static SolveVelocityConstraints_s_b = new b2Vec2();
-  private static SolveVelocityConstraints_s_x = new b2Vec2();
-  private static SolveVelocityConstraints_s_d = new b2Vec2();
+  private static SolveVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_a: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_b: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_x: b2Vec2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_d: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_P1 = new b2Vec2();
   private static SolveVelocityConstraints_s_P2 = new b2Vec2();
   private static SolveVelocityConstraints_s_P1P2 = new b2Vec2();
@@ -861,9 +861,9 @@ export class b2ContactSolver {
   private static SolvePositionConstraints_s_xfA = new b2Transform();
   private static SolvePositionConstraints_s_xfB = new b2Transform();
   private static SolvePositionConstraints_s_psm = new b2PositionSolverManifold();
-  private static SolvePositionConstraints_s_rA = new b2Vec2();
-  private static SolvePositionConstraints_s_rB = new b2Vec2();
-  private static SolvePositionConstraints_s_P = new b2Vec2();
+  private static SolvePositionConstraints_s_rA: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_rB: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(): boolean {
     const xfA: b2Transform = b2ContactSolver.SolvePositionConstraints_s_xfA;
     const xfB: b2Transform = b2ContactSolver.SolvePositionConstraints_s_xfB;
@@ -957,9 +957,9 @@ export class b2ContactSolver {
   private static SolveTOIPositionConstraints_s_xfA = new b2Transform();
   private static SolveTOIPositionConstraints_s_xfB = new b2Transform();
   private static SolveTOIPositionConstraints_s_psm = new b2PositionSolverManifold();
-  private static SolveTOIPositionConstraints_s_rA = new b2Vec2();
-  private static SolveTOIPositionConstraints_s_rB = new b2Vec2();
-  private static SolveTOIPositionConstraints_s_P = new b2Vec2();
+  private static SolveTOIPositionConstraints_s_rA: b2Vec2 = new b2Vec2();
+  private static SolveTOIPositionConstraints_s_rB: b2Vec2 = new b2Vec2();
+  private static SolveTOIPositionConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolveTOIPositionConstraints(toiIndexA: number, toiIndexB: number): boolean {
     const xfA: b2Transform = b2ContactSolver.SolveTOIPositionConstraints_s_xfA;
     const xfB: b2Transform = b2ContactSolver.SolveTOIPositionConstraints_s_xfB;

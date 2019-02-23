@@ -210,11 +210,11 @@ export class b2GearJoint extends b2Joint {
     this.m_impulse = 0;
   }
 
-  private static InitVelocityConstraints_s_u = new b2Vec2();
-  private static InitVelocityConstraints_s_rA = new b2Vec2();
-  private static InitVelocityConstraints_s_rB = new b2Vec2();
-  private static InitVelocityConstraints_s_rC = new b2Vec2();
-  private static InitVelocityConstraints_s_rD = new b2Vec2();
+  private static InitVelocityConstraints_s_u: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_rA: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_rB: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_rC: b2Vec2 = new b2Vec2();
+  private static InitVelocityConstraints_s_rD: b2Vec2 = new b2Vec2();
   public InitVelocityConstraints(data: b2SolverData): void {
     this.m_indexA = this.m_bodyA.m_islandIndex;
     this.m_indexB = this.m_bodyB.m_islandIndex;
@@ -375,11 +375,11 @@ export class b2GearJoint extends b2Joint {
     data.velocities[this.m_indexD].w = wD;
   }
 
-  private static SolvePositionConstraints_s_u = new b2Vec2();
-  private static SolvePositionConstraints_s_rA = new b2Vec2();
-  private static SolvePositionConstraints_s_rB = new b2Vec2();
-  private static SolvePositionConstraints_s_rC = new b2Vec2();
-  private static SolvePositionConstraints_s_rD = new b2Vec2();
+  private static SolvePositionConstraints_s_u: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_rA: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_rB: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_rC: b2Vec2 = new b2Vec2();
+  private static SolvePositionConstraints_s_rD: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     const cA: b2Vec2 = data.positions[this.m_indexA].c;
     let aA: number = data.positions[this.m_indexA].a;
