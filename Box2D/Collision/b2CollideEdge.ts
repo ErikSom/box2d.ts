@@ -195,7 +195,7 @@ class b2EPCollider {
   private static s_edge0 = new b2Vec2();
   private static s_edge2 = new b2Vec2();
   private static s_ie = b2ClipVertex.MakeArray(2);
-  private static s_rf = new b2ReferenceFace();
+  private static s_rf: b2ReferenceFace = new b2ReferenceFace();
   private static s_clipPoints1 = b2ClipVertex.MakeArray(2);
   private static s_clipPoints2 = b2ClipVertex.MakeArray(2);
   private static s_edgeAxis = new b2EPAxis();
