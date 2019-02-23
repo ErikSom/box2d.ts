@@ -267,9 +267,9 @@ export class b2MotorJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_Cdot_v2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_impulse_v2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_oldImpulse_v2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_Cdot_v2: b2Vec = new b2Vec2();
+  private static SolveVelocityConstraints_s_impulse_v2: b2Vec = new b2Vec2();
+  private static SolveVelocityConstraints_s_oldImpulse_v2: b2Vec = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const vA: b2Vec2 = data.velocities[this.m_indexA].v;
     let wA: number = data.velocities[this.m_indexA].w;

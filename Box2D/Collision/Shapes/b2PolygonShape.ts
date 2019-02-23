@@ -273,8 +273,8 @@ export class b2PolygonShape extends b2Shape {
   // #endif
 
   /// Implement b2Shape.
-  private static RayCast_s_p1 = new b2Vec2();
-  private static RayCast_s_p2 = new b2Vec2();
+  private static RayCast_s_p1: b2Vec = new b2Vec2();
+  private static RayCast_s_p2: b2Vec = new b2Vec2();
   private static RayCast_s_d: b2Vec2 = new b2Vec2();
   public RayCast(output: b2RayCastOutput, input: b2RayCastInput, xf: b2Transform, childIndex: number): boolean {
     // Put the ray into the polygon's frame of reference.
@@ -354,8 +354,8 @@ export class b2PolygonShape extends b2Shape {
   /// @see b2Shape::ComputeMass
   private static ComputeMass_s_center: b2Vec2 = new b2Vec2();
   private static ComputeMass_s_s: b2Vec2 = new b2Vec2();
-  private static ComputeMass_s_e1 = new b2Vec2();
-  private static ComputeMass_s_e2 = new b2Vec2();
+  private static ComputeMass_s_e1: b2Vec = new b2Vec2();
+  private static ComputeMass_s_e2: b2Vec = new b2Vec2();
   public ComputeMass(massData: b2MassData, density: number): void {
     // Polygon mass, centroid, and inertia.
     // Let rho be the polygon density in mass per unit area.
@@ -571,14 +571,14 @@ export class b2PolygonShape extends b2Shape {
     log("    const shape: b2PolygonShape = new b2PolygonShape();\n");
     log("    const vs: b2Vec2[] = [];\n");
     for (let i: number = 0; i < this.m_count; ++i) {
-      log("    vs[%d] = new b2Vec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
+      log("    vs[%d]: b2Vec = new b2Vec2(%.15f, %.15f);\n", i, this.m_vertices[i].x, this.m_vertices[i].y);
     }
     log("    shape.Set(vs, %d);\n", this.m_count);
   }
 
   private static ComputeCentroid_s_pRef: b2Vec2 = new b2Vec2();
-  private static ComputeCentroid_s_e1 = new b2Vec2();
-  private static ComputeCentroid_s_e2 = new b2Vec2();
+  private static ComputeCentroid_s_e1: b2Vec = new b2Vec2();
+  private static ComputeCentroid_s_e2: b2Vec = new b2Vec2();
   public static ComputeCentroid(vs: b2Vec2[], count: number, out: b2Vec2): b2Vec2 {
     // DEBUG: b2Assert(count >= 3);
 

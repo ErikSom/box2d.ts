@@ -447,16 +447,16 @@ export class b2ContactSolver {
   }
 
   private static SolveVelocityConstraints_s_dv: b2Vec2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_dv1 = new b2Vec2();
-  private static SolveVelocityConstraints_s_dv2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_dv1: b2Vec = new b2Vec2();
+  private static SolveVelocityConstraints_s_dv2: b2Vec = new b2Vec2();
   private static SolveVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_a: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_b: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_x: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_d: b2Vec2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_P1 = new b2Vec2();
-  private static SolveVelocityConstraints_s_P2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_P1P2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_P1: b2Vec = new b2Vec2();
+  private static SolveVelocityConstraints_s_P2: b2Vec = new b2Vec2();
+  private static SolveVelocityConstraints_s_P1P2: b2Vec = new b2Vec2();
   public SolveVelocityConstraints(): void {
     const dv: b2Vec2 = b2ContactSolver.SolveVelocityConstraints_s_dv;
     const dv1: b2Vec2 = b2ContactSolver.SolveVelocityConstraints_s_dv1;

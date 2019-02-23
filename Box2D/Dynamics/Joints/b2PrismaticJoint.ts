@@ -300,9 +300,9 @@ export class b2PrismaticJoint extends b2Joint {
 
   private static SolveVelocityConstraints_s_P: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_f2r: b2Vec2 = new b2Vec2();
-  private static SolveVelocityConstraints_s_f1 = new b2Vec3();
-  private static SolveVelocityConstraints_s_df3 = new b2Vec3();
-  private static SolveVelocityConstraints_s_df2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_f1: b2Vec = new b2Vec3();
+  private static SolveVelocityConstraints_s_df3: b2Vec = new b2Vec3();
+  private static SolveVelocityConstraints_s_df2: b2Vec = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {
     const vA: b2Vec2 = data.velocities[this.m_indexA].v;
     let wA: number = data.velocities[this.m_indexA].w;
@@ -434,8 +434,8 @@ export class b2PrismaticJoint extends b2Joint {
   // We could take the active state from the velocity solver.However, the joint might push past the limit when the velocity
   // solver indicates the limit is inactive.
   private static SolvePositionConstraints_s_d: b2Vec2 = new b2Vec2();
-  private static SolvePositionConstraints_s_impulse = new b2Vec3();
-  private static SolvePositionConstraints_s_impulse1 = new b2Vec2();
+  private static SolvePositionConstraints_s_impulse: b2Vec = new b2Vec3();
+  private static SolvePositionConstraints_s_impulse1: b2Vec = new b2Vec2();
   private static SolvePositionConstraints_s_P: b2Vec2 = new b2Vec2();
   public SolvePositionConstraints(data: b2SolverData): boolean {
     const cA: b2Vec2 = data.positions[this.m_indexA].c;

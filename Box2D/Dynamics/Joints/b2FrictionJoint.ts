@@ -181,7 +181,7 @@ export class b2FrictionJoint extends b2Joint {
     data.velocities[this.m_indexB].w = wB;
   }
 
-  private static SolveVelocityConstraints_s_Cdot_v2 = new b2Vec2();
+  private static SolveVelocityConstraints_s_Cdot_v2: b2Vec = new b2Vec2();
   private static SolveVelocityConstraints_s_impulseV: b2Vec2 = new b2Vec2();
   private static SolveVelocityConstraints_s_oldImpulseV: b2Vec2 = new b2Vec2();
   public SolveVelocityConstraints(data: b2SolverData): void {

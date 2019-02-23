@@ -80,8 +80,8 @@ export class b2EdgeShape extends b2Shape {
 
   // #if B2_ENABLE_PARTICLE
   /// @see b2Shape::ComputeDistance
-  private static ComputeDistance_s_v1 = new b2Vec2();
-  private static ComputeDistance_s_v2 = new b2Vec2();
+  private static ComputeDistance_s_v1: b2Vec = new b2Vec2();
+  private static ComputeDistance_s_v2: b2Vec = new b2Vec2();
   private static ComputeDistance_s_d: b2Vec2 = new b2Vec2();
   private static ComputeDistance_s_s: b2Vec2 = new b2Vec2();
   public ComputeDistance(xf: b2Transform, p: b2Vec2, normal: b2Vec2, childIndex: number): number {
@@ -109,8 +109,8 @@ export class b2EdgeShape extends b2Shape {
   // v = v1 + s * e
   // p1 + t * d = v1 + s * e
   // s * e - t * d = p1 - v1
-  private static RayCast_s_p1 = new b2Vec2();
-  private static RayCast_s_p2 = new b2Vec2();
+  private static RayCast_s_p1: b2Vec = new b2Vec2();
+  private static RayCast_s_p2: b2Vec = new b2Vec2();
   private static RayCast_s_d: b2Vec2 = new b2Vec2();
   private static RayCast_s_e: b2Vec2 = new b2Vec2();
   private static RayCast_s_q: b2Vec2 = new b2Vec2();
@@ -165,8 +165,8 @@ export class b2EdgeShape extends b2Shape {
   }
 
   /// @see b2Shape::ComputeAABB
-  private static ComputeAABB_s_v1 = new b2Vec2();
-  private static ComputeAABB_s_v2 = new b2Vec2();
+  private static ComputeAABB_s_v1: b2Vec = new b2Vec2();
+  private static ComputeAABB_s_v2: b2Vec = new b2Vec2();
   public ComputeAABB(aabb: b2AABB, xf: b2Transform, childIndex: number): void {
     const v1: b2Vec2 = b2Transform.MulXV(xf, this.m_vertex1, b2EdgeShape.ComputeAABB_s_v1);
     const v2: b2Vec2 = b2Transform.MulXV(xf, this.m_vertex2, b2EdgeShape.ComputeAABB_s_v2);

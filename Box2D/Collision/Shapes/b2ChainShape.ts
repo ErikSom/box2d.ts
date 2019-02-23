@@ -194,8 +194,8 @@ export class b2ChainShape extends b2Shape {
   }
 
   /// @see b2Shape::ComputeAABB
-  private static ComputeAABB_s_v1 = new b2Vec2();
-  private static ComputeAABB_s_v2 = new b2Vec2();
+  private static ComputeAABB_s_v1: b2Vec = new b2Vec2();
+  private static ComputeAABB_s_v2: b2Vec = new b2Vec2();
   public ComputeAABB(aabb: b2AABB, xf: b2Transform, childIndex: number): void {
     // DEBUG: b2Assert(childIndex < this.m_count);
 

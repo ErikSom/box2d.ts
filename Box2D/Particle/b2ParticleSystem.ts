@@ -1347,7 +1347,7 @@ export class b2ParticleSystem {
     ///if (buffer instanceof Float32Array) {
     ///let array = [];
     ///for (let i : number = 0; i < capacity; ++i) {
-    ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
+    ///  array[i]: b2Vec = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
     ///}
     ///this.SetUserOverridableBuffer(this.m_positionBuffer, array, capacity);
     ///} else {
@@ -1359,7 +1359,7 @@ export class b2ParticleSystem {
     ///if (buffer instanceof Float32Array) {
     ///let array = [];
     ///for (let i : number = 0; i < capacity; ++i) {
-    ///  array[i] = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
+    ///  array[i]: b2Vec = new b2Vec2(buffer.subarray(i * 2, i * 2 + 2));
     ///}
     ///this.SetUserOverridableBuffer(this.m_velocityBuffer, array, capacity);
     ///} else {
@@ -3829,7 +3829,7 @@ export class b2ParticleSystem {
     const vel_data = this.m_velocityBuffer.data;
     // DEBUG: b2Assert(this.m_accumulation2Buffer !== null);
     for (let i : number = 0; i < this.m_count; i++) {
-      this.m_accumulation2Buffer[i] = new b2Vec2();
+      this.m_accumulation2Buffer[i]: b2Vec = new b2Vec2();
       this.m_accumulation2Buffer[i].SetZero();
     }
     for (let k : number = 0; k < this.m_contactBuffer.count; k++) {

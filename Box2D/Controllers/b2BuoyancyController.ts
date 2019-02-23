@@ -127,8 +127,8 @@ export class b2BuoyancyController extends b2Controller {
 
   public Draw(debugDraw: b2Draw) : void{
     const r = 100;
-    const p1 = new b2Vec2();
-    const p2 = new b2Vec2();
+    const p1: b2Vec = new b2Vec2();
+    const p2: b2Vec = new b2Vec2();
     p1.x = this.normal.x * this.offset + this.normal.y * r;
     p1.y = this.normal.y * this.offset - this.normal.x * r;
     p2.x = this.normal.x * this.offset - this.normal.y * r;
