@@ -754,7 +754,7 @@ export class b2World {
     return out;
   }
 
-  private static QueryFixtureShape_s_aabb = new b2AABB();
+  private static QueryFixtureShape_s_aabb: b2AABB = new b2AABB();
   public QueryFixtureShape(callback: b2QueryCallback | null, shape: b2Shape, index: number, transform: b2Transform, fn: b2QueryCallbackFunction): void {
     const aabb: b2AABB = b2World.QueryFixtureShape_s_aabb;
     shape.ComputeAABB(aabb, transform, index);

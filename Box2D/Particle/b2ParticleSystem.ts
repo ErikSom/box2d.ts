@@ -5076,7 +5076,7 @@ export class CompositeShape extends b2Shape {
    * @see b2Shape::ComputeAABB
    */
   public ComputeAABB(aabb: b2AABB, xf: b2Transform, childIndex: number): void {
-    const s_subaabb = new b2AABB();
+    const s_subaabb: b2AABB = new b2AABB();
     aabb.lowerBound.x = +b2_maxFloat;
     aabb.lowerBound.y = +b2_maxFloat;
     aabb.upperBound.x = -b2_maxFloat;
