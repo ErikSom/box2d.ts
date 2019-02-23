@@ -64,7 +64,7 @@ export class b2DynamicTree<T> {
   public static readonly s_v: b2Vec2 = new b2Vec2();
   public static readonly s_abs_v: b2Vec2 = new b2Vec2();
   public static readonly s_segmentAABB: b2AABB = new b2AABB();
-  public static readonly s_subInput = new b2RayCastInput();
+  public static readonly s_subInput: b2RayCastInput = new b2RayCastInput();
   public static readonly s_combinedAABB: b2AABB = new b2AABB();
   public static readonly s_aabb: b2AABB = new b2AABB();
 
